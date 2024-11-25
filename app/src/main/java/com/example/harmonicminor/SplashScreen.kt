@@ -39,7 +39,7 @@ fun Splash(navController: NavController){
         startAnimation = true
         delay(4000)
         navController.popBackStack()
-        navController.navigate(Routes.RegisterScreen)
+        navController.navigate(Routes.InitialScreen)
     }
 
     Column(

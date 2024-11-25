@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -81,6 +83,7 @@ fun Register(navController: NavController) {
             }, label = {
                 Text(text = "Nombre de usuario", color = Color.White)
             },
+            modifier = Modifier.width(280.dp).height(60.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.White,
                 unfocusedTextColor = Color.White
@@ -94,7 +97,9 @@ fun Register(navController: NavController) {
                 email = it
             }, label = {
                 Text(text = "Email", color = Color.White)
-            }, colors = OutlinedTextFieldDefaults.colors(
+            },
+            modifier = Modifier.width(280.dp).height(60.dp),
+            colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.White,
                 unfocusedTextColor = Color.White
             )
@@ -108,6 +113,7 @@ fun Register(navController: NavController) {
             }, label = {
                 Text(text = "Contraseña", color = Color.White)
             },
+            modifier = Modifier.width(280.dp).height(60.dp),
             visualTransformation = PasswordVisualTransformation(),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.White,
@@ -117,53 +123,23 @@ fun Register(navController: NavController) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(
-                modifier = Modifier
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFF4776E6), Color(0xFF8E54E9)),
-                        ),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .clickable {
-                        navController.navigate( "LoginScreen")
-                    }
-                    .padding(vertical = 16.dp, horizontal = 38.dp)
-            ) {
-                Text(
-                    text = "¿Tienes cuenta?",
-                    color = Color.White
+        Box(
+            modifier = Modifier
+                .background(
+                    brush = Brush.linearGradient(
+                        colors = listOf(Color(0xFF4776E6), Color(0xFF8E54E9)),
+                    ),
+                    shape = RoundedCornerShape(12.dp)
                 )
-            }
+                .clickable {
 
-            Box(
-                modifier = Modifier
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFF4776E6), Color(0xFF8E54E9)),
-                        ),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .clickable {
-                        
-                    }
-                    .padding(vertical = 16.dp, horizontal = 50.dp)
-            ) {
-                Text(
-                    text = "Registrarse",
-                    color = Color.White
-                )
-            }
+                }
+                .padding(vertical = 16.dp, horizontal = 80.dp)
+        ) {
+            Text(
+                text = "Registrarse",
+                color = Color.White
+            )
         }
     }
-}
-
-
-fun on_click_register(){
-
 }

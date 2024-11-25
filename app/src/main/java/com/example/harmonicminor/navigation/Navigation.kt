@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.harmonicminor.Login
 import com.example.harmonicminor.Register
 import com.example.harmonicminor.Splash
+import com.example.harmonicminor.ui.theme.Initial
 
 
 @Composable
@@ -14,6 +15,9 @@ fun MyappNavigation(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.SplashScreen,
         builder = {
+            composable(Routes.InitialScreen) {
+                Initial(navController)
+            }
             composable(Routes.SplashScreen) {
                 Splash(navController)
             }

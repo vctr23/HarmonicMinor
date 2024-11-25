@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -70,7 +71,9 @@ fun Login(navController: NavController) {
                 email = it
             }, label = {
             Text(text = "Email", color = Color.White)
-        }, colors = OutlinedTextFieldDefaults.colors(
+            },
+            modifier = Modifier.width(280.dp).height(60.dp),
+            colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.White,
                 unfocusedTextColor = Color.White
             )
@@ -84,6 +87,7 @@ fun Login(navController: NavController) {
             }, label = {
             Text(text = "Contraseña", color = Color.White)
             },
+            modifier = Modifier.width(280.dp).height(60.dp),
             visualTransformation = PasswordVisualTransformation(),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.White,
