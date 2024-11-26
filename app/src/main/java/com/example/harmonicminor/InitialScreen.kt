@@ -1,4 +1,4 @@
-package com.example.harmonicminor.ui.theme
+package com.example.harmonicminor
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,7 +25,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
 
 @Composable
@@ -43,6 +42,7 @@ fun Initial(navController: NavController){
             painter = painterResource(R.drawable.login_logo),
             contentDescription = "Login image",
             modifier = Modifier.size(380.dp)
+                .padding(16.dp)
         )
 
         Spacer(modifier = Modifier.height(80.dp))
@@ -89,7 +89,8 @@ fun Initial(navController: NavController){
                     .clickable {
                         navController.navigate( "LoginScreen")
                     }
-                    .padding(vertical = 16.dp, horizontal = 38.dp)
+                    .padding(vertical = 16.dp, horizontal = 42.dp)
+
             ) {
                 Text(
                     text = "Iniciar sesión",
@@ -108,7 +109,7 @@ fun Initial(navController: NavController){
                     .clickable {
                         navController.navigate(Routes.RegisterScreen)
                     }
-                    .padding(vertical = 16.dp, horizontal = 50.dp)
+                    .padding(vertical = 16.dp, horizontal = 48.dp)
             ) {
                 Text(
                     text = "Registrarse",

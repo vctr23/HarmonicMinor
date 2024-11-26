@@ -1,6 +1,5 @@
 package com.example.harmonicminor
 
-import androidx.compose.animation.core.ExperimentalAnimationSpecApi
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -8,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -53,6 +53,7 @@ fun Splash(navController: NavController){
             contentDescription = "Logo",
             modifier = Modifier
                 .size(450.dp)
+                .padding(16.dp)
                 .alpha(alphaAnimation.value)
         )
     }

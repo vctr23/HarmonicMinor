@@ -48,6 +48,7 @@ fun Login(navController: NavController) {
         Image(painter = painterResource(R.drawable.login_logo),
             contentDescription = "Login image",
             modifier = Modifier.size(380.dp)
+                .padding(16.dp)
         )
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -72,11 +73,13 @@ fun Login(navController: NavController) {
             }, label = {
             Text(text = "Email", color = Color.White)
             },
-            modifier = Modifier.width(280.dp).height(60.dp),
+            modifier = Modifier.width(280.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.White,
                 unfocusedTextColor = Color.White
-            )
+            ),
+            singleLine = true,
+            maxLines = 1
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -87,12 +90,14 @@ fun Login(navController: NavController) {
             }, label = {
             Text(text = "Contraseña", color = Color.White)
             },
-            modifier = Modifier.width(280.dp).height(60.dp),
+            modifier = Modifier.width(280.dp),
             visualTransformation = PasswordVisualTransformation(),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.White,
                 unfocusedTextColor = Color.White
-            )
+            ),
+            singleLine = true,
+            maxLines = 1
         )
 
         Spacer(modifier = Modifier.height(40.dp))
