@@ -16,6 +16,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -33,6 +37,9 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @Composable
 fun Initial(navController: NavController, modifier: Modifier){
+
+    var clicked by remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -110,8 +117,13 @@ fun Initial(navController: NavController, modifier: Modifier){
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable {
-                        navController.navigate(Routes.RegisterScreen)
+                    .clickable(
+                        enabled = !clicked
+                    ){
+                        clicked = true
+                        navController.navigate(Routes.RegisterScreen){
+                            launchSingleTop = true
+                        }
                     }
                     .padding(vertical = 16.dp, horizontal = 48.dp)
             ) {

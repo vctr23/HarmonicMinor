@@ -7,4 +7,5 @@ object Routes {
     val RegisterScreen = "RegisterScreen"
     val LoginScreen = "LoginScreen"
     val SplashScreen = "SplashScreen"
+    val MainScreen = "MainScreen"
 }

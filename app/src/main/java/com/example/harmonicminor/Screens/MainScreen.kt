@@ -18,6 +18,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavController
 import com.example.harmonicminor.NavItem
 import com.example.harmonicminor.navScreens.Favourite
 import com.example.harmonicminor.navScreens.Home
@@ -26,7 +28,7 @@ import com.example.harmonicminor.navScreens.Search
 import com.example.harmonicminor.navScreens.ShoppingCart
 
 @Composable
-fun Main(modifier: Modifier = Modifier) {
+fun Main(navController: NavController, modifier: Modifier = Modifier) {
 
     val navItemList = listOf(
         NavItem(Icons.Default.Home),
@@ -51,7 +53,9 @@ fun Main(modifier: Modifier = Modifier) {
                             selected = index
                         },
                         icon = {
-                            Icon(imageVector = navItem.icon, contentDescription = "Icon")
+                            Icon(imageVector = navItem.icon,
+                                contentDescription = "Icon",
+                                tint = Color.Red)
                         }
                     )
                 }

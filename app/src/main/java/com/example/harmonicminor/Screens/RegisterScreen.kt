@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -43,6 +44,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
 
     Column(
           modifier = Modifier
@@ -139,8 +141,9 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )
-                .clickable {
+                .clickable() {
 
+                    navController.navigate(Routes.MainScreen)
                 }
                 .padding(vertical = 16.dp, horizontal = 80.dp)
         ) {
@@ -151,3 +154,5 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
         }
     }
 }
+
+

@@ -13,6 +13,7 @@ import com.example.harmonicminor.Screens.Login
 import com.example.harmonicminor.Screens.Register
 import com.example.harmonicminor.Screens.Splash
 import com.example.harmonicminor.Screens.Initial
+import com.example.harmonicminor.Screens.Main
 
 
 @Composable
@@ -45,6 +46,9 @@ fun MyappNavigation(){
             }
             composable(Routes.LoginScreen) {
                 Login(navController, Modifier)
+            }
+            composable(Routes.MainScreen){
+                Main(navController, Modifier)
             }
         }
     )
