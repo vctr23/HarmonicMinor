@@ -1,4 +1,4 @@
-package com.example.harmonicminor
+package com.example.harmonicminor.Screens
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -18,16 +18,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
+import com.example.harmonicminor.ui.theme.backgroundColor
 import kotlinx.coroutines.delay
 
 
 @Composable
-fun Splash(navController: NavController){
+fun Splash(navController: NavController, modifier: Modifier = Modifier){
     var startAnimation by remember{ mutableStateOf(false) }
     val alphaAnimation = animateFloatAsState(
         targetValue = if (startAnimation) 1f else 0f,
@@ -45,7 +46,7 @@ fun Splash(navController: NavController){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color(0xFF121212)),
+            .background(color = backgroundColor),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){

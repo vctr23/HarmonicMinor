@@ -5,13 +5,14 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.harmonicminor.Login
-import com.example.harmonicminor.Register
-import com.example.harmonicminor.Splash
-import com.example.harmonicminor.Initial
+import com.example.harmonicminor.Screens.Login
+import com.example.harmonicminor.Screens.Register
+import com.example.harmonicminor.Screens.Splash
+import com.example.harmonicminor.Screens.Initial
 
 
 @Composable
@@ -34,16 +35,16 @@ fun MyappNavigation(){
          )},
         builder = {
             composable(Routes.InitialScreen) {
-                Initial(navController)
+                Initial(navController, Modifier)
             }
             composable(Routes.SplashScreen) {
-                Splash(navController)
+                Splash(navController, Modifier)
             }
             composable(Routes.RegisterScreen) {
-                Register(navController)
+                Register(navController, Modifier)
             }
             composable(Routes.LoginScreen) {
-                Login(navController)
+                Login(navController, Modifier)
             }
         }
     )

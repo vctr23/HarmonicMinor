@@ -1,4 +1,4 @@
-package com.example.harmonicminor
+package com.example.harmonicminor.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,20 +19,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
+import com.example.harmonicminor.ui.theme.backgroundColor
+import com.example.harmonicminor.ui.theme.buttonColor1
+import com.example.harmonicminor.ui.theme.buttonColor2
+import com.example.harmonicminor.ui.theme.textColor
 
 @Composable
-fun Initial(navController: NavController){
+fun Initial(navController: NavController, modifier: Modifier){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color(0xFF121212)),
+            .background(color = backgroundColor),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ){
@@ -50,7 +54,7 @@ fun Initial(navController: NavController){
         Text(
             text = "Bienvenido",
             fontSize = 35.sp,
-            color = Color.White,
+            color = textColor,
             fontWeight = FontWeight.Bold
         )
 
@@ -59,7 +63,7 @@ fun Initial(navController: NavController){
         Text(
             text = "Inicia sesión en",
             fontSize = 20.sp,
-            color = Color.White
+            color = textColor
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -67,7 +71,7 @@ fun Initial(navController: NavController){
         Text(
             text = "HarmonicMinor",
             fontSize = 35.sp,
-            color = Color.White,
+            color = textColor,
             fontWeight = FontWeight.Bold
         )
 
@@ -82,7 +86,7 @@ fun Initial(navController: NavController){
                 modifier = Modifier
                     .background(
                         brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFF4776E6), Color(0xFF8E54E9)),
+                            colors = listOf(buttonColor1, buttonColor2),
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
@@ -94,7 +98,7 @@ fun Initial(navController: NavController){
             ) {
                 Text(
                     text = "Iniciar sesión",
-                    color = Color.White
+                    color = textColor
                 )
             }
 
@@ -102,7 +106,7 @@ fun Initial(navController: NavController){
                 modifier = Modifier
                     .background(
                         brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFF4776E6), Color(0xFF8E54E9)),
+                            colors = listOf(buttonColor1, buttonColor2),
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
@@ -113,7 +117,7 @@ fun Initial(navController: NavController){
             ) {
                 Text(
                     text = "Registrarse",
-                    color = Color.White
+                    color = textColor
                 )
             }
         }
