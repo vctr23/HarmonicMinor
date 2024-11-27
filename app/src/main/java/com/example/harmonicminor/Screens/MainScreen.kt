@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -45,12 +46,13 @@ fun Main(modifier: Modifier = Modifier) {
             NavigationBar {
                 navItemList.forEachIndexed { index, navItem ->
                     NavigationBarItem(
-                        // True if the item is selected, false otherwise
                         selected = selected == index,
                         onClick = {
                             selected = index
                         },
-                        icon = {  }
+                        icon = {
+                            Icon(imageVector = navItem.icon, contentDescription = "Icon")
+                        }
                     )
                 }
             }
