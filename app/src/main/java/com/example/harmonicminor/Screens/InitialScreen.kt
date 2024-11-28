@@ -16,9 +16,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,25 +39,29 @@ import com.example.harmonicminor.ui.theme.textColor
 @Composable
 fun Initial(navController: NavController, modifier: Modifier){
 
-    var clicked by remember { mutableStateOf(false) }
+    var clicked by rememberSaveable { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        clicked = false
+    }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = backgroundColor),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ){
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = modifier.height(40.dp))
 
         Image(
             painter = painterResource(R.drawable.login_logo),
             contentDescription = "Login image",
-            modifier = Modifier.size(380.dp)
+            modifier = modifier.size(380.dp)
                 .padding(16.dp)
         )
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = modifier.height(80.dp))
 
         Text(
             text = "Bienvenido",
@@ -65,7 +70,7 @@ fun Initial(navController: NavController, modifier: Modifier){
             fontWeight = FontWeight.Bold
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = modifier.height(20.dp))
 
         Text(
             text = "Inicia sesión en",
@@ -73,7 +78,7 @@ fun Initial(navController: NavController, modifier: Modifier){
             color = textColor
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = modifier.height(20.dp))
 
         Text(
             text = "HarmonicMinor",
@@ -82,22 +87,23 @@ fun Initial(navController: NavController, modifier: Modifier){
             fontWeight = FontWeight.Bold
         )
 
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = modifier.height(100.dp))
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ){
             Box(
-                modifier = Modifier
+                modifier = modifier
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(buttonColor1, buttonColor2),
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable {
+                    .clickable(enabled = !clicked) {
+                        clicked = true
                         navController.navigate( "LoginScreen")
                     }
                     .padding(vertical = 16.dp, horizontal = 42.dp)
@@ -110,16 +116,14 @@ fun Initial(navController: NavController, modifier: Modifier){
             }
 
             Box(
-                modifier = Modifier
+                modifier = modifier
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(buttonColor1, buttonColor2),
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable(
-                        enabled = !clicked
-                    ){
+                    .clickable(enabled =!clicked) {
                         clicked = true
                         navController.navigate(Routes.RegisterScreen){
                             launchSingleTop = true
