@@ -9,11 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.harmonicminor.Screens.Login
-import com.example.harmonicminor.Screens.Register
-import com.example.harmonicminor.Screens.Splash
-import com.example.harmonicminor.Screens.Initial
-import com.example.harmonicminor.Screens.Main
+import com.example.harmonicminor.screens.Login
+import com.example.harmonicminor.screens.Register
+import com.example.harmonicminor.screens.Splash
+import com.example.harmonicminor.screens.Initial
+import com.example.harmonicminor.screens.Main
 
 
 @Composable

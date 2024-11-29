@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import com.example.harmonicminor.ui.theme.backgroundColor
 
 
+
 @Composable
 fun Home(modifier: Modifier = Modifier) {
     Column(
@@ -17,5 +18,8 @@ fun Home(modifier: Modifier = Modifier) {
     ){
 
     }
-
 }
+
+
+
+

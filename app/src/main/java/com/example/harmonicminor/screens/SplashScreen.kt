@@ -1,4 +1,4 @@
-package com.example.harmonicminor.Screens
+package com.example.harmonicminor.screens
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -45,7 +45,7 @@ fun Splash(navController: NavController, modifier: Modifier = Modifier){
     }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = backgroundColor),
         verticalArrangement = Arrangement.Center,

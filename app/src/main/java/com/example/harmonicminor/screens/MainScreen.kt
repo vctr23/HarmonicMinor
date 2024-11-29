@@ -1,6 +1,7 @@
-package com.example.harmonicminor.Screens
+package com.example.harmonicminor.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -59,12 +60,12 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
     }
 
     Scaffold(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize(),
         topBar = { Topbar() },
         bottomBar = {
             NavigationBar(
                 containerColor = backgroundAccentColor,
-                tonalElevation = 0.dp
                 ) {
                 navItemList.forEachIndexed { index, navItem ->
                     NavigationBarItem(
@@ -110,7 +111,9 @@ fun ContentScreen(modifier: Modifier = Modifier, selected: Int) {
 @Composable
 fun Topbar(modifier: Modifier = Modifier){
     TopAppBar(
-        modifier = modifier.height(80.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(80.dp),
         colors = TopAppBarColors(
             containerColor = backgroundAccentColor,
             scrolledContainerColor = darkAccentColor,
@@ -121,8 +124,8 @@ fun Topbar(modifier: Modifier = Modifier){
         title = {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(end = 30.dp),
+                    .fillMaxSize()
+                    .padding(end = 28.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Image(

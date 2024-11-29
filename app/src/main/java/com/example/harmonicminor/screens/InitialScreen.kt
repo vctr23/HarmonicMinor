@@ -1,4 +1,4 @@
-package com.example.harmonicminor.Screens
+package com.example.harmonicminor.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
