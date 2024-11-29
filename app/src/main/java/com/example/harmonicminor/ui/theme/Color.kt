@@ -10,6 +10,7 @@ val buttonColor2 = Color(0xFF8E54E9)
 val darkAccentColor = Color(0xFF7e00f3)
 val lightAccentColor = Color(0xFF00ddf6)
 val textColor = Color(0xFFFFFAFA)
+val secondaryTextColor = Color(0xFF999997)
 val iconColor = Color(0xFFE4EDF1)
 
 

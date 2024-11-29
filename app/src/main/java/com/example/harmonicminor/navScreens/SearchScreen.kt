@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.iconColor
+import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
 
 
@@ -53,7 +54,9 @@ fun Search(modifier: Modifier = Modifier) {
                     containerColor = backgroundAccentColor,
                     inputFieldColors = TextFieldDefaults.colors(
                         focusedTextColor = textColor,
-                        unfocusedTextColor = textColor
+                        unfocusedTextColor = textColor,
+                        focusedPlaceholderColor = secondaryTextColor,
+                        unfocusedPlaceholderColor = secondaryTextColor
                     )
                 ),
                 query = textInput,
@@ -76,14 +79,20 @@ fun Search(modifier: Modifier = Modifier) {
                         )
                 },
                 trailingIcon = {
-                    Icon(
-                        modifier = Modifier.clickable {
-                            textInput = ""
-                        },
-                        imageVector = Icons.Default.Close,
-                        tint = iconColor,
-                        contentDescription = "Close icon"
-                    )
+                    if (state){
+                        Icon(
+                            modifier = Modifier.clickable {
+                                if (textInput.isNotEmpty()) {
+                                    textInput = ""
+                                } else{
+                                    state = false
+                                }
+                            },
+                            imageVector = Icons.Default.Close,
+                            tint = iconColor,
+                            contentDescription = "Close icon"
+                        )
+                    }
                 }
             )
             {
