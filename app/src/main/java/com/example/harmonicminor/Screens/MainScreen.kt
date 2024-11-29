@@ -128,7 +128,7 @@ fun Topbar(modifier: Modifier = Modifier){
                 Image(
                     painter = painterResource(R.drawable.logo),
                     contentDescription = "Logo",
-                    modifier = Modifier.size(190.dp)
+                    modifier = Modifier.size(150.dp)
                 )
             }
         },

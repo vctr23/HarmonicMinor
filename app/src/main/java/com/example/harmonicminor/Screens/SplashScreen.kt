@@ -36,6 +36,7 @@ fun Splash(navController: NavController, modifier: Modifier = Modifier){
             durationMillis = 3000
         ), label = ""
     )
+    
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(4000)

@@ -141,9 +141,10 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )
-                .clickable() {
-
-                    navController.navigate(Routes.MainScreen)
+                .clickable{
+                    navController.navigate(Routes.MainScreen){
+                        launchSingleTop = true
+                    }
                 }
                 .padding(vertical = 16.dp, horizontal = 80.dp)
         ) {

@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -116,7 +117,11 @@ fun Login(navController: NavController, modifier: Modifier = Modifier) {
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )
-                .clickable {  }
+                .clickable {
+                    navController.navigate(Routes.MainScreen){
+                        launchSingleTop = true
+                    }
+                }
                 .padding(vertical = 16.dp, horizontal = 80.dp)
         ) {
             Text(
