@@ -39,7 +39,7 @@ fun Splash(navController: NavController, modifier: Modifier = Modifier){
     
     LaunchedEffect(key1 = true) {
         startAnimation = true
-        delay(4000)
+        delay(3000)
         navController.popBackStack()
         navController.navigate(Routes.InitialScreen)
     }
