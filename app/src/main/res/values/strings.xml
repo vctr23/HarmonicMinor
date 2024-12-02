@@ -5,6 +5,8 @@
     <string name="sing">Inicia sesión en</string>
     <string name="sing_in">Iniciar sesión</string>
     <string name="sing_up">Registrarse</string>
+    <string name="available_languages">Idiomas disponibles</string>
+    <string name="app_language">Español</string>
 
     <string name="es" translatable="false">Español</string>
     <string name="en" translatable="false">English</string>

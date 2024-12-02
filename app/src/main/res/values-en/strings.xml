@@ -5,4 +5,6 @@
     <string name="sing">Sign in to</string>
     <string name="sing_in">Sign in</string>
     <string name="sing_up">Sign up</string>
+    <string name="available_languages">Available lenguages</string>
+    <string name="app_language">English</string>
 </resources>

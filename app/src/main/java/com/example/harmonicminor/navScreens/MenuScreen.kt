@@ -16,20 +16,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.harmonicminor.R
+import com.example.harmonicminor.contextLocale.LocalLanguageManager
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.iconColor
-import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
 
 
@@ -60,8 +60,10 @@ fun Profile(){
 fun LanguageSelectionItem(){
     var showBottomSheet by rememberSaveable { mutableStateOf(false) }
     val customIcon = ImageVector.vectorResource(R.drawable.language)
-    var isEnglishSelected by remember { mutableStateOf(false) }
-    var isSpanishSelected by remember { mutableStateOf(false) }
+    val languageManager = LocalLanguageManager.current
+    val currentLanguage = languageManager.currentLocale.value.language
+
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -75,7 +77,10 @@ fun LanguageSelectionItem(){
         Icon(customIcon, contentDescription = null, tint = iconColor)
         Spacer(modifier = Modifier.padding(horizontal = 8.dp))
         Text(text = "Lenguaje", color = textColor, modifier = Modifier.weight(1f))
-        Text(text = "Español", color = secondaryTextColor)
+        Text(
+            text = stringResource(R.string.app_language),
+            color = textColor
+        )
 
         if (showBottomSheet){
             ModalBottomSheet(
@@ -86,17 +91,16 @@ fun LanguageSelectionItem(){
                 Column(
                     modifier = Modifier.padding(8.dp)
                 ) {
-                    Text(text = "Idiomas disponibles", color = textColor)
+                    Text(text = stringResource(R.string.available_languages), color = textColor)
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Checkbox(
-                            checked = isEnglishSelected,
-                            onCheckedChange = { isChecked ->
-                                isEnglishSelected = isChecked
-                                if (isChecked) isSpanishSelected = false
+                            checked = currentLanguage == "en",
+                            onCheckedChange = {
+                                if (it) languageManager.updateLanguage("en")
                             }
                         )
                         Text(
@@ -111,10 +115,9 @@ fun LanguageSelectionItem(){
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Checkbox(
-                            checked = isSpanishSelected,
-                            onCheckedChange = { isChecked ->
-                                isSpanishSelected = isChecked
-                                if (isChecked) isEnglishSelected = false
+                            checked = currentLanguage == "es",
+                            onCheckedChange = {
+                                if (it) languageManager.updateLanguage("es")
                             }
                         )
                         Text(

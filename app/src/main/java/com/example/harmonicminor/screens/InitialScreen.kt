@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -24,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +33,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.contextLocale.LocalLanguageManager
+import com.example.harmonicminor.contextLocale.updateLocale
 import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
@@ -39,8 +43,14 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @Composable
 fun Initial(navController: NavController, modifier: Modifier){
-
+    val languageManager = LocalLanguageManager.current
+    val context = LocalContext.current
+    val locale = languageManager.currentLocale.value
     var clicked by rememberSaveable { mutableStateOf(false) }
+
+    SideEffect {
+        context.updateLocale(locale)
+    }
 
     LaunchedEffect(Unit) {
         clicked = false
