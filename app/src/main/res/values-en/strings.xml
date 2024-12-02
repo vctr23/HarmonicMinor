@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HarmonicMinor</string>
+    <string name="welcome">Welcome</string>
+    <string name="sing">Sign in to</string>
+    <string name="sing_in">Sign in</string>
+    <string name="sing_up">Sign up</string>
+</resources>

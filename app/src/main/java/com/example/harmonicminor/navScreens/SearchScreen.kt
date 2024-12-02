@@ -96,7 +96,7 @@ fun Search(modifier: Modifier = Modifier) {
                 }
             )
             {
-
+               // Funcionalidad de busqueda aquí
             }
         }
     }

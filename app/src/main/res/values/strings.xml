@@ -1,3 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HarmonicMinor</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="sing">Inicia sesión en</string>
+    <string name="sing_in">Iniciar sesión</string>
+    <string name="sing_up">Registrarse</string>
+
+    <string name="es" translatable="false">Español</string>
+    <string name="en" translatable="false">English</string>
 </resources>

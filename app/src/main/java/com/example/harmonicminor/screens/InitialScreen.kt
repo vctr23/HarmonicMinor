@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -64,7 +65,7 @@ fun Initial(navController: NavController, modifier: Modifier){
         Spacer(modifier = modifier.height(80.dp))
 
         Text(
-            text = "Bienvenido",
+            text = stringResource(R.string.welcome),
             fontSize = 35.sp,
             color = textColor,
             fontWeight = FontWeight.Bold
@@ -73,7 +74,7 @@ fun Initial(navController: NavController, modifier: Modifier){
         Spacer(modifier = modifier.height(20.dp))
 
         Text(
-            text = "Inicia sesión en",
+            text = stringResource(R.string.sing),
             fontSize = 20.sp,
             color = textColor
         )
@@ -81,7 +82,7 @@ fun Initial(navController: NavController, modifier: Modifier){
         Spacer(modifier = modifier.height(20.dp))
 
         Text(
-            text = "HarmonicMinor",
+            text = stringResource(R.string.app_name),
             fontSize = 35.sp,
             color = textColor,
             fontWeight = FontWeight.Bold
@@ -111,7 +112,7 @@ fun Initial(navController: NavController, modifier: Modifier){
 
             ) {
                 Text(
-                    text = "Iniciar sesión",
+                    text = stringResource(R.string.sing_in),
                     color = textColor
                 )
             }
@@ -132,7 +133,7 @@ fun Initial(navController: NavController, modifier: Modifier){
                     .padding(vertical = 16.dp, horizontal = 48.dp)
             ) {
                 Text(
-                    text = "Registrarse",
+                    text = stringResource(R.string.sing_up),
                     color = textColor
                 )
             }
