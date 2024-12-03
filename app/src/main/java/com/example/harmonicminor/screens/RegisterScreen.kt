@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -65,7 +66,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(40.dp))
 
         Text(
-            text = "Bienvenido",
+            text = stringResource(R.string.welcome),
             fontSize = 26.sp,
             color = textColor,
             fontWeight = FontWeight.Bold
@@ -74,7 +75,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(5.dp))
 
         Text(
-            text = "Regístrate en HarmonicMinor",
+            text = stringResource(R.string.register_on),
             fontSize = 20.sp, color = textColor
         )
 
@@ -84,7 +85,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
             onValueChange = {
                 username = it
             }, label = {
-                Text(text = "Nombre de usuario", color = textColor)
+                Text(text = stringResource(R.string.username), color = textColor)
             },
             modifier = Modifier.width(280.dp),
             colors = OutlinedTextFieldDefaults.colors(
@@ -101,7 +102,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
             onValueChange = {
                 email = it
             }, label = {
-                Text(text = "Email", color = Color.White)
+                Text(text = stringResource(R.string.email_address), color = Color.White)
             },
             modifier = Modifier.width(280.dp),
             colors = OutlinedTextFieldDefaults.colors(
@@ -119,7 +120,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
             onValueChange = {
                 password = it
             }, label = {
-                Text(text = "Contraseña", color = textColor)
+                Text(text = stringResource(R.string.password), color = textColor)
             },
             modifier = Modifier.width(280.dp),
             visualTransformation = PasswordVisualTransformation(),
@@ -149,7 +150,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier) {
                 .padding(vertical = 16.dp, horizontal = 80.dp)
         ) {
             Text(
-                text = "Registrarse",
+                text = stringResource(R.string.register),
                 color = textColor
             )
         }

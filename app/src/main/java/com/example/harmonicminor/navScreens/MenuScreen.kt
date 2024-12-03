@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -21,12 +22,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.harmonicminor.R
 import com.example.harmonicminor.contextLocale.LocalLanguageManager
+import com.example.harmonicminor.contextLocale.updateLocale
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.iconColor
@@ -35,13 +38,23 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @Composable
 fun Menu(modifier: Modifier = Modifier) {
+    val languageManager = LocalLanguageManager.current
+    val context = LocalContext.current
+    val locale = languageManager.currentLocale.value
+
+    SideEffect {
+        context.updateLocale(locale)
+    }
+
+
     Column(
         modifier = modifier
             .fillMaxSize()
             .background(backgroundColor)
             .padding(vertical = 85.dp, horizontal = 16.dp),
     ){
-        Text("Configuración de la tienda:",
+        Text(
+            stringResource(R.string.shop_config),
             color = textColor,
             modifier = Modifier.padding(vertical = 8.dp),
             fontSize = 16.sp
@@ -63,7 +76,6 @@ fun LanguageSelectionItem(){
     val languageManager = LocalLanguageManager.current
     val currentLanguage = languageManager.currentLocale.value.language
 
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -76,7 +88,7 @@ fun LanguageSelectionItem(){
     ){
         Icon(customIcon, contentDescription = null, tint = iconColor)
         Spacer(modifier = Modifier.padding(horizontal = 8.dp))
-        Text(text = "Lenguaje", color = textColor, modifier = Modifier.weight(1f))
+        Text(text = stringResource(R.string.language), color = textColor, modifier = Modifier.weight(1f))
         Text(
             text = stringResource(R.string.app_language),
             color = textColor

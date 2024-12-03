@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -59,7 +60,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(40.dp))
 
-        Text(text = "Bienvenido",
+        Text(text = stringResource(R.string.welcome),
             fontSize = 26.sp,
             color = textColor,
             fontWeight = FontWeight.Bold
@@ -67,7 +68,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(5.dp))
 
-        Text(text = "Inicia sesión en HarmonicMinor",
+        Text(text = stringResource(R.string.sing),
             fontSize = 20.sp,
             color = textColor
         )
@@ -78,7 +79,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier) {
             onValueChange = {
                 email = it
             }, label = {
-            Text(text = "Email", color = Color.White)
+            Text(text = stringResource(R.string.email_address), color = Color.White)
             },
             modifier = Modifier.width(280.dp),
             colors = OutlinedTextFieldDefaults.colors(
@@ -95,7 +96,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier) {
             onValueChange = {
                 password = it
             }, label = {
-            Text(text = "Contraseña", color = textColor)
+            Text(text = stringResource(R.string.password), color = textColor)
             },
             modifier = Modifier.width(280.dp),
             visualTransformation = PasswordVisualTransformation(),
@@ -125,14 +126,14 @@ fun Login(navController: NavController, modifier: Modifier = Modifier) {
                 .padding(vertical = 16.dp, horizontal = 80.dp)
         ) {
             Text(
-                text = "Iniciar Sesión",
+                text = stringResource(R.string.sing_in),
                 color = textColor
             )
         }
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        Text(text = "¿Olvidaste tu contraseña?",
+        Text(text = stringResource(R.string.forgot_password),
             modifier = Modifier.clickable {  },
             color = textColor
         )

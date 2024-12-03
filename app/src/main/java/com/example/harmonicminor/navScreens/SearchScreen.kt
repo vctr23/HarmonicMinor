@@ -24,7 +24,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.harmonicminor.R
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.iconColor
@@ -69,7 +71,7 @@ fun Search(modifier: Modifier = Modifier) {
                     state = it
                 },
                 placeholder = {
-                    Text(text = "Buscar")
+                    Text(text = stringResource(R.string.search))
                 },
                 leadingIcon = {
                     Icon(
@@ -96,7 +98,7 @@ fun Search(modifier: Modifier = Modifier) {
                 }
             )
             {
-               // Funcionalidad de busqueda aquí
+               // Funcionalidad de busqueda aquí00
             }
         }
     }

@@ -3,8 +3,19 @@
     <string name="app_name">HarmonicMinor</string>
     <string name="welcome">Welcome</string>
     <string name="sing">Sign in to</string>
-    <string name="sing_in">Sign in</string>
-    <string name="sing_up">Sign up</string>
-    <string name="available_languages">Available lenguages</string>
+    <string name="register_on">Register on HarmonicMinor</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="sing_in">Sign In</string>
+    <string name="sing_up">Sign Up</string>
+    <string name="available_languages">Available Languages</string>
     <string name="app_language">English</string>
+    <string name="email_address">Email Address</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="password">Password</string>
+    <string name="shop_config">Shop Configuration:</string>
+    <string name="language">Language</string>
+    <string name="search">Search</string>
+
+
 </resources>

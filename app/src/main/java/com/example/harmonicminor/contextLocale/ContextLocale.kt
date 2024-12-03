@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.staticCompositionLocalOf
 import java.util.Locale
 
-// Language Manager to handle global state
 class LanguageManager(context: Context) {
     private val appContext = context.applicationContext
     val currentLocale = mutableStateOf(Locale("es")) // Default to Spanish
