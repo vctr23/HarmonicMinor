@@ -8,7 +8,7 @@
     <string name="username">Nombre de usuario</string>
     <string name="sing_in">Iniciar sesión</string>
     <string name="sing_up">Registrarse</string>
-    <string name="available_languages">Idiomas disponibles</string>
+    <string name="available_languages">Idiomas disponibles:</string>
     <string name="app_language">Español</string>
     <string name="email_address">Email</string>
     <string name="forgot_password">¿Olvidaste tu contraseña?</string>
@@ -16,6 +16,10 @@
     <string name="shop_config">Configuración de la tienda:</string>
     <string name="language">Idioma</string>
     <string name="search">Buscar</string>
+    <string name="country">País</string>
+    <string name="app_country">España</string>
+    <string name="available_countries">Paises disponibles:</string>
+
 
     <string name="es" translatable="false">Español</string>
     <string name="en" translatable="false">English</string>

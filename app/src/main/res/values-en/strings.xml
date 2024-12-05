@@ -8,7 +8,7 @@
     <string name="username">Username</string>
     <string name="sing_in">Sign In</string>
     <string name="sing_up">Sign Up</string>
-    <string name="available_languages">Available Languages</string>
+    <string name="available_languages">Available Languages:</string>
     <string name="app_language">English</string>
     <string name="email_address">Email Address</string>
     <string name="forgot_password">Forgot your password?</string>
@@ -16,6 +16,8 @@
     <string name="shop_config">Shop Configuration:</string>
     <string name="language">Language</string>
     <string name="search">Search</string>
-
+    <string name="country">Country</string>
+    <string name="app_country">Spain</string>
+    <string name="available_countries">Available countries:</string>
 
 </resources>
