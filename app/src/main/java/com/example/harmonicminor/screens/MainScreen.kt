@@ -1,5 +1,6 @@
 package com.example.harmonicminor.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -56,7 +57,7 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
     )
 
     var selected by remember {
-        mutableIntStateOf(0)
+        mutableIntStateOf(4)
     }
 
     Scaffold(
@@ -96,6 +97,7 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
     }
 }
 
+@SuppressLint("NewApi")
 @Composable
 fun ContentScreen(modifier: Modifier = Modifier, selected: Int) {
     when (selected) {

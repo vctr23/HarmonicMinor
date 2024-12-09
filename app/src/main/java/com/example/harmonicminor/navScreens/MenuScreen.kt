@@ -132,6 +132,7 @@ fun Profile() {
 fun LanguageSelectionItem() {
     var showBottomSheet by rememberSaveable { mutableStateOf(false) }
     val customIcon = ImageVector.vectorResource(R.drawable.translate)
+    var selectedLanguage by rememberSaveable { mutableStateOf("es") }
 
     val context = LocalContext.current
 
@@ -184,12 +185,20 @@ fun LanguageSelectionItem() {
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Checkbox(
-                            checked = false,
+                            checked = selectedLanguage == "en",
                             onCheckedChange = {
-                                context
-                                    .getSystemService(LocaleManager::class.java)
-                                    .applicationLocales =
-                                    android.os.LocaleList(java.util.Locale("en".lowercase(), "en".uppercase()))
+                                if (it) {
+                                    selectedLanguage = "en"
+                                    context
+                                        .getSystemService(LocaleManager::class.java)
+                                        .applicationLocales =
+                                        android.os.LocaleList(
+                                            java.util.Locale(
+                                                "en".lowercase(),
+                                                "en".uppercase()
+                                            )
+                                        )
+                                }
                             }
                         )
                         Text(
@@ -203,13 +212,22 @@ fun LanguageSelectionItem() {
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.fillMaxWidth()
                     ) {
+
                         Checkbox(
-                            checked = false,
+                            checked = selectedLanguage == "es",
                             onCheckedChange = {
-                                context
-                                    .getSystemService(LocaleManager::class.java)
-                                    .applicationLocales =
-                                    android.os.LocaleList(java.util.Locale("es".lowercase(), "es".uppercase()))
+                                if (it) {
+                                    selectedLanguage = "es"
+                                    context
+                                        .getSystemService(LocaleManager::class.java)
+                                        .applicationLocales =
+                                        android.os.LocaleList(
+                                            java.util.Locale(
+                                                "es".lowercase(),
+                                                "es".uppercase()
+                                            )
+                                        )
+                                }
                             }
                         )
                         Text(
@@ -262,7 +280,7 @@ fun CountrySelectionItem() {
         stringResource(R.string.hungary),
         stringResource(R.string.albania),
         stringResource(R.string.belarus)
-    )
+    ).sortedBy { it }
 
     Row(
         modifier = Modifier
@@ -349,7 +367,7 @@ fun CurrencySelectionItem() {
         stringResource(R.string.franc),
         stringResource(R.string.krone),
         stringResource(R.string.krona)
-    )
+    ).sortedBy { it }
 
     Row(
         modifier = Modifier
@@ -404,7 +422,7 @@ fun CurrencySelectionItem() {
                             Checkbox(
                                 checked = coin == selectedCurrency,
                                 onCheckedChange = {
-                                   selectedCurrency = coin
+                                    selectedCurrency = coin
                                 }
                             )
                             Text(
