@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,6 +28,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,6 +40,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -431,6 +435,65 @@ fun CurrencySelectionItem() {
                             )
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AdressItem(modifier: Modifier = Modifier) {
+    var showBottomSheet by rememberSaveable { mutableStateOf(false) }
+    val customIcon = ImageVector.vectorResource(R.drawable.location_on)
+    var id by rememberSaveable { mutableStateOf("") }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .border(
+                BorderStroke(2.dp, borderColor),
+                shape = RoundedCornerShape(10.dp)
+            ),
+        verticalAlignment = Alignment.CenterVertically
+    ){
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp))
+        Icon(customIcon, contentDescription = null, tint = iconColor)
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = stringResource(R.string.address),
+            color = textColor,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = iconColor
+        )
+        if (showBottomSheet){
+            ModalBottomSheet(
+                onDismissRequest = { showBottomSheet = false },
+                modifier = Modifier.fillMaxSize(),
+                containerColor = backgroundAccentColor
+            ) {
+                Column(
+                    modifier = Modifier.padding(8.dp)
+                ){
+                    OutlinedTextField(value = id,
+                        onValueChange = {
+                            id = it
+                        }, label = {
+                            Text(text = "", color = Color.White)
+                        },
+                        modifier = Modifier.width(280.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedTextColor = textColor,
+                            unfocusedTextColor = textColor
+                        ),
+                        singleLine = true,
+                        maxLines = 1
+                    )
                 }
             }
         }

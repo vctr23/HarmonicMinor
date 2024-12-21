@@ -56,4 +56,6 @@
     <string name="franc">Franco (Suizo)</string>
     <string name="krone">Corona (Danesa)</string>
     <string name="krona">Corona (Suecia)</string>
+    <string name="address">Dirección de envío</string>
+    <string name="id">DNI/NIF/NIE</string>
 </resources>
