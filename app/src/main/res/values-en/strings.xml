@@ -6,14 +6,16 @@
     <string name="register_on">Register on HarmonicMinor</string>
     <string name="register">Register</string>
     <string name="username">Username</string>
-    <string name="sing_in">Sign In</string>
-    <string name="sing_up">Sign Up</string>
-    <string name="available_languages">Available Languages:</string>
-    <string name="app_language">English</string>
-    <string name="email_address">Email Address</string>
+    <string name="sing_in">Sign in</string>
+    <string name="sing_up">Sign up</string>
+    <string name="email_error">Invalid email address</string>
+    <string name="password_error">Password must be 6 to 12 characters</string>
+    <string name="available_languages">Available languages:</string>
+    <string name="app_language">Spanish</string>
+    <string name="email_address">Email</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="password">Password</string>
-    <string name="shop_config">Shop Configuration:</string>
+    <string name="shop_config">Shop configuration:</string>
     <string name="language">Language</string>
     <string name="search">Search</string>
     <string name="country">Country</string>
@@ -53,8 +55,9 @@
     <string name="euro">Euro</string>
     <string name="pound">Pound</string>
     <string name="dolar">Dollar</string>
-    <string name="franc">Swiss Franc</string>
-    <string name="krone">Danish Krone</string>
-    <string name="krona">Swedish Krona</string>
-
+    <string name="franc">Franc (Swiss)</string>
+    <string name="krone">Krone (Danish)</string>
+    <string name="krona">Krona (Swedish)</string>
+    <string name="address">Shipping address</string>
+    <string name="id">ID/DNI/NIF/NIE</string>
 </resources>

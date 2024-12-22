@@ -8,6 +8,8 @@
     <string name="username">Nombre de usuario</string>
     <string name="sing_in">Iniciar sesión</string>
     <string name="sing_up">Registrarse</string>
+    <string name="email_error">Dirección de correo no válida</string>
+    <string name="password_error">La contraseña debe tener de 6 a 12 carácteres</string>
     <string name="available_languages">Idiomas disponibles:</string>
     <string name="app_language">Español</string>
     <string name="email_address">Email</string>
@@ -46,7 +48,7 @@
     <string name="estonia">Estonia</string>
     <string name="hungary">Hungría</string>
     <string name="albania">Albania</string>
-    <string name="belarus">Belarus</string>
+    <string name="belarus">Bielorrusia</string>
     <string name="available_countries">Paises disponibles:</string>
     <string name="available_currencies">Monedas disponibles:</string>
     <string name="currency">Moneda</string>
@@ -56,5 +58,6 @@
     <string name="franc">Franco (Suizo)</string>
     <string name="krone">Corona (Danesa)</string>
     <string name="krona">Corona (Suecia)</string>
-
+    <string name="address">Dirección de envío</string>
+    <string name="id">DNI/NIF/NIE</string>
 </resources>

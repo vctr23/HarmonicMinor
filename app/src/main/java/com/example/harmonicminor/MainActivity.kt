@@ -6,14 +6,21 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.harmonicminor.navigation.MyappNavigation
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        auth = Firebase.auth
         super.onCreate(savedInstanceState)
         ActivityInfo.SCREEN_ORIENTATION_PORTRAIT.also { requestedOrientation = it }
         enableEdgeToEdge()
         setContent {
-                MyappNavigation()
+                MyappNavigation(auth)
         }
     }
 }

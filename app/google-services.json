@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "454795250127",
+    "project_id": "harmonicminor-2025",
+    "storage_bucket": "harmonicminor-2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454795250127:android:3a6ebfb4c38056ddbaaaba",
+        "android_client_info": {
+          "package_name": "com.example.harmonicminor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZT1ugu334A6uHqq4EIJBuIWQJo6Pf4ew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

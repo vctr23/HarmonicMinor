@@ -8,6 +8,8 @@
     <string name="username">Nombre de usuario</string>
     <string name="sing_in">Iniciar sesión</string>
     <string name="sing_up">Registrarse</string>
+    <string name="email_error">Dirección de correo no válida</string>
+    <string name="password_error">Contraseña de 6 a 12 carácteres</string>
     <string name="available_languages">Idiomas disponibles:</string>
     <string name="app_language">Español</string>
     <string name="email_address">Email</string>

@@ -56,7 +56,7 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
     )
 
     var selected by remember {
-        mutableIntStateOf(4)
+        mutableIntStateOf(0)
     }
 
     Scaffold(
@@ -71,7 +71,6 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
                     NavigationBarItem(
                         selected = selected == index,
                         onClick = {
-
                             selected = index
                         },
                         icon = {

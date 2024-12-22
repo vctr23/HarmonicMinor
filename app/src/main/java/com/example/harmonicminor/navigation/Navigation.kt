@@ -14,10 +14,11 @@ import com.example.harmonicminor.screens.Register
 import com.example.harmonicminor.screens.Splash
 import com.example.harmonicminor.screens.Initial
 import com.example.harmonicminor.screens.Main
+import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
-fun MyappNavigation(){
+fun MyappNavigation(auth: FirebaseAuth) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.SplashScreen,
         enterTransition = {slideInVertically (
@@ -42,10 +43,10 @@ fun MyappNavigation(){
                 Splash(navController, Modifier)
             }
             composable(Routes.RegisterScreen) {
-                Register(navController, Modifier)
+                Register(navController, Modifier, auth)
             }
             composable(Routes.LoginScreen) {
-                Login(navController, Modifier)
+                Login(navController, Modifier, auth)
             }
             composable(Routes.MainScreen){
                 Main(navController, Modifier)
