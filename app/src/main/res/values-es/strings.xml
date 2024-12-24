@@ -16,6 +16,8 @@
     <string name="app_language">Español</string>
     <string name="email_address">Email</string>
     <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="password_reset">Introduce tu email para recibir un correo con las instrucciones para restablecer tu contraseña</string>
+    <string name="send_email">Enviar correo</string>
     <string name="password">Contraseña</string>
     <string name="shop_config">Configuración de la tienda:</string>
     <string name="language">Idioma</string>

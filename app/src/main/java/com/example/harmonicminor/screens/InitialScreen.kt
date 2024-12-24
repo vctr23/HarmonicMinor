@@ -39,12 +39,6 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @Composable
 fun Initial(navController: NavController, modifier: Modifier){
-    var clicked by rememberSaveable { mutableStateOf(false) }
-
-    LaunchedEffect(Unit) {
-        clicked = false
-    }
-
     Column(
         modifier = modifier
             .fillMaxSize()

@@ -13,6 +13,7 @@ import com.example.harmonicminor.navScreens.menu.FAQScreen
 import com.example.harmonicminor.navScreens.menu.Terms
 import com.example.harmonicminor.screens.Initial
 import com.example.harmonicminor.screens.Login
+import com.example.harmonicminor.screens.PasswordResetScreen
 import com.example.harmonicminor.screens.Register
 import com.example.harmonicminor.screens.Splash
 import com.example.harmonicminor.screens.main.Main
@@ -50,14 +51,17 @@ fun MyappNavigation(auth: FirebaseAuth) {
             composable(Routes.LoginScreen) {
                 Login(navController, Modifier, auth)
             }
-            composable(Routes.MainScreen){
-                Main(navController, Modifier)
+            composable(Routes.MainScreen) {
+                Main(navController, Modifier, auth)
             }
-            composable(Routes.TermsScreen){
+            composable(Routes.TermsScreen) {
                 Terms(navController)
             }
-            composable(Routes.FAQScreen){
+            composable(Routes.FAQScreen) {
                 FAQScreen(navController)
+            }
+            composable(Routes.PasswordResetScreen) {
+                PasswordResetScreen(auth, navController)
             }
         }
     )

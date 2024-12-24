@@ -42,9 +42,10 @@ import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.darkAccentColor
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun Main(navController: NavController, modifier: Modifier = Modifier) {
+fun Main(navController: NavController, modifier: Modifier = Modifier, auth: FirebaseAuth) {
 
     val navItemList = listOf(
         NavItem(Icons.Default.Home),
@@ -91,19 +92,19 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
             }
         }
     ) {  innerPadding ->
-        ContentScreen(navController, modifier = modifier.padding(innerPadding), selected)
+        ContentScreen(navController, modifier = modifier.padding(innerPadding), selected, auth)
     }
 }
 
 @SuppressLint("NewApi")
 @Composable
-fun ContentScreen(navController: NavController, modifier: Modifier = Modifier, selected: Int) {
+fun ContentScreen(navController: NavController, modifier: Modifier = Modifier, selected: Int, auth: FirebaseAuth) {
     when (selected) {
         0 -> Home()
         1 -> Favourite()
         2 -> Search()
         3 -> ShoppingCart()
-        4 -> Menu(navController)
+        4 -> Menu(navController, auth)
     }
 }
 

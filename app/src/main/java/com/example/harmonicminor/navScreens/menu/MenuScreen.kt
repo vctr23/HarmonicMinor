@@ -65,6 +65,7 @@ import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
+import com.google.firebase.auth.FirebaseAuth
 import java.util.Locale
 
 
@@ -72,7 +73,7 @@ import java.util.Locale
 @Composable
 fun Menu(
     navController: NavController,
-    modifier: Modifier = Modifier,
+    auth: FirebaseAuth,
     viewModel: MenuViewModel = viewModel()
 ) {
     val context = LocalContext.current
@@ -93,7 +94,7 @@ fun Menu(
 
     Scaffold { innerPadding ->
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
                 .background(backgroundColor),
@@ -123,7 +124,7 @@ fun Menu(
             TermsItem(onClick = { navController.navigate(Routes.TermsScreen) })
             Spacer(modifier = Modifier.padding(vertical = 50.dp))
             Box(
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 16.dp, horizontal = 80.dp)
                     .height(48.dp)
@@ -136,7 +137,13 @@ fun Menu(
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable { },
+                    .clickable {
+                        auth.signOut()
+                        navController.navigate(Routes.InitialScreen){
+                            launchSingleTop = true
+                            navController.popBackStack()
+                        }
+                    },
                 contentAlignment = Alignment.Center
             ) {
                 Text(

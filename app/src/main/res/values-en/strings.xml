@@ -16,6 +16,8 @@
     <string name="app_language">English</string>
     <string name="email_address">Email</string>
     <string name="forgot_password">Forgot your password?</string>
+    <string name="password_reset">Introduce your email to receive an email with the instructions to reset your password</string>
+    <string name="send_email">Send email</string>
     <string name="password">Password</string>
     <string name="shop_config">Shop configuration:</string>
     <string name="language">Language</string>
