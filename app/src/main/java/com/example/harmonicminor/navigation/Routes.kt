@@ -8,4 +8,6 @@ object Routes {
     val LoginScreen = "LoginScreen"
     val SplashScreen = "SplashScreen"
     val MainScreen = "MainScreen"
+    val TermsScreen = "TermsScreen"
+    val FAQScreen = "FAQScreen"
 }

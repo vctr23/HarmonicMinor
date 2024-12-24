@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -150,7 +152,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
                 .clickable {
                     auth
                         .signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task->
+                        .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 navController.navigate(Routes.MainScreen) {
                                     launchSingleTop = true
@@ -158,7 +160,9 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
                             } else {
                                 val errorMessage = task.exception?.localizedMessage
                                     ?: "Credencies no coinciden con ningún registro"
-                                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, errorMessage, Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         }
                 }

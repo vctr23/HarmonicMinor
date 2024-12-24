@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.harmonicminor.navScreens.menu.FAQScreen
+import com.example.harmonicminor.navScreens.menu.Terms
+import com.example.harmonicminor.screens.Initial
 import com.example.harmonicminor.screens.Login
 import com.example.harmonicminor.screens.Register
 import com.example.harmonicminor.screens.Splash
-import com.example.harmonicminor.screens.Initial
-import com.example.harmonicminor.screens.Main
+import com.example.harmonicminor.screens.main.Main
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -21,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 fun MyappNavigation(auth: FirebaseAuth) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.SplashScreen,
-        enterTransition = {slideInVertically (
+        enterTransition = { slideInVertically (
             initialOffsetY = { it },
             animationSpec = spring(
                 stiffness = Spring.StiffnessVeryLow,
@@ -50,6 +52,12 @@ fun MyappNavigation(auth: FirebaseAuth) {
             }
             composable(Routes.MainScreen){
                 Main(navController, Modifier)
+            }
+            composable(Routes.TermsScreen){
+                Terms(navController)
+            }
+            composable(Routes.FAQScreen){
+                FAQScreen(navController)
             }
         }
     )

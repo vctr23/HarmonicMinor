@@ -1,4 +1,4 @@
-package com.example.harmonicminor.screens
+package com.example.harmonicminor.screens.main
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -32,13 +32,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.harmonicminor.NavItem
 import com.example.harmonicminor.R
 import com.example.harmonicminor.navScreens.Favourite
 import com.example.harmonicminor.navScreens.Home
-import com.example.harmonicminor.navScreens.Menu
 import com.example.harmonicminor.navScreens.Search
 import com.example.harmonicminor.navScreens.ShoppingCart
+import com.example.harmonicminor.navScreens.menu.Menu
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.darkAccentColor
 import com.example.harmonicminor.ui.theme.iconColor
@@ -56,7 +55,7 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
     )
 
     var selected by remember {
-        mutableIntStateOf(0)
+        mutableIntStateOf(4)
     }
 
     Scaffold(
@@ -92,19 +91,19 @@ fun Main(navController: NavController, modifier: Modifier = Modifier) {
             }
         }
     ) {  innerPadding ->
-        ContentScreen(modifier = modifier.padding(innerPadding), selected)
+        ContentScreen(navController, modifier = modifier.padding(innerPadding), selected)
     }
 }
 
 @SuppressLint("NewApi")
 @Composable
-fun ContentScreen(modifier: Modifier = Modifier, selected: Int) {
+fun ContentScreen(navController: NavController, modifier: Modifier = Modifier, selected: Int) {
     when (selected) {
         0 -> Home()
         1 -> Favourite()
         2 -> Search()
         3 -> ShoppingCart()
-        4 -> Menu()
+        4 -> Menu(navController)
     }
 }
 

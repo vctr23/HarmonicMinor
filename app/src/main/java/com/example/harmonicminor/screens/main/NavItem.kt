@@ -1,4 +1,4 @@
-package com.example.harmonicminor
+package com.example.harmonicminor.screens.main
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

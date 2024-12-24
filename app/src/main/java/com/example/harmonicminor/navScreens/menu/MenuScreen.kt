@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens
+package com.example.harmonicminor.navScreens.menu
 
 import android.app.LocaleManager
 import android.os.Build
@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,6 +34,8 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -40,6 +43,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
@@ -49,18 +53,44 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.borderColor
+import com.example.harmonicminor.ui.theme.buttonColor1
+import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
+import java.util.Locale
 
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
-fun Menu(modifier: Modifier = Modifier) {
+fun Menu(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    viewModel: MenuViewModel = viewModel()
+) {
+    val context = LocalContext.current
+    val selectedLanguage by viewModel.selectedLanguage.collectAsState()
+    val languageChange: (String) -> Unit = { newLanguage ->
+        if (selectedLanguage != newLanguage) {
+            viewModel.updateLanguage(newLanguage)
+        }
+    }
+
+    LaunchedEffect(selectedLanguage) {
+        context
+            .getSystemService(LocaleManager::class.java)
+            .applicationLocales = android.os.LocaleList(
+            Locale(selectedLanguage.lowercase(), selectedLanguage.uppercase())
+        )
+    }
+
     Scaffold { innerPadding ->
         Column(
             modifier = modifier
@@ -79,11 +109,51 @@ fun Menu(modifier: Modifier = Modifier) {
                     .padding(horizontal = 16.dp),
                 fontSize = 16.sp,
             )
-            CountrySelectionItem()
+            CountrySelectionItem(viewModel)
             Spacer(modifier = Modifier.padding(vertical = 2.dp))
-            LanguageSelectionItem()
+            LanguageSelectionItem(
+                selectedLanguage = selectedLanguage,
+                onLanguageChange = languageChange
+            )
             Spacer(modifier = Modifier.padding(vertical = 2.dp))
-            CurrencySelectionItem()
+            CurrencySelectionItem(viewModel)
+            Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            FAQItem(onClick = { navController.navigate(Routes.FAQScreen) })
+            Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            TermsItem(onClick = { navController.navigate(Routes.TermsScreen) })
+            Spacer(modifier = Modifier.padding(vertical = 50.dp))
+            Box(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp, horizontal = 80.dp)
+                    .height(48.dp)
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(
+                                buttonColor1,
+                                buttonColor2
+                            )
+                        ),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                    .clickable { },
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = stringResource(R.string.sign_out),
+                    color = textColor
+                )
+            }
+            Spacer(modifier = Modifier.padding(vertical = 10.dp))
+            Text(
+                text = stringResource(R.string.app_version),
+                color = secondaryTextColor,
+                fontSize = 20.sp,
+                style = androidx.compose.ui.text.TextStyle(textAlign = androidx.compose.ui.text.style.TextAlign.Center),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp)
+            )
         }
     }
 }
@@ -133,12 +203,9 @@ fun Profile() {
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LanguageSelectionItem() {
+fun LanguageSelectionItem(selectedLanguage: String, onLanguageChange: (String) -> Unit) {
     var showBottomSheet by rememberSaveable { mutableStateOf(false) }
     val customIcon = ImageVector.vectorResource(R.drawable.translate)
-    var selectedLanguage by rememberSaveable { mutableStateOf("es") }
-
-    val context = LocalContext.current
 
     Row(
         modifier = Modifier
@@ -192,16 +259,7 @@ fun LanguageSelectionItem() {
                             checked = selectedLanguage == "en",
                             onCheckedChange = {
                                 if (it) {
-                                    selectedLanguage = "en"
-                                    context
-                                        .getSystemService(LocaleManager::class.java)
-                                        .applicationLocales =
-                                        android.os.LocaleList(
-                                            java.util.Locale(
-                                                "en".lowercase(),
-                                                "en".uppercase()
-                                            )
-                                        )
+                                    onLanguageChange("en")
                                 }
                             }
                         )
@@ -221,16 +279,7 @@ fun LanguageSelectionItem() {
                             checked = selectedLanguage == "es",
                             onCheckedChange = {
                                 if (it) {
-                                    selectedLanguage = "es"
-                                    context
-                                        .getSystemService(LocaleManager::class.java)
-                                        .applicationLocales =
-                                        android.os.LocaleList(
-                                            java.util.Locale(
-                                                "es".lowercase(),
-                                                "es".uppercase()
-                                            )
-                                        )
+                                    onLanguageChange("es")
                                 }
                             }
                         )
@@ -248,9 +297,9 @@ fun LanguageSelectionItem() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CountrySelectionItem() {
+fun CountrySelectionItem(viewModel: MenuViewModel) {
     var showBottomSheet by rememberSaveable { mutableStateOf(false) }
-    var selectedCountry by rememberSaveable { mutableStateOf("") }
+    val selectedCountry by viewModel.selectedCountry.collectAsState()
     val customIcon = ImageVector.vectorResource(R.drawable.language)
 
     val countries = listOf(
@@ -341,7 +390,7 @@ fun CountrySelectionItem() {
                                 Checkbox(
                                     checked = country == selectedCountry,
                                     onCheckedChange = {
-                                        selectedCountry = country
+                                        viewModel.updateCountry(country)
                                     }
                                 )
                                 Text(
@@ -359,9 +408,9 @@ fun CountrySelectionItem() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CurrencySelectionItem() {
+fun CurrencySelectionItem(viewModel: MenuViewModel) {
     var showBottomSheet by rememberSaveable { mutableStateOf(false) }
-    var selectedCurrency by rememberSaveable { mutableStateOf("") }
+    val selectedCurrency by viewModel.selectedCurrency.collectAsState()
     val customIcon = ImageVector.vectorResource(R.drawable.paid)
 
     val coins = listOf(
@@ -426,7 +475,7 @@ fun CurrencySelectionItem() {
                             Checkbox(
                                 checked = coin == selectedCurrency,
                                 onCheckedChange = {
-                                    selectedCurrency = coin
+                                    viewModel.updateCurrency(coin)
                                 }
                             )
                             Text(
@@ -457,7 +506,7 @@ fun AdressItem(modifier: Modifier = Modifier) {
                 shape = RoundedCornerShape(10.dp)
             ),
         verticalAlignment = Alignment.CenterVertically
-    ){
+    ) {
         Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp))
         Icon(customIcon, contentDescription = null, tint = iconColor)
         Spacer(modifier = Modifier.padding(horizontal = 8.dp))
@@ -471,7 +520,7 @@ fun AdressItem(modifier: Modifier = Modifier) {
             contentDescription = null,
             tint = iconColor
         )
-        if (showBottomSheet){
+        if (showBottomSheet) {
             ModalBottomSheet(
                 onDismissRequest = { showBottomSheet = false },
                 modifier = Modifier.fillMaxSize(),
@@ -479,7 +528,7 @@ fun AdressItem(modifier: Modifier = Modifier) {
             ) {
                 Column(
                     modifier = Modifier.padding(8.dp)
-                ){
+                ) {
                     OutlinedTextField(value = id,
                         onValueChange = {
                             id = it
@@ -497,5 +546,67 @@ fun AdressItem(modifier: Modifier = Modifier) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun TermsItem(onClick: () -> Unit) {
+    val customIcon = ImageVector.vectorResource(R.drawable.book_2)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clickable { onClick() }
+            .border(
+                BorderStroke(2.dp, borderColor),
+                shape = RoundedCornerShape(10.dp)
+            ),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp))
+        Icon(customIcon, contentDescription = null, tint = iconColor)
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = stringResource(R.string.terms_conditions),
+            color = textColor,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = iconColor
+        )
+    }
+}
+
+@Composable
+fun FAQItem(onClick: () -> Unit) {
+    val customIcon = ImageVector.vectorResource(R.drawable.help)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clickable { onClick() }
+            .border(
+                BorderStroke(2.dp, borderColor),
+                shape = RoundedCornerShape(10.dp)
+            ),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp))
+        Icon(customIcon, contentDescription = null, tint = iconColor)
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = stringResource(R.string.faq),
+            color = textColor,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = iconColor
+        )
     }
 }
