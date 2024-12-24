@@ -122,7 +122,11 @@ fun FAQScreen(navController: NavController) {
                                     text = stringResource(id = answerResId),
                                     color = secondaryTextColor,
                                     fontSize = 16.sp,
-                                    modifier = Modifier.padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
+                                    modifier = Modifier.padding(
+                                        start = 16.dp,
+                                        top = 8.dp,
+                                        bottom = 8.dp
+                                    )
                                 )
                             }
                             HorizontalDivider(thickness = 0.5.dp, color = secondaryTextColor)

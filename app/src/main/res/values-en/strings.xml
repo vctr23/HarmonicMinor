@@ -20,6 +20,8 @@
     <string name="send_email">Send email</string>
     <string name="password">Password</string>
     <string name="shop_config">Shop configuration:</string>
+    <string name="help_config">Help and terms:</string>
+    <string name="communication_config">Contact us:</string>
     <string name="language">Language</string>
     <string name="search">Search</string>
     <string name="country">Country</string>
@@ -132,5 +134,9 @@
         We will be happy to assist you with any questions or concerns.</string>
     <string name="answer_8">All our products include a standard manufacturer\'s warranty. The warranty does not cover damage caused by misuse,
         negligence, or unauthorized modifications. Please check the specific details included with the product or in our app.</string>
+    <string name="feedback">Give us your feedback!</string>
+    <string name="feedback_text">Send us a message with your feedback or any doubts, we will try to solve any problems as fast as possible.</string>
+    <string name="message">Message</string>
+    <string name="send_message">Send message</string>
 
 </resources>

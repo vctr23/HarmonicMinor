@@ -11,6 +11,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -51,6 +52,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -93,74 +95,136 @@ fun Menu(
     }
 
     Scaffold { innerPadding ->
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
                 .background(backgroundColor),
+            contentPadding = PaddingValues(bottom = 80.dp)
         ) {
-            Spacer(modifier = Modifier.padding(vertical = 30.dp))
-            Profile()
-            Spacer(modifier = Modifier.padding(vertical = 16.dp))
-            Text(
-                stringResource(R.string.shop_config),
-                color = textColor,
-                modifier = Modifier
-                    .padding(vertical = 8.dp)
-                    .padding(horizontal = 16.dp),
-                fontSize = 16.sp,
-            )
-            CountrySelectionItem(viewModel)
-            Spacer(modifier = Modifier.padding(vertical = 2.dp))
-            LanguageSelectionItem(
-                selectedLanguage = selectedLanguage,
-                onLanguageChange = languageChange
-            )
-            Spacer(modifier = Modifier.padding(vertical = 2.dp))
-            CurrencySelectionItem(viewModel)
-            Spacer(modifier = Modifier.padding(vertical = 2.dp))
-            FAQItem(onClick = { navController.navigate(Routes.FAQScreen) })
-            Spacer(modifier = Modifier.padding(vertical = 2.dp))
-            TermsItem(onClick = { navController.navigate(Routes.TermsScreen) })
-            Spacer(modifier = Modifier.padding(vertical = 50.dp))
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp, horizontal = 80.dp)
-                    .height(48.dp)
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(
-                                buttonColor1,
-                                buttonColor2
-                            )
-                        ),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .clickable {
-                        auth.signOut()
-                        navController.navigate(Routes.InitialScreen){
-                            launchSingleTop = true
-                            navController.popBackStack()
-                        }
-                    },
-                contentAlignment = Alignment.Center
-            ) {
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 30.dp))
+                Profile()
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
+            }
+            item {
                 Text(
-                    text = stringResource(R.string.sign_out),
-                    color = textColor
+                    stringResource(R.string.shop_config),
+                    color = textColor,
+                    modifier = Modifier
+                        .padding(vertical = 8.dp)
+                        .padding(horizontal = 16.dp),
+                    fontSize = 18.sp,
                 )
             }
-            Spacer(modifier = Modifier.padding(vertical = 10.dp))
-            Text(
-                text = stringResource(R.string.app_version),
-                color = secondaryTextColor,
-                fontSize = 20.sp,
-                style = androidx.compose.ui.text.TextStyle(textAlign = androidx.compose.ui.text.style.TextAlign.Center),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
-            )
+            item {
+                CountrySelectionItem(viewModel)
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            }
+            item {
+                LanguageSelectionItem(
+                    selectedLanguage = selectedLanguage,
+                    onLanguageChange = languageChange
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            }
+            item {
+                CurrencySelectionItem(viewModel)
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
+            }
+            item {
+                Text(
+                    stringResource(R.string.help_config),
+                    color = textColor,
+                    modifier = Modifier
+                        .padding(vertical = 8.dp)
+                        .padding(horizontal = 16.dp),
+                    fontSize = 18.sp,
+                )
+            }
+            item {
+                FAQItem(onClick = { navController.navigate(Routes.FAQScreen) })
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            }
+            item {
+                TermsItem(onClick = { navController.navigate(Routes.TermsScreen) })
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
+            }
+            item {
+                Text(
+                    text = stringResource(R.string.communication_config),
+                    color = textColor,
+                    modifier = Modifier
+                        .padding(vertical = 8.dp)
+                        .padding(horizontal = 16.dp),
+                    fontSize = 18.sp,
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            }
+            item {
+                FeedbackItem(onClick = { navController.navigate(Routes.FeedbackScreen) })
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 50.dp))
+            }
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp, horizontal = 80.dp)
+                        .height(48.dp)
+                        .background(
+                            brush = Brush.linearGradient(
+                                colors = listOf(
+                                    buttonColor1,
+                                    buttonColor2
+                                )
+                            ),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                        .clickable {
+                            auth.signOut()
+                            navController.navigate(Routes.InitialScreen) {
+                                launchSingleTop = true
+                                navController.popBackStack()
+                            }
+                        },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = stringResource(R.string.sign_out),
+                        color = textColor
+                    )
+                }
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 10.dp))
+            }
+            item {
+                Text(
+                    text = stringResource(R.string.app_version),
+                    color = secondaryTextColor,
+                    fontSize = 20.sp,
+                    style = androidx.compose.ui.text.TextStyle(textAlign = TextAlign.Center),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp)
+                )
+            }
         }
     }
 }
@@ -607,6 +671,37 @@ fun FAQItem(onClick: () -> Unit) {
         Spacer(modifier = Modifier.padding(horizontal = 8.dp))
         Text(
             text = stringResource(R.string.faq),
+            color = textColor,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = iconColor
+        )
+    }
+}
+
+@Composable
+fun FeedbackItem(onClick: () -> Unit) {
+    val customIcon = ImageVector.vectorResource(R.drawable.reviews)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clickable { onClick() }
+            .border(
+                BorderStroke(2.dp, borderColor),
+                shape = RoundedCornerShape(10.dp)
+            ),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp))
+        Icon(customIcon, contentDescription = null, tint = iconColor)
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = stringResource(R.string.feedback),
             color = textColor,
             modifier = Modifier.weight(1f)
         )

@@ -5,6 +5,8 @@ import androidx.compose.ui.graphics.Color
 
 val backgroundColor = Color(0xFF1c1c1c)
 val backgroundAccentColor = Color(0xFF202020)
+val backgroundGradient1 = Color(0xFF360033)
+val backgroundGradient2 = Color(0xFF0b8793)
 val borderColor = Color(0xFF000000)
 val buttonColor1 = Color(0xFF4776E6)
 val buttonColor2 = Color(0xFF8E54E9)

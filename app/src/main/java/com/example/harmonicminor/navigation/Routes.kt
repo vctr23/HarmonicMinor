@@ -11,4 +11,5 @@ object Routes {
     val TermsScreen = "TermsScreen"
     val FAQScreen = "FAQScreen"
     val PasswordResetScreen = "PassWordResetScreen"
+    val FeedbackScreen = "FeedbackScreen"
 }

@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.harmonicminor.navScreens.menu.FAQScreen
+import com.example.harmonicminor.navScreens.menu.FeedbackScreen
 import com.example.harmonicminor.navScreens.menu.Terms
 import com.example.harmonicminor.screens.Initial
 import com.example.harmonicminor.screens.Login
@@ -24,20 +25,24 @@ import com.google.firebase.auth.FirebaseAuth
 fun MyappNavigation(auth: FirebaseAuth) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.SplashScreen,
-        enterTransition = { slideInVertically (
-            initialOffsetY = { it },
-            animationSpec = spring(
-                stiffness = Spring.StiffnessVeryLow,
-                dampingRatio = Spring.DampingRatioNoBouncy
+        enterTransition = {
+            slideInVertically(
+                initialOffsetY = { it },
+                animationSpec = spring(
+                    stiffness = Spring.StiffnessVeryLow,
+                    dampingRatio = Spring.DampingRatioNoBouncy
+                )
             )
-        )},
-        exitTransition = { slideOutVertically(
-            targetOffsetY =  { -it },
-            animationSpec = spring(
-                stiffness = Spring.StiffnessVeryLow,
-                dampingRatio = Spring.DampingRatioNoBouncy
+        },
+        exitTransition = {
+            slideOutVertically(
+                targetOffsetY = { -it },
+                animationSpec = spring(
+                    stiffness = Spring.StiffnessVeryLow,
+                    dampingRatio = Spring.DampingRatioNoBouncy
+                )
             )
-         )},
+        },
         builder = {
             composable(Routes.InitialScreen) {
                 Initial(navController, Modifier)
@@ -62,6 +67,9 @@ fun MyappNavigation(auth: FirebaseAuth) {
             }
             composable(Routes.PasswordResetScreen) {
                 PasswordResetScreen(auth, navController)
+            }
+            composable(Routes.FeedbackScreen) {
+                FeedbackScreen(navController)
             }
         }
     )

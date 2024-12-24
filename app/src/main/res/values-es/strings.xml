@@ -20,6 +20,8 @@
     <string name="send_email">Enviar correo</string>
     <string name="password">Contraseña</string>
     <string name="shop_config">Configuración de la tienda:</string>
+    <string name="help_config">Ayuda y términos:</string>
+    <string name="communication_config">Contáctanos:</string>
     <string name="language">Idioma</string>
     <string name="search">Buscar</string>
     <string name="country">País</string>
@@ -132,4 +134,9 @@
         Estaremos encantados de ayudarte con cualquier duda o problema.</string>
     <string name="answer_8">Todos nuestros productos incluyen una garantía estándar del fabricante. La garantía no cubre daños por mal uso,
         negligencia o modificaciones no autorizadas. Consulta los detalles específicos incluidos con el producto o en nuestra aplicación.</string>
+    <string name="feedback">¡Danos tu opinión!</string>
+    <string name="feedback_text">Mandenos un mensaje con su opinión o con cualquier duda, intentaremos resolver rápidamente cualquier problema.</string>
+    <string name="message">Mensaje</string>
+    <string name="send_message">Enviar mensaje</string>
+
 </resources>
