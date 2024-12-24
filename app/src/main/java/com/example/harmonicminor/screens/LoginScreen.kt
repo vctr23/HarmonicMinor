@@ -153,7 +153,8 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
                             id = if (passwordVisible) R.drawable.visibility else R.drawable.visibility_off
                         ),
                         contentDescription = null,
-                        tint = iconColor
+                        tint = iconColor,
+                        modifier = Modifier.size(20.dp)
                     )
                 }
             }

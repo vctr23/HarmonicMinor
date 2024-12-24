@@ -116,4 +116,21 @@
     <string name="faq_6">Do you offer instrument repair services?</string>
     <string name="faq_7">How can I contact you?</string>
     <string name="faq_8">What warranties do you offer?</string>
+    <string name="answer_1">We accept returns within 14 days of delivery, as long as the item is unused, in its original packaging, and in resalable condition.
+        Proof of purchase is required. Return shipping costs are the customer\'s responsibility unless the product is defective or incorrect.</string>
+    <string name="answer_2">We offer refunds within 14 days after the item is returned, subject to an inspection to ensure it meets our policies.
+        Refunds are processed within 5 to 7 business days after we receive the returned item.</string>
+    <string name="answer_3">We occasionally offer discounts and coupons.
+        We recommend subscribing to our newsletter or following us on social media to stay updated on promotions and special offers.</string>
+    <string name="answer_4">Shipping times depend on your location and the shipping method chosen during purchase.
+        While we strive to meet estimated delivery times, external factors like customs delays or carrier issues may affect them.</string>
+    <string name="answer_5">We offer several shipping options, including standard and express shipping, depending on your location.
+        Please check the available options during the purchase process for details on costs and delivery times.</string>
+    <string name="answer_6">Yes, we offer instrument repair services.
+        Please contact us for more details regarding costs, timelines, and service conditions.</string>
+    <string name="answer_7">You can contact us by sending an email to hmsupport@harmonicminor-2025.firebaseapp.com.
+        We will be happy to assist you with any questions or concerns.</string>
+    <string name="answer_8">All our products include a standard manufacturer\'s warranty. The warranty does not cover damage caused by misuse,
+        negligence, or unauthorized modifications. Please check the specific details included with the product or in our app.</string>
+
 </resources>

@@ -113,7 +113,23 @@
     <string name="faq_3">¿Existen descuentos o cupones de compra?</string>
     <string name="faq_4">¿Cuánto tarda el envío?</string>
     <string name="faq_5">¿Qué opciones de envío existen?</string>
-    <string name="faq_6">¿Ofreceis servicios de reparación de instrumentos?</string>
+    <string name="faq_6">¿Hacéis reparaciones de instrumentos?</string>
     <string name="faq_7">¿Cómo puedo contactar con vosotros?</string>
     <string name="faq_8">¿Qué garantías ofreceís?</string>
+    <string name="answer_1">Aceptamos devoluciones dentro de los 14 días posteriores a la entrega, siempre que el artículo esté sin usar, en su embalaje original y en condiciones de reventa.
+        Es necesario presentar prueba de compra. Los costos de envío para las devoluciones corren por cuenta del cliente, a menos que el producto sea defectuoso o incorrecto.</string>
+    <string name="answer_2">Ofrecemos reembolsos dentro de los 14 días posteriores a la devolución del artículo, sujeto a una inspección para verificar que cumple con nuestras políticas.
+        Los reembolsos se procesan en un plazo de 5 a 7 días hábiles una vez recibida la devolución.</string>
+    <string name="answer_3">Ocasionalmente ofrecemos descuentos y cupones.
+        Te recomendamos suscribirte a nuestro boletín o seguirnos en nuestras redes sociales para recibir información sobre promociones y ofertas especiales.</string>
+    <string name="answer_4">Los tiempos de envío dependen de tu ubicación y del método de envío seleccionado durante la compra.
+        Aunque nos esforzamos por cumplir los plazos estimados, factores externos como retrasos aduaneros o problemas con los transportistas pueden afectarlos.</string>
+    <string name="answer_5">Ofrecemos varias opciones de envío, que incluyen envío estándar y exprés, dependiendo de tu ubicación.
+        Consulta las opciones disponibles durante el proceso de compra para obtener detalles sobre costos y tiempos.</string>
+    <string name="answer_6">Sí, ofrecemos servicios de reparación de instrumentos.
+        Por favor, contáctanos para obtener más detalles sobre los costos, tiempos y condiciones de este servicio.</string>
+    <string name="answer_7">Puedes contactarnos enviando un correo electrónico a hmsupport@harmonicminor-2025.firebaseapp.com.
+        Estaremos encantados de ayudarte con cualquier duda o problema.</string>
+    <string name="answer_8">Todos nuestros productos incluyen una garantía estándar del fabricante. La garantía no cubre daños por mal uso,
+        negligencia o modificaciones no autorizadas. Consulta los detalles específicos incluidos con el producto o en nuestra aplicación.</string>
 </resources>
