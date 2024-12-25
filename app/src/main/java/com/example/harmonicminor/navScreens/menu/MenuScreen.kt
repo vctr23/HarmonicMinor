@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.LocaleManager
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -24,7 +23,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,8 +33,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -50,7 +46,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -119,13 +114,19 @@ fun Menu(
                     stringResource(R.string.account_config),
                     color = textColor,
                     modifier = Modifier
-                       .padding(vertical = 8.dp)
-                       .padding(horizontal = 16.dp),
+                        .padding(vertical = 8.dp)
+                        .padding(horizontal = 16.dp),
                     fontSize = 18.sp,
                 )
             }
             item{
                 AddressItem { navController.navigate(Routes.AddressScreen) }
+            }
+            item{
+                Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            }
+            item{
+                EmailUpadateItem { navController.navigate(Routes.EmailUpdateScreen) }
             }
             item {
                 Spacer(modifier = Modifier.padding(vertical = 16.dp))
@@ -200,7 +201,7 @@ fun Menu(
                 Spacer(modifier = Modifier.padding(vertical = 2.dp))
             }
             item {
-                EmailItem()
+                EmailFeedbackItem()
             }
             item {
                 Spacer(modifier = Modifier.padding(vertical = 16.dp))
@@ -710,7 +711,38 @@ fun FeedbackItem(onClick: () -> Unit) {
 }
 
 @Composable
-fun EmailItem() {
+fun EmailUpadateItem(onClick: () -> Unit) {
+    val customIcon = ImageVector.vectorResource(R.drawable.attach_email)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clickable { onClick() }
+            .border(
+                BorderStroke(2.dp, borderColor),
+                shape = RoundedCornerShape(10.dp)
+            ),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp))
+        Icon(customIcon, contentDescription = null, tint = iconColor)
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = stringResource(R.string.email_reset),
+            color = textColor,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = iconColor
+        )
+    }
+}
+
+@Composable
+fun EmailFeedbackItem() {
     val customIcon = ImageVector.vectorResource(R.drawable.forward_to_inbox)
     val context = LocalContext.current
 

@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.harmonicminor.navScreens.menu.AddressScreen
+import com.example.harmonicminor.navScreens.menu.EmailUpdateScreen
 import com.example.harmonicminor.navScreens.menu.FAQScreen
 import com.example.harmonicminor.navScreens.menu.FeedbackScreen
 import com.example.harmonicminor.navScreens.menu.Terms
@@ -73,7 +74,10 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 FeedbackScreen(navController)
             }
             composable(Routes.AddressScreen){
-                AddressScreen()
+                AddressScreen(navController)
+            }
+            composable(Routes.EmailUpdateScreen){
+                EmailUpdateScreen(auth, navController)
             }
         }
     )

@@ -67,6 +67,15 @@
     <string name="address">Shipping and billing address</string>
     <string name="account_config">Account configuration</string>
     <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="street">Street Name and Number</string>
+    <string name="postcode">Postal Code</string>
+    <string name="locality">City/Town</string>
+    <string name="address_country">Destination Country</string>
+    <string name="contact">Contact</string>
+    <string name="phone">Phone Number</string>
+    <string name="save_address">Save Address</string>
     <string name="terms_conditions">Terms and Conditions</string>
     <string name="terms_intro_line_1">Last updated: 12/24/2024</string>
     <string name="terms_intro_line_2">Welcome to HarmonicMinor! These Terms and Conditions ("Terms") govern the use of our services and the purchase of products from our online musical instrument store.</string>
@@ -144,4 +153,7 @@
     <string name="email_intent_error">No email app found</string>
     <string name="email_subject">App feedback</string>
     <string name="email_body">Enter your feedback here...</string>
+    <string name="email_reset">Change email address</string>
+    <string name="new_email">New Email</string>
+    <string name="send_new_email">Send email</string>
 </resources>

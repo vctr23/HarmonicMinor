@@ -22,6 +22,7 @@
     <string name="shop_config">Configuración de la tienda:</string>
     <string name="help_config">Ayuda y términos</string>
     <string name="communication_config">Contáctanos:</string>
+    <string name="account_config">Configuración de la cuenta</string>
     <string name="language">Idioma</string>
     <string name="search">Buscar</string>
     <string name="country">País</string>
@@ -64,9 +65,17 @@
     <string name="franc">Franco (Suizo)</string>
     <string name="krone">Corona (Danesa)</string>
     <string name="krona">Corona (Suecia)</string>
-    <string name="address">Dirección de facturación y envío</string>
-    <string name="account_config">Configuración de la cuenta</string>
+    <string name="address">Dirección de facturación y envío:</string>
     <string name="id">DNI/NIF/NIE</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellidos</string>
+    <string name="street">Nombre y número de calle</string>
+    <string name="postcode">Código postal</string>
+    <string name="locality">Localidad</string>
+    <string name="address_country">País de destino</string>
+    <string name="contact">Contacto</string>
+    <string name="phone">Número de teléfono</string>
+    <string name="save_address">Guardar dirección</string>
     <string name="terms_conditions">Terminos y condiciones</string>
     <string name="terms_intro_line_1">Última actualización: 24/12/2024</string>
     <string name="terms_intro_line_2">¡Bienvenido a HarmonicMinor! Estos Términos y Condiciones (&quot;Términos&quot;) rigen el uso de nuestros servicios y la compra de productos en nuestra tienda en línea de instrumentos musicales.</string>
@@ -144,4 +153,7 @@
     <string name="email_intent_error">No se ha encontrado ninguna app de mail</string>
     <string name="email_subject">Feedback sobre la aplicación</string>
     <string name="email_body">Escribe tu opinión aquí...</string>
+    <string name="email_reset">Cambiar dirección de correo</string>
+    <string name="new_email">Nuevo email</string>
+    <string name="send_new_email">Enviar correo</string>
 </resources>

@@ -60,7 +60,8 @@ fun FeedbackScreen(navController: NavController) {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             Icons.Default.Close,
-                            contentDescription = null
+                            contentDescription = null,
+                            tint = iconColor
                         )
                     }
                 },
