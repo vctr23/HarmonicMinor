@@ -1,7 +1,12 @@
 package com.example.harmonicminor.navScreens.menu
 
+import android.annotation.SuppressLint
 import android.app.LocaleManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -111,6 +116,22 @@ fun Menu(
             }
             item {
                 Text(
+                    stringResource(R.string.account_config),
+                    color = textColor,
+                    modifier = Modifier
+                       .padding(vertical = 8.dp)
+                       .padding(horizontal = 16.dp),
+                    fontSize = 18.sp,
+                )
+            }
+            item{
+                AddressItem { navController.navigate(Routes.AddressScreen) }
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
+            }
+            item {
+                Text(
                     stringResource(R.string.shop_config),
                     color = textColor,
                     modifier = Modifier
@@ -173,19 +194,22 @@ fun Menu(
                 )
             }
             item {
-                Spacer(modifier = Modifier.padding(vertical = 2.dp))
-            }
-            item {
                 FeedbackItem(onClick = { navController.navigate(Routes.FeedbackScreen) })
             }
             item {
-                Spacer(modifier = Modifier.padding(vertical = 50.dp))
+                Spacer(modifier = Modifier.padding(vertical = 2.dp))
+            }
+            item {
+                EmailItem()
+            }
+            item {
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
             }
             item {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp, horizontal = 80.dp)
+                        .padding(vertical = 16.dp, horizontal = 50.dp)
                         .height(48.dp)
                         .background(
                             brush = Brush.linearGradient(
@@ -563,15 +587,13 @@ fun CurrencySelectionItem(viewModel: MenuViewModel) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdressItem(modifier: Modifier = Modifier) {
-    var showBottomSheet by rememberSaveable { mutableStateOf(false) }
+fun AddressItem(onClick: () -> Unit) {
     val customIcon = ImageVector.vectorResource(R.drawable.location_on)
-    var id by rememberSaveable { mutableStateOf("") }
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
+            .clickable { onClick() }
             .border(
                 BorderStroke(2.dp, borderColor),
                 shape = RoundedCornerShape(10.dp)
@@ -591,32 +613,6 @@ fun AdressItem(modifier: Modifier = Modifier) {
             contentDescription = null,
             tint = iconColor
         )
-        if (showBottomSheet) {
-            ModalBottomSheet(
-                onDismissRequest = { showBottomSheet = false },
-                modifier = Modifier.fillMaxSize(),
-                containerColor = backgroundAccentColor
-            ) {
-                Column(
-                    modifier = Modifier.padding(8.dp)
-                ) {
-                    OutlinedTextField(value = id,
-                        onValueChange = {
-                            id = it
-                        }, label = {
-                            Text(text = "", color = Color.White)
-                        },
-                        modifier = Modifier.width(280.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedTextColor = textColor,
-                            unfocusedTextColor = textColor
-                        ),
-                        singleLine = true,
-                        maxLines = 1
-                    )
-                }
-            }
-        }
     }
 }
 
@@ -710,5 +706,58 @@ fun FeedbackItem(onClick: () -> Unit) {
             contentDescription = null,
             tint = iconColor
         )
+    }
+}
+
+@Composable
+fun EmailItem() {
+    val customIcon = ImageVector.vectorResource(R.drawable.forward_to_inbox)
+    val context = LocalContext.current
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clickable {
+                sendFeedbackEmail(context)
+            }
+            .border(
+                BorderStroke(2.dp, borderColor),
+                shape = RoundedCornerShape(10.dp)
+            ),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp))
+        Icon(customIcon, contentDescription = null, tint = iconColor)
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        Text(
+            text = stringResource(R.string.email_feedback),
+            color = textColor,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = iconColor
+        )
+    }
+
+}
+
+@SuppressLint("QueryPermissionsNeeded")
+fun sendFeedbackEmail(context: Context) {
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "message/rfc822"
+        putExtra(Intent.EXTRA_EMAIL, arrayOf("SupportHarmonicMinor@gmail.com"))
+        putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.email_subject))
+        putExtra(Intent.EXTRA_TEXT, context.getString(R.string.email_body))
+    }
+    context.startActivity(Intent.createChooser(intent, "Choose Email App"))
+
+    if (intent.resolveActivity(context.packageManager) != null) {
+        context.startActivity(intent)
+    } else {
+        Toast.makeText(context, context.getString(R.string.email_intent_error), Toast.LENGTH_SHORT)
+            .show()
     }
 }

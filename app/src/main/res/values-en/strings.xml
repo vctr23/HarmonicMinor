@@ -64,7 +64,8 @@
     <string name="franc">Franc (Swiss)</string>
     <string name="krone">Krone (Danish)</string>
     <string name="krona">Krona (Swedish)</string>
-    <string name="address">Shipping address</string>
+    <string name="address">Shipping and billing address</string>
+    <string name="account_config">Account configuration</string>
     <string name="id">ID</string>
     <string name="terms_conditions">Terms and Conditions</string>
     <string name="terms_intro_line_1">Last updated: 12/24/2024</string>
@@ -107,6 +108,7 @@
     <string name="terms_acceptance_1">10. Acceptance of Terms</string>
     <string name="terms_acceptance_2">By completing a purchase, you accept these Terms and Conditions. If you have any questions, please contact us at hmsupport@harmonicminor-2025.firebaseapp.com.</string>
     <string name="accept_terms">I have read and accept the terms and conditions</string>
+    <string name="terms_not_accepted">You have not accepted the terms.</string>
     <string name="done">Done</string>
     <string name="faq">FAQ</string>
     <string name="frequently_asked_questions">Frequently Asked Questions</string>
@@ -138,5 +140,8 @@
     <string name="feedback_text">Send us a message with your feedback or any doubts, we will try to solve any problems as fast as possible.</string>
     <string name="message">Message</string>
     <string name="send_message">Send message</string>
-
+    <string name="email_feedback">Contact us via email</string>
+    <string name="email_intent_error">No email app found</string>
+    <string name="email_subject">App feedback</string>
+    <string name="email_body">Enter your feedback here...</string>
 </resources>

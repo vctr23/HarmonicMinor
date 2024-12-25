@@ -35,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,6 +52,7 @@ import com.example.harmonicminor.ui.theme.textColor
 @Composable
 fun Terms(navController: NavController) {
     var accepted by rememberSaveable { mutableStateOf(false) }
+    val context = LocalContext.current
 
     val termsList = listOf(
         stringResource(R.string.terms_intro_line_1),
@@ -162,7 +164,7 @@ fun Terms(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp, horizontal = 80.dp)
-                        .height(36.dp)
+                        .height(38.dp)
                         .background(
                             Brush.linearGradient(
                                 colors = listOf(buttonColor1, buttonColor2)
@@ -173,7 +175,13 @@ fun Terms(navController: NavController) {
                             if (accepted) {
                                 navController.popBackStack()
                             } else {
-                                // Add toast message
+                                Toast
+                                    .makeText(
+                                        context,
+                                        context.getString(R.string.terms_not_accepted),
+                                        Toast.LENGTH_SHORT
+                                    )
+                                    .show()
                             }
                         },
                     contentAlignment = Alignment.Center

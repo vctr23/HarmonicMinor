@@ -1,5 +1,6 @@
 package com.example.harmonicminor.navScreens.menu
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,22 +31,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.backgroundGradient1
 import com.example.harmonicminor.ui.theme.backgroundGradient2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
+import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeedbackScreen(navController: NavController) {
     var feedback by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -111,7 +116,14 @@ fun FeedbackScreen(navController: NavController) {
                         color = backgroundAccentColor,
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable { /*Añadir funcion al hacer click*/ }
+                    .clickable {
+                        saveFeedbackToFile(context, feedback)
+                        feedback = ""
+                        navController.navigate(Routes.MainScreen){
+                            launchSingleTop = true
+                            navController.popBackStack()
+                        }
+                    }
                     .padding(vertical = 16.dp, horizontal = 80.dp)
             ) {
                 Text(
@@ -120,5 +132,17 @@ fun FeedbackScreen(navController: NavController) {
                 )
             }
         }
+    }
+}
+
+fun saveFeedbackToFile(context: Context, feedback: String) {
+    val fileName = "feedback.txt"
+    val feedbackFile = File(context.filesDir, fileName)
+
+    try {
+        feedbackFile.appendText("$feedback\n")
+        println("Feedback saved successfully!")
+    } catch (e: Exception) {
+        println("Error writing feedback: ${e.message}")
     }
 }
