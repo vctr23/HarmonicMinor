@@ -38,7 +38,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
-import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
