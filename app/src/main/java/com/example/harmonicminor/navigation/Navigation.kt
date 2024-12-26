@@ -53,7 +53,7 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 Splash(navController, Modifier)
             }
             composable(Routes.RegisterScreen) {
-                Register(navController, Modifier, auth)
+                Register(navController, auth)
             }
             composable(Routes.LoginScreen) {
                 Login(navController, Modifier, auth)

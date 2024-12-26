@@ -48,9 +48,10 @@ import com.example.harmonicminor.ui.theme.errorColor
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
-fun Register(navController: NavController, modifier: Modifier = Modifier, auth: FirebaseAuth) {
+fun Register(navController: NavController, auth: FirebaseAuth) {
     val context = LocalContext.current
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -59,7 +60,7 @@ fun Register(navController: NavController, modifier: Modifier = Modifier, auth: 
     var isEmailError by remember { mutableStateOf(false) }
     var isPasswordError by remember { mutableStateOf(false) }
     var passwordVisible by remember { mutableStateOf(false) }
-
+    val db = FirebaseFirestore.getInstance()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -190,13 +191,54 @@ fun Register(navController: NavController, modifier: Modifier = Modifier, auth: 
                         .createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                navController.navigate(Routes.MainScreen) {
-                                    launchSingleTop = true
+                                val userId = auth.currentUser?.uid
+                                if (userId == null) {
+                                    Toast.makeText(context, "Error: UID es null", Toast.LENGTH_SHORT).show()
                                 }
+
+                                if (userId != null) {
+                                    val userData = hashMapOf(
+                                        "uid" to userId,
+                                        "username" to username,
+                                        "email" to email,
+                                        "password" to password
+                                    )
+
+
+                                    db
+                                        .collection("users")
+                                        .document(userId)
+                                        .set(userData)
+                                        .addOnSuccessListener {
+                                            navController.navigate(Routes.MainScreen) {
+                                                launchSingleTop = true
+                                            }
+                                        }
+                                        .addOnFailureListener { e ->
+                                            Toast
+                                                .makeText(
+                                                    context,
+                                                    "Error al guardar datos: ${e.localizedMessage}",
+                                                    Toast.LENGTH_SHORT
+                                                )
+                                                .show()
+                                        }
+                                } else {
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            "Error al obtener UID del usuario.",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                                }
+
                             } else {
                                 val errorMessage = task.exception?.localizedMessage
                                     ?: "No se ha podido relizar el registro"
-                                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, errorMessage, Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         }
 

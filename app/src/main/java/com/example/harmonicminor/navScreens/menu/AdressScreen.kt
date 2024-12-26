@@ -43,13 +43,17 @@ import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddressScreen(navController: NavController) {
+    val auth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
     var id by rememberSaveable { mutableStateOf("") }
     var name by rememberSaveable { mutableStateOf("") }
-    var surname by rememberSaveable { mutableStateOf("") }
+    var lastname by rememberSaveable { mutableStateOf("") }
     var street by rememberSaveable { mutableStateOf("") }
     var postcode by rememberSaveable { mutableStateOf("") }
     var locality by rememberSaveable { mutableStateOf("") }
@@ -144,9 +148,9 @@ fun AddressScreen(navController: NavController) {
             Spacer(modifier = Modifier.padding(vertical = 8.dp))
 
             OutlinedTextField(
-                value = surname,
+                value = lastname,
                 onValueChange = {
-                    surname = it
+                    lastname = it
                 },
                 label = {
                     Text(text = stringResource(R.string.last_name), color = textColor)
@@ -318,7 +322,9 @@ fun AddressScreen(navController: NavController) {
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable { /* Añadir datos a la bdd */ },
+                    .clickable {
+
+                    },
                 contentAlignment = Alignment.Center
             ) {
                 Text(

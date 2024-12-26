@@ -86,6 +86,7 @@ fun Menu(
         }
     }
 
+
     LaunchedEffect(selectedLanguage) {
         context
             .getSystemService(LocaleManager::class.java)
