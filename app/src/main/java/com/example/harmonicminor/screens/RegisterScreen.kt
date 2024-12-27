@@ -60,6 +60,7 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
     var isEmailError by remember { mutableStateOf(false) }
     var isPasswordError by remember { mutableStateOf(false) }
     var passwordVisible by remember { mutableStateOf(false) }
+    var isUsernameError by remember { mutableStateOf(false) }
     val db = FirebaseFirestore.getInstance()
     Column(
         modifier = Modifier
@@ -100,6 +101,7 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
             value = username,
             onValueChange = {
                 username = it
+                isUsernameError = username.isEmpty()
             },
             label = {
                 Text(text = stringResource(R.string.username), color = textColor)
@@ -107,13 +109,18 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
             modifier = Modifier.width(280.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = textColor,
-                unfocusedTextColor = textColor
+                unfocusedTextColor = textColor,
+                errorTextColor = textColor
             ),
             singleLine = true,
             maxLines = 1,
+            isError = isUsernameError,
+            supportingText = {
+                if (isUsernameError) {
+                    Text(text = stringResource(R.string.username_empty), color = errorColor)
+                }
+            }
         )
-
-        Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(value = email,
             onValueChange = {
@@ -187,61 +194,93 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
                     shape = RoundedCornerShape(12.dp)
                 )
                 .clickable {
-                    auth
-                        .createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                val userId = auth.currentUser?.uid
-                                if (userId == null) {
-                                    Toast.makeText(context, "Error: UID es null", Toast.LENGTH_SHORT).show()
-                                }
+                    when {
+                        username.isEmpty() -> {
+                            isUsernameError = true
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.username_empty),
+                                    Toast.LENGTH_SHORT
+                                )
+                                .show()
+                        }
 
-                                if (userId != null) {
-                                    val userData = hashMapOf(
-                                        "uid" to userId,
-                                        "username" to username,
-                                        "email" to email,
-                                        "password" to password
-                                    )
+                        email.isEmpty() -> {
+                            isEmailError = true
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.email_empty),
+                                    Toast.LENGTH_SHORT
+                                )
+                                .show()
+                        }
 
+                        password.isEmpty() -> {
+                            isPasswordError = true
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.password_empty),
+                                    Toast.LENGTH_SHORT
+                                )
+                                .show()
+                        }
 
-                                    db
-                                        .collection("users")
-                                        .document(userId)
-                                        .set(userData)
-                                        .addOnSuccessListener {
-                                            navController.navigate(Routes.MainScreen) {
-                                                launchSingleTop = true
-                                            }
-                                        }
-                                        .addOnFailureListener { e ->
+                        else -> {
+                            auth
+                                .createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        val userId = auth.currentUser?.uid
+
+                                        if (userId != null) {
+                                            val userData = hashMapOf(
+                                                "uid" to userId,
+                                                "username" to username,
+                                                "email" to email,
+                                                "password" to password
+                                            )
+
+                                            db
+                                                .collection("users")
+                                                .document(userId)
+                                                .set(userData)
+                                                .addOnSuccessListener {
+                                                    navController.navigate(Routes.MainScreen) {
+                                                        launchSingleTop = true
+                                                    }
+                                                }
+                                                .addOnFailureListener { e ->
+                                                    Toast
+                                                        .makeText(
+                                                            context,
+                                                            "Error saving data: ${e.localizedMessage}",
+                                                            Toast.LENGTH_SHORT
+                                                        )
+                                                        .show()
+                                                }
+                                        } else {
                                             Toast
                                                 .makeText(
                                                     context,
-                                                    "Error al guardar datos: ${e.localizedMessage}",
+                                                    context.getString(R.string.userid_not_found),
                                                     Toast.LENGTH_SHORT
                                                 )
                                                 .show()
                                         }
-                                } else {
-                                    Toast
-                                        .makeText(
-                                            context,
-                                            "Error al obtener UID del usuario.",
-                                            Toast.LENGTH_SHORT
-                                        )
-                                        .show()
+
+                                    } else {
+                                        val errorMessage = task.exception?.localizedMessage
+                                            ?: context.getString(R.string.register_failed)
+                                        Toast
+                                            .makeText(context, errorMessage, Toast.LENGTH_SHORT)
+                                            .show()
+                                    }
                                 }
-
-                            } else {
-                                val errorMessage = task.exception?.localizedMessage
-                                    ?: "No se ha podido relizar el registro"
-                                Toast
-                                    .makeText(context, errorMessage, Toast.LENGTH_SHORT)
-                                    .show()
-                            }
                         }
-
+                    }
                 }
                 .padding(vertical = 16.dp, horizontal = 80.dp)
         ) {

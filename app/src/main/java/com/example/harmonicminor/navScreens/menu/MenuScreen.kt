@@ -68,6 +68,7 @@ import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
 
@@ -257,6 +258,19 @@ fun Menu(
 
 @Composable
 fun Profile() {
+    val auth = FirebaseAuth.getInstance()
+    val userId = auth.currentUser?.uid
+
+    var user by rememberSaveable { mutableStateOf<User?>(null) }
+
+    LaunchedEffect(userId) {
+        if (userId != null) {
+            fetchUserData(userId) { fetchedUser ->
+                user = fetchedUser
+            }
+        }
+    }
+
     Row(
         modifier = Modifier
             .padding(horizontal = 16.dp)
@@ -283,13 +297,13 @@ fun Profile() {
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
             Text(
-                text = "Nombre de usuario",
+                text = user?.username ?: stringResource(R.string.loading),
                 color = textColor,
                 fontSize = 14.sp
             )
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
             Text(
-                text = "Correo del usuario",
+                text = user?.email ?: stringResource(R.string.loading),
                 color = textColor,
                 fontSize = 14.sp
             )
@@ -794,3 +808,22 @@ fun sendFeedbackEmail(context: Context) {
             .show()
     }
 }
+
+fun fetchUserData(userId: String, onComplete: (User?) -> Unit) {
+    val db = FirebaseFirestore.getInstance()
+    val userRef = db.collection("users").document(userId)
+
+    userRef.get()
+        .addOnSuccessListener { document ->
+            if (document != null && document.exists()) {
+                val user = document.toObject(User::class.java)
+                onComplete(user)
+            } else {
+                onComplete(null)
+            }
+        }
+        .addOnFailureListener {
+            onComplete(null)
+        }
+}
+

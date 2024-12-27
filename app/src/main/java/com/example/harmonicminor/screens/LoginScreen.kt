@@ -169,21 +169,47 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
                     shape = RoundedCornerShape(12.dp)
                 )
                 .clickable {
-                    auth
-                        .signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                navController.navigate(Routes.MainScreen) {
-                                    launchSingleTop = true
-                                }
-                            } else {
-                                val errorMessage = task.exception?.localizedMessage
-                                    ?: "Credencies no coinciden con ningún registro"
-                                Toast
-                                    .makeText(context, errorMessage, Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+                    when {
+                        email.isEmpty() -> {
+                            isEmailError = true
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.email_empty),
+                                    Toast.LENGTH_SHORT
+                                )
+                                .show()
                         }
+
+                        password.isEmpty() -> {
+                            isPasswordError = true
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.password_empty),
+                                    Toast.LENGTH_SHORT
+                                )
+                                .show()
+                        }
+
+                        else -> {
+                            auth
+                                .signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        navController.navigate(Routes.MainScreen) {
+                                            launchSingleTop = true
+                                        }
+                                    } else {
+                                        val errorMessage = task.exception?.localizedMessage
+                                            ?: context.getString(R.string.sing_in_failed)
+                                        Toast
+                                            .makeText(context, errorMessage, Toast.LENGTH_SHORT)
+                                            .show()
+                                    }
+                                }
+                        }
+                    }
                 }
                 .padding(vertical = 16.dp, horizontal = 80.dp)
         ) {
