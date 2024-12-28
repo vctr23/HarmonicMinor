@@ -40,6 +40,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -74,7 +75,7 @@ import java.util.Locale
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
-fun Menu(
+fun MenuScreen(
     navController: NavController,
     auth: FirebaseAuth,
     viewModel: MenuViewModel = viewModel()
@@ -102,7 +103,7 @@ fun Menu(
                 .fillMaxSize()
                 .padding(innerPadding)
                 .background(backgroundColor),
-            contentPadding = PaddingValues(bottom = 80.dp)
+            contentPadding = PaddingValues(bottom = 60.dp)
         ) {
             item {
                 Spacer(modifier = Modifier.padding(vertical = 30.dp))
@@ -121,13 +122,13 @@ fun Menu(
                     fontSize = 18.sp,
                 )
             }
-            item{
+            item {
                 AddressItem { navController.navigate(Routes.AddressScreen) }
             }
-            item{
+            item {
                 Spacer(modifier = Modifier.padding(vertical = 2.dp))
             }
-            item{
+            item {
                 EmailUpadateItem { navController.navigate(Routes.EmailUpdateScreen) }
             }
             item {
@@ -260,12 +261,11 @@ fun Menu(
 fun Profile() {
     val auth = FirebaseAuth.getInstance()
     val userId = auth.currentUser?.uid
-
-    var user by rememberSaveable { mutableStateOf<User?>(null) }
+    var user by remember { mutableStateOf<User?>(null) }
 
     LaunchedEffect(userId) {
         if (userId != null) {
-            fetchUserData(userId) { fetchedUser ->
+            getUserData(userId) { fetchedUser ->
                 user = fetchedUser
             }
         }
@@ -809,7 +809,7 @@ fun sendFeedbackEmail(context: Context) {
     }
 }
 
-fun fetchUserData(userId: String, onComplete: (User?) -> Unit) {
+fun getUserData(userId: String, onComplete: (User?) -> Unit) {
     val db = FirebaseFirestore.getInstance()
     val userRef = db.collection("users").document(userId)
 
@@ -826,4 +826,3 @@ fun fetchUserData(userId: String, onComplete: (User?) -> Unit) {
             onComplete(null)
         }
 }
-

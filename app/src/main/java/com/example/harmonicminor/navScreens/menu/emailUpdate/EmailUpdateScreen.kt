@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.menu
+package com.example.harmonicminor.navScreens.menu.emailUpdate
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -47,6 +47,7 @@ import com.example.harmonicminor.ui.theme.errorColor
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -105,7 +106,9 @@ fun EmailUpdateScreen(auth: FirebaseAuth, navController: NavHostController) {
                     isEmailError = !it.matches(emailPattern.toRegex())
                 },
                 label = { Text(text = stringResource(R.string.new_email)) },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                 isError = isEmailError,
                 supportingText = {
                     if (isEmailError) {
@@ -139,22 +142,43 @@ fun EmailUpdateScreen(auth: FirebaseAuth, navController: NavHostController) {
                     )
                     .clickable {
                         isProcessing = true
-                        user
-                            ?.verifyBeforeUpdateEmail(newEmail)
-                            ?.addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    navController.navigate(Routes.InitialScreen) {
-                                        launchSingleTop = true
-                                        navController.popBackStack()
+                        user?.let {
+                            it
+                                .verifyBeforeUpdateEmail(newEmail)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        val db = FirebaseFirestore.getInstance()
+                                        val userRef = db
+                                            .collection("users")
+                                            .document(it.uid)
+
+                                        userRef
+                                            .update("email", newEmail)
+                                            .addOnSuccessListener {
+                                                navController.navigate(Routes.InitialScreen) {
+                                                    launchSingleTop = true
+                                                    navController.popBackStack()
+                                                }
+                                            }
+                                            .addOnFailureListener { e ->
+                                                Toast
+                                                    .makeText(
+                                                        context,
+                                                        "Error updating email in Firestore: ${e.message}",
+                                                        Toast.LENGTH_SHORT
+                                                    )
+                                                    .show()
+                                            }
+                                    } else {
+                                        val errorMessage = task.exception?.localizedMessage
+                                            ?: "Error updating email"
+                                        Toast
+                                            .makeText(context, errorMessage, Toast.LENGTH_SHORT)
+                                            .show()
                                     }
-                                } else {
-                                    val errorMessage = task.exception?.localizedMessage
-                                        ?: "Error al actualizar el correo"
-                                    Toast
-                                        .makeText(context, errorMessage, Toast.LENGTH_SHORT)
-                                        .show()
+                                    isProcessing = false
                                 }
-                            }
+                        }
                     },
                 contentAlignment = Alignment.Center
             ) {

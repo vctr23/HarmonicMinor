@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.menu
+package com.example.harmonicminor.navScreens.menu.faq
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background

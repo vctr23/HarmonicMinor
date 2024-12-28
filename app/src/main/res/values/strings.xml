@@ -8,6 +8,7 @@
     <string name="register">Registrate</string>
     <string name="register_failed">Error en el registro</string>
     <string name="username">Nombre de usuario</string>
+    <string name="hello">Hola, </string>
     <string name="sing_in">Iniciar sesión</string>
     <string name="sing_in_failed">Los datos no coinciden con ningún registro</string>
     <string name="sing_up">Registrarse</string>
@@ -84,6 +85,9 @@
     <string name="phone">Número de teléfono</string>
     <string name="save_address">Guardar dirección</string>
     <string name="address_empty_fields">Rellene los campos obligatorios</string>
+    <string name="no_address">No se encontró ninguna dirección</string>
+    <string name="error_getaddress">Error al leer la dirección</string>
+    <string name="error_setaddress">Error al guardar la dirección</string>
     <string name="address_success">Dirección guardada correctamente</string>
     <string name="terms_conditions">Terminos y condiciones</string>
     <string name="terms_intro_line_1">Última actualización: 24/12/2024</string>

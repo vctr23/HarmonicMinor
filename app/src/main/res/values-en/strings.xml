@@ -8,6 +8,7 @@
     <string name="register">Register</string>
     <string name="register_failed">Registration failed</string>
     <string name="username">Username</string>
+    <string name="hello">Hello, </string>
     <string name="sing_in">Sign in</string>
     <string name="sing_in_failed">Credentials do not match any record</string>
     <string name="sing_up">Sign up</string>
@@ -84,6 +85,9 @@
     <string name="phone">Phone Number</string>
     <string name="save_address">Save Address</string>
     <string name="address_empty_fields">Fill in the required fields</string>
+    <string name="no_address">No address found</string>
+    <string name="error_getaddress">Error getting address</string>
+    <string name="error_setaddress">Error saving address</string>
     <string name="address_success">Address successfully added</string>
     <string name="terms_conditions">Terms and Conditions</string>
     <string name="terms_intro_line_1">Last updated: 12/24/2024</string>

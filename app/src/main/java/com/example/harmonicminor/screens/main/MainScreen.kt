@@ -25,7 +25,7 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,11 +33,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
-import com.example.harmonicminor.navScreens.Favourite
-import com.example.harmonicminor.navScreens.Home
-import com.example.harmonicminor.navScreens.Search
-import com.example.harmonicminor.navScreens.ShoppingCart
-import com.example.harmonicminor.navScreens.menu.Menu
+import com.example.harmonicminor.navScreens.favourite.FavouriteScreen
+import com.example.harmonicminor.navScreens.home.HomeScreen
+import com.example.harmonicminor.navScreens.menu.MenuScreen
+import com.example.harmonicminor.navScreens.search.SearchScreen
+import com.example.harmonicminor.navScreens.shopping.ShoppingCartScreen
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.darkAccentColor
 import com.example.harmonicminor.ui.theme.iconColor
@@ -46,7 +46,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun Main(navController: NavController, modifier: Modifier = Modifier, auth: FirebaseAuth) {
-
+    var selected by rememberSaveable { mutableIntStateOf(0) }
     val navItemList = listOf(
         NavItem(Icons.Default.Home),
         NavItem(Icons.Default.FavoriteBorder),
@@ -55,9 +55,6 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
         NavItem(Icons.Default.Menu)
     )
 
-    var selected by remember {
-        mutableIntStateOf(4)
-    }
 
     Scaffold(
         modifier = modifier
@@ -65,8 +62,9 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
         topBar = { Topbar() },
         bottomBar = {
             NavigationBar(
+                modifier = Modifier.height(60.dp),
                 containerColor = backgroundAccentColor,
-                ) {
+            ) {
                 navItemList.forEachIndexed { index, navItem ->
                     NavigationBarItem(
                         selected = selected == index,
@@ -74,9 +72,11 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
                             selected = index
                         },
                         icon = {
-                            Icon(imageVector = navItem.icon,
+                            Icon(
+                                imageVector = navItem.icon,
                                 contentDescription = "Icon",
-                                tint = iconColor)
+                                tint = iconColor
+                            )
                         },
                         colors = NavigationBarItemColors(
                             selectedIndicatorColor = darkAccentColor,
@@ -91,26 +91,32 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
                 }
             }
         }
-    ) {  innerPadding ->
+    ) { innerPadding ->
         ContentScreen(navController, modifier = modifier.padding(innerPadding), selected, auth)
     }
 }
 
 @SuppressLint("NewApi")
 @Composable
-fun ContentScreen(navController: NavController, modifier: Modifier = Modifier, selected: Int, auth: FirebaseAuth) {
+fun ContentScreen(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    selected: Int,
+    auth: FirebaseAuth
+) {
     when (selected) {
-        0 -> Home()
-        1 -> Favourite()
-        2 -> Search()
-        3 -> ShoppingCart()
-        4 -> Menu(navController, auth)
+        0 -> HomeScreen(navController)
+        1 -> FavouriteScreen()
+        2 -> SearchScreen()
+        3 -> ShoppingCartScreen()
+        4 -> MenuScreen(navController, auth)
     }
 }
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Topbar(modifier: Modifier = Modifier){
+fun Topbar(modifier: Modifier = Modifier) {
     TopAppBar(
         modifier = Modifier
             .fillMaxWidth()

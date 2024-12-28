@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.menu
+package com.example.harmonicminor.navScreens.menu.terms
 
 import android.widget.Toast
 import androidx.compose.foundation.background

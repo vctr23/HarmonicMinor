@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens
+package com.example.harmonicminor.navScreens.shopping
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import com.example.harmonicminor.ui.theme.backgroundColor
 
 @Composable
-fun ShoppingCart(modifier: Modifier = Modifier) {
+fun ShoppingCartScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier
             .fillMaxSize()

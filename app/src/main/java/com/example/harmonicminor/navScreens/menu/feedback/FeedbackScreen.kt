@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.menu
+package com.example.harmonicminor.navScreens.menu.feedback
 
 import android.content.Context
 import androidx.compose.foundation.background

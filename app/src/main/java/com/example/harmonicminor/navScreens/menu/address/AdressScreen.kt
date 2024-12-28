@@ -1,5 +1,6 @@
-package com.example.harmonicminor.navScreens.menu
+package com.example.harmonicminor.navScreens.menu.address
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,8 +27,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -62,6 +65,31 @@ fun AddressScreen(navController: NavController) {
     var locality by rememberSaveable { mutableStateOf("") }
     var country by rememberSaveable { mutableStateOf("") }
     var phone by rememberSaveable { mutableStateOf("") }
+
+    var address by remember { mutableStateOf(Address()) }
+    LaunchedEffect(Unit) {
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
+            getAddressData(
+                userId = userId,
+                context = context,
+                onSuccess = { loadedAddress ->
+                    address = loadedAddress
+                    id = loadedAddress.id
+                    name = loadedAddress.name
+                    lastname = loadedAddress.lastname
+                    street = loadedAddress.street
+                    postcode = loadedAddress.postcode
+                    locality = loadedAddress.locality
+                    country = loadedAddress.country
+                    phone = loadedAddress.phone
+                },
+                onFailure = { errorMessage ->
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -343,23 +371,22 @@ fun AddressScreen(navController: NavController) {
                             }
 
 
-                            val addressData = mutableMapOf<String, Any>(
-                                "name" to name,
-                                "lastname" to lastname,
-                                "street" to street,
-                                "postcode" to postcode,
-                                "locality" to locality,
-                                "country" to country
+                            val updatedAddress = Address(
+                                id = id,
+                                name = name,
+                                lastname = lastname,
+                                street = street,
+                                postcode = postcode,
+                                locality = locality,
+                                country = country,
+                                phone = phone
                             )
 
-                            if (id.isNotEmpty()) addressData["id"] = id
-                            if (phone.isNotEmpty()) addressData["phone"] = phone
-
-                            db
-                                .collection("address")
-                                .document(userId)
-                                .set(addressData)
-                                .addOnSuccessListener {
+                            setAddress(
+                                address = updatedAddress,
+                                userId = userId,
+                                context = context,
+                                onSuccess = {
                                     Toast
                                         .makeText(
                                             context,
@@ -368,16 +395,17 @@ fun AddressScreen(navController: NavController) {
                                         )
                                         .show()
                                     navController.popBackStack()
-                                }
-                                .addOnFailureListener { e ->
+                                },
+                                onError = { errorMessage ->
                                     Toast
                                         .makeText(
                                             context,
-                                            context.getString(R.string.userid_not_found) + e.localizedMessage,
+                                            context.getString(R.string.userid_not_found) + errorMessage,
                                             Toast.LENGTH_SHORT
                                         )
                                         .show()
                                 }
+                            )
                         }
                     },
                 contentAlignment = Alignment.Center
@@ -389,4 +417,68 @@ fun AddressScreen(navController: NavController) {
             }
         }
     }
+}
+
+fun getAddressData(
+    userId: String,
+    onSuccess: (Address) -> Unit,
+    onFailure: (String) -> Unit,
+    context: Context
+) {
+    val db = FirebaseFirestore.getInstance()
+
+
+    db.collection("address")
+        .document(userId)
+        .get()
+        .addOnSuccessListener { document ->
+            if (document.exists()) {
+                val address = Address(
+                    id = document.getString("id") ?: "",
+                    name = document.getString("name") ?: "",
+                    lastname = document.getString("lastname") ?: "",
+                    street = document.getString("street") ?: "",
+                    postcode = document.getString("postcode") ?: "",
+                    locality = document.getString("locality") ?: "",
+                    country = document.getString("country") ?: "",
+                    phone = document.getString("phone") ?: ""
+                )
+                onSuccess(address)
+            } else {
+                onFailure(context.getString(R.string.no_address))
+            }
+        }
+        .addOnFailureListener { e ->
+            onFailure(e.localizedMessage ?: context.getString(R.string.error_getaddress))
+        }
+}
+
+fun setAddress(
+    address: Address,
+    userId: String,
+    onSuccess: () -> Unit,
+    onError: (String) -> Unit,
+    context: Context
+) {
+    val db = FirebaseFirestore.getInstance()
+
+    val addressData = mapOf(
+        "id" to address.id,
+        "name" to address.name,
+        "lastname" to address.lastname,
+        "street" to address.street,
+        "postcode" to address.postcode,
+        "locality" to address.locality,
+        "country" to address.country,
+        "phone" to address.phone
+    )
+
+
+    db.collection("address")
+        .document(userId)
+        .set(addressData)
+        .addOnSuccessListener { onSuccess() }
+        .addOnFailureListener { e ->
+            onError(e.localizedMessage ?: context.getString(R.string.error_setaddress))
+        }
 }
