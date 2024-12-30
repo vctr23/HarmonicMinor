@@ -110,41 +110,41 @@ fun CategoriesSection(navController: NavController) {
 
     val categories = listOf(
         Category(
-            "Guitarras",
+            stringResource(R.string.guitars),
             R.drawable.category_guitar,
             onClick = { navController.navigate(Routes.GuitarScreen) }),
         Category(
-            "Bajos",
+            stringResource(R.string.bass),
             R.drawable.category_bass,
             onClick = { navController.navigate(Routes.BassScreen) }
         ),
         Category(
-            "Pianos y teclados",
+            stringResource(R.string.piano),
             R.drawable.category_piano,
             onClick = { navController.navigate(Routes.PianoScreen) }
         ),
         Category(
-            "Batería y percusión",
+            stringResource(R.string.drums),
             R.drawable.category_drums,
             onClick = { navController.navigate(Routes.DrumsScreen) }
         ),
         Category(
-            "Instrumentos de viento",
+            stringResource(R.string.wind),
             R.drawable.category_wind,
             onClick = { navController.navigate(Routes.WindScreen) }
         ),
         Category(
-            "Equipo DJ",
+            stringResource(R.string.dj),
             R.drawable.category_dj,
             onClick = { navController.navigate(Routes.DjScreen) }
         ),
         Category(
-            "Micrófonos y accesorios",
+            stringResource(R.string.microphones),
             R.drawable.category_microfones,
             onClick = { navController.navigate(Routes.MicrophonesScreen) }
         ),
         Category(
-            "Software",
+            stringResource(R.string.software),
             R.drawable.category_software,
             onClick = { navController.navigate(Routes.SoftwareScreen) }
         ),
@@ -152,7 +152,7 @@ fun CategoriesSection(navController: NavController) {
 
     Column {
         Text(
-            text = "Categorías:",
+            text = stringResource(R.string.categories),
             color = textColor,
             fontSize = 20.sp,
             modifier = Modifier.padding(horizontal = 16.dp)
@@ -203,7 +203,9 @@ fun CategoriesSection(navController: NavController) {
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 16.dp))
                 Text(
-                    text = if (isExpanded.value) "Contraer" else "Todas las categorias",
+                    text = if (isExpanded.value) stringResource(R.string.show_less) else stringResource(
+                        R.string.show_all
+                    ),
                     color = textColor
                 )
             }
@@ -244,7 +246,7 @@ fun CategoryItem(category: Category) {
 fun BestSellersSection() {
     Column {
         Text(
-            text = "Más vendidos:",
+            text = stringResource(R.string.most_sold),
             color = textColor,
             fontSize = 20.sp,
             modifier = Modifier.padding(horizontal = 16.dp)
@@ -276,7 +278,7 @@ fun BestSellersSection() {
 fun RecentlySeenSection() {
     Column {
         Text(
-            text = "Vistos Recientemente:",
+            text = stringResource(R.string.recently_seen),
             color = textColor,
             fontSize = 20.sp,
             modifier = Modifier.padding(horizontal = 16.dp)

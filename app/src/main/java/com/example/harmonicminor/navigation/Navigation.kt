@@ -3,18 +3,24 @@ package com.example.harmonicminor.navigation
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.harmonicminor.navScreens.favourite.FavouriteScreen
 import com.example.harmonicminor.navScreens.home.HomeScreen
+import com.example.harmonicminor.navScreens.home.bass.BassDetailScreen
 import com.example.harmonicminor.navScreens.home.bass.BassScreen
 import com.example.harmonicminor.navScreens.home.dj.DjScreen
 import com.example.harmonicminor.navScreens.home.drums.DrumsScreen
+import com.example.harmonicminor.navScreens.home.guitar.GuitarDetailScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarScreen
 import com.example.harmonicminor.navScreens.home.microphones.MicrophonesScreen
 import com.example.harmonicminor.navScreens.home.piano.PianoScreen
@@ -52,6 +58,24 @@ fun MyappNavigation(auth: FirebaseAuth) {
             )
         },
         exitTransition = {
+            slideOutVertically(
+                targetOffsetY = { -it },
+                animationSpec = spring(
+                    stiffness = Spring.StiffnessVeryLow,
+                    dampingRatio = Spring.DampingRatioNoBouncy
+                )
+            )
+        },
+        popEnterTransition = {
+            slideInVertically(
+                initialOffsetY = { it },
+                animationSpec = spring(
+                    stiffness = Spring.StiffnessVeryLow,
+                    dampingRatio = Spring.DampingRatioNoBouncy
+                )
+            )
+        },
+        popExitTransition = {
             slideOutVertically(
                 targetOffsetY = { -it },
                 animationSpec = spring(
@@ -110,10 +134,10 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 EmailUpdateScreen(auth, navController)
             }
             composable(Routes.GuitarScreen) {
-                GuitarScreen()
+                GuitarScreen(navController)
             }
             composable(Routes.BassScreen){
-                BassScreen()
+                BassScreen(navController)
             }
             composable(Routes.PianoScreen){
                 PianoScreen()
@@ -132,6 +156,44 @@ fun MyappNavigation(auth: FirebaseAuth) {
             }
             composable(Routes.SoftwareScreen){
                 SoftwareScreen()
+            }
+            composable(
+                "${Routes.GuitarDetailScreen}/{guitarName}",
+                arguments = listOf(navArgument("guitarName") { type = NavType.StringType }),
+                enterTransition = {
+                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                },
+                exitTransition = {
+                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                },
+                popEnterTransition = {
+                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                },
+                popExitTransition = {
+                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                }
+            ) { backStackEntry ->
+                val guitarName = backStackEntry.arguments?.getString("guitarName") ?: ""
+                GuitarDetailScreen(navController, guitarName)
+            }
+            composable(
+                "${Routes.BassDetailScreen}/{bassName}",
+                arguments = listOf(navArgument("bassName") { type = NavType.StringType }),
+                enterTransition = {
+                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                },
+                exitTransition = {
+                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                },
+                popEnterTransition = {
+                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                },
+                popExitTransition = {
+                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
+                }
+            ) { backStackEntry ->
+                val bassName = backStackEntry.arguments?.getString("bassName") ?: ""
+                BassDetailScreen(navController, bassName)
             }
         }
     )

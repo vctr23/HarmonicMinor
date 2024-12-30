@@ -37,7 +37,6 @@ androidx-foundation-layout-android = { group = "androidx.compose.foundation", na
 androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
-play-services-auth = { module = "com.google.android.gms:play-services-auth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

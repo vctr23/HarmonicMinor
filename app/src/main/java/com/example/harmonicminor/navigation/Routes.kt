@@ -25,4 +25,7 @@ object Routes {
     const val DjScreen = "DjScreen"
     const val MicrophonesScreen = "MicrophonesScreen"
     const val SoftwareScreen = "SoftwareScreen"
+
+    const val GuitarDetailScreen = "GuitarDetailScreen"
+    const val BassDetailScreen = "BassDetailScreen"
 }

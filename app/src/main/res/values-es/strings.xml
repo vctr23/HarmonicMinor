@@ -169,4 +169,322 @@
     <string name="email_reset">Cambiar dirección de correo</string>
     <string name="new_email">Nuevo email</string>
     <string name="send_new_email">Enviar correo</string>
+    <string name="guitars">Guitarras</string>
+    <string name="bass">Bajos</string>
+    <string name="piano">Pianos y teclados</string>
+    <string name="drums">Batería y percusión</string>
+    <string name="wind">Instrumentos de viento</string>
+    <string name="dj">Equipo dJ</string>
+    <string name="microphones">Micrófonos y accesorios</string>
+    <string name="software">Software</string>
+    <string name="categories">Categorias:</string>
+    <string name="show_all">Mostrar todas</string>
+    <string name="show_less">Mostrar menos</string>
+    <string name="most_sold">Más vendidos:</string>
+    <string name="recently_seen">Vistos recientemente:</string>
+    <string name="type">Tipo:</string>
+    <string name="manufacturer">Fabricante:</string>
+    <string name="description">Descripción:</string>
+    <string name="price">Precio:</string>
+    <string name="stock">Stock:</string>
+    <string name="available">Disponible</string>
+    <string name="not_available">Disponible pronto (Normalmente 1–2 semanas)</string>
+
+    <string name="guitar1_name">Fender Player II Strat HSS MN</string>
+    <string name="guitar1_type">Stratocaster</string>
+    <string name="guitar1_description">•Cuerpo: Aliso\n
+                    •Mástil atornillado: Arce\n
+                    •Diapasón: Arce\n
+                    •Incrustaciones del diapasón de puntos negros\n
+                    •Perfil del mástil: \"C\" moderna\n
+                    •Radio del diapasón: 241 mm (9,5\")\n
+                    •Escala: 648 mm (25,5\")\n
+                    •Anchura de la cejilla: 42 mm (1,650\")\n
+                    •Cejilla: Hueso sintético\n
+                    •22 trastes Medium Jumbo\n
+                    •Pastillas: 1 Player Series Alnico 2 humbucker (puente) y 2 Player Series Alnico 5 Strat de bobina simple (intermedia y mástil)\n
+                    •1 control de volumen master y 2 controles de tono\n
+                    •Interruptor de 5 posiciones\n
+                    •Golpeador de 3 capas en pergamino\n
+                    •Trémolo sincronizado de 2 puntos con selletas de acero doblado\n
+                    •Clavijas de afinación Fender ClassicGear\n
+                    •Herrajes: Níquel/Cromo\n
+                    •Cuerdas: Fender USA 250L (.009 - .042)\n
+                    •Color: Negro</string>
+    <string name="guitar1_manufacturer">Fender</string>
+    <string name="guitar1_stock">23</string>
+    <string name="guitar1_price">1200 €</string>
+
+    <string name="guitar2_name">ESP LTD Mirage Deluxe ´87 RBCRK</string>
+    <string name="guitar2_type">Stratocaster</string>
+    <string name="guitar2_description">•Modelo ST-Style\n
+                    •Cuerpo de aliso\n
+                    •Mástil de arce\n
+                    •Diapasón de ébano\n
+                    •Montaje del mástil: A través del cuerpo (neck-thru)\n
+                    •Forma del mástil: \'U\' extradelgada\n
+                    •22 trastes X-Jumbo\n
+                    •Cejilla Floyd Rose\n
+                    •Anchura de la cejilla: 42 mm (1,65\")\n
+                    •Escala de 648 mm (25,51\")\n
+                    •Radio del diapasón: 350 mm (13,78\")\n
+                    •Pastilla Seymour Duncan Distortion (puente)\n
+                    •Pastilla Seymour Duncan Hot Rail (mástil)\n
+                    •Controles de volumen, tono (\'push\'/\'pull\')\n
+                    •Interruptor de 3 posiciones\n
+                    •Trémolo Floyd Rose 1000\n
+                    •Acabado de los herrajes: Negro\n
+                    •Clavijas de afinación LTD (marcadas)\n
+                    •Color: Rainbow Crackle\n
+                    •Cuerdas de fábrica: D\'Addario XL120 (.009 / .011 / .016 / .024 / .032 / .042)</string>
+    <string name="guitar2_manufacturer">ESP LTD</string>
+    <string name="guitar2_stock">9</string>
+    <string name="guitar2_price">799 €</string>
+
+    <string name="guitar3_name">HB Fusion-T EMG HT Roasted SBK</string>
+    <string name="guitar3_type">Telecaster</string>
+    <string name="guitar3_description">•Cuerpo de forma ergonómica: Nyatoh\n
+                    •Mástil atornillado: Arce canadiense tostado\n
+                    •Diapasón: Arce tostado\n
+                    •Incrustaciones del diapasón: Puntos negros\n
+                    •Puntos laterales que brillan en la oscuridad\n
+                    •Perfil del mástil: \"C\" moderna\n
+                    •Radio del diapasón: 305 mm\n
+                    •24 trastes Blacksmith Medium Jumbo de acero inoxidable\n
+                    •Cejilla Graphtech de TUSQ\n
+                    •Anchura de la cejilla: 42 mm\n
+                    •Escala: 648 mm\n
+                    •2 pastillas EMG Custom Retro Active Hot 70 humbucker (set personalizado con piezas polares negras)\n
+                    •1 control de volumen master y 1 control de tono master\n
+                    •Interruptor de 3 posiciones\n
+                    •Puente Hardtail WSC de estilo Hipshot\n
+                    •Herrajes negros\n
+                    •Clavijas de afinación HB JN-07 escalonadas con bloqueo\n
+                    •Cuerdas de fábrica: .010 - .046\n
+                    •Color: Negro mate</string>
+    <string name="guitar3_manufacturer">Harley Benton</string>
+    <string name="guitar3_stock">0</string>
+    <string name="guitar3_price">449 €</string>
+
+    <string name="guitar4_name">HB TE-20MN BM Standard Series</string>
+    <string name="guitar4_type">Telecaster</string>
+    <string name="guitar4_description">•Construcción del mástil: Atornillada (bolt-on)\n
+                    •Cuerpo de álamo\n
+                    •Mástil de arce con forma en \'C\' moderna\n
+                    •Diapasón de arce con incrustaciones de puntos\n
+                    •Radio del diapasón de 350 mm\n
+                    •22 trastes\n
+                    •Escala de 648 mm\n
+                    •Anchura de cejilla de 42 mm\n
+                    •Alma de doble acción\n
+                    •2 pastillas de estilo TE de bobina simple\n
+                    •Control de volumen\n
+                    •Control de tono\n
+                    •Interruptor de 3 posiciones\n
+                    •Herrajes de cromo\n
+                    •Clavijas de afinación fundidas a presión\n
+                    •Grosor de cuerdas 009-042\n
+                    •Color: Azul metalizado de alto brillo</string>
+    <string name="guitar4_manufacturer">Harley Benton</string>
+    <string name="guitar4_stock">53</string>
+    <string name="guitar4_price">89 €</string>
+
+    <string name="guitar5_name">Gibson Les Paul Slash Standard NB</string>
+    <string name="guitar5_type">Les Paul / Single Cut</string>
+    <string name="guitar5_description">•Modelo Slash Signature\n
+                    •Cuerpo de caoba\n
+                    •Tapa de arce flameado de grado AAA\n
+                    •Mástil de caoba\n
+                    •Diapasón de palisandro\n
+                    •Perfil del mástil Thick\n
+                    •22 trastes\n
+                    •Longitud de escala: 628 mm\n
+                    •Anchura de cejuela: 43 mm\n
+                    •Cejuela de Tektoid\n
+                    •Pastillas: 2x Custom Burstbucker Alnico II Double Black\n
+                    •Puente ABR\n
+                    •Cordal Stop Bar de aluminio\n
+                    •Color: November Burst\n
+                    •Incluye maleta, Kit de accesorios y set de púas Slash\n
+                    •Made in USA</string>
+    <string name="guitar5_manufacturer">Gibson</string>
+    <string name="guitar5_stock">1</string>
+    <string name="guitar5_price">2777 €</string>
+
+    <string name="guitar6_name">Epiphone Les Paul Custom Ebony</string>
+    <string name="guitar6_type">Les Paul / Single Cut</string>
+    <string name="guitar6_description">•Epiphone\’s Inspired by Gibson Collection\n
+                    •Cuerpo de caoba\n
+                    •Binding de 5 capas en el cuerpo\n
+                    •Mástil de caoba\n
+                    •Diapasón de ébano\n
+                    •Incrustaciones Block de Pearloid en el diapasón\n
+                    •Perfil del mástil: SlimTaper\n
+                    •Longitud de escala: 629 mm (24,75\")\n
+                    •Anchura de cejuela: 43 mm (1,693\")\n
+                    •22 trastes\n
+                    •Pastillas: ProBucker 2 (cuello) y ProBucker 3 (puente) Humbucker\n
+                    •2 controles de volumen y 2 controles de tono\n
+                    •Selector de pastillas de 3 vías\n
+                    •Cordal Stopbar\n
+                    •Hardware dorado\n
+                    •Color: Ebony</string>
+    <string name="guitar6_manufacturer">Epiphone</string>
+    <string name="guitar6_stock">12</string>
+    <string name="guitar6_price">716 €</string>
+
+    <string name="guitar7_name">Jackson JS32 King V WH AH</string>
+    <string name="guitar7_type">Flying V</string>
+    <string name="guitar7_description">•Cuerpo de tilo\n
+                    •Mástil \'Speed\' de 1 pieza de arce atornillado (bolt-on) con refuerzo de grafito y unión en bisel\n
+                    •Anchura de la cejilla: 42,8 mm\n
+                    •Diapasón de amaranto\n
+                    •Escala de 648 mm\n
+                    •24 trastes jumbo\n
+                    •Inlays de \'aletas de tiburón\' de pearloid blanco\n
+                    •2 pastillas Jackson zebra con alto nivel de salida\n
+                    •Trémolo de doble bloqueo Jackson con licencia Floyd Rose\n
+                    •Clavijas de afinación Jackson selladas fundidas a presión\n
+                    •Herrajes negros\n
+                    •Acabado: Blanco con bisel negro</string>
+    <string name="guitar7_manufacturer">Jackson</string>
+    <string name="guitar7_stock">0</string>
+    <string name="guitar7_price">311 €</string>
+
+    <string name="guitar8_name">Schecter Sun Valley Super Shredder BL</string>
+    <string name="guitar8_type">SuperStrat</string>
+    <string name="guitar8_description">•Cuerpo de limba negra\n
+                    •Diapasón de ébano\n
+                    •Mástil de wengué con refuerzo de carbono\n
+                    •Longitud de la escala de 25,5\" (648 mm)\n
+                    •Forma del mástil en \'C\' delgada\n
+                    •24 trastes X-Jumbo de acero inoxidable\n
+                    •Radio del diapasón: 12\" - 16\"\n
+                    •Anchura de la cejilla: 1,653\" (42 mm)\n
+                    •Cejilla Graph Tech XL de Tusq en negro\n
+                    •Herrajes en negro/cromo\n
+                    •Clavijas de afinación Schecter con bloqueo\n
+                    •Control de volumen\n
+                    •Control de tono\n
+                    •Interruptor de 5 posiciones\n
+                    •Pastilla Schecter USA Sunset Strip (puente)\n
+                    •Pastilla Schecter USA Pasadena (mástil)\n
+                    •Cuerdas originales Ernie Ball Hybrid Slinky #2222 (.009 - .046)\n
+                    •Acabado: Limba negra</string>
+    <string name="guitar8_manufacturer">Schecter</string>
+    <string name="guitar8_stock">33</string>
+    <string name="guitar8_price">1555 €</string>
+
+    <string name="guitar9_name">Solar Guitars T2.7FBB-Flame Black Burst</string>
+    <string name="guitar9_type">7 cuerdas Telecaster</string>
+    <string name="guitar9_description">•Modelo T-Style\n
+                    •Cuerpo de caoba con una chapa de arce flameado\n
+                    •Mástil de arce\n
+                    •Diapasón de ébano\n
+                    •Montaje del mástil: Encolado (set)\n
+                    •Forma del mástil en \'C\'\n
+                    •Inlays: Logotipo de Solar en el traste 12\n
+                    •24 trastes Jumbo\n
+                    •Cejilla de grafito\n
+                    •Anchura de cejilla de 48 mm (1,89\")\n
+                    •Escala de 673 mm (26,5\")\n
+                    •Pastilla Duncan Solar (Alnico 5) en el puente\n
+                    •Pastilla Duncan Solar (Alnico 5) en el mástil\n
+                    •Control de volumen\n
+                    •Control de tono\n
+                    •Interruptor de 5 posiciones\n
+                    •Golpeador de 1 capa en negro satinado\n
+                    •Puente fijo\n
+                    •Acabado de los herrajes: Negro\n
+                    •Clavijas de afinación Solar de 18:1 con bloqueo\n
+                    •Color: Flame Black Burst (mate)</string>
+    <string name="guitar9_manufacturer">Solar</string>
+    <string name="guitar9_stock">17</string>
+    <string name="guitar9_price">899 €</string>
+
+    <string name="guitar10_name">Ibanez Q547-BMM</string>
+    <string name="guitar10_type">7 cuerdas Headless</string>
+    <string name="guitar10_description">•Serie Q\n
+                    •Cuerpo: Nyatoh\n
+                    •Mástil atornillado de 3 piezas: Arce tostado / Bubinga\n
+                    •Diapasón: Arce ojo de perdiz tostado\n
+                    •Incrustaciones del diapasón de puntos descentrados de madreperla\n
+                    •Perfil del mástil: Wizard \"C\" - Grosor en el traste 1: 20 mm y en el traste 12: 21 mm\n
+                    •Escala: 648 mm\n
+                    •Radio del diapasón: 400 mm\n
+                    •Anchura de la cejilla: 42 mm\n
+                    •Cejilla: Plástico\n
+                    •24 trastes Jumbo de acero inoxidable\n
+                    •Pastillas: 1 Q58 humbucker (puente) y 2 R1-7 de bobina simple (intermedia y mástil)\n
+                    •Controles de volumen y de tono\n
+                    •Interruptor de 5 posiciones\n
+                    •Sistema de conmutación dyna-MIX10 con interruptor Alter\n
+                    •Puente Ibanez Mono-Tune\n
+                    •Clavijas de afinación Ibanez Custom con bloqueo de cuerdas\n
+                    •Herrajes en negro cosmos\n
+                    •Cuerdas originales: D\'Addario EXL110-7 .010 - .059\n
+                    •Color: Blue Chameleon Metallic mate\n
+                    •Incluye funda</string>
+    <string name="guitar10_manufacturer">Ibanez</string>
+    <string name="guitar10_stock">44</string>
+    <string name="guitar10_price">1190 €</string>
+
+    <string name="guitar11_name">Music Man John Petrucci Majesty 8 BS</string>
+    <string name="guitar11_type">8 cuerdas Majesty</string>
+    <string name="guitar11_description">•Modelo John Petrucci (Dream Theater) Signature\n
+                    •Cuerpo: Ocume\n
+                    •Mástil a través del cuerpo: Caoba\n
+                    •Diapasón: Ébano\n
+                    •Radio del diapasón: 17\"\n
+                    •Escala multiescala: 648 - 686 mm (25,5\" - 27\")\n
+                    •Anchura de la cejilla: 57,2 mm\n
+                    •24 trastes Medium Jumbo de acero inoxidable\n
+                    •Pastillas: 2 humbuckers DiMarzio Custom Dreamcatcher y Custom Rainmaker Slanted y Sistema piezoeléctrico\n
+                    •Puente cordal piezo Custom Music Man con tapa de chevrón y selletas de acero\n
+                    •Preamplificador Custom Music Man activo\n
+                    •Control de volumen con función \"push/pull\" para realce de ganancia\n
+                    •Control de tono pasivo de 500 kOhmios con función \"push/pull\" para 2 configuraciones de pastilla personalizadas\n
+                    •Condensador de .022 µF\n
+                    •Interruptor de pastilla de 3 posiciones con posición central personalizada\n
+                    •Interruptor de 3 posiciones para selección entre piezoeléctrica y magnética con función \"push/pull\" para salida mono/estéreo\n
+                    •Clavijas de afinación Schaller M6-IND con bloqueo\n
+                    •Herrajes cromados\n
+                    •Cuerdas: 10p - 13p - 16,5p - 24w - 32 - 44 - 58 - 74\n
+                    •Color: Blue Silk\n
+                    •Incluye estuche de carcasa blanda\n
+                    •Fabricada en Estados Unidos</string>
+    <string name="guitar11_manufacturer">Music Man (Earnie ball)</string>
+    <string name="guitar11_stock">5</string>
+    <string name="guitar11_price">4777 €</string>
+
+    <string name="guitar12_name">Epiphone ES-339 Cherry</string>
+    <string name="guitar12_type">(Semi) Hueca</string>
+    <string name="guitar12_description">•Modelo \"Inspired by Gibson\"\n
+                    •Construcción del cuerpo Semi-Hollow con calados en F\n
+                    •Tapa de arce\n
+                    •Fondo y aros de arce\n
+                    •Binding de color crema\n
+                    •Mástil de caoba\n
+                    •Perfil del mástil Rounded C\n
+                    •Diapasón de laurel indio\n
+                    •Anchura de la cejuela: 43mm (1,693\")\n
+                    •Longitud de escala: 628mm (24,724\")\n
+                    •22 trastes\n
+                    •Cejuela GraphTech NuBone\n
+                    •Pastillas: 2x Alnico Classic Pro Humbucker\n
+                    •2 reguladores de volumen y 2 reguladores de tono\n
+                    •Puente LockTone Tunomatic\n
+                    •Cordal Locktone Stop Bar\n
+                    •Mecánicas Grover Rotomatics\n
+                    •Acabado: Cherry</string>
+    <string name="guitar12_manufacturer">Epiphone</string>
+    <string name="guitar12_stock">20</string>
+    <string name="guitar12_price">484 €</string>
+
+    <string name="bass1_name"></string>
+    <string name="bass1_type"></string>
+    <string name="bass1_description"></string>
+    <string name="bass1_manufacturer"></string>
+    <string name="bass1_stock"></string>
+    <string name="bass1_price"></string>
 </resources>

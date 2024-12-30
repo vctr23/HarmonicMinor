@@ -169,4 +169,319 @@
     <string name="email_reset">Change email address</string>
     <string name="new_email">New Email</string>
     <string name="send_new_email">Send email</string>
+    <string name="guitars">Guitars</string>
+    <string name="bass">Basses</string>
+    <string name="piano">Pianos and keyboards</string>
+    <string name="drums">Drums and percussion</string>
+    <string name="wind">Wind instruments</string>
+    <string name="dj">DJ Equipment</string>
+    <string name="microphones">Microphones and accessories</string>
+    <string name="software">Software</string>
+    <string name="categories">Categories:</string>
+    <string name="show_all">Show all</string>
+    <string name="show_less">Show less</string>
+    <string name="most_sold">Best sellers:</string>
+    <string name="recently_seen">Recently seen: </string>
+    <string name="type">Type:</string>
+    <string name="manufacturer">Manufacturer:</string>
+    <string name="description">Description:</string>
+    <string name="price">Price:</string>
+    <string name="stock">Stock:</string>
+    <string name="available">Available</string>
+    <string name="not_available">Available soon (1–2 weeks average)</string>
+
+    <string name="guitar1_name">Fender Player II Strat HSS MN</string>
+    <string name="guitar1_type">Stratocaster</string>
+    <string name="guitar1_description"> •Body: Alder\n
+                    •Bolt-on Neck: Maple\n
+                    •Fretboard: Maple\n
+                    •Fretboard inlays: Black dot\n
+                    •Neck profile: Modern \"C\"\n
+                    •Fretboard radius: 241 mm (9.5\")\n
+                    •Scale length: 648 mm (25.5\")\n
+                    •Nut width: 42 mm (1.650\")\n
+                    •Nut material: Synthetic bone\n
+                    •22 Medium Jumbo frets\n
+                    •Pickups: 1 Player Series Alnico 2 humbucker (bridge) and 2 Player Series Alnico 5 Strat single-coil pickups (middle and neck)\n
+                    •1 master volume control and 2 tone controls\n
+                    •5-position switch\n
+                    •3-ply pickguard in parchment\n
+                    •2-point synchronized tremolo with bent steel saddles\n
+                    •Fender ClassicGear tuning machines\n
+                    •Hardware: Nickel/Chrome\n
+                    •Strings: Fender USA 250L (.009 - .042)\n
+                    •Color: Black</string>
+    <string name="guitar1_manufacturer">Fender</string>
+    <string name="guitar1_stock">23</string>
+    <string name="guitar1_price">1200 €</string>
+
+    <string name="guitar2_name">ESP LTD Mirage Deluxe ´87 RBCRK</string>
+    <string name="guitar2_type">Stratocaster</string>
+    <string name="guitar2_description">•ST-Style model\n
+                    •Alder body\n
+                    •Maple neck\n
+                    •Ebony fretboard\n
+                    •Neck construction: Neck-thru\n
+                    •Neck shape: Extra-thin \'U\'\n
+                    •22 X-Jumbo frets\n
+                    •Floyd Rose nut\n
+                    •Nut width: 42 mm (1.65\")\n
+                    •Scale length: 648 mm (25.51\")\n
+                    •Fretboard radius: 350 mm (13.78\")\n
+                    •Seymour Duncan Distortion pickup (bridge)\n
+                    •Seymour Duncan Hot Rail pickup (neck)\n
+                    •Volume and tone controls (\'push\'/\'pull\')\n
+                    •3-position switch\n
+                    •Floyd Rose 1000 tremolo\n
+                    •Hardware finish: Black\n
+                    •LTD (marked) tuning machines\n
+                    •Color: Rainbow Crackle\n
+                    •Factory strings: D\'Addario XL120 (.009 / .011 / .016 / .024 / .032 / .042)</string>
+    <string name="guitar2_manufacturer">ESP LTD</string>
+    <string name="guitar2_stock">9</string>
+    <string name="guitar2_price">799 €</string>
+
+    <string name="guitar3_name">HB Fusion-T EMG HT Roasted SBK</string>
+    <string name="guitar3_type">Telecaster</string>
+    <string name="guitar3_description">•Ergonomic body shape: Nyatoh\n
+                    •Bolt-on neck: Roasted Canadian maple\n
+                    •Fretboard: Roasted maple\n
+                    •Fretboard inlays: Black dots\n
+                    •Glow-in-the-dark side dots\n
+                    •Neck profile: Modern \"C\"\n
+                    •Fretboard radius: 305 mm\n
+                    •24 Blacksmith Medium Jumbo stainless steel frets\n
+                    •Graphtech TUSQ nut\n
+                    •Nut width: 42 mm\n
+                    •Scale length: 648 mm\n
+                    •2 EMG Custom Retro Active Hot 70 humbucker pickups (custom set with black pole pieces)\n
+                    •1 master volume control and 1 master tone control\n
+                    •3-way switch\n
+                    •Hardtail WSC Hipshot-style bridge\n
+                    •Black hardware\n
+                    •HB JN-07 staggered locking tuners\n
+                    •Factory strings: .010 - .046\n
+                    •Color: Matte black</string>
+    <string name="guitar3_manufacturer">Harley Benton</string>
+    <string name="guitar3_stock">0</string>
+    <string name="guitar3_price">449 €</string>
+
+    <string name="guitar4_name">HB TE-20MN BM Standard Series</string>
+    <string name="guitar4_type">Telecaster</string>
+    <string name="guitar4_description">•Neck construction: Bolt-on\n
+                    •Body: Poplar\n
+                    •Neck: Maple with a modern \'C\' shape\n
+                    •Fretboard: Maple with dot inlays\n
+                    •Fretboard radius: 350 mm\n
+                    •22 frets\n
+                    •Scale length: 648 mm\n
+                    •Nut width: 42 mm\n
+                    •Dual-action truss rod\n
+                    •2 TE-style single-coil pickups\n
+                    •Volume control\n
+                    •Tone control\n
+                    •3-way selector switch\n
+                    •Chrome hardware\n
+                    •Die-cast tuners\n
+                    •String gauge: 009-042\n
+                    •Color: High-gloss Metallic Blue</string>
+    <string name="guitar4_manufacturer">Harley Benton</string>
+    <string name="guitar4_stock">53</string>
+    <string name="guitar4_price">89 €</string>
+
+    <string name="guitar5_name">Gibson Les Paul Slash Standard NB</string>
+    <string name="guitar5_type">Les Paul / Single Cut</string>
+    <string name="guitar5_description">•Slash Signature Model\n
+                    •Body: Mahogany\n
+                    •Top: AAA grade flamed maple\n
+                    •Neck: Mahogany\n
+                    •Fretboard: Rosewood\n
+                    •Neck profile: Thick\n
+                    •22 frets\n
+                    •Scale length: 628 mm\n
+                    •Nut width: 43 mm\n
+                    •Nut: Tektoid\n
+                    •Pickups: 2x Custom Burstbucker Alnico II Double Black\n
+                    •Bridge: ABR\n
+                    •Tailpiece: Aluminum Stop Bar\n
+                    •Color: November Burst\n
+                    •Includes case, accessory kit, and Slash pick set\n
+                    •Made in USA</string>
+
+    <string name="guitar5_manufacturer">Gibson</string>
+    <string name="guitar5_stock">1</string>
+    <string name="guitar5_price">2777 €</string>
+
+    <string name="guitar6_name">Epiphone Les Paul Custom Ebony</string>
+    <string name="guitar6_type">Les Paul / Single Cut</string>
+    <string name="guitar6_description">•Epiphone\’s Inspired by Gibson Collection\n
+                    •Body: Mahogany\n
+                    •5-ply body binding\n
+                    •Neck: Mahogany\n
+                    •Fretboard: Ebony\n
+                    •Fretboard inlays: Pearloid Block\n
+                    •Neck profile: SlimTaper\n
+                    •Scale length: 629 mm (24.75\")\n
+                    •Nut width: 43 mm (1.693\")\n
+                    •22 frets\n
+                    •Pickups: ProBucker 2 (neck) and ProBucker 3 (bridge) Humbucker\n
+                    •2 volume controls and 2 tone controls\n
+                    •3-way pickup selector switch\n
+                    •Stopbar tailpiece\n
+                    •Gold hardware\n
+                    •Color: Ebony</string>
+    <string name="guitar6_manufacturer">Epiphone</string>
+    <string name="guitar6_stock">12</string>
+    <string name="guitar6_price">716 €</string>
+
+    <string name="guitar7_name">Jackson JS32 King V WH AH</string>
+    <string name="guitar7_type">Flying V</string>
+    <string name="guitar7_description">•Body: Basswood\n
+                    •Neck: One-piece maple "Speed" neck (bolt-on) with graphite reinforcement and scarf joint\n
+                    •Nut width: 42.8 mm\n
+                    •Fretboard: Amaranth\n
+                    •Scale length: 648 mm\n
+                    •24 jumbo frets\n
+                    •White pearloid \"shark fin\" inlays\n
+                    •Pickups: 2 Jackson zebra high-output humbuckers\n
+                    •Tremolo: Jackson licensed Floyd Rose double-locking tremolo\n
+                    •Tuners: Jackson sealed die-cast tuners\n
+                    •Hardware: Black\n
+                    •Finish: White with black bevels</string>
+    <string name="guitar7_manufacturer">Jackson</string>
+    <string name="guitar7_stock">0</string>
+    <string name="guitar7_price">311 €</string>
+
+    <string name="guitar8_name">Schecter Sun Valley Super Shredder BL</string>
+    <string name="guitar8_type">SuperStrat</string>
+    <string name="guitar8_description">•Body: Black limba\n
+                    •Fretboard: Ebony\n
+                    •Neck: Wenge with carbon reinforcement\n
+                    •Scale length: 25.5\" (648 mm)\n
+                    •Neck profile: Thin \"C\"\n
+                    •24 X-Jumbo stainless steel frets\n
+                    •Fretboard radius: 12\" - 16\"\n
+                    •Nut width: 1.653" (42 mm)\n
+                    •Nut: Black Graph Tech XL Tusq\n
+                    •Hardware: Black/chrome\n
+                    •Locking tuners: Schecter\n
+                    •Controls: Volume, Tone\n
+                    •5-way selector switch\n
+                    •Pickups: Schecter USA Sunset Strip (bridge), Schecter USA Pasadena (neck)\n
+                    •Factory strings: Ernie Ball Hybrid Slinky #2222 (.009 - .046)\n
+                    •Finish: Black Limba</string>
+    <string name="guitar8_manufacturer">Schecter</string>
+    <string name="guitar8_stock">33</string>
+    <string name="guitar8_price">1555 €</string>
+
+    <string name="guitar9_name">Solar Guitars T2.7FBB-Flame Black Burst</string>
+    <string name="guitar9_type">7-string Telecaster</string>
+    <string name="guitar9_description">•T-Style model\n
+                    •Body: Mahogany with a flamed maple veneer\n
+                    •Neck: Maple\n
+                    •Fretboard: Ebony\n
+                    •Neck attachment: Set-in\n
+                    •Neck shape: \"C\"\n
+                    •Inlays: Solar logo at the 12th fret\n
+                    •24 jumbo frets\n
+                    •Nut: Graphite\n
+                    •Nut width: 48 mm (1.89\")\n
+                    •Scale length: 673 mm (26.5\")\n
+                    •Pickups: Duncan Solar (Alnico 5) bridge, Duncan Solar (Alnico 5) neck\n
+                    •Controls: Volume, Tone\n
+                    •5-way selector switch\n
+                    •Pickguard: 1-ply satin black\n
+                    •Bridge: Fixed\n
+                    •Hardware finish: Black\n
+                    •Locking tuners: Solar 18:1\n
+                    •Color: Flame Black Burst (matte)</string>
+    <string name="guitar9_manufacturer">Solar</string>
+    <string name="guitar9_stock">17</string>
+    <string name="guitar9_price">899 €</string>
+
+    <string name="guitar10_name">Ibanez Q547-BMM</string>
+    <string name="guitar10_type">7-string Headless</string>
+    <string name="guitar10_description">•Series: Q\n
+                    •Body: Nyatoh\n
+                    •Neck: 3-piece roasted maple/bubinga, bolt-on\n
+                    •Fretboard: Roasted birdseye maple\n
+                    •Fretboard inlays: Off-set mother-of-pearl dots\n
+                    •Neck profile: Wizard \"C\" - Thickness at 1st fret: 20 mm, at 12th fret: 21 mm\n
+                    •Scale length: 648 mm\n
+                    •Fretboard radius: 400 mm\n
+                    •Nut width: 42 mm\n
+                    •Nut: Plastic\n
+                    •Frets: 24 jumbo stainless steel\n
+                    •Pickups: 1 Q58 humbucker (bridge), 2 R1-7 single coils (middle and neck)\n
+                    •Controls: Volume, Tone\n
+                    •5-way selector switch\n
+                    •dyna-MIX10 switching system with Alter switch\n
+                    •Bridge: Ibanez Mono-Tune\n
+                    •Locking tuners: Ibanez Custom\n
+                    •Hardware: Black cosmos\n
+                    •Factory strings: D\'Addario EXL110-7 .010 - .059\n
+                    •Color: Blue Chameleon Metallic matte\n
+                    •Includes gig bag</string>
+    <string name="guitar10_manufacturer">Ibanez</string>
+    <string name="guitar10_stock">44</string>
+    <string name="guitar10_price">1190 €</string>
+
+    <string name="guitar11_name">Music Man John Petrucci Majesty 8 BS</string>
+    <string name="guitar11_type">8-string Majesty</string>
+    <string name="guitar11_description">•John Petrucci (Dream Theater) Signature Model\n
+                    •Body: Okoume\n
+                    •Neck-through construction: Mahogany\n
+                    •Fretboard: Ebony\n
+                    •Fretboard radius: 17"\n
+                    •Multiscale: 648 - 686 mm (25.5\" - 27\")\n
+                    •Nut width: 57.2 mm\n
+                    •Frets: 24 medium jumbo stainless steel\n
+                    •Pickups: 2 DiMarzio Custom Dreamcatcher and Custom Rainmaker Slanted humbuckers and Piezo system\n
+                    •Bridge: Custom Music Man piezo tremolo with chevron cover and steel saddles\n
+                    •Preamp: Active Custom Music Man\n
+                    •Volume control with push/pull gain boost\n
+                    •Passive 500 kOhm tone control with push/pull for 2 custom pickup configurations\n
+                    •.022 µF capacitor\n
+                    •3-way pickup selector with custom middle position\n
+                    •3-way switch for piezo/magnetic selection with push/pull mono/stereo output\n
+                    •Tuners: Schaller M6-IND locking\n
+                    •Hardware: Chrome\n
+                    •Strings: 10p - 13p - 16.5p - 24w - 32 - 44 - 58 - 74\n
+                    •Color: Blue Silk\n
+                    •Includes soft case\n
+                    •Made in USA</string>
+    <string name="guitar11_manufacturer">Music Man (Earnie ball)</string>
+    <string name="guitar11_stock">5</string>
+    <string name="guitar11_price">4777 €</string>
+
+    <string name="guitar12_name">Epiphone ES-339 Cherry</string>
+    <string name="guitar12_type">(Semi) Hollow</string>
+    <string name="guitar12_description">•\"Inspired by Gibson\" model\n
+                    •Semi-hollow body construction with F-holes\n
+                    •Top: Maple\n
+                    •Back and sides: Maple\n
+                    •Binding: Cream\n
+                    •Neck: Mahogany\n
+                    •Neck profile: Rounded C\n
+                    •Fretboard: Indian Laurel\n
+                    •Nut width: 43 mm (1.693\")\n
+                    •Scale length: 628 mm (24.724\")\n
+                    •Frets: 22\n
+                    •Nut: GraphTech NuBone\n
+                    •Pickups: 2 Alnico Classic Pro Humbuckers\n
+                    •Controls: 2 volume, 2 tone\n
+                    •Bridge: LockTone Tune-o-Matic\n
+                    •Tailpiece: LockTone Stop Bar\n
+                    •Tuners: Grover Rotomatics\n
+                    •Finish: Cherry</string>
+    <string name="guitar12_manufacturer">Epiphone</string>
+    <string name="guitar12_stock">20</string>
+    <string name="guitar12_price">484 €</string>
+
+    <string name="bass1_name"></string>
+    <string name="bass1_type"></string>
+    <string name="bass1_description"></string>
+    <string name="bass1_manufacturer"></string>
+    <string name="bass1_stock"></string>
+    <string name="bass1_price"></string>
 </resources>
