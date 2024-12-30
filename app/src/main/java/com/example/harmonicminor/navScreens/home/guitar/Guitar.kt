@@ -8,5 +8,9 @@ data class Guitar(
     val price: String,
     val stock: String,
     val isAvailable: Boolean,
-    val imageRes: Int,
-)
+    val imageUrl: String,
+    val thumbnailUrl: String,
+    var id: String = ""
+){
+    constructor() : this("", "", "", "", "", "", true, "", "", "")
+}

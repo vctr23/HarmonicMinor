@@ -63,5 +63,7 @@ dependencies {
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }
 

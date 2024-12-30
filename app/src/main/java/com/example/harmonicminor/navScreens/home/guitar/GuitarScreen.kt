@@ -32,11 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
@@ -84,85 +84,84 @@ fun GuitarSection(innerPadding: PaddingValues, navController: NavController) {
             type = stringResource(R.string.guitar1_type),
             price = stringResource(R.string.guitar1_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.strato_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=1PEr3VJJL39aCpaLQKAubioIUnt6HXFE-"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar2_name),
             type = stringResource(R.string.guitar2_type),
             price = stringResource(R.string.guitar2_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.strato_thumbnail2,
+            thumbNailUrl = "https://drive.google.com/uc?id=1MSUudHlpnyxLj1riirGvjGYrGQBRRs9A"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar3_name),
             type = stringResource(R.string.guitar3_type),
             price = stringResource(R.string.guitar3_price),
             isAvailable = false,
-            thumbNailRes = R.drawable.tele_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=1GDBiWNy8F-R2C6YO9zwdu3N0ltAfzmnT"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar4_name),
             type = stringResource(R.string.guitar4_type),
             price = stringResource(R.string.guitar4_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.tele_thumbnail2,
+            thumbNailUrl = "https://drive.google.com/uc?id=195lxxsSHsMV8bdjlJc9oNqHfmOFv_YD8"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar5_name),
             type = stringResource(R.string.guitar5_type),
             price = stringResource(R.string.guitar5_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.lespaul_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=17tqQmo2fPCOqVoj387_N3WfREEpojpCD"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar6_name),
             type = stringResource(R.string.guitar6_type),
             price = stringResource(R.string.guitar6_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.lespaul_thumbnail2,
+            thumbNailUrl = "https://drive.google.com/uc?id=1xGNdfOCJKFDXEj08YHWMeguXh_nDgtLK"
         ),
-        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         GuitarThumbnail(
             name = stringResource(R.string.guitar7_name),
             type = stringResource(R.string.guitar7_type),
             price = stringResource(R.string.guitar7_price),
             isAvailable = false,
-            thumbNailRes = R.drawable.heavy_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=1MNjtsTmQsFT_YDS3Z9nG0fca1xNkNLCz"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar8_name),
             type = stringResource(R.string.guitar8_type),
             price = stringResource(R.string.guitar8_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.superstrat_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=1PjpKAbUoJvt8MLIyG0a2dV85qMNgNd5D"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar9_name),
             type = stringResource(R.string.guitar9_type),
             price = stringResource(R.string.guitar9_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.sevenstring_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=1UGQT2KymfTN30u9P1l2fokn-CjSTFgi1"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar10_name),
             type = stringResource(R.string.guitar10_type),
             price = stringResource(R.string.guitar10_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.sevenstring_thumbnail2,
+            thumbNailUrl = "https://drive.google.com/uc?id=1cskp2icSNFKCxEbEipzkCFE5lwbnQvL4"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar11_name),
             type = stringResource(R.string.guitar11_type),
             price = stringResource(R.string.guitar11_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.eightstring_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=1OOAwKZkumJheWcxkwrYMm660aQb2XiU0"
         ),
         GuitarThumbnail(
             name = stringResource(R.string.guitar12_name),
             type = stringResource(R.string.guitar12_type),
             price = stringResource(R.string.guitar12_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.hollow_thumbnail,
+            thumbNailUrl = "https://drive.google.com/uc?id=1R-RxUGz3vsy4Fp49xG2mX8RU4nwhGRi2"
         )
     )
 
@@ -200,7 +199,7 @@ fun GuitarSectionItem(guitarThumbnail: GuitarThumbnail, navController: NavContro
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(guitarThumbnail.thumbNailRes),
+                painter = rememberAsyncImagePainter(guitarThumbnail.thumbNailUrl),
                 contentDescription = null,
                 modifier = Modifier
                     .size(70.dp)
@@ -225,7 +224,9 @@ fun GuitarSectionItem(guitarThumbnail: GuitarThumbnail, navController: NavContro
                     modifier = Modifier.padding(vertical = 2.dp)
                 )
                 Text(
-                    text = if (guitarThumbnail.isAvailable) "In stock" else "Available soon",
+                    text = if (guitarThumbnail.isAvailable) stringResource(R.string.available) else stringResource(
+                        R.string.not_available
+                    ),
                     color = if (guitarThumbnail.isAvailable) stockColor else notOnStockColor,
                     fontSize = 11.sp,
                     modifier = Modifier.padding(vertical = 2.dp)

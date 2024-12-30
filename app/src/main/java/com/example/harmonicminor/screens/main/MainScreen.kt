@@ -106,9 +106,9 @@ fun ContentScreen(
 ) {
     when (selected) {
         0 -> HomeScreen(navController)
-        1 -> FavouriteScreen()
+        1 -> FavouriteScreen(navController)
         2 -> SearchScreen()
-        3 -> ShoppingCartScreen()
+        3 -> ShoppingCartScreen(navController)
         4 -> MenuScreen(navController, auth)
     }
 }

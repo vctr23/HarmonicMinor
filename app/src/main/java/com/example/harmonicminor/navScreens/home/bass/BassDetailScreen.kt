@@ -58,7 +58,7 @@ fun BassDetailScreen(navController: NavHostController, bassName: String) {
             price = stringResource(R.string.bass1_price),
             stock = stringResource(R.string.bass1_stock),
             isAvailable = true,
-            imageRes = R.drawable.eightstring_full,
+            imageRes = 2,
         )
     )
 

@@ -20,6 +20,16 @@
     <string name="password_error">Password must be 6 to 12 characters</string>
     <string name="password_empty">Password field mustn\'t be empty</string>
     <string name="username_empty">Username field mustn\'t be empty</string>
+    <string name="favourites">Favourites</string>
+    <string name="favourites_empty">Add some products as your favourites!!!!</string>
+    <string name="added_favourite">Product successfully added to favourites</string>
+    <string name="removed_favourite">Product successfully removed from favourites</string>
+    <string name="cart">Added to cart</string>
+    <string name="cart_empty">¡¡¡¡Add some product to the cart!!!!</string>
+    <string name="added_cart">Product successfully added to the cart</string>
+    <string name="removed_cart">Product successfully eliminated from the cart</string>
+    <string name="total_price">Total price: </string>
+    <string name="pay">Pay</string>
     <string name="available_languages">Available languages:</string>
     <string name="app_language">English</string>
     <string name="email_address">Email</string>

@@ -5,5 +5,5 @@ data class GuitarThumbnail(
     val type: String,
     val price: String,
     val isAvailable: Boolean,
-    val thumbNailRes: Int,
+    val thumbNailUrl: String,
 )

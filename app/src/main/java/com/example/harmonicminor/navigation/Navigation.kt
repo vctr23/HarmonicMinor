@@ -104,13 +104,13 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 HomeScreen(navController)
             }
             composable(Routes.FavouriteScreen) {
-                FavouriteScreen()
+                FavouriteScreen(navController)
             }
             composable(Routes.SearchScreen) {
                 SearchScreen()
             }
             composable(Routes.ShoppingCartScreen) {
-                ShoppingCartScreen()
+                ShoppingCartScreen(navController)
             }
             composable(Routes.MenuScreen) {
                 MenuScreen(navController, auth)

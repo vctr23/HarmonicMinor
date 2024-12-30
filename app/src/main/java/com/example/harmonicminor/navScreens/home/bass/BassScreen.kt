@@ -83,7 +83,7 @@ fun BassSection(innerPadding: PaddingValues, navController: NavController) {
             type = stringResource(R.string.bass1_type),
             price = stringResource(R.string.bass1_price),
             isAvailable = true,
-            thumbNailRes = R.drawable.eightstring_thumbnail
+            thumbNailRes = 1
         )
     )
     LazyColumn(

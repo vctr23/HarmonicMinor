@@ -16,8 +16,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,16 +24,20 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
@@ -49,131 +51,15 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GuitarDetailScreen(navController: NavController, guitarName: String) {
-    val guitars = listOf(
-        Guitar(
-            name = stringResource(R.string.guitar1_name),
-            type = stringResource(R.string.guitar1_type),
-            description = stringResource(R.string.guitar1_description),
-            manufacturer = stringResource(R.string.guitar1_manufacturer),
-            price = stringResource(R.string.guitar1_price),
-            stock = stringResource(R.string.guitar1_stock),
-            isAvailable = true,
-            imageRes = R.drawable.strato_full,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar2_name),
-            type = stringResource(R.string.guitar2_type),
-            description = stringResource(R.string.guitar2_description),
-            manufacturer = stringResource(R.string.guitar2_manufacturer),
-            price = stringResource(R.string.guitar2_price),
-            stock = stringResource(R.string.guitar2_stock),
-            isAvailable = true,
-            imageRes = R.drawable.strato_full2,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar3_name),
-            type = stringResource(R.string.guitar3_type),
-            description = stringResource(R.string.guitar3_description),
-            manufacturer = stringResource(R.string.guitar3_manufacturer),
-            price = stringResource(R.string.guitar3_price),
-            stock = stringResource(R.string.guitar3_stock),
-            isAvailable = false,
-            imageRes = R.drawable.tele_full,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar4_name),
-            type = stringResource(R.string.guitar4_type),
-            description = stringResource(R.string.guitar4_description),
-            manufacturer = stringResource(R.string.guitar4_manufacturer),
-            price = stringResource(R.string.guitar4_price),
-            stock = stringResource(R.string.guitar4_stock),
-            isAvailable = true,
-            imageRes = R.drawable.tele_full2,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar5_name),
-            type = stringResource(R.string.guitar5_type),
-            description = stringResource(R.string.guitar5_description),
-            manufacturer = stringResource(R.string.guitar5_manufacturer),
-            price = stringResource(R.string.guitar5_price),
-            stock = stringResource(R.string.guitar5_stock),
-            isAvailable = true,
-            imageRes = R.drawable.lespaul_full,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar6_name),
-            type = stringResource(R.string.guitar6_type),
-            description = stringResource(R.string.guitar6_description),
-            manufacturer = stringResource(R.string.guitar6_manufacturer),
-            price = stringResource(R.string.guitar6_price),
-            stock = stringResource(R.string.guitar6_stock),
-            isAvailable = true,
-            imageRes = R.drawable.lespaul_full2,
-        ),
-        //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        Guitar(
-            name = stringResource(R.string.guitar7_name),
-            type = stringResource(R.string.guitar7_type),
-            description = stringResource(R.string.guitar7_description),
-            manufacturer = stringResource(R.string.guitar7_manufacturer),
-            price = stringResource(R.string.guitar7_price),
-            stock = stringResource(R.string.guitar7_stock),
-            isAvailable = false,
-            imageRes = R.drawable.heavy_full,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar8_name),
-            type = stringResource(R.string.guitar8_type),
-            description = stringResource(R.string.guitar8_description),
-            manufacturer = stringResource(R.string.guitar8_manufacturer),
-            price = stringResource(R.string.guitar8_price),
-            stock = stringResource(R.string.guitar8_stock),
-            isAvailable = true,
-            imageRes = R.drawable.superstrat_full,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar9_name),
-            type = stringResource(R.string.guitar9_type),
-            description = stringResource(R.string.guitar9_description),
-            manufacturer = stringResource(R.string.guitar9_manufacturer),
-            price = stringResource(R.string.guitar9_price),
-            stock = stringResource(R.string.guitar9_stock),
-            isAvailable = true,
-            imageRes = R.drawable.sevenstring_full,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar10_name),
-            type = stringResource(R.string.guitar10_type),
-            description = stringResource(R.string.guitar10_description),
-            manufacturer = stringResource(R.string.guitar10_manufacturer),
-            price = stringResource(R.string.guitar10_price),
-            stock = stringResource(R.string.guitar10_stock),
-            isAvailable = true,
-            imageRes = R.drawable.sevenstring_full2,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar11_name),
-            type = stringResource(R.string.guitar11_type),
-            description = stringResource(R.string.guitar11_description),
-            manufacturer = stringResource(R.string.guitar11_manufacturer),
-            price = stringResource(R.string.guitar11_price),
-            stock = stringResource(R.string.guitar11_stock),
-            isAvailable = true,
-            imageRes = R.drawable.eightstring_full,
-        ),
-        Guitar(
-            name = stringResource(R.string.guitar12_name),
-            type = stringResource(R.string.guitar12_type),
-            description = stringResource(R.string.guitar12_description),
-            manufacturer = stringResource(R.string.guitar12_manufacturer),
-            price = stringResource(R.string.guitar12_price),
-            stock = stringResource(R.string.guitar12_stock),
-            isAvailable = true,
-            imageRes = R.drawable.hollow_full,
-        ),
-    )
+fun GuitarDetailScreen(navController: NavController, guitarName: String, ) {
+    val guitarViewModel: GuitarViewModel = viewModel()
+    val context = LocalContext.current
 
+    LaunchedEffect(Unit) {
+        guitarViewModel.readGuitars()
+    }
+
+    val guitars = guitarViewModel.guitars
     val guitar = guitars.find { it.name == guitarName }
 
     if (guitar != null) {
@@ -206,7 +92,7 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
             ) {
                 item {
                     Image(
-                        painter = painterResource(guitar.imageRes),
+                        painter = rememberAsyncImagePainter(guitar.imageUrl),
                         contentDescription = guitar.name,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -295,12 +181,12 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    // Funcionalidad favorito
+                                    guitarViewModel.toggleFavourite(guitar, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                Icons.Default.Favorite,
+                                painter = painterResource(R.drawable.heart_plus),
                                 contentDescription = null,
                                 modifier = Modifier.size(28.dp),
                                 tint = iconColor
@@ -319,12 +205,12 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    // Funcionalidad carrito
+                                    guitarViewModel.toggleCart(guitar, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                Icons.Default.ShoppingCart,
+                                painter = painterResource(R.drawable.add_shopping_cart),
                                 contentDescription = null,
                                 modifier = Modifier.size(28.dp),
                                 tint = iconColor
