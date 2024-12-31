@@ -1,5 +1,6 @@
 package com.example.harmonicminor.navScreens.search
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -31,17 +33,16 @@ import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
 
-@OptIn(ExperimentalMaterial3Api::class)
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SearchScreen() {
-
-
-    Scaffold { innerPadding ->
+    Scaffold {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
-                .background(color = backgroundColor)
+                .background(color = backgroundColor),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             SearchBar()
         }
@@ -57,7 +58,7 @@ fun SearchBar() {
     SearchBar(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(horizontal = 16.dp),
         colors = SearchBarDefaults.colors(
             containerColor = backgroundAccentColor,
             inputFieldColors = TextFieldDefaults.colors(

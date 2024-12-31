@@ -1,5 +1,7 @@
 package com.example.harmonicminor.navScreens.shopping
 
+import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,6 +24,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -38,6 +44,9 @@ import com.example.harmonicminor.R
 import com.example.harmonicminor.navScreens.home.guitar.GuitarSectionItem
 import com.example.harmonicminor.navScreens.home.guitar.GuitarThumbnail
 import com.example.harmonicminor.navScreens.home.guitar.GuitarViewModel
+import com.example.harmonicminor.navScreens.menu.address.Address
+import com.example.harmonicminor.navScreens.menu.address.getAddressData
+import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
@@ -46,83 +55,215 @@ import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
 import com.google.firebase.auth.FirebaseAuth
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ShoppingCartScreen(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = backgroundColor),
-    ) {
-        val guitarViewModel: GuitarViewModel = viewModel()
-        val context = LocalContext.current
-        val cart = guitarViewModel.cart.value
+    val guitarViewModel: GuitarViewModel = viewModel()
+    val context = LocalContext.current
+    val cart = guitarViewModel.cart.value
+    val auth = FirebaseAuth.getInstance()
+    var address by remember { mutableStateOf<Address?>(null) }
+    val totalPrice = cart.sumOf {
+        it.price.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
+    }
 
-        val totalPrice = cart.sumOf {
-            it.price.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
+    LaunchedEffect(Unit) {
+        guitarViewModel.loadCart(FirebaseAuth.getInstance().currentUser?.uid ?: "")
+
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
+            getAddressData(
+                userId = userId,
+                context = context,
+                onSuccess = { loadedAddress ->
+                    address = loadedAddress
+                },
+                onFailure = { errorMessage ->
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            )
         }
+    }
 
-        LaunchedEffect(Unit) {
-            guitarViewModel.loadCart(FirebaseAuth.getInstance().currentUser?.uid ?: "")
-        }
-
-        Scaffold { innerPadding ->
-            if (cart.isEmpty()) {
-                Column(
+    Scaffold {
+        if (cart.isEmpty()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(backgroundColor),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = stringResource(R.string.cart_empty),
+                    fontSize = 20.sp,
+                    color = textColor,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(vertical = 20.dp)
+                )
+                Image(
+                    painter = painterResource(R.drawable.cart_empty),
+                    contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding)
-                        .background(backgroundColor),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
+                        .size(500.dp)
+                        .padding(vertical = 20.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
+        } else {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(backgroundColor),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                item {
                     Text(
-                        text = stringResource(R.string.cart_empty),
+                        text = stringResource(R.string.cart),
                         fontSize = 20.sp,
                         color = textColor,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(vertical = 20.dp)
-                    )
-                    Image(
-                        painter = painterResource(R.drawable.cart_empty),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(500.dp)
-                            .padding(vertical = 20.dp),
-                        contentScale = ContentScale.Crop
+                        modifier = Modifier.padding(vertical = 10.dp)
                     )
                 }
-            } else {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding)
-                        .padding(top = 45.dp)
-                        .weight(1f)
-                        .background(backgroundColor),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    item {
-                        Text(
-                            text = stringResource(R.string.cart),
-                            fontSize = 20.sp,
-                            color = textColor,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(vertical = 10.dp)
+                items(cart) { guitar ->
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        GuitarSectionItem(
+                            guitarThumbnail = GuitarThumbnail(
+                                name = guitar.name,
+                                type = guitar.type,
+                                price = guitar.price,
+                                isAvailable = guitar.isAvailable,
+                                thumbNailUrl = guitar.thumbnailUrl
+                            ), navController
                         )
+                        Box(
+                            modifier = Modifier
+                                .height(42.dp)
+                                .width(150.dp)
+                                .padding(vertical = 4.dp)
+                                .padding(bottom = 8.dp)
+                                .background(
+                                    Brush.linearGradient(
+                                        colors = listOf(buttonColor1, buttonColor2)
+                                    ),
+                                    shape = RoundedCornerShape(12.dp)
+                                )
+                                .clickable {
+                                    guitarViewModel.toggleCart(guitar, context)
+                                },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.remove_shopping_cart),
+                                contentDescription = null,
+                                modifier = Modifier.size(28.dp),
+                                tint = iconColor
+                            )
+                        }
                     }
-                    items(cart) { guitar ->
+                }
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                            .background(
+                                backgroundAccentColor,
+                                shape = RoundedCornerShape(12.dp)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        address?.let { addr ->
+                            Column(
+                                modifier = Modifier.padding(8.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.shipping_address),
+                                    color = textColor,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 16.sp,
+                                    modifier = Modifier.padding(vertical = 2.dp)
+                                )
+                                if (addr.id.isNotEmpty()) {
+                                    Text(
+                                        text = stringResource(R.string.id) + ": " + addr.id,
+                                        color = textColor,
+                                        modifier = Modifier.padding(vertical = 2.dp)
+                                    )
+                                }
+                                Text(
+                                    text = stringResource(R.string.name) + ": "
+                                            + "${addr.name} ${addr.lastname}",
+                                    color = textColor,
+                                    modifier = Modifier.padding(vertical = 2.dp)
+                                )
+                                Text(
+                                    text = stringResource(R.string.street) + ": "
+                                            + addr.street,
+                                    color = textColor,
+                                    modifier = Modifier.padding(vertical = 2.dp)
+                                )
+                                Text(
+                                    text = stringResource(R.string.locality) + ": "
+                                            + "${addr.postcode} ${addr.locality}",
+                                    color = textColor,
+                                    modifier = Modifier.padding(vertical = 2.dp)
+                                )
+                                Text(
+                                    text = stringResource(R.string.country) + ": "
+                                            + addr.country,
+                                    color = textColor,
+                                    modifier = Modifier.padding(vertical = 2.dp)
+                                )
+                                if (addr.phone.isNotEmpty()) {
+                                    Text(
+                                        text = stringResource(R.string.phone) + ": "
+                                                + addr.phone,
+                                        color = textColor,
+                                        modifier = Modifier.padding(vertical = 2.dp)
+                                    )
+                                }
+                            }
+                        } ?: run {
+                            Text(
+                                text = stringResource(R.string.loading),
+                                color = textColor
+                            )
+                        }
+                    }
+                }
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                            .background(
+                                backgroundAccentColor,
+                                shape = RoundedCornerShape(12.dp)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
                         Column(
+                            modifier = Modifier.padding(16.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            GuitarSectionItem(
-                                guitarThumbnail = GuitarThumbnail(
-                                    name = guitar.name,
-                                    type = guitar.type,
-                                    price = guitar.price,
-                                    isAvailable = guitar.isAvailable,
-                                    thumbNailUrl = guitar.thumbnailUrl
-                                ), navController
+                            Text(
+                                text = stringResource(R.string.total_price) + " " + totalPrice.toString() + "€",
+                                fontSize = 18.sp,
+                                color = textColor,
+                                fontWeight = FontWeight.Bold
                             )
+                            Spacer(modifier = Modifier.height(16.dp))
                             Box(
                                 modifier = Modifier
                                     .height(42.dp)
@@ -135,95 +276,30 @@ fun ShoppingCartScreen(navController: NavController) {
                                         ),
                                         shape = RoundedCornerShape(12.dp)
                                     )
-                                    .clickable {
-                                        guitarViewModel.toggleCart(guitar, context)
+                                    .clickable(enabled = address != null) {
+                                        navController.navigate(Routes.PaymentCorrectScreen) {
+                                            launchSingleTop = true
+                                        }
+
                                     },
                                 contentAlignment = Alignment.Center
                             ) {
-                                Icon(
-                                    painter = painterResource(R.drawable.remove_shopping_cart),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(28.dp),
-                                    tint = iconColor
-                                )
-                            }
-                        }
-                    }
-                    item {
-                        Spacer(modifier = Modifier.height(16.dp))
-                    }
-                    item {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                                .background(
-                                    backgroundAccentColor,
-                                    shape = RoundedCornerShape(12.dp)
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            // Mostrar dirección de envío
-                            Text(text = "Dirección de envío")
-                        }
-                    }
-                    item {
-                        Spacer(modifier = Modifier.height(16.dp))
-                    }
-                    item {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                                .background(
-                                    backgroundAccentColor,
-                                    shape = RoundedCornerShape(12.dp)
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Column(
-                                modifier = Modifier.padding(16.dp),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.total_price) + " " + totalPrice.toString() + "€",
-                                    fontSize = 18.sp,
-                                    color = textColor,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Spacer(modifier = Modifier.height(16.dp))
-                                Box(
-                                    modifier = Modifier
-                                        .height(42.dp)
-                                        .width(150.dp)
-                                        .padding(vertical = 4.dp)
-                                        .padding(bottom = 8.dp)
-                                        .background(
-                                            Brush.linearGradient(
-                                                colors = listOf(buttonColor1, buttonColor2)
-                                            ),
-                                            shape = RoundedCornerShape(12.dp)
-                                        )
-                                        .clickable {
-
-                                        },
-                                    contentAlignment = Alignment.Center
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Row(
-                                        modifier = Modifier.padding(8.dp),
-                                        verticalAlignment = Alignment.CenterVertically
-                                    ) {
-                                        Icon(
-                                            painter = painterResource(R.drawable.add_card),
-                                            contentDescription = null,
-                                            modifier = Modifier.size(28.dp)
-                                        )
-                                        Text(
-                                            text = stringResource(R.string.pay),
-                                            color = textColor,
-                                            fontSize = 16.sp
-                                        )
-                                    }
+                                    Icon(
+                                        painter = painterResource(R.drawable.add_card),
+                                        contentDescription = null,
+                                        modifier = Modifier.size(28.dp)
+                                    )
+
+                                    Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+
+                                    Text(
+                                        text = stringResource(R.string.pay),
+                                        color = textColor,
+                                        fontSize = 16.sp
+                                    )
                                 }
                             }
                         }

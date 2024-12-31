@@ -30,6 +30,8 @@
     <string name="removed_cart">Producto correctamente eliminado del carro</string>
     <string name="total_price">Precio total: </string>
     <string name="pay">Pagar</string>
+    <string name="checkout">Fin del pago</string>
+    <string name="correct_payment">Pago correcto</string>
     <string name="available_languages">Idiomas disponibles:</string>
     <string name="app_language">Español</string>
     <string name="email_address">Email</string>
@@ -84,6 +86,7 @@
     <string name="krone">Corona (Danesa)</string>
     <string name="krona">Corona (Suecia)</string>
     <string name="address">Dirección de facturación y envío:</string>
+    <string name="shipping_address">Dirección de envío:</string>
     <string name="id">DNI/NIF/NIE</string>
     <string name="name">Nombre</string>
     <string name="last_name">Apellidos</string>
@@ -95,7 +98,8 @@
     <string name="phone">Número de teléfono</string>
     <string name="save_address">Guardar dirección</string>
     <string name="address_empty_fields">Rellene los campos obligatorios</string>
-    <string name="no_address">No se encontró ninguna dirección</string>
+    <string name="no_address">No se encontró ninguna dirección de facturación/envío</string>
+    <string name="no_address_error">Necesitas tener una dirección de envio</string>
     <string name="error_getaddress">Error al leer la dirección</string>
     <string name="error_setaddress">Error al guardar la dirección</string>
     <string name="address_success">Dirección guardada correctamente</string>
@@ -491,10 +495,185 @@
     <string name="guitar12_stock">20</string>
     <string name="guitar12_price">484 €</string>
 
-    <string name="bass1_name"></string>
-    <string name="bass1_type"></string>
-    <string name="bass1_description"></string>
-    <string name="bass1_manufacturer"></string>
-    <string name="bass1_stock"></string>
-    <string name="bass1_price"></string>
+    <string name="bass1_name">Harley Benton JB-20 BM Standard Series</string>
+    <string name="bass1_type">J Bass</string>
+    <string name="bass1_description">•Cuerpo: Álamo\n
+                    •Mástil atornillado: Arce\n
+                    •Diapasón: Amaranto\n
+                    •Incrustaciones del diapasón: Puntos\n
+                    •Perfil del mástil: \"C\" moderna\n
+                    •20 trastes\n
+                    •Escala: 864 mm\n
+                    •Anchura de la cejilla: 38 mm\n
+                    •Alma de doble acción\n
+                    •Pastillas: 2 JB-Style de bobina simple\n
+                    •Controles: Volumen y tono\n
+                    •Herrajes de cromo\n
+                    •Clavijas de afinación de estilo PB clásicas\n
+                    •Cuerdas de fábrica: .040 - .100\n
+                    •Color: Blue Metallic de alto brillo</string>
+    <string name="bass1_manufacturer">Harley Benton</string>
+    <string name="bass1_stock">4</string>
+    <string name="bass1_price">119 €</string>
+
+    <string name="bass2_name">Harley Benton PB-20 SBK Standard Series</string>
+    <string name="bass2_type">P Bass</string>
+    <string name="bass2_description">•Cuerpo: Álamo\n
+                    •Mástil atornillado: Arce\n
+                    •Diapasón: Roseacer\n
+                    •Incrustaciones del diapasón: Puntos\n
+                    •Perfil del mástil: \"C\" moderna\n
+                    •20 trastes\n
+                    •Escala: 864 mm\n
+                    •Anchura de la cejilla: 42 mm\n
+                    •Alma de doble acción\n
+                    •Pastillas: 1 P-Style de bobina simple\n
+                    •Controles: Volumen y tono\n
+                    •Herrajes de cromo\n
+                    •Clavijas de afinación de estilo vintage\n
+                    •Cuerdas de fábrica: .040 - .100\n
+                    •Color: Negro mate</string>
+    <string name="bass2_manufacturer">Harley Benton</string>
+    <string name="bass2_stock">70</string>
+    <string name="bass2_price">129 €</string>
+
+    <string name="bass3_name">Ibanez GSR200-BK</string>
+    <string name="bass3_type">Bajo eléctrico</string>
+    <string name="bass3_description">•GIO by IBANEZ\n
+                    •Cuerpo: Álamo\n
+                    •Mástil: GSR4 Arce\n
+                    •Diapasón: Jatoba\n
+                    •Pastillas: 2 (1 J-style + 1 P-style)\n
+                    •Electrónica Activa\n
+                    •Hardware Cromado\n
+                    •Color: Black</string>
+    <string name="bass3_manufacturer">Ibanez</string>
+    <string name="bass3_stock">14</string>
+    <string name="bass3_price">277 €</string>
+
+    <string name="bass4_name">Yamaha TRBX174EW RB</string>
+    <string name="bass4_type">Bajo eléctrico</string>
+    <string name="bass4_description">•Cuerpo: Caoba con tapa de mango\n
+                    •Mástil de arce atornillado\n
+                    •Diapasón de palisandro\n
+                    •Perfil del mástil: "C" moderno\n
+                    •24 trastes\n
+                    •Escala: 864 mm\n
+                    •Anchura de la cejilla: 40 mm\n
+                    •Pastillas: 1 de bobina dividida y 1 de bobina simple\n
+                    •Herrajes de cromo Yamaha\n
+                    •Color: Root beer</string>
+    <string name="bass4_manufacturer">Yamaha</string>
+    <string name="bass4_stock">31</string>
+    <string name="bass4_price">229 €</string>
+
+    <string name="bass5_name">Squier Affinity P Bass MN PJ OW</string>
+    <string name="bass5_type">P Bass</string>
+    <string name="bass5_description">•Affinity Series\n
+                    •Cuerpo: Álamo\n
+                    •Mástil atornillado: Arce\n
+                    •Diapasón: Laurel\n
+                    •Incrustaciones del diapasón: Puntos\n
+                    •Perfil del mástil: \"C\" delgado\n
+                    •20 trastes\n
+                    •Escala: 864 mm\n
+                    •Anchura de la cejilla: 41,3 mm\n
+                    •Pastillas: 2 de bobina simple\n
+                    •Controles: 2 Volumen y 1 tono\n
+                    •Herrajes de cromo\n
+                    •Clavijas de afinación estilo vintage\n
+                    •Cuerdas de fábrica: NPS .045 - .105\n
+                    •Color: Olympic White</string>
+    <string name="bass5_manufacturer">(Fender) Squier</string>
+    <string name="bass5_stock">56</string>
+    <string name="bass5_price">233 €</string>
+
+    <string name="bass6_name">Dingwall NG3 Nolly Sig.6 Duc Pearl WH</string>
+    <string name="bass6_type">Bajo eléctrico</string>
+    <string name="bass6_description">•Cuerpo: Aliso\n
+                    •Mástil atornillado: Arce\n
+                    •Diapasón: Arce\n
+                    •Golpeador: Impresión de fibra de carbono\n
+                    •Perfil del mástil: \"C\" delgado moderno\n
+                    •24 trastes\n
+                    •Escala de 845 mm (33,25\") mín. - 940 mm (37\") máx.\n
+                    •Anchura de la cejilla: 40 mm\n
+                    •Pastillas: FD-3N (puente) - FD-3N (intermedia) - FD-3N (mástil)\n
+                    •Controles: Volumen, Graves, Medios, Agudos, Selector de pastilla giratorio\n
+                    •Puente: Dingwall\n
+                    •Interruptor: Activo/Pasivo\n
+                    •Herrajes de cromo ahumado\n
+                    •Clavijas de afinación Dingwall\n
+                    •Color: Ducati Pearl White</string>
+    <string name="bass6_manufacturer">Dingwall</string>
+    <string name="bass6_stock">3</string>
+    <string name="bass6_price">2899 €</string>
+
+    <string name="software1_name">Image Line FL Studio Producer Edition</string>
+    <string name="software1_type">DAW</string>
+    <string name="software1_description">
+                    •Software para la producción, remezcla, programación de Loops,\ngrabación y mezcla de forma intuitiva
+                    •Updates gratuitos de por vida que garantizan la versión más actual\n
+                    •Completa automatización de todos los parámetros\n
+                    •Formatos soportados: WAV, MP3, OGG, WavPack, AIFF, REX\n
+                    •Incluye 13 instrumentos, 7 Tools / Generators, más de 50 efectos y muchos Samples y Loops\n
+                    •Funcionalidad como aplicación Standalone o VSTi posible\n
+                    •Registro y procesamiento de Audio con grabación Direct-to-disc y Offline Rendering
+    </string>
+    <string name="software1_manufacturer">Image Line</string>
+    <string name="software1_stock">4</string>
+    <string name="software1_price">119 €</string>
+
+    <string name="software2_name">Ableton Live 12 Suite</string>
+    <string name="software2_type">DAW</string>
+    <string name="software2_description">
+    •Software de producción musical para creación, edición y performance en vivo\n
+    •Incluye más de 70 instrumentos y efectos, con una librería completa de sonidos\n
+    •Funcionalidad avanzada para la edición de audio, MIDI y loops\n
+    •Interfaz intuitiva y versátil para músicos y productores\n
+    •Compatible con VST, AU, AAX, y otros formatos de plugins\n
+    •Graba y mezcla en tiempo real, con posibilidad de realizar actuaciones en vivo</string>
+    <string name="software2_manufacturer">Ableton</string>
+    <string name="software2_stock">15</string>
+    <string name="software2_price">599 €</string>
+
+    <string name="software3_name">Steinberg Cubase Pro 14</string>
+    <string name="software3_type">DAW</string>
+    <string name="software3_description">
+    •Software profesional de producción y mezcla de audio\n
+    •Incluye una amplia variedad de instrumentos virtuales, efectos y herramientas de edición avanzada\n
+    •Optimizado para producción musical en estudio y en vivo\n
+    •Compatibilidad con audio multicanal, MIDI y VST\n
+    •Innovador sistema de automatización y efectos de audio de alta calidad\n
+    •Incluye la licencia para la instalación en múltiples dispositivos</string>
+    <string name="software3_manufacturer">Steinberg</string>
+    <string name="software3_stock">10</string>
+    <string name="software3_price">489 €</string>
+
+    <string name="software4_name">PreSonus Studio One 7 Professional</string>
+    <string name="software4_type">DAW</string>
+    <string name="software4_description">
+    •Software DAW con flujo de trabajo optimizado para la producción musical\n
+    •Interfaz intuitiva que facilita la creación, mezcla y masterización de música\n
+    •Incluye una amplia variedad de instrumentos, efectos, y herramientas de grabación\n
+    •Compatibilidad con plugins VST, AU y AAX\n
+    •Automatización avanzada para un control preciso sobre la mezcla y efectos\n
+    •Funcionalidad para trabajar con audio y MIDI de forma integrada</string>
+    <string name="software4_manufacturer">PreSonus</string>
+    <string name="software4_stock">12</string>
+    <string name="software4_price">138 €</string>
+
+    <string name="software5_name">Apple Logic Pro</string>
+    <string name="software5_type">DAW</string>
+    <string name="software5_description">
+    •Software de producción musical profesional para Mac con herramientas avanzadas de edición\n
+    •Incluye más de 70 instrumentos y 60 efectos, con opciones de personalización avanzadas\n
+    •Amplia compatibilidad con plugins AU, VST y AAX\n
+    •Perfecto para composición, grabación, mezcla y masterización\n
+    •Interfaz de usuario optimizada para flujos de trabajo rápidos y eficaces\n
+    •Funcionalidad de grabación y edición en tiempo real</string>
+    <string name="software5_manufacturer">Apple</string>
+    <string name="software5_stock">8</string>
+    <string name="software5_price">229 €</string>
+
 </resources>

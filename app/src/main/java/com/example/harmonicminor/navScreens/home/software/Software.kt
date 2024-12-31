@@ -1,8 +1,8 @@
-package com.example.harmonicminor.navScreens.home.guitar
+package com.example.harmonicminor.navScreens.home.software
 
 import com.example.harmonicminor.navScreens.home.Identifiable
 
-data class Guitar(
+data class Software(
     val name: String,
     val type: String,
     val description: String,
@@ -12,7 +12,7 @@ data class Guitar(
     val isAvailable: Boolean,
     val imageUrl: String,
     val thumbnailUrl: String,
-    override val id: String = ""
+    override val id: String
 ) : Identifiable {
     constructor() : this("", "", "", "", "", "", true, "", "", "")
 }

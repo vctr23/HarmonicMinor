@@ -30,6 +30,8 @@
     <string name="removed_cart">Product successfully eliminated from the cart</string>
     <string name="total_price">Total price: </string>
     <string name="pay">Pay</string>
+    <string name="checkout">End of payment</string>
+    <string name="correct_payment">Payment successful</string>
     <string name="available_languages">Available languages:</string>
     <string name="app_language">English</string>
     <string name="email_address">Email</string>
@@ -40,6 +42,7 @@
     <string name="shop_config">Shop configuration:</string>
     <string name="help_config">Help and terms:</string>
     <string name="communication_config">Contact us:</string>
+    <string name="account_config">Account configuration</string>
     <string name="language">Language</string>
     <string name="search">Search</string>
     <string name="country">Country</string>
@@ -83,7 +86,7 @@
     <string name="krone">Krone (Danish)</string>
     <string name="krona">Krona (Swedish)</string>
     <string name="address">Shipping and billing address</string>
-    <string name="account_config">Account configuration</string>
+    <string name="shipping_address">Shipping address:</string>
     <string name="id">ID</string>
     <string name="name">Name</string>
     <string name="last_name">Last Name</string>
@@ -95,7 +98,8 @@
     <string name="phone">Phone Number</string>
     <string name="save_address">Save Address</string>
     <string name="address_empty_fields">Fill in the required fields</string>
-    <string name="no_address">No address found</string>
+    <string name="no_address">No shipping/billing address found</string>
+    <string name="no_address_error">Necesitas tener una dirección de envio</string>
     <string name="error_getaddress">Error getting address</string>
     <string name="error_setaddress">Error saving address</string>
     <string name="address_success">Address successfully added</string>
@@ -488,10 +492,184 @@
     <string name="guitar12_stock">20</string>
     <string name="guitar12_price">484 €</string>
 
-    <string name="bass1_name"></string>
-    <string name="bass1_type"></string>
-    <string name="bass1_description"></string>
-    <string name="bass1_manufacturer"></string>
-    <string name="bass1_stock"></string>
-    <string name="bass1_price"></string>
+    <string name="bass1_name">Harley Benton JB-20 BM Standard Series</string>
+    <string name="bass1_type">J Bass</string>
+    <string name="bass1_description">•Body: Poplar\n
+                    •Bolt-on neck: Maple\n
+                    •Fretboard: Amaranth\n
+                    •Fretboard inlays: Dots\n
+                    •Neck profile: Modern "C"\n
+                    •20 frets\n
+                    •Scale: 864 mm\n
+                    •Nut width: 38 mm\n
+                    •Dual-action truss rod\n
+                    •Pickups: 2 JB-Style single-coils\n
+                    •Controls: Volume and tone\n
+                    •Chrome hardware\n
+                    •Classic PB-style tuning machines\n
+                    •Factory strings: .040 - .100\n
+                    •Color: High-gloss Blue Metallic</string>
+    <string name="bass1_manufacturer">Harley Benton</string>
+    <string name="bass1_stock">4</string>
+    <string name="bass1_price">119 €</string>
+
+    <string name="bass2_name">Harley Benton PB-20 SBK Standard Series</string>
+    <string name="bass2_type">P Bass</string>
+    <string name="bass2_description">•Body: Agathis\n
+                    •Bolt-on neck: Maple\n
+                    •Fretboard: Roseacer\n
+                    •Fretboard inlays: Dots\n
+                    •Neck profile: Modern "C"\n
+                    •20 frets\n
+                    •Scale: 864 mm\n
+                    •Nut width: 42 mm\n
+                    •Truss rod: Dual action\n
+                    •Pickups: 1 P-Style single coil\n
+                    •Controls: Volume and tone\n
+                    •Chrome hardware\n
+                    •Vintage-style tuners\n
+                    •Factory strings: .040 - .100\n
+                    •Color: Matte Black</string>
+    <string name="bass2_manufacturer">Harley Benton</string>
+    <string name="bass2_stock">70</string>
+    <string name="bass2_price">129 €</string>
+
+    <string name="bass3_name">Ibanez GSR200-BK</string>
+    <string name="bass3_type">Electric Bass</string>
+    <string name="bass3_description">•GIO by IBANEZ\n
+                    •Body: Agathis\n
+                    •Neck: GSR4 Maple\n
+                    •Fretboard: Jatoba\n
+                    •Pickups: 2 (1 J-style + 1 P-style)\n
+                    •Active Electronics\n
+                    •Chrome Hardware\n
+                    •Color: Black</string>
+    <string name="bass3_manufacturer">Ibanez</string>
+    <string name="bass3_stock">14</string>
+    <string name="bass3_price">277 €</string>
+
+    <string name="bass4_name">Yamaha TRBX174EW RB</string>
+    <string name="bass4_type">Electric Bass</string>
+    <string name="bass4_description">•Body: Mahogany with Mango Top\n
+                    •Bolt-on Maple neck\n
+                    •Palisander fretboard\n
+                    •Neck profile: Modern "C"\n
+                    •24 frets\n
+                    •Scale: 864 mm\n
+                    •Nut width: 40 mm\n
+                    •Pickups: 1 Split-coil and 1 Single-coil\n
+                    •Yamaha Chrome hardware\n
+                    •Color: Root Beer</string>
+    <string name="bass4_manufacturer">Yamaha</string>
+    <string name="bass4_stock">31</string>
+    <string name="bass4_price">229 €</string>
+
+    <string name="bass5_name">Squier Affinity P Bass MN PJ OW</string>
+    <string name="bass5_type">P Bass</string>
+    <string name="bass5_description">•Affinity Series\n
+                    •Body: Agathis\n
+                    •Bolt-on neck: Maple\n
+                    •Fretboard: Laurel\n
+                    •Fretboard inlays: Dots\n
+                    •Neck profile: Slim "C"\n
+                    •20 frets\n
+                    •Scale: 864 mm\n
+                    •Nut width: 41.3 mm\n
+                    •Pickups: 2 single-coil\n
+                    •Controls: 2 Volume and 1 Tone\n
+                    •Chrome hardware\n
+                    •Vintage-style tuners\n
+                    •Factory strings: NPS .045 - .105\n
+                    •Color: Olympic White</string>
+    <string name="bass5_manufacturer">(Fender) Squier</string>
+    <string name="bass5_stock">56</string>
+    <string name="bass5_price">233 €</string>
+
+    <string name="bass6_name">Dingwall NG3 Nolly Sig.6 Duc Pearl WH</string>
+    <string name="bass6_type">Electric Bass</string>
+    <string name="bass6_description">•Body: Alder\n
+                    •Bolt-on neck: Maple\n
+                    •Fretboard: Maple\n
+                    •Pickguard: Carbon Fiber Print\n
+                    •Neck profile: Slim Modern "C"\n
+                    •24 frets\n
+                    •Scale: 845 mm (33.25\") min. - 940 mm (37\") max.\n
+                    •Nut width: 40 mm\n
+                    •Pickups: FD-3N (bridge) - FD-3N (middle) - FD-3N (neck)\n
+                    •Controls: Volume, Bass, Mid, Treble, Pickup Selector Switch\n
+                    •Bridge: Dingwall\n
+                    •Switch: Active/Passive\n
+                    •Smoked Chrome hardware\n
+                    •Dingwall tuning machines\n
+                    •Color: Ducati Pearl White</string>
+    <string name="bass6_manufacturer">Dingwall</string>
+    <string name="bass6_stock">3</string>
+    <string name="bass6_price">2899 €</string>
+
+    <string name="software1_name">Image Line FL Studio Producer Edition</string>
+    <string name="software1_type">DAW</string>
+    <string name="software1_description">
+    •Software for production, remixing, loop programming,\nrecording, and mixing in an intuitive way\n
+    •Lifetime free updates that guarantee the latest version\n
+    •Complete automation of all parameters\n
+    •Supported formats: WAV, MP3, OGG, WavPack, AIFF, REX\n
+    •Includes 13 instruments, 7 tools/generators, over 50 effects, and many samples and loops\n
+    •Works as a standalone application or VSTi plugin\n
+    •Audio recording and processing with Direct-to-disc recording and offline rendering</string>
+    <string name="software1_manufacturer">Image Line</string>
+    <string name="software1_stock">4</string>
+    <string name="software1_price">119 €</string>
+
+    <string name="software2_name">Ableton Live 12 Suite</string>
+    <string name="software2_type">DAW</string>
+    <string name="software2_description">
+    •Music production software for creating, editing, and live performance\n
+    •Includes over 70 instruments and effects with a complete sound library\n
+    •Advanced functionality for editing audio, MIDI, and loops\n
+    •Intuitive and versatile interface for musicians and producers\n
+    •Compatible with VST, AU, AAX, and other plugin formats\n
+    •Record and mix in real-time, with the ability to perform live</string>
+    <string name="software2_manufacturer">Ableton</string>
+    <string name="software2_stock">15</string>
+    <string name="software2_price">599 €</string>
+
+    <string name="software3_name">Steinberg Cubase Pro 14</string>
+    <string name="software3_type">DAW</string>
+    <string name="software3_description">
+    •Professional audio production and mixing software\n
+    •Includes a wide variety of virtual instruments, effects, and advanced editing tools\n
+    •Optimized for studio and live music production\n
+    •Compatibility with multichannel audio, MIDI, and VST\n
+    •Innovative automation system and high-quality audio effects\n
+    •Includes license for installation on multiple devices</string>
+    <string name="software3_manufacturer">Steinberg</string>
+    <string name="software3_stock">10</string>
+    <string name="software3_price">489 €</string>
+
+    <string name="software4_name">PreSonus Studio One 7 Professional</string>
+    <string name="software4_type">DAW</string>
+    <string name="software4_description">
+    •DAW software with an optimized workflow for music production\n
+    •Intuitive interface that facilitates music creation, mixing, and mastering\n
+    •Includes a wide range of instruments, effects, and recording tools\n
+    •Compatible with VST, AU, and AAX plugins\n
+    •Advanced automation for precise control over mixing and effects\n
+    •Functionality for integrated audio and MIDI workflows</string>
+    <string name="software4_manufacturer">PreSonus</string>
+    <string name="software4_stock">12</string>
+    <string name="software4_price">138 €</string>
+
+    <string name="software5_name">Apple Logic Pro</string>
+    <string name="software5_type">DAW</string>
+    <string name="software5_description">
+    •Professional music production software for Mac with advanced editing tools\n
+    •Includes over 70 instruments and 60 effects with advanced customization options\n
+    •Wide compatibility with AU, VST, and AAX plugins\n
+    •Perfect for composing, recording, mixing, and mastering\n
+    •User interface optimized for fast and efficient workflows\n
+    •Real-time recording and editing functionality</string>
+    <string name="software5_manufacturer">Apple</string>
+    <string name="software5_stock">8</string>
+    <string name="software5_price">229 €</string>
+
 </resources>

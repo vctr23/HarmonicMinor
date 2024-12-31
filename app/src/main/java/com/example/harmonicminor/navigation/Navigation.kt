@@ -3,8 +3,6 @@ package com.example.harmonicminor.navigation
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
@@ -24,6 +22,7 @@ import com.example.harmonicminor.navScreens.home.guitar.GuitarDetailScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarScreen
 import com.example.harmonicminor.navScreens.home.microphones.MicrophonesScreen
 import com.example.harmonicminor.navScreens.home.piano.PianoScreen
+import com.example.harmonicminor.navScreens.home.software.SoftwareDetailScreen
 import com.example.harmonicminor.navScreens.home.software.SoftwareScreen
 import com.example.harmonicminor.navScreens.home.wind.WindScreen
 import com.example.harmonicminor.navScreens.menu.MenuScreen
@@ -33,6 +32,7 @@ import com.example.harmonicminor.navScreens.menu.faq.FAQScreen
 import com.example.harmonicminor.navScreens.menu.feedback.FeedbackScreen
 import com.example.harmonicminor.navScreens.menu.terms.Terms
 import com.example.harmonicminor.navScreens.search.SearchScreen
+import com.example.harmonicminor.navScreens.shopping.PaymentCorrectScreen
 import com.example.harmonicminor.navScreens.shopping.ShoppingCartScreen
 import com.example.harmonicminor.screens.Initial
 import com.example.harmonicminor.screens.Login
@@ -155,45 +155,31 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 MicrophonesScreen()
             }
             composable(Routes.SoftwareScreen){
-                SoftwareScreen()
+                SoftwareScreen(navController)
+            }
+            composable(Routes.PaymentCorrectScreen){
+                PaymentCorrectScreen(navController)
             }
             composable(
                 "${Routes.GuitarDetailScreen}/{guitarName}",
-                arguments = listOf(navArgument("guitarName") { type = NavType.StringType }),
-                enterTransition = {
-                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                },
-                exitTransition = {
-                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                },
-                popEnterTransition = {
-                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                },
-                popExitTransition = {
-                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                }
+                arguments = listOf(navArgument("guitarName") { type = NavType.StringType })
             ) { backStackEntry ->
                 val guitarName = backStackEntry.arguments?.getString("guitarName") ?: ""
                 GuitarDetailScreen(navController, guitarName)
             }
             composable(
                 "${Routes.BassDetailScreen}/{bassName}",
-                arguments = listOf(navArgument("bassName") { type = NavType.StringType }),
-                enterTransition = {
-                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                },
-                exitTransition = {
-                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                },
-                popEnterTransition = {
-                    fadeIn(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                },
-                popExitTransition = {
-                    fadeOut(animationSpec = spring(stiffness = Spring.StiffnessLow))
-                }
+                arguments = listOf(navArgument("bassName") { type = NavType.StringType })
             ) { backStackEntry ->
                 val bassName = backStackEntry.arguments?.getString("bassName") ?: ""
                 BassDetailScreen(navController, bassName)
+            }
+            composable(
+                "${Routes.SoftwareDetailScreen}/{softwareName}",
+                arguments = listOf(navArgument("softwareName") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val softwareName = backStackEntry.arguments?.getString("softwareName") ?: ""
+                SoftwareDetailScreen(navController, softwareName)
             }
         }
     )

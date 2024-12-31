@@ -32,11 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
@@ -53,7 +53,7 @@ fun BassScreen(navController: NavController) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.guitars))
+                    Text(text = stringResource(R.string.bass))
                 },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
@@ -83,8 +83,43 @@ fun BassSection(innerPadding: PaddingValues, navController: NavController) {
             type = stringResource(R.string.bass1_type),
             price = stringResource(R.string.bass1_price),
             isAvailable = true,
-            thumbNailRes = 1
-        )
+            thumbNailUrl = "https://drive.google.com/uc?id=1v6eSuVRIN5REfuqWV2WDEv4RslJc5SyU"
+        ),
+        BassThumbnail(
+            name = stringResource(R.string.bass2_name),
+            type = stringResource(R.string.bass2_type),
+            price = stringResource(R.string.bass2_price),
+            isAvailable = true,
+            thumbNailUrl = "https://drive.google.com/uc?id=1l0nG_CS-kmHXzV0Lak7ifSoHHpzFzvfD"
+        ),
+        BassThumbnail(
+            name = stringResource(R.string.bass3_name),
+            type = stringResource(R.string.bass3_type),
+            price = stringResource(R.string.bass3_price),
+            isAvailable = true,
+            thumbNailUrl = "https://drive.google.com/uc?id=1BDDhrGHEYJK_p0TikiT0tpzrr68_M-V6"
+        ),
+        BassThumbnail(
+            name = stringResource(R.string.bass4_name),
+            type = stringResource(R.string.bass4_type),
+            price = stringResource(R.string.bass4_price),
+            isAvailable = true,
+            thumbNailUrl = "https://drive.google.com/uc?id=1XnTqIlNuElb0lkfqoBYy9nr_ZDq4Whvs"
+        ),
+        BassThumbnail(
+            name = stringResource(R.string.bass5_name),
+            type = stringResource(R.string.bass5_type),
+            price = stringResource(R.string.bass5_price),
+            isAvailable = true,
+            thumbNailUrl = "https://drive.google.com/uc?id=1BbAeQlBJOGVcmsMDRLf_-KZPtvSgUwT3"
+        ),
+        BassThumbnail(
+            name = stringResource(R.string.bass6_name),
+            type = stringResource(R.string.bass6_type),
+            price = stringResource(R.string.bass6_price),
+            isAvailable = true,
+            thumbNailUrl = "https://drive.google.com/uc?id=1k9_ZwW1YcO0FjUsj-9SVOM-C5kG1aVCU"
+        ),
     )
     LazyColumn(
         modifier = Modifier
@@ -110,7 +145,7 @@ fun BassSectionItem(bassThumbnail: BassThumbnail, navController: NavController) 
             .background(backgroundAccentColor, shape = RoundedCornerShape(12.dp))
             .clip(RoundedCornerShape(12.dp))
             .clickable {
-                navController.navigate("${Routes.GuitarDetailScreen}/${bassThumbnail.name}")
+                navController.navigate("${Routes.BassDetailScreen}/${bassThumbnail.name}")
             }
     ) {
         Row(
@@ -120,7 +155,7 @@ fun BassSectionItem(bassThumbnail: BassThumbnail, navController: NavController) 
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(bassThumbnail.thumbNailRes),
+                painter = rememberAsyncImagePainter(bassThumbnail.thumbNailUrl),
                 contentDescription = null,
                 modifier = Modifier
                     .size(70.dp)
@@ -145,7 +180,9 @@ fun BassSectionItem(bassThumbnail: BassThumbnail, navController: NavController) 
                     modifier = Modifier.padding(vertical = 2.dp)
                 )
                 Text(
-                    text = if (bassThumbnail.isAvailable) "In stock" else "Available soon",
+                    text = if (bassThumbnail.isAvailable) stringResource(R.string.available) else stringResource(
+                        R.string.not_available
+                    ),
                     color = if (bassThumbnail.isAvailable) stockColor else notOnStockColor,
                     fontSize = 11.sp,
                     modifier = Modifier.padding(vertical = 2.dp)

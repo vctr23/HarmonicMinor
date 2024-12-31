@@ -72,7 +72,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
-
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun MenuScreen(
@@ -97,16 +97,15 @@ fun MenuScreen(
         )
     }
 
-    Scaffold { innerPadding ->
+    Scaffold {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
                 .background(backgroundColor),
-            contentPadding = PaddingValues(bottom = 60.dp)
+            contentPadding = PaddingValues(bottom = 4.dp)
         ) {
             item {
-                Spacer(modifier = Modifier.padding(vertical = 30.dp))
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
                 Profile()
             }
             item {

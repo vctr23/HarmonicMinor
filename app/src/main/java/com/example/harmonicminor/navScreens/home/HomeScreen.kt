@@ -1,5 +1,6 @@
 package com.example.harmonicminor.navScreens.home
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -47,19 +48,17 @@ import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
 
-
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController) {
-    Scaffold { innerPadding ->
+    Scaffold {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
                 .background(backgroundColor),
-            contentPadding = PaddingValues(bottom = 80.dp)
+            contentPadding = PaddingValues(bottom = 10.dp)
         ) {
             item {
-                Spacer(modifier = Modifier.padding(vertical = 20.dp))
                 HeaderSection()
             }
             item {
@@ -112,7 +111,7 @@ fun CategoriesSection(navController: NavController) {
         Category(
             stringResource(R.string.guitars),
             R.drawable.category_guitar,
-            onClick = { navController.navigate(Routes.GuitarScreen) }),
+            onClick = { navController.navigate(Routes.GuitarScreen)}),
         Category(
             stringResource(R.string.bass),
             R.drawable.category_bass,

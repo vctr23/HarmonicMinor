@@ -8,5 +8,9 @@ data class Bass(
     val price: String,
     val stock: String,
     val isAvailable: Boolean,
-    val imageRes: Int,
-)
+    val imageUrl: String,
+    val thumbNailUrl: String,
+    val id: String
+){
+    constructor() : this("", "", "", "", "", "", true, "", "", "")
+}

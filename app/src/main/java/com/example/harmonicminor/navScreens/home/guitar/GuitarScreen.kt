@@ -189,7 +189,9 @@ fun GuitarSectionItem(guitarThumbnail: GuitarThumbnail, navController: NavContro
             .background(backgroundAccentColor, shape = RoundedCornerShape(12.dp))
             .clip(RoundedCornerShape(12.dp))
             .clickable {
-                navController.navigate("${Routes.GuitarDetailScreen}/${guitarThumbnail.name}")
+                navController.navigate("${Routes.GuitarDetailScreen}/${guitarThumbnail.name}"){
+                    launchSingleTop = true
+                }
             }
     ) {
         Row(

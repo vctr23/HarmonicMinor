@@ -1,6 +1,6 @@
-package com.example.harmonicminor.navScreens.home.bass
+package com.example.harmonicminor.navScreens.home.software
 
-data class BassThumbnail(
+data class SoftwareThumbnail(
     val name: String,
     val type: String,
     val price: String,

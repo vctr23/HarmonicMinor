@@ -1,8 +1,11 @@
 package com.example.harmonicminor.screens.main
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -44,6 +47,8 @@ import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
 import com.google.firebase.auth.FirebaseAuth
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Main(navController: NavController, modifier: Modifier = Modifier, auth: FirebaseAuth) {
     var selected by rememberSaveable { mutableIntStateOf(0) }
@@ -54,7 +59,6 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
         NavItem(Icons.Default.ShoppingCart),
         NavItem(Icons.Default.Menu)
     )
-
 
     Scaffold(
         modifier = modifier
@@ -92,7 +96,7 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
             }
         }
     ) { innerPadding ->
-        ContentScreen(navController, modifier = modifier.padding(innerPadding), selected, auth)
+        ContentScreen(navController, innerPadding, selected, auth)
     }
 }
 
@@ -100,23 +104,24 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
 @Composable
 fun ContentScreen(
     navController: NavController,
-    modifier: Modifier = Modifier,
+    modifier: PaddingValues,
     selected: Int,
     auth: FirebaseAuth
 ) {
-    when (selected) {
-        0 -> HomeScreen(navController)
-        1 -> FavouriteScreen(navController)
-        2 -> SearchScreen()
-        3 -> ShoppingCartScreen(navController)
-        4 -> MenuScreen(navController, auth)
+    Box(modifier = Modifier.padding(modifier)) {
+        when (selected) {
+            0 -> HomeScreen(navController)
+            1 -> FavouriteScreen(navController)
+            2 -> SearchScreen()
+            3 -> ShoppingCartScreen(navController)
+            4 -> MenuScreen(navController, auth)
+        }
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Topbar(modifier: Modifier = Modifier) {
+fun Topbar() {
     TopAppBar(
         modifier = Modifier
             .fillMaxWidth()

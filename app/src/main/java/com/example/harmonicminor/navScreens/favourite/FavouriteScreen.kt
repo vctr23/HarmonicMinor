@@ -1,5 +1,6 @@
 package com.example.harmonicminor.navScreens.favourite
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,9 +33,11 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navScreens.home.ViewModelFactory
+import com.example.harmonicminor.navScreens.home.guitar.Guitar
 import com.example.harmonicminor.navScreens.home.guitar.GuitarSectionItem
 import com.example.harmonicminor.navScreens.home.guitar.GuitarThumbnail
-import com.example.harmonicminor.navScreens.home.guitar.GuitarViewModel
+import com.example.harmonicminor.navScreens.home.software.ItemViewModel
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -42,22 +45,25 @@ import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
 import com.google.firebase.auth.FirebaseAuth
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun FavouriteScreen(navController: NavController) {
-    val guitarViewModel: GuitarViewModel = viewModel()
+    val guitarViewModel: ItemViewModel<Guitar> =
+        viewModel(factory = ViewModelFactory(Guitar::class.java))
     val context = LocalContext.current
-    val favourites = guitarViewModel.favourites.value
 
     LaunchedEffect(Unit) {
-        guitarViewModel.loadFavourites(FirebaseAuth.getInstance().currentUser?.uid ?: "")
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        guitarViewModel.loadFavourites(userId, "guitars")
     }
 
-    Scaffold { innerPadding ->
-        if (favourites.isEmpty()) {
+    val guitarFavourites = guitarViewModel.favourites.value
+
+    Scaffold {
+        if (guitarFavourites.isEmpty()) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding)
                     .background(backgroundColor),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
@@ -82,8 +88,6 @@ fun FavouriteScreen(navController: NavController) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding)
-                    .padding(top = 45.dp)
                     .background(backgroundColor),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -96,17 +100,17 @@ fun FavouriteScreen(navController: NavController) {
                         modifier = Modifier.padding(vertical = 10.dp)
                     )
                 }
-                items(favourites) { guitar ->
+                items(guitarFavourites) { favourite ->
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         GuitarSectionItem(
                             guitarThumbnail = GuitarThumbnail(
-                                name = guitar.name,
-                                type = guitar.type,
-                                price = guitar.price,
-                                isAvailable = guitar.isAvailable,
-                                thumbNailUrl = guitar.thumbnailUrl
+                                name = favourite.name,
+                                type = favourite.type,
+                                price = favourite.price,
+                                isAvailable = favourite.isAvailable,
+                                thumbNailUrl = favourite.thumbnailUrl
                             ), navController
                         )
                         Box(
@@ -122,7 +126,11 @@ fun FavouriteScreen(navController: NavController) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleFavourite(guitar, context)
+                                    guitarViewModel.toggleFavourite(
+                                        favourite,
+                                        context,
+                                        "guitars"
+                                    )
                                 },
                             contentAlignment = Alignment.Center
                         ) {

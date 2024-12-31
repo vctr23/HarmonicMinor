@@ -16,6 +16,7 @@ object Routes {
     const val FavouriteScreen = "FavouriteScreen"
     const val SearchScreen = "SearchScreen"
     const val ShoppingCartScreen = "ShoppingCartScreen"
+    const val PaymentCorrectScreen = "PaymentCorrectScreen"
     const val MenuScreen= "MenuScreen"
     const val GuitarScreen = "GuitarScreen"
     const val BassScreen = "BassScreen"
@@ -28,4 +29,5 @@ object Routes {
 
     const val GuitarDetailScreen = "GuitarDetailScreen"
     const val BassDetailScreen = "BassDetailScreen"
+    const val SoftwareDetailScreen = "SoftwareDetailScreen"
 }

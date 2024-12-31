@@ -26,16 +26,18 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
@@ -49,19 +51,13 @@ import com.example.harmonicminor.ui.theme.textColor
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BassDetailScreen(navController: NavHostController, bassName: String) {
-    val basses = listOf(
-        Bass(
-            name = stringResource(R.string.bass1_name),
-            type = stringResource(R.string.bass1_type),
-            description = stringResource(R.string.bass1_description),
-            manufacturer = stringResource(R.string.bass1_manufacturer),
-            price = stringResource(R.string.bass1_price),
-            stock = stringResource(R.string.bass1_stock),
-            isAvailable = true,
-            imageRes = 2,
-        )
-    )
+    val bassViewModel: BassViewModel = viewModel()
 
+    LaunchedEffect(Unit) {
+        bassViewModel.readBasses()
+    }
+
+    val basses = bassViewModel.basses
     val bass = basses.find { it.name == bassName }
 
     if (bass != null) {
@@ -94,7 +90,7 @@ fun BassDetailScreen(navController: NavHostController, bassName: String) {
             ) {
                 item {
                     Image(
-                        painter = painterResource(bass.imageRes),
+                        painter = rememberAsyncImagePainter(bass.imageUrl),
                         contentDescription = bass.name,
                         modifier = Modifier
                             .fillMaxWidth()
