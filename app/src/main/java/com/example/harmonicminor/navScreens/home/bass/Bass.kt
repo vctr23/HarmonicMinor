@@ -1,7 +1,9 @@
 package com.example.harmonicminor.navScreens.home.bass
 
+import com.example.harmonicminor.navScreens.search.Searchable
+
 data class Bass(
-    val name: String,
+    override val name: String,
     val type: String,
     val description: String,
     val manufacturer: String,
@@ -11,6 +13,9 @@ data class Bass(
     val imageUrl: String,
     val thumbNailUrl: String,
     val id: String
-){
-    constructor() : this("", "", "", "", "", "", true, "", "", "")
+) : Searchable {
+    constructor() : this(
+        "", "", "", "", "",
+        "", true, "", "", ""
+    )
 }

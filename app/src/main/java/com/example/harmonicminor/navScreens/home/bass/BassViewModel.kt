@@ -26,7 +26,7 @@ class BassViewModel: ViewModel() {
                     _basses.add(bass)
                 }
             } catch (e: Exception) {
-                Log.e("GuitarViewModel", "Error getting documents: $e")
+                Log.e("BassViewModel", "Error getting documents: $e")
             }
         }
     }

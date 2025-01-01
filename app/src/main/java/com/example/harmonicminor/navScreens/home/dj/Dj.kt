@@ -1,8 +1,8 @@
-package com.example.harmonicminor.navScreens.home.software
+package com.example.harmonicminor.navScreens.home.dj
 
 import com.example.harmonicminor.navScreens.search.Searchable
 
-data class Software(
+data class Dj(
     override val name: String,
     val type: String,
     val description: String,

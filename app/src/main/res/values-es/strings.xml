@@ -9,6 +9,7 @@
     <string name="register_failed">Error en el registro</string>
     <string name="username">Nombre de usuario</string>
     <string name="hello">Hola, </string>
+    <string name="default_username">Usuario</string>
     <string name="sing_in">Iniciar sesión</string>
     <string name="sing_in_failed">Los datos no coinciden con ningún registro</string>
     <string name="sing_up">Registrarse</string>
@@ -675,4 +676,126 @@
     <string name="software5_manufacturer">Apple</string>
     <string name="software5_stock">8</string>
     <string name="software5_price">229 €</string>
+
+    <string name="dj1_name">Pioneer DJ DDJ-400</string>
+    <string name="dj1_type">Controlador DJ</string>
+    <string name="dj1_description">
+    • Controlador DJ de 2 canales con diseño intuitivo basado en equipos profesionales
+    • Tarjeta de sonido integrada y compatibilidad con software rekordbox dj
+    • Funciones de mezcla y efectos profesionales, incluyendo Beat FX y Sound Color FX
+    • Alimentación por USB, ideal para uso portátil
+    • Incluye licencia de rekordbox dj</string>
+    <string name="dj1_manufacturer">Pioneer DJ</string>
+    <string name="dj1_stock">50</string>
+    <string name="dj1_price">259 €</string>
+
+    <string name="dj2_name">Native Instruments Traktor Kontrol S4 MK3</string>
+    <string name="dj2_type">Controlador DJ</string>
+    <string name="dj2_description">
+    • Controlador DJ de 4 canales con jog wheels motorizados y pantallas integradas
+    • Interfaz de audio de alta calidad de 24 bits / 96 kHz
+    • Integración perfecta con el software Traktor Pro 3
+    • Funciones avanzadas como Mixer FX y Haptic Drive
+    • Construcción robusta y diseño profesional</string>
+    <string name="dj2_manufacturer">Native Instruments</string>
+    <string name="dj2_stock">40</string>
+    <string name="dj2_price">789 €</string>
+
+    <string name="dj3_name">Denon DJ SC6000 Prime</string>
+    <string name="dj3_type">Reproductor Multimedia</string>
+    <string name="dj3_description">
+    • Reproductor multimedia profesional con pantalla táctil HD de 10.1 pulgadas
+    • Capacidad de reproducción de dos capas con salidas independientes
+    • Compatible con múltiples formatos de audio y servicios de streaming
+    • Jog wheel de 8.5 pulgadas con pantalla central personalizable
+    • WiFi integrado para actualizaciones y transmisión de música</string>
+    <string name="dj3_manufacturer">Denon DJ</string>
+    <string name="dj3_stock">0</string>
+    <string name="dj3_price">1.499 €</string>
+
+    <string name="dj4_name">Allen &amp; Heath Xone:96</string>
+    <string name="dj4_type">Mezclador DJ</string>
+    <string name="dj4_description">
+    • Mezclador analógico profesional de 6+2 canales
+    • Filtros duales Xone con control de resonancia
+    • Interfaz de audio USB dual de 32 bits / 96 kHz
+    • EQ de 4 bandas en canales principales
+    • Construcción robusta y calidad de sonido excepcional</string>
+    <string name="dj4_manufacturer">Allen &amp; Heath</string>
+    <string name="dj4_stock">4</string>
+    <string name="dj4_price">1.799 €</string>
+
+    <string name="dj5_name">Rane Twelve MKII</string>
+    <string name="dj5_type">Controlador de Plato Motorizado</string>
+    <string name="dj5_description">
+    • Controlador de plato motorizado de 12 pulgadas para DJs profesionales
+    • Simula la sensación de un giradiscos tradicional sin necesidad de agujas
+    • Compatible con Serato DJ Pro, Traktor y Virtual DJ
+    • Conexión USB y MIDI para integración flexible
+    • Construcción robusta y respuesta precisa</string>
+    <string name="dj5_manufacturer">Rane</string>
+    <string name="dj5_stock">9</string>
+    <string name="dj5_price">799 €</string>
+
+    <string name="drums1_name">Roland TD-27KV2</string>
+    <string name="drums1_type">Kit de Batería Electrónica</string>
+    <string name="drums1_description">
+    • Kit de batería electrónica de alta calidad con pads digitales avanzados y módulo de batería
+    • Cuenta con Prismatic Sound Modeling para sonidos realistas de batería acústica
+    • Pad de caja de 14", platillo ride de 18" y charles dinámico para una interpretación expresiva
+    • Conectividad Bluetooth para streaming de audio e integración en prácticas
+    • Incluye más de 700 sonidos y 55 kits de batería preinstalados</string>
+    <string name="drums1_manufacturer">Roland</string>
+    <string name="drums1_stock">12</string>
+    <string name="drums1_price">3,299 €</string>
+
+    <string name="drums2_name">Yamaha DTX6K3-X</string>
+    <string name="drums2_type">Kit de Batería Electrónica</string>
+    <string name="drums2_description">
+    • Kit de batería electrónica de gama media con módulo DTX-PRO de Yamaha
+    • Pads de silicona texturizados realistas para una respuesta y sensación superiores
+    • Kits personalizables con más de 400 sonidos asignables
+    • Platillos ride y crash de 3 zonas para una interpretación versátil
+    • Herramientas de práctica integradas y funcionalidad de grabación</string>
+    <string name="drums2_manufacturer">Yamaha</string>
+    <string name="drums2_stock">8</string>
+    <string name="drums2_price">1,799 €</string>
+
+    <string name="drums3_name">Alesis Nitro Mesh Kit</string>
+    <string name="drums3_type">Kit de Batería Electrónica</string>
+    <string name="drums3_description">
+    • Kit de batería electrónica de nivel básico con parches de malla para prácticas silenciosas
+    • Incluye caja de doble zona de 8" y toms de 8"
+    • Ofrece más de 40 kits de batería y 385 sonidos de batería
+    • Conectividad USB/MIDI para grabación e integración con DAW
+    • Compacto y fácil de montar, ideal para principiantes</string>
+    <string name="drums3_manufacturer">Alesis</string>
+    <string name="drums3_stock">25</string>
+    <string name="drums3_price">379 €</string>
+
+    <string name="drums4_name">Pearl Export EXX725BR/C</string>
+    <string name="drums4_type">Kit de Batería Acústica</string>
+    <string name="drums4_description">
+    • Kit completo de batería acústica con cascos de álamo y caoba
+    • Incluye bombo de 22", toms de 12" y 13", floor tom de 16" y caja de 14"
+    • Viene con hardware de la serie Pearl 830 y platillos
+    • Sonido cálido y resonante, perfecto para diversos géneros
+    • Construcción duradera y acabados de alta calidad</string>
+    <string name="drums4_manufacturer">Pearl</string>
+    <string name="drums4_stock">10</string>
+    <string name="drums4_price">949 €</string>
+
+    <string name="drums5_name">Tama Imperialstar IE52C</string>
+    <string name="drums5_type">Kit de Batería Acústica</string>
+    <string name="drums5_description">
+    • Kit completo de batería acústica con cascos de álamo para tonos ricos
+    • Incluye bombo de 22", toms de 10" y 12", floor tom de 16" y caja de 14"
+    • Viene con platillos Meinl HCS y hardware Tama
+    • Ideal para principiantes y músicos intermedios
+    • Disponible en varios acabados atractivos</string>
+    <string name="drums5_manufacturer">Tama</string>
+    <string name="drums5_stock">15</string>
+    <string name="drums5_price">799 €</string>
+
+
 </resources>

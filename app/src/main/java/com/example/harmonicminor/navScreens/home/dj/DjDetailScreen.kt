@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.home.software
+package com.example.harmonicminor.navScreens.home.dj
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -50,20 +50,20 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
-    val softwareViewModel: SoftwareViewModel = viewModel()
+fun DjDetailScreen(navController: NavController, djName: String) {
+    val djViewModel: DjViewModel = viewModel()
 
     LaunchedEffect(Unit) {
-        softwareViewModel.readSoftwares()
+        djViewModel.readDj()
     }
 
-    val software = softwareViewModel.softwares.find { it.name == softwareName }
+    val dj = djViewModel.dj.find { it.name == djName }
 
-    if (software != null) {
+    if (dj != null) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = software.name) },
+                    title = { Text(text = dj.name) },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
@@ -89,8 +89,8 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
             ) {
                 item {
                     Image(
-                        painter = rememberAsyncImagePainter(software.imageUrl),
-                        contentDescription = software.name,
+                        painter = rememberAsyncImagePainter(dj.imageUrl),
+                        contentDescription = dj.name,
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(400.dp)
@@ -101,7 +101,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.type) + " " + software.type,
+                        text = stringResource(R.string.type) + " " + dj.type,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -109,7 +109,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.manufacturer) + " " + software.manufacturer,
+                        text = stringResource(R.string.manufacturer) + " " + dj.manufacturer,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -122,7 +122,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                         color = textColor
                     )
                     Text(
-                        text = software.description,
+                        text = dj.description,
                         modifier = Modifier.padding(8.dp, vertical = 2.dp),
                         fontSize = 16.sp,
                         color = textColor
@@ -130,7 +130,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.price) +" "+software.price,
+                        text = stringResource(R.string.price) + " " + dj.price,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -138,14 +138,14 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.stock) +" "+software.stock,
+                        text = stringResource(R.string.stock) + " " + dj.stock,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
                     )
                 }
                 item {
-                    if (software.isAvailable) {
+                    if (dj.isAvailable) {
                         Text(
                             text = stringResource(R.string.available),
                             modifier = Modifier.padding(8.dp),
@@ -219,3 +219,85 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
         }
     }
 }
+
+//@Composable
+//fun AddDjsAutomatically() {
+//    val db = FirebaseFirestore.getInstance()
+//
+//    val djs = listOf(
+//        Dj(
+//            name = stringResource(R.string.dj1_name),
+//            type = stringResource(R.string.dj1_type),
+//            description = stringResource(R.string.dj1_description),
+//            manufacturer = stringResource(R.string.dj1_manufacturer),
+//            price = stringResource(R.string.dj1_price),
+//            stock = stringResource(R.string.dj1_stock),
+//            isAvailable = true,
+//            imageUrl = "https://drive.google.com/uc?id=1mx9Ky31hzQw9ADpnC_iGI4DHAA0mLy1r",
+//            thumbnailUrl = "https://drive.google.com/uc?id=15oHtjjhbNKgGa8ErXQipQM5REerrw0Lm"
+//        ),
+//        Dj(
+//            name = stringResource(R.string.dj2_name),
+//            type = stringResource(R.string.dj2_type),
+//            description = stringResource(R.string.dj2_description),
+//            manufacturer = stringResource(R.string.dj2_manufacturer),
+//            price = stringResource(R.string.dj2_price),
+//            stock = stringResource(R.string.dj2_stock),
+//            isAvailable = true,
+//            imageUrl = "https://drive.google.com/uc?id=1jYHvKD-3XN7JTTCnbXuMvOmuoxwBgRpA",
+//            thumbnailUrl = "https://drive.google.com/uc?id=1lkR8wWsJI7o7oMfEYleFPqnGpyk40LiN"
+//        ),
+//        Dj(
+//            name = stringResource(R.string.dj3_name),
+//            type = stringResource(R.string.dj3_type),
+//            description = stringResource(R.string.dj3_description),
+//            manufacturer = stringResource(R.string.dj3_manufacturer),
+//            price = stringResource(R.string.dj3_price),
+//            stock = stringResource(R.string.dj3_stock),
+//            isAvailable = true,
+//            imageUrl = "https://drive.google.com/uc?id=1uQpsjVCpI6WZ-eUUaC2o0PH3pME9qjaJ",
+//            thumbnailUrl = "https://drive.google.com/uc?id=1eTxE3c5bO5rRI_s3zdjzE13PUfW87fbA"
+//        ),
+//        Dj(
+//            name = stringResource(R.string.dj4_name),
+//            type = stringResource(R.string.dj4_type),
+//            description = stringResource(R.string.dj4_description),
+//            manufacturer = stringResource(R.string.dj4_manufacturer),
+//            price = stringResource(R.string.dj4_price),
+//            stock = stringResource(R.string.dj4_stock),
+//            isAvailable = true,
+//            imageUrl = "https://drive.google.com/uc?id=1Bq7AN4VzWfDDJAFopnnTAIMxoJnPVq2t",
+//            thumbnailUrl = "https://drive.google.com/uc?id=1aS4NqvT8086umemX9Ypwt8qU3grW0Tl3"
+//        ),
+//        Dj(
+//            name = stringResource(R.string.dj5_name),
+//            type = stringResource(R.string.dj5_type),
+//            description = stringResource(R.string.dj5_description),
+//            manufacturer = stringResource(R.string.dj5_manufacturer),
+//            price = stringResource(R.string.dj5_price),
+//            stock = stringResource(R.string.dj5_stock),
+//            isAvailable = true,
+//            imageUrl = "https://drive.google.com/uc?id=1kFXXdaFg8VkXOzPS5TDtYPcHF-rtRaE4",
+//            thumbnailUrl = "https://drive.google.com/uc?id=10JM0T8f1ptjrvagQUBOjysHfP2r5byy8"
+//        ),
+//    )
+//
+//    // Ejecuta automáticamente al componerse
+//    LaunchedEffect(Unit) {
+//        addDjsToFirestore(db, djs)
+//    }
+//}
+//
+//fun addDjsToFirestore(db: FirebaseFirestore, djs: List<Dj>) {
+//    for (dj in djs) {
+//        db.collection("djs")
+//            .add(dj)
+//            .addOnSuccessListener { documentReference ->
+//                Log.d("Firestore", "dj añadido con ID: ${documentReference.id}")
+//            }
+//            .addOnFailureListener { e ->
+//                Log.e("Firestore", "Error al añadir dj", e)
+//            }
+//    }
+//}
+

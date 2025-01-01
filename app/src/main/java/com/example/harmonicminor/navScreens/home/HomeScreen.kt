@@ -26,8 +26,10 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,10 +49,14 @@ import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController) {
+    val userId = FirebaseAuth.getInstance().currentUser?.uid
+
     Scaffold {
         LazyColumn(
             modifier = Modifier
@@ -59,7 +65,9 @@ fun HomeScreen(navController: NavController) {
             contentPadding = PaddingValues(bottom = 10.dp)
         ) {
             item {
-                HeaderSection()
+                if (userId != null) {
+                    HeaderSection(userId)
+                }
             }
             item {
                 Spacer(modifier = Modifier.padding(vertical = 16.dp))
@@ -88,7 +96,15 @@ fun HomeScreen(navController: NavController) {
 }
 
 @Composable
-fun HeaderSection() {
+fun HeaderSection(userId: String) {
+    val username = rememberSaveable { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(userId) {
+        getUsername(userId) { gottenusername ->
+            username.value = gottenusername
+        }
+    }
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -96,7 +112,8 @@ fun HeaderSection() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = stringResource(R.string.hello) + "", // Query para sacar el username
+            text = stringResource(R.string.hello) + " " + (username.value
+                ?: stringResource(R.string.default_username)),
             color = textColor,
             fontSize = 24.sp
         )
@@ -111,7 +128,7 @@ fun CategoriesSection(navController: NavController) {
         Category(
             stringResource(R.string.guitars),
             R.drawable.category_guitar,
-            onClick = { navController.navigate(Routes.GuitarScreen)}),
+            onClick = { navController.navigate(Routes.GuitarScreen) }),
         Category(
             stringResource(R.string.bass),
             R.drawable.category_bass,
@@ -160,7 +177,7 @@ fun CategoriesSection(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(if (isExpanded.value) 650.dp else 300.dp)
+                .height(if (isExpanded.value) 770.dp else 300.dp)
         ) {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
@@ -303,4 +320,21 @@ fun RecentlySeenSection() {
 
         }
     }
+}
+
+fun getUsername(userId: String, onResult: (String?) -> Unit) {
+    val db = FirebaseFirestore.getInstance()
+    db.collection("users").document(userId)
+        .get()
+        .addOnSuccessListener { document ->
+            if (document != null && document.exists()) {
+                val username = document.getString("username")
+                onResult(username)
+            } else {
+                onResult(null)
+            }
+        }
+        .addOnFailureListener {
+            onResult(null)
+        }
 }

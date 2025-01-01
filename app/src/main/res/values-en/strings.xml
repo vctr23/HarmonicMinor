@@ -9,6 +9,7 @@
     <string name="register_failed">Registration failed</string>
     <string name="username">Username</string>
     <string name="hello">Hello, </string>
+    <string name="default_username">User</string>
     <string name="sing_in">Sign in</string>
     <string name="sing_in_failed">Credentials do not match any record</string>
     <string name="sing_up">Sign up</string>
@@ -672,4 +673,123 @@
     <string name="software5_stock">8</string>
     <string name="software5_price">229 €</string>
 
+    <string name="dj1_name">Pioneer DJ DDJ-400</string>
+    <string name="dj1_type">DJ Controller</string>
+    <string name="dj1_description">
+    • 2-channel DJ controller with an intuitive design based on professional equipment
+    • Built-in sound card and compatibility with rekordbox dj software
+    • Professional mixing and effects functions, including Beat FX and Sound Color FX
+    • USB-powered, ideal for portable use
+    • Includes rekordbox dj license</string>
+    <string name="dj1_manufacturer">Pioneer DJ</string>
+    <string name="dj1_stock">50</string>
+    <string name="dj1_price">259 €</string>
+
+    <string name="dj2_name">Native Instruments Traktor Kontrol S4 MK3</string>
+    <string name="dj2_type">DJ Controller</string>
+    <string name="dj2_description">
+    • 4-channel DJ controller with motorized jog wheels and integrated displays
+    • High-quality 24-bit / 96 kHz audio interface
+    • Perfect integration with Traktor Pro 3 software
+    • Advanced features like Mixer FX and Haptic Drive
+    • Robust construction and professional design</string>
+    <string name="dj2_manufacturer">Native Instruments</string>
+    <string name="dj2_stock">40</string>
+    <string name="dj2_price">789 €</string>
+
+    <string name="dj3_name">Denon DJ SC6000 Prime</string>
+    <string name="dj3_type">Media Player</string>
+    <string name="dj3_description">
+    • Professional media player with a 10.1-inch HD touchscreen
+    • Dual-layer playback capability with independent outputs
+    • Compatible with multiple audio formats and streaming services
+    • 8.5-inch jog wheel with customizable center display
+    • Built-in WiFi for updates and music streaming</string>
+    <string name="dj3_manufacturer">Denon DJ</string>
+    <string name="dj3_stock">0</string>
+    <string name="dj3_price">1.499 €</string>
+
+    <string name="dj4_name">Allen &amp; Heath Xone:96</string>
+    <string name="dj4_type">DJ Mixer</string>
+    <string name="dj4_description">
+    • Professional analog mixer with 6+2 channels
+    • Dual Xone filters with resonance control
+    • 32-bit / 96 kHz dual USB audio interface
+    • 4-band EQ on main channels
+    • Robust build quality and exceptional sound performance</string>
+    <string name="dj4_manufacturer">Allen &amp; Heath</string>
+    <string name="dj4_stock">4</string>
+    <string name="dj4_price">1.799 €</string>
+
+    <string name="dj5_name">Rane Twelve MKII</string>
+    <string name="dj5_type">Motorized Turntable Controller</string>
+    <string name="dj5_description">
+    • 12-inch motorized turntable controller for professional DJs
+    • Simulates the feel of a traditional turntable without the need for needles
+    • Compatible with Serato DJ Pro, Traktor, and Virtual DJ
+    • USB and MIDI connectivity for flexible integration
+    • Sturdy construction and precise response</string>
+    <string name="dj5_manufacturer">Rane</string>
+    <string name="dj5_stock">9</string>
+    <string name="dj5_price">799 €</string>
+
+    <string name="drums1_name">Roland TD-27KV2</string>
+    <string name="drums1_type">Electronic Drum Kit</string>
+    <string name="drums1_description">
+    • High-quality electronic drum kit with advanced digital pads and drum module
+    • Features Prismatic Sound Modeling for realistic acoustic drum sounds
+    • 14" snare pad, 18" ride cymbal, and dynamic hi-hat for expressive playability
+    • Bluetooth connectivity for audio streaming and practice integration
+    • Includes over 700 sounds and 55 preloaded drum kits</string>
+    <string name="drums1_manufacturer">Roland</string>
+    <string name="drums1_stock">12</string>
+    <string name="drums1_price">3,299 €</string>
+
+    <string name="drums2_name">Yamaha DTX6K3-X</string>
+    <string name="drums2_type">Electronic Drum Kit</string>
+    <string name="drums2_description">
+    • Mid-range electronic drum kit with Yamaha\'s DTX-PRO module
+    • Realistic textured silicone pads for superior response and feel
+    • Customizable kits with over 400 assignable sounds
+    • 3-zone ride and crash cymbals for versatile playability
+    • Integrated practice tools and recording functionality</string>
+    <string name="drums2_manufacturer">Yamaha</string>
+    <string name="drums2_stock">8</string>
+    <string name="drums2_price">1,799 €</string>
+
+    <string name="drums3_name">Alesis Nitro Mesh Kit</string>
+    <string name="drums3_type">Electronic Drum Kit</string>
+    <string name="drums3_description">
+    • Entry-level electronic drum kit with all-mesh drum heads for quiet practice
+    • Features 8" dual-zone snare and 8" toms
+    • Includes over 40 drum kits and 385 drum sounds
+    • USB/MIDI connectivity for recording and DAW integration
+    • Compact and easy to set up, ideal for beginners</string>
+    <string name="drums3_manufacturer">Alesis</string>
+    <string name="drums3_stock">25</string>
+    <string name="drums3_price">379 €</string>
+
+    <string name="drums4_name">Pearl Export EXX725BR/C</string>
+    <string name="drums4_type">Acoustic Drum Kit</string>
+    <string name="drums4_description">
+    • Full acoustic drum kit featuring poplar and mahogany shells
+    • Includes 22" bass drum, 12" and 13" toms, 16" floor tom, and 14" snare
+    • Comes with Pearl 830 Series hardware and cymbals
+    • Warm and resonant sound, perfect for various genres
+    • Durable construction and high-quality finishes</string>
+    <string name="drums4_manufacturer">Pearl</string>
+    <string name="drums4_stock">10</string>
+    <string name="drums4_price">949 €</string>
+
+    <string name="drums5_name">Tama Imperialstar IE52C</string>
+    <string name="drums5_type">Acoustic Drum Kit</string>
+    <string name="drums5_description">
+    • Complete acoustic drum kit with poplar shells for rich tones
+    • Includes 22" bass drum, 10" and 12" toms, 16" floor tom, and 14" snare
+    • Comes with Meinl HCS cymbals and Tama hardware
+    • Ideal for beginners and intermediate players
+    • Available in multiple attractive finishes</string>
+    <string name="drums5_manufacturer">Tama</string>
+    <string name="drums5_stock">15</string>
+    <string name="drums5_price">799 €</string>
 </resources>

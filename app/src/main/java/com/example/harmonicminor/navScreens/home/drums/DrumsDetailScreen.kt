@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.home.software
+package com.example.harmonicminor.navScreens.home.drums
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -50,20 +50,20 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
-    val softwareViewModel: SoftwareViewModel = viewModel()
+fun DrumsDetailScreen(navController: NavController, drumsName: String) {
+    val drumsViewModel: DrumsViewModel = viewModel()
 
     LaunchedEffect(Unit) {
-        softwareViewModel.readSoftwares()
+        drumsViewModel.readDrums()
     }
 
-    val software = softwareViewModel.softwares.find { it.name == softwareName }
+    val drums = drumsViewModel.drums.find { it.name == drumsName }
 
-    if (software != null) {
+    if (drums != null) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = software.name) },
+                    title = { Text(text = drums.name) },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
@@ -89,8 +89,8 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
             ) {
                 item {
                     Image(
-                        painter = rememberAsyncImagePainter(software.imageUrl),
-                        contentDescription = software.name,
+                        painter = rememberAsyncImagePainter(drums.imageUrl),
+                        contentDescription = drums.name,
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(400.dp)
@@ -101,7 +101,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.type) + " " + software.type,
+                        text = stringResource(R.string.type) + " " + drums.type,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -109,7 +109,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.manufacturer) + " " + software.manufacturer,
+                        text = stringResource(R.string.manufacturer) + " " + drums.manufacturer,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -122,7 +122,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                         color = textColor
                     )
                     Text(
-                        text = software.description,
+                        text = drums.description,
                         modifier = Modifier.padding(8.dp, vertical = 2.dp),
                         fontSize = 16.sp,
                         color = textColor
@@ -130,7 +130,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.price) +" "+software.price,
+                        text = stringResource(R.string.price) + " " + drums.price,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -138,14 +138,14 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.stock) +" "+software.stock,
+                        text = stringResource(R.string.stock) + " " + drums.stock,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
                     )
                 }
                 item {
-                    if (software.isAvailable) {
+                    if (drums.isAvailable) {
                         Text(
                             text = stringResource(R.string.available),
                             modifier = Modifier.padding(8.dp),
@@ -219,3 +219,4 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
         }
     }
 }
+

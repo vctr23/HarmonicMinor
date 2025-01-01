@@ -29,6 +29,7 @@ import com.example.harmonicminor.ui.theme.textColor
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PaymentCorrectScreen(navController: NavController) {
+
     Scaffold(
         topBar = {
             TopAppBar(

@@ -30,4 +30,6 @@ object Routes {
     const val GuitarDetailScreen = "GuitarDetailScreen"
     const val BassDetailScreen = "BassDetailScreen"
     const val SoftwareDetailScreen = "SoftwareDetailScreen"
+    const val DjDetailScreen = "DjDetailScreen"
+    const val DrumsDetailScreen = "DrumsDetailScreen"
 }

@@ -16,7 +16,9 @@ import com.example.harmonicminor.navScreens.favourite.FavouriteScreen
 import com.example.harmonicminor.navScreens.home.HomeScreen
 import com.example.harmonicminor.navScreens.home.bass.BassDetailScreen
 import com.example.harmonicminor.navScreens.home.bass.BassScreen
+import com.example.harmonicminor.navScreens.home.dj.DjDetailScreen
 import com.example.harmonicminor.navScreens.home.dj.DjScreen
+import com.example.harmonicminor.navScreens.home.drums.DrumsDetailScreen
 import com.example.harmonicminor.navScreens.home.drums.DrumsScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarDetailScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarScreen
@@ -143,13 +145,13 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 PianoScreen()
             }
             composable(Routes.DrumsScreen){
-                DrumsScreen()
+                DrumsScreen(navController)
             }
             composable(Routes.WindScreen){
                 WindScreen()
             }
             composable(Routes.DjScreen){
-                DjScreen()
+                DjScreen(navController)
             }
             composable(Routes.MicrophonesScreen){
                 MicrophonesScreen()
@@ -180,6 +182,20 @@ fun MyappNavigation(auth: FirebaseAuth) {
             ) { backStackEntry ->
                 val softwareName = backStackEntry.arguments?.getString("softwareName") ?: ""
                 SoftwareDetailScreen(navController, softwareName)
+            }
+            composable(
+                "${Routes.DjDetailScreen}/{djName}",
+                arguments = listOf(navArgument("djName") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val djName = backStackEntry.arguments?.getString("djName") ?: ""
+                DjDetailScreen(navController, djName)
+            }
+            composable(
+                "${Routes.DrumsDetailScreen}/{drumsName}",
+                arguments = listOf(navArgument("drumsName") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val drumsName = backStackEntry.arguments?.getString("drumsName") ?: ""
+                DrumsDetailScreen(navController, drumsName)
             }
         }
     )

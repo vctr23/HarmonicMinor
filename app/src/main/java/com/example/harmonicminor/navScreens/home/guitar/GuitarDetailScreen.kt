@@ -39,8 +39,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
-import com.example.harmonicminor.navScreens.home.ViewModelFactory
-import com.example.harmonicminor.navScreens.home.software.ItemViewModel
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -54,14 +52,14 @@ import com.example.harmonicminor.ui.theme.textColor
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GuitarDetailScreen(navController: NavController, guitarName: String) {
-    val guitarViewModel: ItemViewModel<Guitar> = viewModel(factory = ViewModelFactory(Guitar::class.java))
+    val guitarViewModel: GuitarViewModel = viewModel()
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        guitarViewModel.readItems("guitars")
+        guitarViewModel.readGuitars()
     }
 
-    val guitar = guitarViewModel.items.find { it.name == guitarName }
+    val guitar = guitarViewModel.guitars.find { it.name == guitarName }
 
     if (guitar != null) {
         Scaffold(
@@ -182,7 +180,7 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleFavourite(guitar, context, "guitars")
+                                    guitarViewModel.toggleFavourite(guitar, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -206,7 +204,7 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleCart(guitar, context, "guitars")
+                                    guitarViewModel.toggleCart(guitar, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {

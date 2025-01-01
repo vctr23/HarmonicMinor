@@ -1,9 +1,9 @@
 package com.example.harmonicminor.navScreens.home.guitar
 
-import com.example.harmonicminor.navScreens.home.Identifiable
+import com.example.harmonicminor.navScreens.search.Searchable
 
 data class Guitar(
-    val name: String,
+    override val name: String,
     val type: String,
     val description: String,
     val manufacturer: String,
@@ -12,7 +12,10 @@ data class Guitar(
     val isAvailable: Boolean,
     val imageUrl: String,
     val thumbnailUrl: String,
-    override val id: String = ""
-) : Identifiable {
-    constructor() : this("", "", "", "", "", "", true, "", "", "")
+    val id: String = ""
+) : Searchable {
+    constructor() : this(
+        "", "", "", "", "",
+        "", true, "", "", ""
+    )
 }

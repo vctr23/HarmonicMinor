@@ -33,11 +33,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
-import com.example.harmonicminor.navScreens.home.ViewModelFactory
-import com.example.harmonicminor.navScreens.home.guitar.Guitar
 import com.example.harmonicminor.navScreens.home.guitar.GuitarSectionItem
 import com.example.harmonicminor.navScreens.home.guitar.GuitarThumbnail
-import com.example.harmonicminor.navScreens.home.software.ItemViewModel
+import com.example.harmonicminor.navScreens.home.guitar.GuitarViewModel
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -48,13 +46,11 @@ import com.google.firebase.auth.FirebaseAuth
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun FavouriteScreen(navController: NavController) {
-    val guitarViewModel: ItemViewModel<Guitar> =
-        viewModel(factory = ViewModelFactory(Guitar::class.java))
+    val guitarViewModel: GuitarViewModel = viewModel()
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
-        guitarViewModel.loadFavourites(userId, "guitars")
+        guitarViewModel.loadFavourites(FirebaseAuth.getInstance().currentUser?.uid ?: "")
     }
 
     val guitarFavourites = guitarViewModel.favourites.value
@@ -126,11 +122,7 @@ fun FavouriteScreen(navController: NavController) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleFavourite(
-                                        favourite,
-                                        context,
-                                        "guitars"
-                                    )
+                                    guitarViewModel.toggleFavourite(favourite, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
