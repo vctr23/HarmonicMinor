@@ -40,6 +40,7 @@ import com.example.harmonicminor.navScreens.home.bass.Bass
 import com.example.harmonicminor.navScreens.home.dj.Dj
 import com.example.harmonicminor.navScreens.home.drums.Drums
 import com.example.harmonicminor.navScreens.home.guitar.Guitar
+import com.example.harmonicminor.navScreens.home.piano.Piano
 import com.example.harmonicminor.navScreens.home.software.Software
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
@@ -51,14 +52,12 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SearchScreen() {
     var query by remember { mutableStateOf("") }
     var searchResults by remember { mutableStateOf<List<Searchable>>(emptyList()) }
     var isLoading by remember { mutableStateOf(false) }
-
 
     LaunchedEffect(query) {
         if (query.isNotEmpty()) {
@@ -77,7 +76,6 @@ fun SearchScreen() {
             searchResults = emptyList()
         }
     }
-
 
     Scaffold {
         Column(
@@ -99,7 +97,6 @@ fun SearchScreen() {
         }
     }
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -155,16 +152,13 @@ fun SearchBar(query: String, onQueryChange: (String) -> Unit) {
                 )
             }
         }
-    )
-    {
-
-    }
+    ){}
 }
 
 @Composable
 fun SearchResultsList(results: List<Searchable>) {
     if (results.isEmpty()) {
-        Text(text = "No se encontraron resultados", color = secondaryTextColor)
+        Text(text = stringResource(R.string.nothing_found), color = secondaryTextColor)
     } else {
         LazyColumn(
             modifier = Modifier
@@ -185,7 +179,7 @@ fun SearchResultsList(results: List<Searchable>) {
                         is Software -> Text("Name: ${item.name}", color = secondaryTextColor)
                         is Drums -> Text("Name: ${item.name}", color = secondaryTextColor)
                         is Dj -> Text("Name: ${item.name}", color = secondaryTextColor)
-
+                        is Piano -> Text("Name: ${item.name}", color = secondaryTextColor)
                     }
                 }
             }
@@ -193,11 +187,8 @@ fun SearchResultsList(results: List<Searchable>) {
     }
 }
 
-
-
 suspend fun <T : Searchable> getItemsFromCollection(
     collectionName: String,
-    query: String,
     classType: Class<T>
 ): List<T> {
     val db = FirebaseFirestore.getInstance()
@@ -220,14 +211,14 @@ suspend fun <T : Searchable> getItemsFromCollection(
     }
 }
 
-
 suspend fun getSearchResults(query: String): List<Searchable> {
-    val guitars = getItemsFromCollection("guitars", query, Guitar::class.java)
-    val basses = getItemsFromCollection("basses", query, Bass::class.java)
-    val djs = getItemsFromCollection("djs", query, Dj::class.java)
-    val softwares = getItemsFromCollection("softwares", query, Software::class.java)
-    val drums = getItemsFromCollection("drums", query, Drums::class.java)
+    val guitars = getItemsFromCollection("guitars", Guitar::class.java)
+    val basses = getItemsFromCollection("basses", Bass::class.java)
+    val djs = getItemsFromCollection("djs", Dj::class.java)
+    val softwares = getItemsFromCollection("softwares", Software::class.java)
+    val drums = getItemsFromCollection("drums", Drums::class.java)
+    val pianos = getItemsFromCollection("pianos", Piano::class.java)
 
-    val allItems = guitars + basses + djs + softwares + drums
+    val allItems = guitars + basses + djs + softwares + drums + pianos
     return allItems.filter { it.name.contains(query, ignoreCase = true) }
 }

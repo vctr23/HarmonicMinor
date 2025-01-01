@@ -46,6 +46,7 @@
     <string name="account_config">Account configuration</string>
     <string name="language">Language</string>
     <string name="search">Search</string>
+    <string name="nothing_found">No results found</string>
     <string name="country">Country</string>
     <string name="spain">Spain</string>
     <string name="france">France</string>
@@ -792,4 +793,65 @@
     <string name="drums5_manufacturer">Tama</string>
     <string name="drums5_stock">15</string>
     <string name="drums5_price">799 €</string>
+
+    <string name="piano1_name">Yamaha CLP-785 Clavinova</string>
+    <string name="piano1_type">Digital Piano</string>
+    <string name="piano1_description">
+    • High-end digital piano with GrandTouch keyboard and adjustable counterweight
+    • Sampled sounds of Yamaha CFX and Bösendorfer Imperial grand pianos
+    • High-quality amplification with speakers and tactile transducers
+    • Intuitive interface with a touch screen and recording features
+    • Compatible with the Smart Pianist app</string>
+    <string name="piano1_manufacturer">Yamaha</string>
+    <string name="piano1_stock">5</string>
+    <string name="piano1_price">4,599 €</string>
+
+    <string name="piano2_name">Kawai GL-10 Baby Grand</string>
+    <string name="piano2_type">Grand Piano</string>
+    <string name="piano2_description">
+    • Compact 153 cm grand piano, ideal for small spaces
+    • Millennium III mechanism with ABS-carbon parts for enhanced durability
+    • Warm and resonant sound with a solid spruce soundboard
+    • Elegant design and high-quality craftsmanship
+    • Perfect for beginner and advanced pianists</string>
+    <string name="piano2_manufacturer">Kawai</string>
+    <string name="piano2_stock">3</string>
+    <string name="piano2_price">7,499 €</string>
+
+    <string name="piano3_name">Roland FP-90X</string>
+    <string name="piano3_type">Portable Digital Piano</string>
+    <string name="piano3_description">
+    • Portable digital piano with SuperNATURAL Piano technology
+    • PHA-50 keyboard with hammer action and ivory-textured keys
+    • Customizable sound and response via Roland Piano Designer app
+    • High-quality built-in speakers for live performances
+    • Bluetooth connectivity for audio streaming and MIDI</string>
+    <string name="piano3_manufacturer">Roland</string>
+    <string name="piano3_stock">20</string>
+    <string name="piano3_price">2,199 €</string>
+
+    <string name="piano4_name">Steinway &amp; Sons Model D-274</string>
+    <string name="piano4_type">Grand Piano</string>
+    <string name="piano4_description">
+    • Concert grand piano of 274 cm, used by professional pianists worldwide
+    • Handcrafted with the highest quality materials
+    • Unmatched sound and exceptional dynamic range
+    • Select spruce soundboard for perfect resonance
+    • Ideal for concerts, studios, and high-performance spaces</string>
+    <string name="piano4_manufacturer">Steinway &amp; Sons</string>
+    <string name="piano4_stock">1</string>
+    <string name="piano4_price">149,000 €</string>
+
+    <string name="piano5_name">Casio PX-S3100</string>
+    <string name="piano5_type">Portable Digital Piano</string>
+    <string name="piano5_description">
+    • Ultra-slim digital piano with AiR Sound Source technology
+    • Scaled hammer action keyboard with ebony and ivory-textured keys
+    • Includes 700 sounds, 200 rhythms, and recording functions
+    • Bluetooth and MIDI connectivity for device integration
+    • Lightweight and easy to transport, ideal for musicians on the go</string>
+    <string name="piano5_manufacturer">Casio</string>
+    <string name="piano5_stock">25</string>
+    <string name="piano5_price">899 €</string>
+
 </resources>

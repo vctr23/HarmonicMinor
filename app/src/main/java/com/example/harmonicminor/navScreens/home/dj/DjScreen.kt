@@ -191,5 +191,3 @@ fun DjSectionItem(djThumbnail: DjThumbnail, navController: NavController) {
         }
     }
 }
-
-//

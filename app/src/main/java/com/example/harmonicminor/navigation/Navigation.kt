@@ -23,6 +23,7 @@ import com.example.harmonicminor.navScreens.home.drums.DrumsScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarDetailScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarScreen
 import com.example.harmonicminor.navScreens.home.microphones.MicrophonesScreen
+import com.example.harmonicminor.navScreens.home.piano.PianoDetailScreen
 import com.example.harmonicminor.navScreens.home.piano.PianoScreen
 import com.example.harmonicminor.navScreens.home.software.SoftwareDetailScreen
 import com.example.harmonicminor.navScreens.home.software.SoftwareScreen
@@ -142,7 +143,7 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 BassScreen(navController)
             }
             composable(Routes.PianoScreen){
-                PianoScreen()
+                PianoScreen(navController)
             }
             composable(Routes.DrumsScreen){
                 DrumsScreen(navController)
@@ -196,6 +197,13 @@ fun MyappNavigation(auth: FirebaseAuth) {
             ) { backStackEntry ->
                 val drumsName = backStackEntry.arguments?.getString("drumsName") ?: ""
                 DrumsDetailScreen(navController, drumsName)
+            }
+            composable(
+                "${Routes.PianoDetailScreen}/{pianosName}",
+                arguments = listOf(navArgument("pianosName") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val pianosName = backStackEntry.arguments?.getString("pianosName") ?: ""
+                PianoDetailScreen(navController, pianosName)
             }
         }
     )
