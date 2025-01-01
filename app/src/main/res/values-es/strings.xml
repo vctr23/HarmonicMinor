@@ -858,5 +858,39 @@
     <string name="piano5_stock">25</string>
     <string name="piano5_price">899 €</string>
 
+    <string name="mic1_name">Shure SM58</string>
+    <string name="mic1_type">Micrófono Dinámico Cardioide</string>
+    <string name="mic1_description">
+    • Reconocido por su calidad y durabilidad, ideal para voces en vivo y aplicaciones de sonido profesional.
+    • Patrón polar cardioide que aísla la fuente de sonido principal y minimiza el ruido de fondo.</string>
+    <string name="mic1_manufacturer">Shure</string>
+    <string name="mic1_stock">15</string>
+    <string name="mic1_price">99 €</string>
 
+    <string name="mic2_name">Rode NT1-A</string>
+    <string name="mic2_type">Micrófono de Condensador de Diafragma Grande</string>
+    <string name="mic2_description">
+    • Ofrece un sonido cálido y claro, perfecto para grabaciones de estudio de voces e instrumentos acústicos.
+    • Incluye filtro antipop, soporte de suspensión y cable XLR.</string>
+    <string name="mic2_manufacturer">Rode</string>
+    <string name="mic2_stock">10</string>
+    <string name="mic2_price">199 €</string>
+
+    <string name="mic3_name">Audio-Technica AT2020</string>
+    <string name="mic3_type">Micrófono de Condensador Cardioide</string>
+    <string name="mic3_description">
+    • Excelente opción para estudios domésticos, con calidad de sonido profesional a un precio asequible.
+    • Patrón polar cardioide que reduce la captación de sonidos laterales y traseros.</string>
+    <string name="mic3_manufacturer">Audio-Technica</string>
+    <string name="mic3_stock">20</string>
+    <string name="mic3_price">119 €</string>
+
+    <string name="mic4_name">Soporte de Micrófono de Escritorio Ajustable</string>
+    <string name="mic4_type">Accesorio para Micrófono</string>
+    <string name="mic4_description">
+    • Soporte ajustable para escritorio, ideal para podcasts, transmisiones en vivo y grabaciones caseras.
+    • Base estable y brazo flexible para posicionar el micrófono con precisión.</string>
+    <string name="mic4_manufacturer">SEASKY</string>
+    <string name="mic4_stock">30</string>
+    <string name="mic4_price">29 €</string>
 </resources>

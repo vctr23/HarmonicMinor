@@ -22,6 +22,7 @@ import com.example.harmonicminor.navScreens.home.drums.DrumsDetailScreen
 import com.example.harmonicminor.navScreens.home.drums.DrumsScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarDetailScreen
 import com.example.harmonicminor.navScreens.home.guitar.GuitarScreen
+import com.example.harmonicminor.navScreens.home.microphones.MicrophoneDetailScreen
 import com.example.harmonicminor.navScreens.home.microphones.MicrophonesScreen
 import com.example.harmonicminor.navScreens.home.piano.PianoDetailScreen
 import com.example.harmonicminor.navScreens.home.piano.PianoScreen
@@ -155,7 +156,7 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 DjScreen(navController)
             }
             composable(Routes.MicrophonesScreen){
-                MicrophonesScreen()
+                MicrophonesScreen(navController)
             }
             composable(Routes.SoftwareScreen){
                 SoftwareScreen(navController)
@@ -204,6 +205,13 @@ fun MyappNavigation(auth: FirebaseAuth) {
             ) { backStackEntry ->
                 val pianosName = backStackEntry.arguments?.getString("pianosName") ?: ""
                 PianoDetailScreen(navController, pianosName)
+            }
+            composable(
+                "${Routes.MicrophoneDetailScreen}/{microphoneName}",
+                arguments = listOf(navArgument("microphoneName") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val microphoneName = backStackEntry.arguments?.getString("microphoneName") ?: ""
+                MicrophoneDetailScreen(navController, microphoneName)
             }
         }
     )

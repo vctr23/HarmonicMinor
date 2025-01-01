@@ -854,4 +854,40 @@
     <string name="piano5_stock">25</string>
     <string name="piano5_price">899 €</string>
 
+    <string name="mic1_name">Shure SM58</string>
+    <string name="mic1_type">Dynamic Cardioid Microphone</string>
+    <string name="mic1_description">
+    • Renowned for its quality and durability, ideal for live vocals and professional sound applications.
+    • Cardioid polar pattern isolates the main sound source and minimizes background noise.</string>
+    <string name="mic1_manufacturer">Shure</string>
+    <string name="mic1_stock">15</string>
+    <string name="mic1_price">99 €</string>
+
+    <string name="mic2_name">Rode NT1-A</string>
+    <string name="mic2_type">Large-Diaphragm Condenser Microphone</string>
+    <string name="mic2_description">
+    • Delivers a warm and clear sound, perfect for studio recordings of vocals and acoustic instruments.
+    • Includes pop filter, shock mount, and XLR cable.</string>
+    <string name="mic2_manufacturer">Rode</string>
+    <string name="mic2_stock">10</string>
+    <string name="mic2_price">199 €</string>
+
+    <string name="mic3_name">Audio-Technica AT2020</string>
+    <string name="mic3_type">Cardioid Condenser Microphone</string>
+    <string name="mic3_description">
+    • Excellent choice for home studios, offering professional sound quality at an affordable price.
+    • Cardioid polar pattern reduces pickup of sounds from the sides and rear.</string>
+    <string name="mic3_manufacturer">Audio-Technica</string>
+    <string name="mic3_stock">20</string>
+    <string name="mic3_price">119 €</string>
+
+    <string name="mic4_name">Adjustable Desktop Microphone Stand</string>
+    <string name="mic4_type">Microphone Accessory</string>
+    <string name="mic4_description">
+    • Adjustable desktop stand, ideal for podcasts, live streaming, and home recordings.
+    • Stable base and flexible arm for precise microphone positioning.</string>
+    <string name="mic4_manufacturer">SEASKY</string>
+    <string name="mic4_stock">30</string>
+    <string name="mic4_price">29 €</string>
+
 </resources>

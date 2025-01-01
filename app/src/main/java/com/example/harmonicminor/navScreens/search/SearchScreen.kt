@@ -40,6 +40,7 @@ import com.example.harmonicminor.navScreens.home.bass.Bass
 import com.example.harmonicminor.navScreens.home.dj.Dj
 import com.example.harmonicminor.navScreens.home.drums.Drums
 import com.example.harmonicminor.navScreens.home.guitar.Guitar
+import com.example.harmonicminor.navScreens.home.microphones.Microphone
 import com.example.harmonicminor.navScreens.home.piano.Piano
 import com.example.harmonicminor.navScreens.home.software.Software
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
@@ -180,6 +181,7 @@ fun SearchResultsList(results: List<Searchable>) {
                         is Drums -> Text("Name: ${item.name}", color = secondaryTextColor)
                         is Dj -> Text("Name: ${item.name}", color = secondaryTextColor)
                         is Piano -> Text("Name: ${item.name}", color = secondaryTextColor)
+                        is Microphone -> Text("Name: ${item.name}", color = secondaryTextColor)
                     }
                 }
             }
@@ -218,7 +220,8 @@ suspend fun getSearchResults(query: String): List<Searchable> {
     val softwares = getItemsFromCollection("softwares", Software::class.java)
     val drums = getItemsFromCollection("drums", Drums::class.java)
     val pianos = getItemsFromCollection("pianos", Piano::class.java)
+    val mics = getItemsFromCollection("microphones", Microphone::class.java)
 
-    val allItems = guitars + basses + djs + softwares + drums + pianos
+    val allItems = guitars + basses + djs + softwares + drums + pianos + mics
     return allItems.filter { it.name.contains(query, ignoreCase = true) }
 }
