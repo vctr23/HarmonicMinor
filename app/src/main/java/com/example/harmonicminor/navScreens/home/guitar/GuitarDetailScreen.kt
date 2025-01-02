@@ -1,5 +1,6 @@
 package com.example.harmonicminor.navScreens.home.guitar
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,6 +40,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navScreens.favourite.FavouriteViewModel
+import com.example.harmonicminor.navScreens.shopping.ShoppingCartViewModel
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -52,6 +55,8 @@ import com.example.harmonicminor.ui.theme.textColor
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GuitarDetailScreen(navController: NavController, guitarName: String) {
+    val favouriteViewModel: FavouriteViewModel = viewModel()
+    val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val guitarViewModel: GuitarViewModel = viewModel()
     val context = LocalContext.current
 
@@ -60,6 +65,7 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
     }
 
     val guitar = guitarViewModel.guitars.find { it.name == guitarName }
+    val isAvailable = guitar?.stock?.toInt() != 0
 
     if (guitar != null) {
         Scaffold(
@@ -147,7 +153,8 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                     )
                 }
                 item {
-                    if (guitar.isAvailable) {
+                    if (isAvailable) {
+                        Log.d("GuitarDetailScreen", "Guitar Availability: ${guitar.isAvailable}")
                         Text(
                             text = stringResource(R.string.available),
                             modifier = Modifier.padding(8.dp),
@@ -180,7 +187,7 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleFavourite(guitar, context)
+                                    favouriteViewModel.toggleFavourite(guitar, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -204,7 +211,7 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleCart(guitar, context)
+                                    shoppingCartViewModel.toggleCart(guitar, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {

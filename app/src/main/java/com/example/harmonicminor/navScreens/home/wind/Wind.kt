@@ -1,10 +1,10 @@
-package com.example.harmonicminor.navScreens.home.dj
+package com.example.harmonicminor.navScreens.home.wind
 
 import com.example.harmonicminor.navScreens.favourite.FavouriteItem
 import com.example.harmonicminor.navScreens.search.Searchable
 import com.example.harmonicminor.navScreens.shopping.CartItem
 
-data class Dj(
+data class Wind(
     override val name: String,
     val type: String,
     override val description: String,

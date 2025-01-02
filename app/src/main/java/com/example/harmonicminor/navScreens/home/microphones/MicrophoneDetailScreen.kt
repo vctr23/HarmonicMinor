@@ -16,8 +16,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,6 +30,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,6 +39,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navScreens.favourite.FavouriteViewModel
+import com.example.harmonicminor.navScreens.shopping.ShoppingCartViewModel
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -52,6 +54,9 @@ import com.example.harmonicminor.ui.theme.textColor
 @Composable
 fun MicrophoneDetailScreen(navController: NavController, djName: String) {
     val microphoneViewModel: MicrophoneViewModel = viewModel()
+    val favouriteViewModel: FavouriteViewModel = viewModel()
+    val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         microphoneViewModel.readMicrophones()
@@ -178,12 +183,12 @@ fun MicrophoneDetailScreen(navController: NavController, djName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    // Funcionalidad favorito
+                                    favouriteViewModel.toggleFavourite(microphone, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                Icons.Default.Favorite,
+                                painter = painterResource(R.drawable.heart_plus),
                                 contentDescription = null,
                                 modifier = Modifier.size(28.dp),
                                 tint = iconColor
@@ -202,12 +207,12 @@ fun MicrophoneDetailScreen(navController: NavController, djName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    // Funcionalidad carrito
+                                    shoppingCartViewModel.toggleCart(microphone, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                Icons.Default.ShoppingCart,
+                                painter = painterResource(R.drawable.add_shopping_cart),
                                 contentDescription = null,
                                 modifier = Modifier.size(28.dp),
                                 tint = iconColor

@@ -1,8 +1,8 @@
-package com.example.harmonicminor.navScreens.home.microphones
+package com.example.harmonicminor.navScreens.home.wind
 
 import com.example.harmonicminor.navScreens.home.InstrumentThumbnail
 
-data class MicrophoneThumbnail(
+data class WindThumbnail(
     override val name: String,
     override val type: String,
     override val price: String,

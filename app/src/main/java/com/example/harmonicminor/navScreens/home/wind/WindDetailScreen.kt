@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.home.drums
+package com.example.harmonicminor.navScreens.home.wind
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -52,23 +52,23 @@ import com.example.harmonicminor.ui.theme.textColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DrumsDetailScreen(navController: NavController, drumsName: String) {
-    val drumsViewModel: DrumsViewModel = viewModel()
+fun WindDetailScreen(navController: NavController, djName: String) {
+    val windViewModel: WindViewModel = viewModel()
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        drumsViewModel.readDrums()
+        windViewModel.readWind()
     }
 
-    val drums = drumsViewModel.drums.find { it.name == drumsName }
+    val wind = windViewModel.wind.find { it.name == djName }
 
-    if (drums != null) {
+    if (wind != null) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = drums.name) },
+                    title = { Text(text = wind.name) },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
@@ -94,8 +94,8 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
             ) {
                 item {
                     Image(
-                        painter = rememberAsyncImagePainter(drums.imageUrl),
-                        contentDescription = drums.name,
+                        painter = rememberAsyncImagePainter(wind.imageUrl),
+                        contentDescription = wind.name,
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(400.dp)
@@ -106,7 +106,7 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.type) + " " + drums.type,
+                        text = stringResource(R.string.type) + " " + wind.type,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -114,7 +114,7 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.manufacturer) + " " + drums.manufacturer,
+                        text = stringResource(R.string.manufacturer) + " " + wind.manufacturer,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -127,7 +127,7 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                         color = textColor
                     )
                     Text(
-                        text = drums.description,
+                        text = wind.description,
                         modifier = Modifier.padding(8.dp, vertical = 2.dp),
                         fontSize = 16.sp,
                         color = textColor
@@ -135,7 +135,7 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.price) + " " + drums.price,
+                        text = stringResource(R.string.price) + " " + wind.price,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
@@ -143,14 +143,14 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                 }
                 item {
                     Text(
-                        text = stringResource(R.string.stock) + " " + drums.stock,
+                        text = stringResource(R.string.stock) + " " + wind.stock,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 18.sp,
                         color = textColor
                     )
                 }
                 item {
-                    if (drums.isAvailable) {
+                    if (wind.isAvailable) {
                         Text(
                             text = stringResource(R.string.available),
                             modifier = Modifier.padding(8.dp),
@@ -183,8 +183,7 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    // Funcionalidad favorito
-                                    favouriteViewModel.toggleFavourite(drums, context)
+                                    favouriteViewModel.toggleFavourite(wind, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -208,7 +207,7 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    shoppingCartViewModel.toggleCart(drums, context)
+                                    shoppingCartViewModel.toggleCart(wind, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -225,4 +224,6 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
         }
     }
 }
+
+
 

@@ -112,7 +112,7 @@ fun SoftwareSection(innerPadding: PaddingValues, navController: NavController) {
             price = stringResource(R.string.software5_price),
             isAvailable = true,
             thumbNailUrl = "https://drive.google.com/uc?id=1uf5B7dlGjTwTB8UxcZkqk96XgilnWyL1"
-        ),
+        )
     )
     LazyColumn(
         modifier = Modifier

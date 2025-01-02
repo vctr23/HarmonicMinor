@@ -28,6 +28,7 @@ import com.example.harmonicminor.navScreens.home.piano.PianoDetailScreen
 import com.example.harmonicminor.navScreens.home.piano.PianoScreen
 import com.example.harmonicminor.navScreens.home.software.SoftwareDetailScreen
 import com.example.harmonicminor.navScreens.home.software.SoftwareScreen
+import com.example.harmonicminor.navScreens.home.wind.WindDetailScreen
 import com.example.harmonicminor.navScreens.home.wind.WindScreen
 import com.example.harmonicminor.navScreens.menu.MenuScreen
 import com.example.harmonicminor.navScreens.menu.address.AddressScreen
@@ -111,7 +112,7 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 FavouriteScreen(navController)
             }
             composable(Routes.SearchScreen) {
-                SearchScreen()
+                SearchScreen(navController)
             }
             composable(Routes.ShoppingCartScreen) {
                 ShoppingCartScreen(navController)
@@ -150,7 +151,7 @@ fun MyappNavigation(auth: FirebaseAuth) {
                 DrumsScreen(navController)
             }
             composable(Routes.WindScreen){
-                WindScreen()
+                WindScreen(navController)
             }
             composable(Routes.DjScreen){
                 DjScreen(navController)
@@ -212,6 +213,13 @@ fun MyappNavigation(auth: FirebaseAuth) {
             ) { backStackEntry ->
                 val microphoneName = backStackEntry.arguments?.getString("microphoneName") ?: ""
                 MicrophoneDetailScreen(navController, microphoneName)
+            }
+            composable(
+                "${Routes.WindDetailScreen}/{windName}",
+                arguments = listOf(navArgument("windName") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val windName = backStackEntry.arguments?.getString("windName") ?: ""
+                WindDetailScreen(navController, windName)
             }
         }
     )

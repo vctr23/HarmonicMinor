@@ -197,7 +197,7 @@
     <string name="show_all">Show all</string>
     <string name="show_less">Show less</string>
     <string name="most_sold">Best sellers:</string>
-    <string name="recently_seen">Recently seen: </string>
+    <string name="recently_added">Recently added: </string>
     <string name="type">Type:</string>
     <string name="manufacturer">Manufacturer:</string>
     <string name="description">Description:</string>
@@ -677,10 +677,10 @@
     <string name="dj1_name">Pioneer DJ DDJ-400</string>
     <string name="dj1_type">DJ Controller</string>
     <string name="dj1_description">
-    • 2-channel DJ controller with an intuitive design based on professional equipment
-    • Built-in sound card and compatibility with rekordbox dj software
-    • Professional mixing and effects functions, including Beat FX and Sound Color FX
-    • USB-powered, ideal for portable use
+    • 2-channel DJ controller with an intuitive design based on professional equipment\n
+    • Built-in sound card and compatibility with rekordbox dj software\n
+    • Professional mixing and effects functions, including Beat FX and Sound Color FX\n
+    • USB-powered, ideal for portable use\n
     • Includes rekordbox dj license</string>
     <string name="dj1_manufacturer">Pioneer DJ</string>
     <string name="dj1_stock">50</string>
@@ -689,10 +689,10 @@
     <string name="dj2_name">Native Instruments Traktor Kontrol S4 MK3</string>
     <string name="dj2_type">DJ Controller</string>
     <string name="dj2_description">
-    • 4-channel DJ controller with motorized jog wheels and integrated displays
-    • High-quality 24-bit / 96 kHz audio interface
-    • Perfect integration with Traktor Pro 3 software
-    • Advanced features like Mixer FX and Haptic Drive
+    • 4-channel DJ controller with motorized jog wheels and integrated displays\n
+    • High-quality 24-bit / 96 kHz audio interface\n
+    • Perfect integration with Traktor Pro 3 software\n
+    • Advanced features like Mixer FX and Haptic Drive\n
     • Robust construction and professional design</string>
     <string name="dj2_manufacturer">Native Instruments</string>
     <string name="dj2_stock">40</string>
@@ -701,10 +701,10 @@
     <string name="dj3_name">Denon DJ SC6000 Prime</string>
     <string name="dj3_type">Media Player</string>
     <string name="dj3_description">
-    • Professional media player with a 10.1-inch HD touchscreen
-    • Dual-layer playback capability with independent outputs
-    • Compatible with multiple audio formats and streaming services
-    • 8.5-inch jog wheel with customizable center display
+    • Professional media player with a 10.1-inch HD touchscreen\n
+    • Dual-layer playback capability with independent outputs\n
+    • Compatible with multiple audio formats and streaming services\n
+    • 8.5-inch jog wheel with customizable center display\n
     • Built-in WiFi for updates and music streaming</string>
     <string name="dj3_manufacturer">Denon DJ</string>
     <string name="dj3_stock">0</string>
@@ -713,10 +713,10 @@
     <string name="dj4_name">Allen &amp; Heath Xone:96</string>
     <string name="dj4_type">DJ Mixer</string>
     <string name="dj4_description">
-    • Professional analog mixer with 6+2 channels
-    • Dual Xone filters with resonance control
-    • 32-bit / 96 kHz dual USB audio interface
-    • 4-band EQ on main channels
+    • Professional analog mixer with 6+2 channels\n
+    • Dual Xone filters with resonance control\n
+    • 32-bit / 96 kHz dual USB audio interface\n
+    • 4-band EQ on main channels\n
     • Robust build quality and exceptional sound performance</string>
     <string name="dj4_manufacturer">Allen &amp; Heath</string>
     <string name="dj4_stock">4</string>
@@ -725,10 +725,10 @@
     <string name="dj5_name">Rane Twelve MKII</string>
     <string name="dj5_type">Motorized Turntable Controller</string>
     <string name="dj5_description">
-    • 12-inch motorized turntable controller for professional DJs
-    • Simulates the feel of a traditional turntable without the need for needles
-    • Compatible with Serato DJ Pro, Traktor, and Virtual DJ
-    • USB and MIDI connectivity for flexible integration
+    • 12-inch motorized turntable controller for professional DJs\n
+    • Simulates the feel of a traditional turntable without the need for needles\n
+    • Compatible with Serato DJ Pro, Traktor, and Virtual DJ\n
+    • USB and MIDI connectivity for flexible integration\n
     • Sturdy construction and precise response</string>
     <string name="dj5_manufacturer">Rane</string>
     <string name="dj5_stock">9</string>
@@ -737,10 +737,10 @@
     <string name="drums1_name">Roland TD-27KV2</string>
     <string name="drums1_type">Electronic Drum Kit</string>
     <string name="drums1_description">
-    • High-quality electronic drum kit with advanced digital pads and drum module
-    • Features Prismatic Sound Modeling for realistic acoustic drum sounds
-    • 14" snare pad, 18" ride cymbal, and dynamic hi-hat for expressive playability
-    • Bluetooth connectivity for audio streaming and practice integration
+    • High-quality electronic drum kit with advanced digital pads and drum module\n
+    • Features Prismatic Sound Modeling for realistic acoustic drum sounds\n
+    • 14" snare pad, 18" ride cymbal, and dynamic hi-hat for expressive playability\n
+    • Bluetooth connectivity for audio streaming and practice integration\n
     • Includes over 700 sounds and 55 preloaded drum kits</string>
     <string name="drums1_manufacturer">Roland</string>
     <string name="drums1_stock">12</string>
@@ -749,10 +749,10 @@
     <string name="drums2_name">Yamaha DTX6K3-X</string>
     <string name="drums2_type">Electronic Drum Kit</string>
     <string name="drums2_description">
-    • Mid-range electronic drum kit with Yamaha\'s DTX-PRO module
-    • Realistic textured silicone pads for superior response and feel
-    • Customizable kits with over 400 assignable sounds
-    • 3-zone ride and crash cymbals for versatile playability
+    • Mid-range electronic drum kit with Yamaha\'s DTX-PRO module\n
+    • Realistic textured silicone pads for superior response and feel\n
+    • Customizable kits with over 400 assignable sounds\n
+    • 3-zone ride and crash cymbals for versatile playability\n
     • Integrated practice tools and recording functionality</string>
     <string name="drums2_manufacturer">Yamaha</string>
     <string name="drums2_stock">8</string>
@@ -761,10 +761,10 @@
     <string name="drums3_name">Alesis Nitro Mesh Kit</string>
     <string name="drums3_type">Electronic Drum Kit</string>
     <string name="drums3_description">
-    • Entry-level electronic drum kit with all-mesh drum heads for quiet practice
-    • Features 8" dual-zone snare and 8" toms
-    • Includes over 40 drum kits and 385 drum sounds
-    • USB/MIDI connectivity for recording and DAW integration
+    • Entry-level electronic drum kit with all-mesh drum heads for quiet practice\n
+    • Features 8" dual-zone snare and 8" toms\n
+    • Includes over 40 drum kits and 385 drum sounds\n
+    • USB/MIDI connectivity for recording and DAW integration\n
     • Compact and easy to set up, ideal for beginners</string>
     <string name="drums3_manufacturer">Alesis</string>
     <string name="drums3_stock">25</string>
@@ -773,10 +773,10 @@
     <string name="drums4_name">Pearl Export EXX725BR/C</string>
     <string name="drums4_type">Acoustic Drum Kit</string>
     <string name="drums4_description">
-    • Full acoustic drum kit featuring poplar and mahogany shells
-    • Includes 22" bass drum, 12" and 13" toms, 16" floor tom, and 14" snare
-    • Comes with Pearl 830 Series hardware and cymbals
-    • Warm and resonant sound, perfect for various genres
+    • Full acoustic drum kit featuring poplar and mahogany shells\n
+    • Includes 22" bass drum, 12" and 13" toms, 16" floor tom, and 14" snare\n
+    • Comes with Pearl 830 Series hardware and cymbals\n
+    • Warm and resonant sound, perfect for various genres\n
     • Durable construction and high-quality finishes</string>
     <string name="drums4_manufacturer">Pearl</string>
     <string name="drums4_stock">10</string>
@@ -785,10 +785,10 @@
     <string name="drums5_name">Tama Imperialstar IE52C</string>
     <string name="drums5_type">Acoustic Drum Kit</string>
     <string name="drums5_description">
-    • Complete acoustic drum kit with poplar shells for rich tones
-    • Includes 22" bass drum, 10" and 12" toms, 16" floor tom, and 14" snare
-    • Comes with Meinl HCS cymbals and Tama hardware
-    • Ideal for beginners and intermediate players
+    • Complete acoustic drum kit with poplar shells for rich tones\n
+    • Includes 22" bass drum, 10" and 12" toms, 16" floor tom, and 14" snare\n
+    • Comes with Meinl HCS cymbals and Tama hardware\n
+    • Ideal for beginners and intermediate players\n
     • Available in multiple attractive finishes</string>
     <string name="drums5_manufacturer">Tama</string>
     <string name="drums5_stock">15</string>
@@ -797,10 +797,10 @@
     <string name="piano1_name">Yamaha CLP-785 Clavinova</string>
     <string name="piano1_type">Digital Piano</string>
     <string name="piano1_description">
-    • High-end digital piano with GrandTouch keyboard and adjustable counterweight
-    • Sampled sounds of Yamaha CFX and Bösendorfer Imperial grand pianos
-    • High-quality amplification with speakers and tactile transducers
-    • Intuitive interface with a touch screen and recording features
+    • High-end digital piano with GrandTouch keyboard and adjustable counterweight\n
+    • Sampled sounds of Yamaha CFX and Bösendorfer Imperial grand pianos\n
+    • High-quality amplification with speakers and tactile transducers\n
+    • Intuitive interface with a touch screen and recording features\n
     • Compatible with the Smart Pianist app</string>
     <string name="piano1_manufacturer">Yamaha</string>
     <string name="piano1_stock">5</string>
@@ -809,10 +809,10 @@
     <string name="piano2_name">Kawai GL-10 Baby Grand</string>
     <string name="piano2_type">Grand Piano</string>
     <string name="piano2_description">
-    • Compact 153 cm grand piano, ideal for small spaces
-    • Millennium III mechanism with ABS-carbon parts for enhanced durability
-    • Warm and resonant sound with a solid spruce soundboard
-    • Elegant design and high-quality craftsmanship
+    • Compact 153 cm grand piano, ideal for small spaces\n
+    • Millennium III mechanism with ABS-carbon parts for enhanced durability\n
+    • Warm and resonant sound with a solid spruce soundboard\n
+    • Elegant design and high-quality craftsmanship\n
     • Perfect for beginner and advanced pianists</string>
     <string name="piano2_manufacturer">Kawai</string>
     <string name="piano2_stock">3</string>
@@ -821,10 +821,10 @@
     <string name="piano3_name">Roland FP-90X</string>
     <string name="piano3_type">Portable Digital Piano</string>
     <string name="piano3_description">
-    • Portable digital piano with SuperNATURAL Piano technology
-    • PHA-50 keyboard with hammer action and ivory-textured keys
-    • Customizable sound and response via Roland Piano Designer app
-    • High-quality built-in speakers for live performances
+    • Portable digital piano with SuperNATURAL Piano technology\n
+    • PHA-50 keyboard with hammer action and ivory-textured keys\n
+    • Customizable sound and response via Roland Piano Designer app\n
+    • High-quality built-in speakers for live performances\n
     • Bluetooth connectivity for audio streaming and MIDI</string>
     <string name="piano3_manufacturer">Roland</string>
     <string name="piano3_stock">20</string>
@@ -833,10 +833,10 @@
     <string name="piano4_name">Steinway &amp; Sons Model D-274</string>
     <string name="piano4_type">Grand Piano</string>
     <string name="piano4_description">
-    • Concert grand piano of 274 cm, used by professional pianists worldwide
-    • Handcrafted with the highest quality materials
-    • Unmatched sound and exceptional dynamic range
-    • Select spruce soundboard for perfect resonance
+    • Concert grand piano of 274 cm, used by professional pianists worldwide\n
+    • Handcrafted with the highest quality materials\n
+    • Unmatched sound and exceptional dynamic range\n
+    • Select spruce soundboard for perfect resonance\n
     • Ideal for concerts, studios, and high-performance spaces</string>
     <string name="piano4_manufacturer">Steinway &amp; Sons</string>
     <string name="piano4_stock">1</string>
@@ -845,10 +845,10 @@
     <string name="piano5_name">Casio PX-S3100</string>
     <string name="piano5_type">Portable Digital Piano</string>
     <string name="piano5_description">
-    • Ultra-slim digital piano with AiR Sound Source technology
-    • Scaled hammer action keyboard with ebony and ivory-textured keys
-    • Includes 700 sounds, 200 rhythms, and recording functions
-    • Bluetooth and MIDI connectivity for device integration
+    • Ultra-slim digital piano with AiR Sound Source technology\n
+    • Scaled hammer action keyboard with ebony and ivory-textured keys\n
+    • Includes 700 sounds, 200 rhythms, and recording functions\n
+    • Bluetooth and MIDI connectivity for device integration\n
     • Lightweight and easy to transport, ideal for musicians on the go</string>
     <string name="piano5_manufacturer">Casio</string>
     <string name="piano5_stock">25</string>
@@ -857,7 +857,7 @@
     <string name="mic1_name">Shure SM58</string>
     <string name="mic1_type">Dynamic Cardioid Microphone</string>
     <string name="mic1_description">
-    • Renowned for its quality and durability, ideal for live vocals and professional sound applications.
+    • Renowned for its quality and durability, ideal for live vocals and professional sound applications.\n
     • Cardioid polar pattern isolates the main sound source and minimizes background noise.</string>
     <string name="mic1_manufacturer">Shure</string>
     <string name="mic1_stock">15</string>
@@ -866,7 +866,7 @@
     <string name="mic2_name">Rode NT1-A</string>
     <string name="mic2_type">Large-Diaphragm Condenser Microphone</string>
     <string name="mic2_description">
-    • Delivers a warm and clear sound, perfect for studio recordings of vocals and acoustic instruments.
+    • Delivers a warm and clear sound, perfect for studio recordings of vocals and acoustic instruments.\n
     • Includes pop filter, shock mount, and XLR cable.</string>
     <string name="mic2_manufacturer">Rode</string>
     <string name="mic2_stock">10</string>
@@ -875,19 +875,68 @@
     <string name="mic3_name">Audio-Technica AT2020</string>
     <string name="mic3_type">Cardioid Condenser Microphone</string>
     <string name="mic3_description">
-    • Excellent choice for home studios, offering professional sound quality at an affordable price.
+    • Excellent choice for home studios, offering professional sound quality at an affordable price.\n
     • Cardioid polar pattern reduces pickup of sounds from the sides and rear.</string>
     <string name="mic3_manufacturer">Audio-Technica</string>
     <string name="mic3_stock">20</string>
     <string name="mic3_price">119 €</string>
 
-    <string name="mic4_name">Adjustable Desktop Microphone Stand</string>
+    <string name="mic4_name">SEASKY Stand</string>
     <string name="mic4_type">Microphone Accessory</string>
     <string name="mic4_description">
-    • Adjustable desktop stand, ideal for podcasts, live streaming, and home recordings.
+    • Adjustable desktop stand, ideal for podcasts, live streaming, and home recordings.\n
     • Stable base and flexible arm for precise microphone positioning.</string>
     <string name="mic4_manufacturer">SEASKY</string>
     <string name="mic4_stock">30</string>
     <string name="mic4_price">29 €</string>
 
+    <string name="wind1_name">Yamaha YCL-255</string>
+    <string name="wind1_type">Clarinet</string>
+    <string name="wind1_description">
+    • Bb clarinet ideal for students and beginners.\n
+    • Made of ABS resin with a warm and authentic sound.\n
+    • Includes mouthpiece, case, and basic accessories.</string>
+    <string name="wind1_manufacturer">Yamaha</string>
+    <string name="wind1_stock">12</string>
+    <string name="wind1_price">€649</string>
+
+    <string name="wind2_name">Gemeinhardt 2SP</string>
+    <string name="wind2_type">Flute</string>
+    <string name="wind2_description">
+    • Silver flute for beginners and intermediate students.\n
+    • Durable design with a closed hole mechanism.\n
+    • Includes hard case and cleaning cloth.</string>
+    <string name="wind2_manufacturer">Gemeinhardt</string>
+    <string name="wind2_stock">8</string>
+    <string name="wind2_price">€599</string>
+
+    <string name="wind3_name">Bach TR300H2</string>
+    <string name="wind3_type">Trumpet</string>
+    <string name="wind3_description">
+    • Bb trumpet with a lacquered gold finish, ideal for students.\n
+    • Fast action valves and Bach 7C mouthpiece included.\n
+    • Excellent sound projection and robust construction.</string>
+    <string name="wind3_manufacturer">Bach</string>
+    <string name="wind3_stock">10</string>
+    <string name="wind3_price">€899</string>
+
+    <string name="wind4_name">Selmer Bundy II</string>
+    <string name="wind4_type">Alto Saxophone</string>
+    <string name="wind4_description">
+    • Eb alto saxophone, perfect for beginners.\n
+    • Lacquered gold finish with excellent durability.\n
+    • Includes mouthpiece, strap, and hard case.</string>
+    <string name="wind4_manufacturer">Selmer</string>
+    <string name="wind4_stock">7</string>
+    <string name="wind4_price">€1,299</string>
+
+    <string name="wind5_name">Hohner Marine Band 1896</string>
+    <string name="wind5_type">Harmonica</string>
+    <string name="wind5_description">
+    • Diatonic harmonica in C major, used by professionals and enthusiasts.\n
+    • Pear wood body and brass reeds for a rich tone.\n
+    • Compact and easy to carry, ideal for blues, rock, and folk.</string>
+    <string name="wind5_manufacturer">Hohner</string>
+    <string name="wind5_stock">20</string>
+    <string name="wind5_price">€49</string>
 </resources>

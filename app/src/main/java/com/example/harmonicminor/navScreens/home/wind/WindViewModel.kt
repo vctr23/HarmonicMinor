@@ -1,4 +1,4 @@
-package com.example.harmonicminor.navScreens.home.bass
+package com.example.harmonicminor.navScreens.home.wind
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
@@ -8,24 +8,24 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class BassViewModel: ViewModel() {
+class WindViewModel: ViewModel() {
     private val db = FirebaseFirestore.getInstance()
 
-    private val _basses = mutableStateListOf<Bass>()
-    val basses: List<Bass> get() = _basses
+    private val _wind = mutableStateListOf<Wind>()
+    val wind: List<Wind> get() = _wind
 
 
-    fun readBasses() {
+    fun readWind() {
         viewModelScope.launch {
             try {
-                val result = db.collection("basses").get().await()
-                _basses.clear()
+                val result = db.collection("winds").get().await()
+                _wind.clear()
                 for (document in result) {
-                    val bass = document.toObject(Bass::class.java)
-                    _basses.add(bass)
+                    val wind = document.toObject(Wind::class.java)
+                    _wind.add(wind)
                 }
             } catch (e: Exception) {
-                Log.e("BassViewModel", "Error getting documents: $e")
+                Log.e("WindViewModel", "Error getting documents: $e")
             }
         }
     }

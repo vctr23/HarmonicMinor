@@ -115,13 +115,13 @@ fun MicrophoneSection(innerPadding: PaddingValues, navController: NavController)
             .padding(horizontal = 16.dp, vertical = 4.dp)
     ) {
         items(microphones) { micro ->
-            DjSectionItem(microphoneThumbnail = micro, navController)
+            MicrophoneSectionItem(microphoneThumbnail = micro, navController)
         }
     }
 }
 
 @Composable
-fun DjSectionItem(microphoneThumbnail: MicrophoneThumbnail, navController: NavController) {
+fun MicrophoneSectionItem(microphoneThumbnail: MicrophoneThumbnail, navController: NavController) {
     Box(
         modifier = Modifier
             .wrapContentSize()
@@ -131,7 +131,7 @@ fun DjSectionItem(microphoneThumbnail: MicrophoneThumbnail, navController: NavCo
             .background(backgroundAccentColor, shape = RoundedCornerShape(12.dp))
             .clip(RoundedCornerShape(12.dp))
             .clickable {
-                navController.navigate("${Routes.DjDetailScreen}/${microphoneThumbnail.name}")
+                navController.navigate("${Routes.MicrophoneDetailScreen}/${microphoneThumbnail.name}")
             }
     ) {
         Row(

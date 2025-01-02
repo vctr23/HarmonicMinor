@@ -24,6 +24,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,9 +42,30 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navScreens.home.bass.Bass
+import com.example.harmonicminor.navScreens.home.bass.BassSectionItem
+import com.example.harmonicminor.navScreens.home.bass.BassThumbnail
+import com.example.harmonicminor.navScreens.home.dj.Dj
+import com.example.harmonicminor.navScreens.home.dj.DjSectionItem
+import com.example.harmonicminor.navScreens.home.dj.DjThumbnail
+import com.example.harmonicminor.navScreens.home.drums.Drums
+import com.example.harmonicminor.navScreens.home.drums.DrumsSectionItem
+import com.example.harmonicminor.navScreens.home.drums.DrumsThumbnail
+import com.example.harmonicminor.navScreens.home.guitar.Guitar
 import com.example.harmonicminor.navScreens.home.guitar.GuitarSectionItem
 import com.example.harmonicminor.navScreens.home.guitar.GuitarThumbnail
-import com.example.harmonicminor.navScreens.home.guitar.GuitarViewModel
+import com.example.harmonicminor.navScreens.home.microphones.Microphone
+import com.example.harmonicminor.navScreens.home.microphones.MicrophoneSectionItem
+import com.example.harmonicminor.navScreens.home.microphones.MicrophoneThumbnail
+import com.example.harmonicminor.navScreens.home.piano.Piano
+import com.example.harmonicminor.navScreens.home.piano.PianoSectionItem
+import com.example.harmonicminor.navScreens.home.piano.PianoThumbnail
+import com.example.harmonicminor.navScreens.home.software.Software
+import com.example.harmonicminor.navScreens.home.software.SoftwareSectionItem
+import com.example.harmonicminor.navScreens.home.software.SoftwareThumbnail
+import com.example.harmonicminor.navScreens.home.wind.Wind
+import com.example.harmonicminor.navScreens.home.wind.WindSectionItem
+import com.example.harmonicminor.navScreens.home.wind.WindThumbnail
 import com.example.harmonicminor.navScreens.menu.address.Address
 import com.example.harmonicminor.navScreens.menu.address.getAddressData
 import com.example.harmonicminor.navigation.Routes
@@ -57,18 +79,18 @@ import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ShoppingCartScreen(navController: NavController) {
-    val guitarViewModel: GuitarViewModel = viewModel()
+fun ShoppingCartScreen(navController: NavController, shoppingCartViewModel: ShoppingCartViewModel = viewModel()) {
+
     val context = LocalContext.current
-    val cart = guitarViewModel.cart.value
     val auth = FirebaseAuth.getInstance()
     var address by remember { mutableStateOf<Address?>(null) }
-    val totalPrice = cart.sumOf {
+    val totalPrice = shoppingCartViewModel.cartItems.collectAsState().value.sumOf {
         it.price.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
     }
+    val cartItems by shoppingCartViewModel.cartItems.collectAsState()
 
     LaunchedEffect(Unit) {
-        guitarViewModel.loadCart(FirebaseAuth.getInstance().currentUser?.uid ?: "")
+        shoppingCartViewModel.loadCart(FirebaseAuth.getInstance().currentUser?.uid ?: "")
 
         val userId = auth.currentUser?.uid
         if (userId != null) {
@@ -86,30 +108,8 @@ fun ShoppingCartScreen(navController: NavController) {
     }
 
     Scaffold {
-        if (cart.isEmpty()) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(backgroundColor),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = stringResource(R.string.cart_empty),
-                    fontSize = 20.sp,
-                    color = textColor,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(vertical = 20.dp)
-                )
-                Image(
-                    painter = painterResource(R.drawable.cart_empty),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(500.dp)
-                        .padding(vertical = 20.dp),
-                    contentScale = ContentScale.Crop
-                )
-            }
+        if (cartItems.isEmpty()) {
+            EmptyCartScreen()
         } else {
             LazyColumn(
                 modifier = Modifier
@@ -126,19 +126,102 @@ fun ShoppingCartScreen(navController: NavController) {
                         modifier = Modifier.padding(vertical = 10.dp)
                     )
                 }
-                items(cart) { guitar ->
+                items(cartItems) { item ->
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        GuitarSectionItem(
-                            guitarThumbnail = GuitarThumbnail(
-                                name = guitar.name,
-                                type = guitar.type,
-                                price = guitar.price,
-                                isAvailable = guitar.isAvailable,
-                                thumbNailUrl = guitar.thumbnailUrl
-                            ), navController
-                        )
+                        when (item) {
+                            is Guitar -> {
+                                GuitarSectionItem(
+                                    guitarThumbnail = GuitarThumbnail(
+                                        name = item.name,
+                                        type = item.type,
+                                        price = item.price,
+                                        isAvailable = item.isAvailable,
+                                        thumbNailUrl = item.thumbnailUrl
+                                    ),
+                                    navController
+                                )
+                            }
+                            is Bass -> {
+                                BassSectionItem(
+                                    bassThumbnail = BassThumbnail(
+                                        name = item.name,
+                                        type = item.type,
+                                        price = item.price,
+                                        isAvailable = item.isAvailable,
+                                        thumbNailUrl = item.thumbnailUrl
+                                    ),
+                                    navController
+                                )
+                            }
+
+                            is Drums -> DrumsSectionItem(
+                                drumsThumbnail = DrumsThumbnail(
+                                    name = item.name,
+                                    type = item.type,
+                                    price = item.price,
+                                    isAvailable = item.isAvailable,
+                                    thumbNailUrl = item.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Dj -> DjSectionItem(
+                                djThumbnail = DjThumbnail(
+                                    name = item.name,
+                                    type = item.type,
+                                    price = item.price,
+                                    isAvailable = item.isAvailable,
+                                    thumbNailUrl = item.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Piano -> PianoSectionItem(
+                                pianoThumbnail = PianoThumbnail(
+                                    name = item.name,
+                                    type = item.type,
+                                    price = item.price,
+                                    isAvailable = item.isAvailable,
+                                    thumbNailUrl = item.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Software -> SoftwareSectionItem(
+                                softwareThumbnail = SoftwareThumbnail(
+                                    name = item.name,
+                                    type = item.type,
+                                    price = item.price,
+                                    isAvailable = item.isAvailable,
+                                    thumbNailUrl = item.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Wind -> WindSectionItem(
+                                windThumbnail = WindThumbnail(
+                                    name = item.name,
+                                    type = item.type,
+                                    price = item.price,
+                                    isAvailable = item.isAvailable,
+                                    thumbNailUrl = item.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Microphone -> MicrophoneSectionItem(
+                                microphoneThumbnail = MicrophoneThumbnail(
+                                    name = item.name,
+                                    type = item.type,
+                                    price = item.price,
+                                    isAvailable = item.isAvailable,
+                                    thumbNailUrl = item.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+                        }
                         Box(
                             modifier = Modifier
                                 .height(42.dp)
@@ -152,7 +235,7 @@ fun ShoppingCartScreen(navController: NavController) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleCart(guitar, context)
+                                    shoppingCartViewModel.toggleCart(item, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -307,5 +390,32 @@ fun ShoppingCartScreen(navController: NavController) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun EmptyCartScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = stringResource(R.string.cart_empty),
+            fontSize = 20.sp,
+            color = textColor,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(vertical = 20.dp)
+        )
+        Image(
+            painter = painterResource(R.drawable.cart_empty),
+            contentDescription = null,
+            modifier = Modifier
+                .size(500.dp)
+                .padding(vertical = 20.dp),
+            contentScale = ContentScale.Crop
+        )
     }
 }

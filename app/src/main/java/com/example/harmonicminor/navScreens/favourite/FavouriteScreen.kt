@@ -20,6 +20,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -33,9 +35,30 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navScreens.home.bass.Bass
+import com.example.harmonicminor.navScreens.home.bass.BassSectionItem
+import com.example.harmonicminor.navScreens.home.bass.BassThumbnail
+import com.example.harmonicminor.navScreens.home.dj.Dj
+import com.example.harmonicminor.navScreens.home.dj.DjSectionItem
+import com.example.harmonicminor.navScreens.home.dj.DjThumbnail
+import com.example.harmonicminor.navScreens.home.drums.Drums
+import com.example.harmonicminor.navScreens.home.drums.DrumsSectionItem
+import com.example.harmonicminor.navScreens.home.drums.DrumsThumbnail
+import com.example.harmonicminor.navScreens.home.guitar.Guitar
 import com.example.harmonicminor.navScreens.home.guitar.GuitarSectionItem
 import com.example.harmonicminor.navScreens.home.guitar.GuitarThumbnail
-import com.example.harmonicminor.navScreens.home.guitar.GuitarViewModel
+import com.example.harmonicminor.navScreens.home.microphones.Microphone
+import com.example.harmonicminor.navScreens.home.microphones.MicrophoneSectionItem
+import com.example.harmonicminor.navScreens.home.microphones.MicrophoneThumbnail
+import com.example.harmonicminor.navScreens.home.piano.Piano
+import com.example.harmonicminor.navScreens.home.piano.PianoSectionItem
+import com.example.harmonicminor.navScreens.home.piano.PianoThumbnail
+import com.example.harmonicminor.navScreens.home.software.Software
+import com.example.harmonicminor.navScreens.home.software.SoftwareSectionItem
+import com.example.harmonicminor.navScreens.home.software.SoftwareThumbnail
+import com.example.harmonicminor.navScreens.home.wind.Wind
+import com.example.harmonicminor.navScreens.home.wind.WindSectionItem
+import com.example.harmonicminor.navScreens.home.wind.WindThumbnail
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -45,41 +68,17 @@ import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun FavouriteScreen(navController: NavController) {
-    val guitarViewModel: GuitarViewModel = viewModel()
+fun FavouriteScreen(navController: NavController, favouriteViewModel: FavouriteViewModel = viewModel()) {
+    val favourites by favouriteViewModel.favourites.collectAsState()
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        guitarViewModel.loadFavourites(FirebaseAuth.getInstance().currentUser?.uid ?: "")
+        favouriteViewModel.loadFavourites(FirebaseAuth.getInstance().currentUser?.uid ?: "")
     }
 
-    val guitarFavourites = guitarViewModel.favourites.value
-
     Scaffold {
-        if (guitarFavourites.isEmpty()) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(backgroundColor),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = stringResource(R.string.favourites_empty),
-                    fontSize = 20.sp,
-                    color = textColor,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(vertical = 20.dp)
-                )
-                Image(
-                    painter = painterResource(R.drawable.favourite_empty),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(500.dp)
-                        .padding(vertical = 20.dp),
-                    contentScale = ContentScale.Crop
-                )
-            }
+        if (favourites.isEmpty()) {
+            EmptyFavouritesScreen()
         } else {
             LazyColumn(
                 modifier = Modifier
@@ -96,19 +95,99 @@ fun FavouriteScreen(navController: NavController) {
                         modifier = Modifier.padding(vertical = 10.dp)
                     )
                 }
-                items(guitarFavourites) { favourite ->
+                items(favourites) { favourite ->
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        GuitarSectionItem(
-                            guitarThumbnail = GuitarThumbnail(
-                                name = favourite.name,
-                                type = favourite.type,
-                                price = favourite.price,
-                                isAvailable = favourite.isAvailable,
-                                thumbNailUrl = favourite.thumbnailUrl
-                            ), navController
-                        )
+                        when (favourite) {
+                            is Guitar -> GuitarSectionItem(
+                                guitarThumbnail = GuitarThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Bass -> BassSectionItem(
+                                bassThumbnail = BassThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Drums -> DrumsSectionItem(
+                                drumsThumbnail = DrumsThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Dj -> DjSectionItem(
+                                djThumbnail = DjThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Piano -> PianoSectionItem(
+                                pianoThumbnail = PianoThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Software -> SoftwareSectionItem(
+                                softwareThumbnail = SoftwareThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Wind -> WindSectionItem(
+                                windThumbnail = WindThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+
+                            is Microphone -> MicrophoneSectionItem(
+                                microphoneThumbnail = MicrophoneThumbnail(
+                                    name = favourite.name,
+                                    type = favourite.type,
+                                    price = favourite.price,
+                                    isAvailable = favourite.isAvailable,
+                                    thumbNailUrl = favourite.thumbnailUrl
+                                ),
+                                navController = navController
+                            )
+                        }
                         Box(
                             modifier = Modifier
                                 .height(42.dp)
@@ -122,7 +201,7 @@ fun FavouriteScreen(navController: NavController) {
                                     shape = RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
-                                    guitarViewModel.toggleFavourite(favourite, context)
+                                    favouriteViewModel.toggleFavourite(favourite, context)
                                 },
                             contentAlignment = Alignment.Center
                         ) {
@@ -137,5 +216,32 @@ fun FavouriteScreen(navController: NavController) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun EmptyFavouritesScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = stringResource(R.string.favourites_empty),
+            fontSize = 20.sp,
+            color = textColor,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(vertical = 20.dp)
+        )
+        Image(
+            painter = painterResource(R.drawable.favourite_empty),
+            contentDescription = null,
+            modifier = Modifier
+                .size(500.dp)
+                .padding(vertical = 20.dp),
+            contentScale = ContentScale.Crop
+        )
     }
 }

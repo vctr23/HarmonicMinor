@@ -2,20 +2,24 @@ package com.example.harmonicminor.navScreens.search
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -31,11 +35,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navScreens.home.Category
 import com.example.harmonicminor.navScreens.home.bass.Bass
 import com.example.harmonicminor.navScreens.home.dj.Dj
 import com.example.harmonicminor.navScreens.home.drums.Drums
@@ -43,6 +52,8 @@ import com.example.harmonicminor.navScreens.home.guitar.Guitar
 import com.example.harmonicminor.navScreens.home.microphones.Microphone
 import com.example.harmonicminor.navScreens.home.piano.Piano
 import com.example.harmonicminor.navScreens.home.software.Software
+import com.example.harmonicminor.navScreens.home.wind.Wind
+import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.iconColor
@@ -55,7 +66,7 @@ import kotlin.coroutines.suspendCoroutine
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SearchScreen() {
+fun SearchScreen(navController: NavController) {
     var query by remember { mutableStateOf("") }
     var searchResults by remember { mutableStateOf<List<Searchable>>(emptyList()) }
     var isLoading by remember { mutableStateOf(false) }
@@ -90,11 +101,7 @@ fun SearchScreen() {
                 onQueryChange = { query = it }
             )
             Spacer(modifier = Modifier.height(16.dp))
-            if (isLoading) {
-                CircularProgressIndicator(color = secondaryTextColor)
-            } else {
-                SearchResultsList(results = searchResults)
-            }
+            SearchResultsList(results = searchResults, navController)
         }
     }
 }
@@ -153,13 +160,97 @@ fun SearchBar(query: String, onQueryChange: (String) -> Unit) {
                 )
             }
         }
-    ){}
+    ) {}
 }
 
 @Composable
-fun SearchResultsList(results: List<Searchable>) {
+fun SearchResultsList(results: List<Searchable>, navController: NavController) {
     if (results.isEmpty()) {
         Text(text = stringResource(R.string.nothing_found), color = secondaryTextColor)
+
+        val categories = listOf(
+            Category(
+                stringResource(R.string.guitars),
+                R.drawable.category_guitar,
+                onClick = {
+                    navController.navigate(Routes.GuitarScreen) {
+                        launchSingleTop = true
+                    }
+                }),
+            Category(
+                stringResource(R.string.bass),
+                R.drawable.category_bass,
+                onClick = {
+                    navController.navigate(Routes.BassScreen) {
+                        launchSingleTop = true
+                    }
+                }
+            ),
+            Category(
+                stringResource(R.string.piano),
+                R.drawable.category_piano,
+                onClick = {
+                    navController.navigate(Routes.PianoScreen) {
+                        launchSingleTop = true
+                    }
+                }
+            ),
+            Category(
+                stringResource(R.string.drums),
+                R.drawable.category_drums,
+                onClick = {
+                    navController.navigate(Routes.DrumsScreen) {
+                        launchSingleTop = true
+                    }
+                }
+            ),
+            Category(
+                stringResource(R.string.wind),
+                R.drawable.category_wind,
+                onClick = {
+                    navController.navigate(Routes.WindScreen) {
+                        launchSingleTop = true
+                    }
+                }
+            ),
+            Category(
+                stringResource(R.string.dj),
+                R.drawable.category_dj,
+                onClick = {
+                    navController.navigate(Routes.DjScreen) {
+                        launchSingleTop = true
+                    }
+                }
+            ),
+            Category(
+                stringResource(R.string.microphones),
+                R.drawable.category_microfones,
+                onClick = {
+                    navController.navigate(Routes.MicrophonesScreen) {
+                        launchSingleTop = true
+                    }
+                }
+            ),
+            Category(
+                stringResource(R.string.software),
+                R.drawable.category_software,
+                onClick = {
+                    navController.navigate(Routes.SoftwareScreen) {
+                        launchSingleTop = true
+                    }
+                }
+            ),
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            categories.forEach { category ->
+                CategoryRowItem(category = category)
+            }
+        }
     } else {
         LazyColumn(
             modifier = Modifier
@@ -182,10 +273,40 @@ fun SearchResultsList(results: List<Searchable>) {
                         is Dj -> Text("Name: ${item.name}", color = secondaryTextColor)
                         is Piano -> Text("Name: ${item.name}", color = secondaryTextColor)
                         is Microphone -> Text("Name: ${item.name}", color = secondaryTextColor)
+                        is Wind -> Text("Name: ${item.name}", color = secondaryTextColor)
                     }
                 }
             }
         }
+    }
+}
+
+@Composable
+fun CategoryRowItem(category: Category) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { category.onClick() }
+            .padding(vertical = 8.dp)
+            .background(backgroundAccentColor, shape = RoundedCornerShape(8.dp))
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(category.imageRes),
+            contentDescription = category.name,
+            modifier = Modifier
+                .size(40.dp)
+                .clip(RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Text(
+            text = category.name,
+            color = textColor,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
@@ -221,7 +342,8 @@ suspend fun getSearchResults(query: String): List<Searchable> {
     val drums = getItemsFromCollection("drums", Drums::class.java)
     val pianos = getItemsFromCollection("pianos", Piano::class.java)
     val mics = getItemsFromCollection("microphones", Microphone::class.java)
+    val wind = getItemsFromCollection("winds", Wind::class.java)
 
-    val allItems = guitars + basses + djs + softwares + drums + pianos + mics
+    val allItems = guitars + basses + djs + softwares + drums + pianos + mics + wind
     return allItems.filter { it.name.contains(query, ignoreCase = true) }
 }

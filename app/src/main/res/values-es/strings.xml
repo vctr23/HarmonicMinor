@@ -197,7 +197,7 @@
     <string name="show_all">Mostrar todas</string>
     <string name="show_less">Mostrar menos</string>
     <string name="most_sold">Más vendidos:</string>
-    <string name="recently_seen">Vistos recientemente:</string>
+    <string name="recently_added">Añadidos recientemente:</string>
     <string name="type">Tipo:</string>
     <string name="manufacturer">Fabricante:</string>
     <string name="description">Descripción:</string>
@@ -681,10 +681,10 @@
     <string name="dj1_name">Pioneer DJ DDJ-400</string>
     <string name="dj1_type">Controlador DJ</string>
     <string name="dj1_description">
-    • Controlador DJ de 2 canales con diseño intuitivo basado en equipos profesionales
-    • Tarjeta de sonido integrada y compatibilidad con software rekordbox dj
-    • Funciones de mezcla y efectos profesionales, incluyendo Beat FX y Sound Color FX
-    • Alimentación por USB, ideal para uso portátil
+    • Controlador DJ de 2 canales con diseño intuitivo basado en equipos profesionales\n
+    • Tarjeta de sonido integrada y compatibilidad con software rekordbox dj\n
+    • Funciones de mezcla y efectos profesionales, incluyendo Beat FX y Sound Color FX\n
+    • Alimentación por USB, ideal para uso portátil\n
     • Incluye licencia de rekordbox dj</string>
     <string name="dj1_manufacturer">Pioneer DJ</string>
     <string name="dj1_stock">50</string>
@@ -693,10 +693,10 @@
     <string name="dj2_name">Native Instruments Traktor Kontrol S4 MK3</string>
     <string name="dj2_type">Controlador DJ</string>
     <string name="dj2_description">
-    • Controlador DJ de 4 canales con jog wheels motorizados y pantallas integradas
-    • Interfaz de audio de alta calidad de 24 bits / 96 kHz
-    • Integración perfecta con el software Traktor Pro 3
-    • Funciones avanzadas como Mixer FX y Haptic Drive
+    • Controlador DJ de 4 canales con jog wheels motorizados y pantallas integradas\n
+    • Interfaz de audio de alta calidad de 24 bits / 96 kHz\n
+    • Integración perfecta con el software Traktor Pro 3\n
+    • Funciones avanzadas como Mixer FX y Haptic Drive\n
     • Construcción robusta y diseño profesional</string>
     <string name="dj2_manufacturer">Native Instruments</string>
     <string name="dj2_stock">40</string>
@@ -705,10 +705,10 @@
     <string name="dj3_name">Denon DJ SC6000 Prime</string>
     <string name="dj3_type">Reproductor Multimedia</string>
     <string name="dj3_description">
-    • Reproductor multimedia profesional con pantalla táctil HD de 10.1 pulgadas
-    • Capacidad de reproducción de dos capas con salidas independientes
-    • Compatible con múltiples formatos de audio y servicios de streaming
-    • Jog wheel de 8.5 pulgadas con pantalla central personalizable
+    • Reproductor multimedia profesional con pantalla táctil HD de 10.1 pulgadas\n
+    • Capacidad de reproducción de dos capas con salidas independientes\n
+    • Compatible con múltiples formatos de audio y servicios de streaming\n
+    • Jog wheel de 8.5 pulgadas con pantalla central personalizable\n
     • WiFi integrado para actualizaciones y transmisión de música</string>
     <string name="dj3_manufacturer">Denon DJ</string>
     <string name="dj3_stock">0</string>
@@ -717,10 +717,10 @@
     <string name="dj4_name">Allen &amp; Heath Xone:96</string>
     <string name="dj4_type">Mezclador DJ</string>
     <string name="dj4_description">
-    • Mezclador analógico profesional de 6+2 canales
-    • Filtros duales Xone con control de resonancia
-    • Interfaz de audio USB dual de 32 bits / 96 kHz
-    • EQ de 4 bandas en canales principales
+    • Mezclador analógico profesional de 6+2 canales\n
+    • Filtros duales Xone con control de resonancia\n
+    • Interfaz de audio USB dual de 32 bits / 96 kHz\n
+    • EQ de 4 bandas en canales principales\n
     • Construcción robusta y calidad de sonido excepcional</string>
     <string name="dj4_manufacturer">Allen &amp; Heath</string>
     <string name="dj4_stock">4</string>
@@ -729,10 +729,10 @@
     <string name="dj5_name">Rane Twelve MKII</string>
     <string name="dj5_type">Controlador de Plato Motorizado</string>
     <string name="dj5_description">
-    • Controlador de plato motorizado de 12 pulgadas para DJs profesionales
-    • Simula la sensación de un giradiscos tradicional sin necesidad de agujas
-    • Compatible con Serato DJ Pro, Traktor y Virtual DJ
-    • Conexión USB y MIDI para integración flexible
+    • Controlador de plato motorizado de 12 pulgadas para DJs profesionales\n
+    • Simula la sensación de un giradiscos tradicional sin necesidad de agujas\n
+    • Compatible con Serato DJ Pro, Traktor y Virtual DJ\n
+    • Conexión USB y MIDI para integración flexible\n
     • Construcción robusta y respuesta precisa</string>
     <string name="dj5_manufacturer">Rane</string>
     <string name="dj5_stock">9</string>
@@ -741,10 +741,10 @@
     <string name="drums1_name">Roland TD-27KV2</string>
     <string name="drums1_type">Kit de Batería Electrónica</string>
     <string name="drums1_description">
-    • Kit de batería electrónica de alta calidad con pads digitales avanzados y módulo de batería
-    • Cuenta con Prismatic Sound Modeling para sonidos realistas de batería acústica
-    • Pad de caja de 14", platillo ride de 18" y charles dinámico para una interpretación expresiva
-    • Conectividad Bluetooth para streaming de audio e integración en prácticas
+    • Kit de batería electrónica de alta calidad con pads digitales avanzados y módulo de batería\n
+    • Cuenta con Prismatic Sound Modeling para sonidos realistas de batería acústica\n
+    • Pad de caja de 14", platillo ride de 18" y charles dinámico para una interpretación expresiva\n
+    • Conectividad Bluetooth para streaming de audio e integración en prácticas\n
     • Incluye más de 700 sonidos y 55 kits de batería preinstalados</string>
     <string name="drums1_manufacturer">Roland</string>
     <string name="drums1_stock">12</string>
@@ -753,10 +753,10 @@
     <string name="drums2_name">Yamaha DTX6K3-X</string>
     <string name="drums2_type">Kit de Batería Electrónica</string>
     <string name="drums2_description">
-    • Kit de batería electrónica de gama media con módulo DTX-PRO de Yamaha
-    • Pads de silicona texturizados realistas para una respuesta y sensación superiores
-    • Kits personalizables con más de 400 sonidos asignables
-    • Platillos ride y crash de 3 zonas para una interpretación versátil
+    • Kit de batería electrónica de gama media con módulo DTX-PRO de Yamaha\n
+    • Pads de silicona texturizados realistas para una respuesta y sensación superiores\n
+    • Kits personalizables con más de 400 sonidos asignables\n
+    • Platillos ride y crash de 3 zonas para una interpretación versátil\n
     • Herramientas de práctica integradas y funcionalidad de grabación</string>
     <string name="drums2_manufacturer">Yamaha</string>
     <string name="drums2_stock">8</string>
@@ -765,10 +765,10 @@
     <string name="drums3_name">Alesis Nitro Mesh Kit</string>
     <string name="drums3_type">Kit de Batería Electrónica</string>
     <string name="drums3_description">
-    • Kit de batería electrónica de nivel básico con parches de malla para prácticas silenciosas
-    • Incluye caja de doble zona de 8" y toms de 8"
-    • Ofrece más de 40 kits de batería y 385 sonidos de batería
-    • Conectividad USB/MIDI para grabación e integración con DAW
+    • Kit de batería electrónica de nivel básico con parches de malla para prácticas silenciosas\n
+    • Incluye caja de doble zona de 8" y toms de 8"\n
+    • Ofrece más de 40 kits de batería y 385 sonidos de batería\n
+    • Conectividad USB/MIDI para grabación e integración con DAW\n
     • Compacto y fácil de montar, ideal para principiantes</string>
     <string name="drums3_manufacturer">Alesis</string>
     <string name="drums3_stock">25</string>
@@ -777,10 +777,10 @@
     <string name="drums4_name">Pearl Export EXX725BR/C</string>
     <string name="drums4_type">Kit de Batería Acústica</string>
     <string name="drums4_description">
-    • Kit completo de batería acústica con cascos de álamo y caoba
-    • Incluye bombo de 22", toms de 12" y 13", floor tom de 16" y caja de 14"
-    • Viene con hardware de la serie Pearl 830 y platillos
-    • Sonido cálido y resonante, perfecto para diversos géneros
+    • Kit completo de batería acústica con cascos de álamo y caoba\n
+    • Incluye bombo de 22", toms de 12" y 13", floor tom de 16" y caja de 14"\n
+    • Viene con hardware de la serie Pearl 830 y platillos\n
+    • Sonido cálido y resonante, perfecto para diversos géneros\n
     • Construcción duradera y acabados de alta calidad</string>
     <string name="drums4_manufacturer">Pearl</string>
     <string name="drums4_stock">10</string>
@@ -789,10 +789,10 @@
     <string name="drums5_name">Tama Imperialstar IE52C</string>
     <string name="drums5_type">Kit de Batería Acústica</string>
     <string name="drums5_description">
-    • Kit completo de batería acústica con cascos de álamo para tonos ricos
-    • Incluye bombo de 22", toms de 10" y 12", floor tom de 16" y caja de 14"
-    • Viene con platillos Meinl HCS y hardware Tama
-    • Ideal para principiantes y músicos intermedios
+    • Kit completo de batería acústica con cascos de álamo para tonos ricos\n
+    • Incluye bombo de 22", toms de 10" y 12", floor tom de 16" y caja de 14"\n
+    • Viene con platillos Meinl HCS y hardware Tama\n
+    • Ideal para principiantes y músicos intermedios\n
     • Disponible en varios acabados atractivos</string>
     <string name="drums5_manufacturer">Tama</string>
     <string name="drums5_stock">15</string>
@@ -801,10 +801,10 @@
     <string name="piano1_name">Yamaha CLP-785 Clavinova</string>
     <string name="piano1_type">Piano Digital</string>
     <string name="piano1_description">
-    • Piano digital de alta gama con teclado GrandTouch y contrapeso ajustable
-    • Sonidos de piano Yamaha CFX y Bösendorfer Imperial sampleados
-    • Amplificación de alta calidad con altavoces y transductores táctiles
-    • Interfaz intuitiva con pantalla táctil y funciones de grabación
+    • Piano digital de alta gama con teclado GrandTouch y contrapeso ajustable\n
+    • Sonidos de piano Yamaha CFX y Bösendorfer Imperial sampleados\n
+    • Amplificación de alta calidad con altavoces y transductores táctiles\n
+    • Interfaz intuitiva con pantalla táctil y funciones de grabación\n
     • Compatibilidad con la aplicación Smart Pianist</string>
     <string name="piano1_manufacturer">Yamaha</string>
     <string name="piano1_stock">5</string>
@@ -813,10 +813,10 @@
     <string name="piano2_name">Kawai GL-10 Baby Grand</string>
     <string name="piano2_type">Piano de Cola</string>
     <string name="piano2_description">
-    • Piano de cola compacto de 153 cm, ideal para espacios reducidos
-    • Mecanismo Millennium III con piezas de carbono ABS para mayor durabilidad
-    • Sonido cálido y resonante gracias a su tabla armónica de abeto macizo
-    • Diseño elegante y construcción de alta calidad
+    • Piano de cola compacto de 153 cm, ideal para espacios reducidos\n
+    • Mecanismo Millennium III con piezas de carbono ABS para mayor durabilidad\n
+    • Sonido cálido y resonante gracias a su tabla armónica de abeto macizo\n
+    • Diseño elegante y construcción de alta calidad\n
     • Perfecto para pianistas principiantes y avanzados</string>
     <string name="piano2_manufacturer">Kawai</string>
     <string name="piano2_stock">3</string>
@@ -825,10 +825,10 @@
     <string name="piano3_name">Roland FP-90X</string>
     <string name="piano3_type">Piano Digital Portátil</string>
     <string name="piano3_description">
-    • Piano digital portátil con tecnología SuperNATURAL Piano
-    • Teclado PHA-50 con acción de martillo y textura de marfil
-    • Sonido y respuesta personalizables a través de la aplicación Roland Piano Designer
-    • Altavoces integrados de alta calidad para interpretación en directo
+    • Piano digital portátil con tecnología SuperNATURAL Piano\n
+    • Teclado PHA-50 con acción de martillo y textura de marfil\n
+    • Sonido y respuesta personalizables a través de la aplicación Roland Piano Designer\n
+    • Altavoces integrados de alta calidad para interpretación en directo\n
     • Conectividad Bluetooth para streaming de audio y MIDI</string>
     <string name="piano3_manufacturer">Roland</string>
     <string name="piano3_stock">20</string>
@@ -837,10 +837,10 @@
     <string name="piano4_name">Steinway &amp; Sons Model D-274</string>
     <string name="piano4_type">Piano de Cola</string>
     <string name="piano4_description">
-    • Piano de cola de concierto de 274 cm, utilizado por pianistas profesionales en todo el mundo
-    • Construcción artesanal con materiales de la más alta calidad
-    • Sonido incomparable y capacidad dinámica excepcional
-    • Tabla armónica de picea seleccionada para una resonancia perfecta
+    • Piano de cola de concierto de 274 cm, utilizado por pianistas profesionales en todo el mundo\n
+    • Construcción artesanal con materiales de la más alta calidad\n
+    • Sonido incomparable y capacidad dinámica excepcional\n
+    • Tabla armónica de picea seleccionada para una resonancia perfecta\n
     • Ideal para conciertos, estudios y espacios de alto rendimiento</string>
     <string name="piano4_manufacturer">Steinway &amp; Sons</string>
     <string name="piano4_stock">1</string>
@@ -849,10 +849,10 @@
     <string name="piano5_name">Casio PX-S3100</string>
     <string name="piano5_type">Piano Digital Portátil</string>
     <string name="piano5_description">
-    • Piano digital ultradelgado con tecnología AiR Sound Source
-    • Teclado de acción en escala martillo con textura de ébano y marfil
-    • Incluye 700 sonidos, 200 ritmos y funciones de grabación
-    • Conectividad Bluetooth y MIDI para integración con dispositivos
+    • Piano digital ultradelgado con tecnología AiR Sound Source\n
+    • Teclado de acción en escala martillo con textura de ébano y marfil\n
+    • Incluye 700 sonidos, 200 ritmos y funciones de grabación\n
+    • Conectividad Bluetooth y MIDI para integración con dispositivos\n
     • Ligero y fácil de transportar, ideal para músicos en movimiento</string>
     <string name="piano5_manufacturer">Casio</string>
     <string name="piano5_stock">25</string>
@@ -861,16 +861,16 @@
     <string name="mic1_name">Shure SM58</string>
     <string name="mic1_type">Micrófono Dinámico Cardioide</string>
     <string name="mic1_description">
-    • Reconocido por su calidad y durabilidad, ideal para voces en vivo y aplicaciones de sonido profesional.
+    • Reconocido por su calidad y durabilidad, ideal para voces en vivo y aplicaciones de sonido profesional.\n
     • Patrón polar cardioide que aísla la fuente de sonido principal y minimiza el ruido de fondo.</string>
     <string name="mic1_manufacturer">Shure</string>
     <string name="mic1_stock">15</string>
     <string name="mic1_price">99 €</string>
 
     <string name="mic2_name">Rode NT1-A</string>
-    <string name="mic2_type">Micrófono de Condensador de Diafragma Grande</string>
+    <string name="mic2_type">Micrófono Condensador de Diafragma Grande</string>
     <string name="mic2_description">
-    • Ofrece un sonido cálido y claro, perfecto para grabaciones de estudio de voces e instrumentos acústicos.
+    • Ofrece un sonido cálido y claro, perfecto para grabaciones de estudio de voces e instrumentos acústicos.\n
     • Incluye filtro antipop, soporte de suspensión y cable XLR.</string>
     <string name="mic2_manufacturer">Rode</string>
     <string name="mic2_stock">10</string>
@@ -879,18 +879,68 @@
     <string name="mic3_name">Audio-Technica AT2020</string>
     <string name="mic3_type">Micrófono de Condensador Cardioide</string>
     <string name="mic3_description">
-    • Excelente opción para estudios domésticos, con calidad de sonido profesional a un precio asequible.
+    • Excelente opción para estudios domésticos, con calidad de sonido profesional a un precio asequible.\n
     • Patrón polar cardioide que reduce la captación de sonidos laterales y traseros.</string>
     <string name="mic3_manufacturer">Audio-Technica</string>
     <string name="mic3_stock">20</string>
     <string name="mic3_price">119 €</string>
 
-    <string name="mic4_name">Soporte de Micrófono de Escritorio Ajustable</string>
+    <string name="mic4_name">SEASKY Stand</string>
     <string name="mic4_type">Accesorio para Micrófono</string>
     <string name="mic4_description">
-    • Soporte ajustable para escritorio, ideal para podcasts, transmisiones en vivo y grabaciones caseras.
+    • Soporte ajustable para escritorio, ideal para podcasts, transmisiones en vivo y grabaciones caseras.\n
     • Base estable y brazo flexible para posicionar el micrófono con precisión.</string>
     <string name="mic4_manufacturer">SEASKY</string>
     <string name="mic4_stock">30</string>
     <string name="mic4_price">29 €</string>
+
+    <string name="wind1_name">Yamaha YCL-255</string>
+    <string name="wind1_type">Clarinete</string>
+    <string name="wind1_description">
+    • Clarinete en Si bemol ideal para estudiantes y principiantes.\n
+    • Fabricado en resina ABS con un sonido cálido y auténtico.\n
+    • Incluye boquilla, estuche y accesorios básicos.</string>
+    <string name="wind1_manufacturer">Yamaha</string>
+    <string name="wind1_stock">12</string>
+    <string name="wind1_price">649 €</string>
+
+    <string name="wind2_name">Gemeinhardt 2SP</string>
+    <string name="wind2_type">Flauta Travesera</string>
+    <string name="wind2_description">
+    • Flauta travesera plateada para principiantes y estudiantes intermedios.\n
+    • Diseño duradero con un mecanismo de tono cerrado.\n
+    • Incluye estuche rígido y paño de limpieza.</string>
+    <string name="wind2_manufacturer">Gemeinhardt</string>
+    <string name="wind2_stock">8</string>
+    <string name="wind2_price">599 €</string>
+
+    <string name="wind3_name">Bach TR300H2</string>
+    <string name="wind3_type">Trompeta</string>
+    <string name="wind3_description">
+    • Trompeta en Si bemol con acabado lacado dorado, ideal para estudiantes.\n
+    • Válvulas de acción rápida y boquilla Bach 7C incluida.\n
+    • Excelente proyección de sonido y construcción robusta.</string>
+    <string name="wind3_manufacturer">Bach</string>
+    <string name="wind3_stock">10</string>
+    <string name="wind3_price">899 €</string>
+
+    <string name="wind4_name">Selmer Bundy II</string>
+    <string name="wind4_type">Saxofón Alto</string>
+    <string name="wind4_description">
+    • Saxofón alto en Mi bemol, perfecto para principiantes.\n
+    • Acabado lacado dorado con excelente durabilidad.\n
+    • Incluye boquilla, correa y estuche rígido.</string>
+    <string name="wind4_manufacturer">Selmer</string>
+    <string name="wind4_stock">7</string>
+    <string name="wind4_price">1,299 €</string>
+
+    <string name="wind5_name">Hohner Marine Band 1896</string>
+    <string name="wind5_type">Armónica</string>
+    <string name="wind5_description">
+    • Armónica diatónica en Do mayor, utilizada por profesionales y aficionados.\n
+    • Cuerpo de madera de peral y lengüetas de latón para un tono rico.\n
+    • Compacta y fácil de transportar, ideal para blues, rock y folk.</string>
+    <string name="wind5_manufacturer">Hohner</string>
+    <string name="wind5_stock">20</string>
+    <string name="wind5_price">49 €</string>
 </resources>
