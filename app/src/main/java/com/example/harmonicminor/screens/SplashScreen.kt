@@ -1,6 +1,11 @@
 package com.example.harmonicminor.screens
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -36,7 +42,20 @@ fun Splash(navController: NavController, modifier: Modifier = Modifier){
             durationMillis = 3000
         ), label = ""
     )
-    
+
+    val infiniteTransition = rememberInfiniteTransition(label = "pulsatingAnimation")
+    val pulsatingAnimation by infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = 1.1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 800,
+                easing = FastOutSlowInEasing
+            ),
+            repeatMode = RepeatMode.Reverse
+        ), label = "pulsatingAnimation"
+    )
+
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(3000)
@@ -55,8 +74,12 @@ fun Splash(navController: NavController, modifier: Modifier = Modifier){
             contentDescription = "Logo",
             modifier = Modifier
                 .size(450.dp)
-                .padding(16.dp)
+                .padding(8.dp)
                 .alpha(alphaAnimation.value)
+                .graphicsLayer(
+                    scaleX = pulsatingAnimation,
+                    scaleY = pulsatingAnimation
+                )
         )
     }
 

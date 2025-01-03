@@ -151,5 +151,4 @@ class FavouriteViewModel : ViewModel() {
             }
         }
     }
-
 }

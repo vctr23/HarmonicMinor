@@ -225,4 +225,3 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
         }
     }
 }
-

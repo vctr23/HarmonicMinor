@@ -68,7 +68,10 @@ import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun FavouriteScreen(navController: NavController, favouriteViewModel: FavouriteViewModel = viewModel()) {
+fun FavouriteScreen(
+    navController: NavController,
+    favouriteViewModel: FavouriteViewModel = viewModel()
+) {
     val favourites by favouriteViewModel.favourites.collectAsState()
     val context = LocalContext.current
 
