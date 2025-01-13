@@ -26,7 +26,7 @@
     <string name="added_favourite">Product successfully added to favourites</string>
     <string name="removed_favourite">Product successfully removed from favourites</string>
     <string name="cart">Added to cart</string>
-    <string name="cart_empty">¡¡¡¡Add some product to the cart!!!!</string>
+    <string name="cart_empty">¡¡¡¡Add some products to the cart!!!!</string>
     <string name="added_cart">Product successfully added to the cart</string>
     <string name="removed_cart">Product successfully eliminated from the cart</string>
     <string name="total_price">Total price: </string>

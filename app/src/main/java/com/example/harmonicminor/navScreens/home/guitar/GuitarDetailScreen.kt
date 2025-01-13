@@ -6,13 +6,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -29,6 +32,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -42,6 +46,7 @@ import coil3.compose.rememberAsyncImagePainter
 import com.example.harmonicminor.R
 import com.example.harmonicminor.navScreens.favourite.FavouriteViewModel
 import com.example.harmonicminor.navScreens.shopping.ShoppingCartViewModel
+import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
@@ -102,55 +107,94 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(400.dp)
+                            .padding(vertical = 8.dp)
                             .clip(RoundedCornerShape(12.dp))
                             .background(secondaryTextColor),
                         contentScale = ContentScale.Fit,
                     )
                 }
                 item {
-                    Text(
-                        text = stringResource(R.string.type) + " " + guitar.type,
-                        modifier = Modifier.padding(8.dp),
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(105.dp)
+                            .padding(vertical = 8.dp, horizontal = 8.dp)
+                            .shadow(16.dp, shape = RoundedCornerShape(12.dp))
+                            .background(backgroundAccentColor, shape = RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(12.dp))
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxHeight().padding(8.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.type) + " " + guitar.type,
+                                modifier = Modifier.padding(8.dp),
+                                fontSize = 18.sp,
+                                color = textColor
+                            )
+                            Text(
+                                text = stringResource(R.string.manufacturer) + " " + guitar.manufacturer,
+                                modifier = Modifier.padding(8.dp),
+                                fontSize = 18.sp,
+                                color = textColor
+                            )
+                        }
+                    }
+                }
+
+                item {
+                    Box(
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .padding(vertical = 8.dp, horizontal = 8.dp)
+                            .shadow(16.dp, shape = RoundedCornerShape(12.dp))
+                            .background(backgroundAccentColor, shape = RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(12.dp))
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxHeight().padding(8.dp),
+                        ) {
+                            Text(
+                                text = stringResource(R.string.description),
+                                fontSize = 18.sp,
+                                color = textColor
+                            )
+                            Text(
+                                text = guitar.description,
+                                modifier = Modifier.padding(8.dp, vertical = 2.dp),
+                                fontSize = 16.sp,
+                                color = textColor
+                            )
+                        }
+                    }
                 }
                 item {
-                    Text(
-                        text = stringResource(R.string.manufacturer) + " " + guitar.manufacturer,
-                        modifier = Modifier.padding(8.dp),
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-                }
-                item {
-                    Text(
-                        text = stringResource(R.string.description),
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-                    Text(
-                        text = guitar.description,
-                        modifier = Modifier.padding(8.dp, vertical = 2.dp),
-                        fontSize = 16.sp,
-                        color = textColor
-                    )
-                }
-                item {
-                    Text(
-                        text = stringResource(R.string.price) + " " + guitar.price,
-                        modifier = Modifier.padding(8.dp),
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
-                }
-                item {
-                    Text(
-                        text = stringResource(R.string.stock) + " " + guitar.stock,
-                        modifier = Modifier.padding(8.dp),
-                        fontSize = 18.sp,
-                        color = textColor
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(105.dp)
+                            .padding(vertical = 8.dp, horizontal = 8.dp)
+                            .shadow(16.dp, shape = RoundedCornerShape(12.dp))
+                            .background(backgroundAccentColor, shape = RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(12.dp))
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxHeight().padding(8.dp),
+                        ) {
+                            Text(
+                                text = stringResource(R.string.price) + " " + guitar.price,
+                                modifier = Modifier.padding(8.dp),
+                                fontSize = 18.sp,
+                                color = textColor
+                            )
+                            Text(
+                                text = stringResource(R.string.stock) + " " + guitar.stock,
+                                modifier = Modifier.padding(8.dp),
+                                fontSize = 18.sp,
+                                color = textColor
+                            )
+                        }
+                    }
                 }
                 item {
                     if (isAvailable) {
