@@ -150,4 +150,22 @@ class ShoppingCartViewModel : ViewModel() {
             }
         }
     }
+
+    fun clearCart(userId: String, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        val userDoc = db.collection("users").document(userId)
+
+        userDoc.update("cart", emptyMap<String, List<String>>())
+            .addOnSuccessListener {
+                // Limpiar la lista local del carrito
+                _cartItems.value = emptyList()
+
+                // Llamar al callback de éxito
+                onSuccess()
+            }
+            .addOnFailureListener { e ->
+                // Llamar al callback de error con el mensaje de excepción
+                onFailure(e.message ?: "Error desconocido")
+            }
+    }
 }
+

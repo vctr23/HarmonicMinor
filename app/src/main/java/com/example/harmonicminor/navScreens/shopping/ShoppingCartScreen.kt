@@ -360,10 +360,20 @@ fun ShoppingCartScreen(navController: NavController, shoppingCartViewModel: Shop
                                         shape = RoundedCornerShape(12.dp)
                                     )
                                     .clickable(enabled = address != null) {
-                                        navController.navigate(Routes.PaymentCorrectScreen) {
-                                            launchSingleTop = true
+                                        val userId = auth.currentUser?.uid
+                                        if (userId != null) {
+                                            shoppingCartViewModel.clearCart(
+                                                userId = userId,
+                                                onSuccess = {
+                                                    navController.navigate(Routes.PaymentCorrectScreen) {
+                                                        launchSingleTop = true
+                                                    }
+                                                },
+                                                onFailure = { errorMessage ->
+                                                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                                                }
+                                            )
                                         }
-
                                     },
                                 contentAlignment = Alignment.Center
                             ) {
