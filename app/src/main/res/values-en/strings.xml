@@ -22,11 +22,13 @@
     <string name="password_empty">Password field mustn\'t be empty</string>
     <string name="username_empty">Username field mustn\'t be empty</string>
     <string name="favourites">Favourites</string>
-    <string name="favourites_empty">Add some products as your favourites!!!!</string>
+    <string name="favourites_empty">Your Favourites List is Empty</string>
+    <string name="favourites_empty_message">Looks like you haven\'t added any instruments to your favourites. Start exploring our shop to find your favorite instruments!</string>
     <string name="added_favourite">Product successfully added to favourites</string>
     <string name="removed_favourite">Product successfully removed from favourites</string>
     <string name="cart">Added to cart</string>
-    <string name="cart_empty">¡¡¡¡Add some products to the cart!!!!</string>
+    <string name="cart_empty">Your Cart is Empty</string>
+    <string name="cart_empty_message">Looks like you haven\'t added any items to your cart. Start exploring our shop to find your favorite instruments!</string>
     <string name="added_cart">Product successfully added to the cart</string>
     <string name="removed_cart">Product successfully eliminated from the cart</string>
     <string name="total_price">Total price: </string>

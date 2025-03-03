@@ -22,11 +22,13 @@
     <string name="password_empty">El campo contraseña no puede estar vacío</string>
     <string name="username_empty">El nombre de usuario no puede estar vacío</string>
     <string name="favourites">Favoritos</string>
-    <string name="favourites_empty">¡¡¡¡Agrega algún producto a favoritos!!!!</string>
+    <string name="favourites_empty">Tu lista de favoritos está vacía</string>
+    <string name="favourites_empty_message">Parece que no has añadido ningún instrumento a tus favoritos. ¡Empieza a explorar nuestra tienda para encontrar tus instrumentos favoritos!</string>
     <string name="added_favourite">Producto añadido correctamente a favoritos</string>
     <string name="removed_favourite">Producto eliminado correctamente de favoritos</string>
     <string name="cart">Añadidos al carro</string>
-    <string name="cart_empty">¡¡¡¡Agrega algún producto al carro!!!!</string>
+    <string name="cart_empty">Tu carrito está vacío</string>
+    <string name="cart_empty_message">Parece que no has añadido ningún artículo a tu carrito. ¡Empieza a explorar nuestra tienda para encontrar tus instrumentos favoritos!</string>
     <string name="added_cart">Producto correctamente añadido al carro</string>
     <string name="removed_cart">Producto correctamente eliminado del carro</string>
     <string name="total_price">Precio total: </string>

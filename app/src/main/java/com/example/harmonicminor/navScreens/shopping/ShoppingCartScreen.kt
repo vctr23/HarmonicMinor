@@ -37,6 +37,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -408,16 +409,24 @@ fun EmptyCartScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(backgroundColor),
+            .background(backgroundColor)
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(R.string.cart_empty),
-            fontSize = 20.sp,
+            fontSize = 24.sp,
             color = textColor,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(vertical = 20.dp)
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
+        Text(
+            text = stringResource(R.string.cart_empty_message),
+            fontSize = 16.sp,
+            color = textColor,
+            modifier = Modifier.padding(vertical = 8.dp),
+            textAlign = TextAlign.Center
         )
         Image(
             painter = painterResource(R.drawable.cart_empty),

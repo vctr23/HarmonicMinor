@@ -137,7 +137,9 @@ fun HeaderSection(userId: String) {
             painter = painterResource(R.drawable.sentiment_very_satisfied),
             contentDescription = null,
             tint = iconColor,
-            modifier = Modifier.padding(horizontal = 16.dp).size(32.dp)
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .size(32.dp)
         )
     }
 }
@@ -225,6 +227,7 @@ fun CategoriesSection(navController: NavController) {
             text = stringResource(R.string.categories),
             color = textColor,
             fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -377,6 +380,7 @@ fun BestSellersSection(navController: NavController) {
             text = stringResource(R.string.most_sold),
             color = textColor,
             fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -534,6 +538,7 @@ fun RecentlyAddedSection(navController: NavController) {
             text = stringResource(R.string.recently_added),
             color = textColor,
             fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
