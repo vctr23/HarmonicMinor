@@ -33,6 +33,11 @@
     <string name="removed_cart">Producto correctamente eliminado del carro</string>
     <string name="total_price">Precio total: </string>
     <string name="pay">Pagar</string>
+    <string name="payment_method">Método de pago</string>
+    <string name="card_number">Número de tarjeta:</string>
+    <string name="card_expiration">Fecha de vencimiento (MM/AA):</string>
+    <string name="card_cvc">Código de seguridad (CVC/CVV):</string>
+    <string name="card_owner_name">Nombre del titular (como aparece en la tarjeta):</string>
     <string name="checkout">Fin del pago</string>
     <string name="correct_payment">Pago correcto</string>
     <string name="available_languages">Idiomas disponibles:</string>

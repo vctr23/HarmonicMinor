@@ -33,6 +33,11 @@
     <string name="removed_cart">Product successfully eliminated from the cart</string>
     <string name="total_price">Total price: </string>
     <string name="pay">Pay</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="card_number">Card Number:</string>
+    <string name="card_expiration">Expiration Date (MM/YY):</string>
+    <string name="card_cvc">Security Code (CVC/CVV):</string>
+    <string name="card_owner_name">Cardholder Name (as on card):</string>
     <string name="checkout">End of payment</string>
     <string name="correct_payment">Payment successful</string>
     <string name="available_languages">Available languages:</string>

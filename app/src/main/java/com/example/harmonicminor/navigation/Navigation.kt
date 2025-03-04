@@ -38,6 +38,7 @@ import com.example.harmonicminor.navScreens.menu.feedback.FeedbackScreen
 import com.example.harmonicminor.navScreens.menu.terms.Terms
 import com.example.harmonicminor.navScreens.search.SearchScreen
 import com.example.harmonicminor.navScreens.shopping.PaymentCorrectScreen
+import com.example.harmonicminor.navScreens.shopping.PaymentScreen
 import com.example.harmonicminor.navScreens.shopping.ShoppingCartScreen
 import com.example.harmonicminor.screens.Initial
 import com.example.harmonicminor.screens.Login
@@ -161,6 +162,9 @@ fun MyappNavigation(auth: FirebaseAuth) {
             }
             composable(Routes.SoftwareScreen){
                 SoftwareScreen(navController)
+            }
+            composable(Routes.PaymentScreen){
+                PaymentScreen(navController)
             }
             composable(Routes.PaymentCorrectScreen){
                 PaymentCorrectScreen(navController)

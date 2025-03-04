@@ -366,7 +366,7 @@ fun ShoppingCartScreen(navController: NavController, shoppingCartViewModel: Shop
                                             shoppingCartViewModel.clearCart(
                                                 userId = userId,
                                                 onSuccess = {
-                                                    navController.navigate(Routes.PaymentCorrectScreen) {
+                                                    navController.navigate(Routes.PaymentScreen) {
                                                         launchSingleTop = true
                                                     }
                                                 },
