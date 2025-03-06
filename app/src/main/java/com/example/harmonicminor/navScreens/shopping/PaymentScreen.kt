@@ -2,6 +2,8 @@ package com.example.harmonicminor.navScreens.shopping
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -44,7 +46,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
+import com.example.harmonicminor.navigation.Routes
 import com.example.harmonicminor.ui.theme.backgroundColor
+import com.example.harmonicminor.ui.theme.buttonColor1
+import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
 
@@ -79,25 +84,30 @@ fun PaymentScreen(navController: NavController) {
                 .background(backgroundColor)
                 .fillMaxHeight()
         ) {
-            CardModel()
+            CardModel(navController)
         }
     }
 }
 
 @Composable
-fun CardModel(modifier: Modifier = Modifier) {
+fun CardModel(navController: NavController) {
     var cardNum by remember { mutableStateOf("") }
     var cardCVC by remember { mutableStateOf("") }
     var cardHolderName by remember { mutableStateOf("") }
     var cardExpirationDate by remember { mutableStateOf("") }
-    Column() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(230.dp)
                 .padding(16.dp),
             shape = RoundedCornerShape(16.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
+            elevation = CardDefaults.cardElevation(12.dp),
             colors = CardDefaults.cardColors(containerColor = Color.Transparent)
         ) {
             Box(
@@ -169,6 +179,8 @@ fun CardModel(modifier: Modifier = Modifier) {
                 }
             }
         }
+        // Spacer between the card and the textfields
+        Spacer(modifier = Modifier.size(16.dp))
         // Text field for card number
         OutlinedTextField(
             value = cardNum,
@@ -176,9 +188,11 @@ fun CardModel(modifier: Modifier = Modifier) {
                 cardNum = it
             },
             label = {
-                Text(text = stringResource(R.string.card_owner_name), color = textColor)
+                Text(text = stringResource(R.string.card_number), color = textColor)
             },
-            modifier = Modifier.width(280.dp),
+            modifier = Modifier
+                .width(380.dp)
+                .height(52.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = textColor,
                 unfocusedTextColor = textColor,
@@ -187,17 +201,23 @@ fun CardModel(modifier: Modifier = Modifier) {
             singleLine = true,
             maxLines = 1,
         )
+        Spacer(modifier = Modifier.size(16.dp))
         // Row with textfields for card security code & card expiration date
-        Row(){
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             OutlinedTextField(
                 value = cardExpirationDate,
                 onValueChange = {
                     cardExpirationDate = it
                 },
                 label = {
-                    Text(text = stringResource(R.string.card_owner_name), color = textColor)
+                    Text(text = stringResource(R.string.card_expiration), color = textColor)
                 },
-                modifier = Modifier.width(280.dp),
+                modifier = Modifier
+                    .width(180.dp)
+                    .height(52.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedTextColor = textColor,
                     unfocusedTextColor = textColor,
@@ -212,9 +232,11 @@ fun CardModel(modifier: Modifier = Modifier) {
                     cardCVC = it
                 },
                 label = {
-                    Text(text = stringResource(R.string.card_owner_name), color = textColor)
+                    Text(text = stringResource(R.string.card_cvc), color = textColor)
                 },
-                modifier = Modifier.width(280.dp),
+                modifier = Modifier
+                    .width(180.dp)
+                    .height(52.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedTextColor = textColor,
                     unfocusedTextColor = textColor,
@@ -224,6 +246,7 @@ fun CardModel(modifier: Modifier = Modifier) {
                 maxLines = 1,
             )
         }
+        Spacer(modifier = Modifier.size(16.dp))
         // Textfield for card holder name
         OutlinedTextField(
             value = cardHolderName,
@@ -233,7 +256,9 @@ fun CardModel(modifier: Modifier = Modifier) {
             label = {
                 Text(text = stringResource(R.string.card_owner_name), color = textColor)
             },
-            modifier = Modifier.width(280.dp),
+            modifier = Modifier
+                .width(380.dp)
+                .height(52.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = textColor,
                 unfocusedTextColor = textColor,
@@ -242,5 +267,32 @@ fun CardModel(modifier: Modifier = Modifier) {
             singleLine = true,
             maxLines = 1,
         )
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            verticalAlignment = Alignment.Bottom,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(buttonColor1, buttonColor2),
+                        ),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                    .clickable {
+                        navController.navigate(Routes.PaymentCorrectScreen)
+                    }
+                    .padding(vertical = 16.dp, horizontal = 80.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.pay),
+                    color = textColor
+                )
+            }
+        }
     }
 }
