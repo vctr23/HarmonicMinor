@@ -51,6 +51,7 @@ import com.example.harmonicminor.ui.theme.backgroundColor
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
+import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -95,6 +96,7 @@ fun CardModel(navController: NavController) {
     var cardCVC by remember { mutableStateOf("") }
     var cardHolderName by remember { mutableStateOf("") }
     var cardExpirationDate by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -104,7 +106,7 @@ fun CardModel(navController: NavController) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(230.dp)
+                .height(235.dp)
                 .padding(16.dp),
             shape = RoundedCornerShape(16.dp),
             elevation = CardDefaults.cardElevation(12.dp),
@@ -124,13 +126,15 @@ fun CardModel(navController: NavController) {
             ) {
                 Column {
                     // Upper text with bank name
-                    Row() {
+                    Row(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
                         Spacer(modifier = Modifier.weight(1f))
                         Text(
                             text = "HarmonicMinor",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = textColor
                         )
                     }
 
@@ -152,29 +156,37 @@ fun CardModel(navController: NavController) {
 
                     // Card Number
                     Text(
-                        text = "XXXX XXXX XXXX XXXX",
+                        text = if (cardNum == "") "XXXX XXXX XXXX" else cardNum,
                         fontSize = 20.sp,
                         fontFamily = FontFamily.Monospace,
-                        color = Color.White
+                        color = textColor
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    // Expiration date
-                    Text(
-                        text = "VALID THRU XX/XX",
-                        fontSize = 12.sp,
-                        color = Color.Gray
-                    )
+                    // Expiration date and security code
+                    Row() {
+                        Text(
+                            text = if (cardExpirationDate == "") "VALID THRU XX/XX" else "VALID THRU $cardExpirationDate",
+                            fontSize = 12.sp,
+                            color = secondaryTextColor
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Text(
+                            text = if (cardCVC == "") "CVC" else "CVC: $cardCVC",
+                            fontSize = 16.sp,
+                            color = textColor
+                        )
+                    }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // Cardholder Name
                     Text(
-                        text = "App User",
+                        text = if (cardHolderName == "") "App User" else cardHolderName,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = textColor
                     )
                 }
             }
@@ -192,7 +204,7 @@ fun CardModel(navController: NavController) {
             },
             modifier = Modifier
                 .width(380.dp)
-                .height(52.dp),
+                .height(55.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = textColor,
                 unfocusedTextColor = textColor,
@@ -217,7 +229,7 @@ fun CardModel(navController: NavController) {
                 },
                 modifier = Modifier
                     .width(180.dp)
-                    .height(52.dp),
+                    .height(55.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedTextColor = textColor,
                     unfocusedTextColor = textColor,
@@ -236,7 +248,7 @@ fun CardModel(navController: NavController) {
                 },
                 modifier = Modifier
                     .width(180.dp)
-                    .height(52.dp),
+                    .height(55.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedTextColor = textColor,
                     unfocusedTextColor = textColor,
@@ -258,7 +270,7 @@ fun CardModel(navController: NavController) {
             },
             modifier = Modifier
                 .width(380.dp)
-                .height(52.dp),
+                .height(55.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = textColor,
                 unfocusedTextColor = textColor,
