@@ -1,5 +1,6 @@
 package com.example.harmonicminor.navScreens.shopping
 
+import android.widget.Toast
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,7 +16,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Card
@@ -39,9 +42,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.OffsetMapping
+import androidx.compose.ui.text.input.OffsetMapping.Companion.Identity
+import androidx.compose.ui.text.input.TransformedText
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -53,6 +64,7 @@ import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
+import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -92,10 +104,16 @@ fun PaymentScreen(navController: NavController) {
 
 @Composable
 fun CardModel(navController: NavController) {
+    val context = LocalContext.current
     var cardNum by remember { mutableStateOf("") }
+    val validNum = "^[0-9]*$" // Only numbers regex
+    var isNumError by remember { mutableStateOf(false) }
     var cardCVC by remember { mutableStateOf("") }
+    var isCVCError by remember { mutableStateOf(false) }
     var cardHolderName by remember { mutableStateOf("") }
+    var isHolderNameError by remember { mutableStateOf(false) }
     var cardExpirationDate by remember { mutableStateOf("") }
+    var isDateError by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -191,20 +209,23 @@ fun CardModel(navController: NavController) {
                 }
             }
         }
+
         // Spacer between the card and the textfields
         Spacer(modifier = Modifier.size(16.dp))
+        
         // Text field for card number
         OutlinedTextField(
             value = cardNum,
             onValueChange = {
                 cardNum = it
+                isNumError = cardNum.length < 16 || cardNum.length > 16 || !cardNum.trim().matches(Regex(validNum))
             },
             label = {
                 Text(text = stringResource(R.string.card_number), color = textColor)
             },
             modifier = Modifier
                 .width(380.dp)
-                .height(55.dp),
+                .height(75.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = textColor,
                 unfocusedTextColor = textColor,
@@ -212,8 +233,20 @@ fun CardModel(navController: NavController) {
             ),
             singleLine = true,
             maxLines = 1,
+            isError = isNumError,
+            supportingText = {
+                if (isNumError) {
+                    Text(text = stringResource(R.string.card_number_error))
+                }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            ),
+            visualTransformation = CardNumberVisualTransformation()
         )
         Spacer(modifier = Modifier.size(16.dp))
+
         // Row with textfields for card security code & card expiration date
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -223,13 +256,15 @@ fun CardModel(navController: NavController) {
                 value = cardExpirationDate,
                 onValueChange = {
                     cardExpirationDate = it
+                    isDateError = validateDate(it)
                 },
                 label = {
                     Text(text = stringResource(R.string.card_expiration), color = textColor)
                 },
+                visualTransformation = DateVisualTransformation(),
                 modifier = Modifier
                     .width(180.dp)
-                    .height(55.dp),
+                    .height(75.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedTextColor = textColor,
                     unfocusedTextColor = textColor,
@@ -237,18 +272,32 @@ fun CardModel(navController: NavController) {
                 ),
                 singleLine = true,
                 maxLines = 1,
+                isError = isDateError,
+                supportingText = {
+                    if (isDateError) {
+                        Text(text = stringResource(R.string.card_date_error))
+                    }
+                },
+                keyboardOptions = KeyboardOptions(
+                    // Only numeric keyboard
+                    keyboardType = KeyboardType.Number,
+                    // Done when clicking enter
+                    imeAction = ImeAction.Done
+                )
             )
             OutlinedTextField(
                 value = cardCVC,
                 onValueChange = {
                     cardCVC = it
+                    isCVCError = cardCVC.length < 3 || cardCVC.length > 3 || !cardCVC.trim().matches(Regex(validNum))
                 },
                 label = {
                     Text(text = stringResource(R.string.card_cvc), color = textColor)
                 },
                 modifier = Modifier
                     .width(180.dp)
-                    .height(55.dp),
+                    .height(90.dp)
+                    .wrapContentSize(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedTextColor = textColor,
                     unfocusedTextColor = textColor,
@@ -256,21 +305,33 @@ fun CardModel(navController: NavController) {
                 ),
                 singleLine = true,
                 maxLines = 1,
+                isError = isCVCError,
+                supportingText = {
+                    if (isCVCError){
+                        Text(text = stringResource(R.string.card_cvc_error))
+                    }
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done
+                )
             )
         }
         Spacer(modifier = Modifier.size(16.dp))
+
         // Textfield for card holder name
         OutlinedTextField(
             value = cardHolderName,
             onValueChange = {
                 cardHolderName = it
+                isHolderNameError = cardHolderName.isEmpty()
             },
             label = {
                 Text(text = stringResource(R.string.card_owner_name), color = textColor)
             },
             modifier = Modifier
                 .width(380.dp)
-                .height(55.dp),
+                .height(75.dp),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = textColor,
                 unfocusedTextColor = textColor,
@@ -278,8 +339,15 @@ fun CardModel(navController: NavController) {
             ),
             singleLine = true,
             maxLines = 1,
+            isError = isHolderNameError,
+            supportingText =  {
+                if (isHolderNameError) {
+                    Text(text = stringResource(R.string.card_owner_name_error))
+                }
+            }
         )
 
+        // Row with the button
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -296,7 +364,11 @@ fun CardModel(navController: NavController) {
                         shape = RoundedCornerShape(12.dp)
                     )
                     .clickable {
-                        navController.navigate(Routes.PaymentCorrectScreen)
+                        if (isDateError || isHolderNameError || isCVCError || isNumError) {
+                            Toast.makeText(context, context.getString(R.string.card_owner_name_error), Toast.LENGTH_SHORT).show()
+                        } else {
+                            navController.navigate(Routes.PaymentCorrectScreen)
+                        }
                     }
                     .padding(vertical = 16.dp, horizontal = 80.dp)
             ) {
@@ -306,5 +378,91 @@ fun CardModel(navController: NavController) {
                 )
             }
         }
+    }
+}
+
+fun validateDate(date: String): Boolean {
+    val regex = Regex("^(0[1-9]|1[0-2])/\\d{2}$")
+    // It needs to ve a valid format
+    if (!date.matches(regex)) return false
+
+    // Extract month and year from sting
+    val parts = date.split("/")
+    val month = parts[0].toInt()
+    val year = parts[1].toInt() + 2000  // Convert YY into YYYY
+
+    // Use calendar to get the current mm/YY
+    val calendar = Calendar.getInstance()
+    val currentYear = calendar.get(Calendar.YEAR)
+    val currentMonth = calendar.get(Calendar.MONTH) + 1 // Calendar.MONTH es 0-indexado
+
+    // Verify if the date is from this year onwards
+    return year > currentYear || (year == currentYear && month >= currentMonth)
+}
+
+class DateVisualTransformation: VisualTransformation {
+    override fun filter(text: AnnotatedString): TransformedText {
+        // Only work with numbers
+        val digits = text.text.filter { it.isDigit() }.take(4)
+
+        if (digits.length <=  2) {
+            return TransformedText(
+                AnnotatedString(digits),
+                offsetMapping = Identity
+            )
+        }
+
+        val formatted = "${digits.take(2)}/${digits.drop(2)}"
+
+        val offsetMapping = object : OffsetMapping {
+            override fun originalToTransformed(offset: Int): Int {
+                // Si el offset es menor o igual a 2, no se afecta.
+                // Si es mayor que 2, se le suma 1 (por la barra insertada).
+                return if (offset <= 2) offset else offset + 1
+            }
+
+            override fun transformedToOriginal(offset: Int): Int {
+                // Si el offset está en la parte antes de la barra, es el mismo.
+                // Si es mayor que 2, se resta 1 para obtener la posición original.
+                return if (offset <= 2) offset else offset - 1
+            }
+        }
+
+        return TransformedText(
+            AnnotatedString(formatted),
+            offsetMapping
+        )
+    }
+}
+
+class CardNumberVisualTransformation : VisualTransformation {
+    override fun filter(text: AnnotatedString): TransformedText {
+        val originalText = text.text.filter { it.isDigit() } // Filtrar solo números
+        val formattedText = StringBuilder()
+        val offsets = mutableListOf<Int>()
+
+        var originalIndex = 0
+        for (i in originalText.indices) {
+            if (i > 0 && i % 4 == 0) {
+                formattedText.append('-') // Agregar guión cada 4 dígitos
+            }
+            formattedText.append(originalText[i])
+            offsets.add(originalIndex)
+            originalIndex++
+        }
+
+        val offsetMapping = object : OffsetMapping {
+            override fun originalToTransformed(offset: Int): Int {
+                if (offset >= offsets.size) return formattedText.length
+                return offsets[offset] + (offset / 4)
+            }
+
+            override fun transformedToOriginal(offset: Int): Int {
+                val cleanOffset = offset.coerceIn(0, formattedText.length)
+                return offsets.indexOfFirst { it >= cleanOffset }.takeIf { it != -1 } ?: originalText.length
+            }
+        }
+
+        return TransformedText(AnnotatedString(formattedText.toString()), offsetMapping)
     }
 }

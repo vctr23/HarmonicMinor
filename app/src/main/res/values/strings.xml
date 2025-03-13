@@ -35,9 +35,13 @@
     <string name="pay">Pagar</string>
     <string name="payment_method">Método de pago</string>
     <string name="card_number">Número de tarjeta:</string>
+    <string name="card_number_error">El número debe tener 16 dígitos</string>
     <string name="card_expiration">Fecha de vencimiento (MM/AA):</string>
+    <string name="card_date_error">El campo debe contener una fecha válida</string>
     <string name="card_cvc">Código de seguridad (CVC/CVV):</string>
+    <string name="card_cvc_error">El código debe contener 3 dígitos</string>
     <string name="card_owner_name">Nombre del titular (como aparece en la tarjeta):</string>
+    <string name="card_owner_name_error">El nombre del titular no puede estar vacío</string>
     <string name="checkout">Fin del pago</string>
     <string name="correct_payment">Pago correcto</string>
     <string name="available_languages">Idiomas disponibles:</string>

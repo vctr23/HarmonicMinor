@@ -35,9 +35,13 @@
     <string name="pay">Pay</string>
     <string name="payment_method">Payment Method</string>
     <string name="card_number">Card Number:</string>
+    <string name="card_number_error">Number must contain 16 digits</string>
     <string name="card_expiration">Expiration Date (MM/YY):</string>
+    <string name="card_date_error">Field must contain a valid date</string>
     <string name="card_cvc">Security Code (CVC/CVV):</string>
+    <string name="card_cvc_error">Number must contain 3 digits</string>
     <string name="card_owner_name">Cardholder Name (as on card):</string>
+    <string name="card_owner_name_error">Cardholder name must not be empty</string>
     <string name="checkout">End of payment</string>
     <string name="correct_payment">Payment successful</string>
     <string name="available_languages">Available languages:</string>
