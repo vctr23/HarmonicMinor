@@ -58,7 +58,7 @@ This project leverages the following technologies:
 - **MVVM Architecture**: To ensure a clean and maintainable code structure.
 
 ## License
-This project is licensed under the [LICENSE NAME] License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache License 2.0** License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 For any questions or comments about HarmonicMinor, please contact:
