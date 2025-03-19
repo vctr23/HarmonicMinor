@@ -42,6 +42,7 @@
     <string name="card_cvc_error">Number must contain 3 digits</string>
     <string name="card_owner_name">Cardholder Name (as on card):</string>
     <string name="card_owner_name_error">Cardholder name must not be empty</string>
+    <string name="card_error">Error, check the TextFields and try again</string>
     <string name="checkout">End of payment</string>
     <string name="correct_payment">Payment successful</string>
     <string name="available_languages">Available languages:</string>

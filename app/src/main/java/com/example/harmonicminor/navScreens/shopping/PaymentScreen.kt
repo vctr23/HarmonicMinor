@@ -64,7 +64,6 @@ import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
-import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -111,7 +110,7 @@ fun CardModel(navController: NavController) {
     var cardCVC by remember { mutableStateOf("") }
     var isCVCError by remember { mutableStateOf(false) }
     var cardHolderName by remember { mutableStateOf("") }
-    var isHolderNameError by remember { mutableStateOf(false) }
+    var isHolderNameError by remember { mutableStateOf(true) }
     var cardExpirationDate by remember { mutableStateOf("") }
     var isDateError by remember { mutableStateOf(false) }
 
@@ -173,8 +172,13 @@ fun CardModel(navController: NavController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // Card Number
+                    // Variable that displays the card number with the visual transformation
+                    val displayedCardNum =
+                        if (cardNum.isEmpty()) "XXXX XXXX XXXX XXXX" else CardNumberVisualTransformation().filter(
+                            AnnotatedString(cardNum)
+                        ).text.text.replace("-", " ")
                     Text(
-                        text = if (cardNum == "") "XXXX XXXX XXXX" else cardNum,
+                        text = AnnotatedString(displayedCardNum),
                         fontSize = 20.sp,
                         fontFamily = FontFamily.Monospace,
                         color = textColor
@@ -183,15 +187,20 @@ fun CardModel(navController: NavController) {
                     Spacer(modifier = Modifier.height(8.dp))
 
                     // Expiration date and security code
+                    // Variable that displays the expiration date with the visual transformation
+                    val displayedCardExpirationDate =
+                        if (cardExpirationDate.isEmpty()) "exp XX/XX" else "exp " + DateVisualTransformation().filter(
+                            AnnotatedString(cardExpirationDate)
+                        ).text.text
                     Row() {
                         Text(
-                            text = if (cardExpirationDate == "") "VALID THRU XX/XX" else "VALID THRU $cardExpirationDate",
+                            text = AnnotatedString(displayedCardExpirationDate),
                             fontSize = 12.sp,
                             color = secondaryTextColor
                         )
                         Spacer(modifier = Modifier.weight(1f))
                         Text(
-                            text = if (cardCVC == "") "CVC" else "CVC: $cardCVC",
+                            text = if (cardCVC == "") "cvc" else "cvc: $cardCVC",
                             fontSize = 16.sp,
                             color = textColor
                         )
@@ -212,13 +221,14 @@ fun CardModel(navController: NavController) {
 
         // Spacer between the card and the textfields
         Spacer(modifier = Modifier.size(16.dp))
-        
+
         // Text field for card number
         OutlinedTextField(
             value = cardNum,
             onValueChange = {
                 cardNum = it
-                isNumError = cardNum.length < 16 || cardNum.length > 16 || !cardNum.trim().matches(Regex(validNum))
+                isNumError = cardNum.length < 16 || cardNum.length > 16 || !cardNum.trim()
+                    .matches(Regex(validNum))
             },
             label = {
                 Text(text = stringResource(R.string.card_number), color = textColor)
@@ -256,7 +266,7 @@ fun CardModel(navController: NavController) {
                 value = cardExpirationDate,
                 onValueChange = {
                     cardExpirationDate = it
-                    isDateError = validateDate(it)
+                    isDateError = cardExpirationDate.isEmpty() || cardExpirationDate.length < 4 || cardExpirationDate.length > 4
                 },
                 label = {
                     Text(text = stringResource(R.string.card_expiration), color = textColor)
@@ -264,7 +274,7 @@ fun CardModel(navController: NavController) {
                 visualTransformation = DateVisualTransformation(),
                 modifier = Modifier
                     .width(180.dp)
-                    .height(75.dp),
+                    .height(90.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedTextColor = textColor,
                     unfocusedTextColor = textColor,
@@ -289,7 +299,8 @@ fun CardModel(navController: NavController) {
                 value = cardCVC,
                 onValueChange = {
                     cardCVC = it
-                    isCVCError = cardCVC.length < 3 || cardCVC.length > 3 || !cardCVC.trim().matches(Regex(validNum))
+                    isCVCError = cardCVC.length < 3 || cardCVC.length > 3 || !cardCVC.trim()
+                        .matches(Regex(validNum))
                 },
                 label = {
                     Text(text = stringResource(R.string.card_cvc), color = textColor)
@@ -307,7 +318,7 @@ fun CardModel(navController: NavController) {
                 maxLines = 1,
                 isError = isCVCError,
                 supportingText = {
-                    if (isCVCError){
+                    if (isCVCError) {
                         Text(text = stringResource(R.string.card_cvc_error))
                     }
                 },
@@ -340,7 +351,7 @@ fun CardModel(navController: NavController) {
             singleLine = true,
             maxLines = 1,
             isError = isHolderNameError,
-            supportingText =  {
+            supportingText = {
                 if (isHolderNameError) {
                     Text(text = stringResource(R.string.card_owner_name_error))
                 }
@@ -365,7 +376,11 @@ fun CardModel(navController: NavController) {
                     )
                     .clickable {
                         if (isDateError || isHolderNameError || isCVCError || isNumError) {
-                            Toast.makeText(context, context.getString(R.string.card_owner_name_error), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.card_error),
+                                Toast.LENGTH_SHORT
+                            ).show()
                         } else {
                             navController.navigate(Routes.PaymentCorrectScreen)
                         }
@@ -381,31 +396,12 @@ fun CardModel(navController: NavController) {
     }
 }
 
-fun validateDate(date: String): Boolean {
-    val regex = Regex("^(0[1-9]|1[0-2])/\\d{2}$")
-    // It needs to ve a valid format
-    if (!date.matches(regex)) return false
-
-    // Extract month and year from sting
-    val parts = date.split("/")
-    val month = parts[0].toInt()
-    val year = parts[1].toInt() + 2000  // Convert YY into YYYY
-
-    // Use calendar to get the current mm/YY
-    val calendar = Calendar.getInstance()
-    val currentYear = calendar.get(Calendar.YEAR)
-    val currentMonth = calendar.get(Calendar.MONTH) + 1 // Calendar.MONTH es 0-indexado
-
-    // Verify if the date is from this year onwards
-    return year > currentYear || (year == currentYear && month >= currentMonth)
-}
-
-class DateVisualTransformation: VisualTransformation {
+class DateVisualTransformation : VisualTransformation {
     override fun filter(text: AnnotatedString): TransformedText {
         // Only work with numbers
         val digits = text.text.filter { it.isDigit() }.take(4)
 
-        if (digits.length <=  2) {
+        if (digits.length <= 2) {
             return TransformedText(
                 AnnotatedString(digits),
                 offsetMapping = Identity
@@ -459,7 +455,8 @@ class CardNumberVisualTransformation : VisualTransformation {
 
             override fun transformedToOriginal(offset: Int): Int {
                 val cleanOffset = offset.coerceIn(0, formattedText.length)
-                return offsets.indexOfFirst { it >= cleanOffset }.takeIf { it != -1 } ?: originalText.length
+                return offsets.indexOfFirst { it >= cleanOffset }.takeIf { it != -1 }
+                    ?: originalText.length
             }
         }
 
