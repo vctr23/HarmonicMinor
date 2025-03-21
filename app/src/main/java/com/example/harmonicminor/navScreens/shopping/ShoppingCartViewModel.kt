@@ -13,6 +13,7 @@ import com.example.harmonicminor.navScreens.home.microphones.Microphone
 import com.example.harmonicminor.navScreens.home.piano.Piano
 import com.example.harmonicminor.navScreens.home.software.Software
 import com.example.harmonicminor.navScreens.home.wind.Wind
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -154,17 +155,46 @@ class ShoppingCartViewModel : ViewModel() {
     fun clearCart(userId: String, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
         val userDoc = db.collection("users").document(userId)
 
-        userDoc.update("cart", emptyMap<String, List<String>>())
-            .addOnSuccessListener {
-                // Limpiar la lista local del carrito
-                _cartItems.value = emptyList()
+        // Get cart items and update stock
+        userDoc.get()
+            .addOnSuccessListener { document ->
+                val cartIds = document.get("cart") as? Map<String, List<String>> ?: emptyMap()
+                val batch = db.batch()
 
-                // Llamar al callback de éxito
-                onSuccess()
+                // Decrement stock for each product in the cart
+                val tasks = cartIds.flatMap { (collection, ids) ->
+                    ids.map { id ->
+                        val productDoc = db.collection(collection).document(id)
+                        productDoc.get().continueWith { task ->
+                            val currentStockStr = task.result?.getString("stock") ?: "0"
+                            val currentStock = currentStockStr.toLongOrNull() ?: 0
+                            if (currentStock > 0) {
+                                val newStock = (currentStock - 1).toString()
+                                batch.update(productDoc, "stock", newStock)
+                            }
+                        }
+                    }
+                }
+
+                // Wait for all tasks to complete
+                Tasks.whenAll(tasks).addOnSuccessListener {
+                    // Clear the cart after updating stock
+                    batch.update(userDoc, "cart", emptyMap<String, List<String>>())
+                    batch.commit()
+                        .addOnSuccessListener {
+                            // Clear the cart items in the view model
+                            _cartItems.value = emptyList()
+                            onSuccess()
+                        }
+                        .addOnFailureListener { e ->
+                            onFailure(e.message ?: "Unknown error")
+                        }
+                }.addOnFailureListener { e ->
+                    onFailure(e.message ?: "Unknown error")
+                }
             }
             .addOnFailureListener { e ->
-                // Llamar al callback de error con el mensaje de excepción
-                onFailure(e.message ?: "Error desconocido")
+                onFailure(e.message ?: "Unknown error")
             }
     }
 }
