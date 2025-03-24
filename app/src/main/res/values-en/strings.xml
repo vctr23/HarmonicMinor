@@ -4,6 +4,7 @@
     <string name="app_version">V1.0.0</string>
     <string name="welcome">Welcome</string>
     <string name="sing">Sign in to</string>
+    <string name="sign_in">Sing in</string>
     <string name="register_on">Register on HarmonicMinor</string>
     <string name="register">Register</string>
     <string name="register_failed">Registration failed</string>

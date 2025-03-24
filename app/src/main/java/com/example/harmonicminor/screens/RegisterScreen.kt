@@ -41,9 +41,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
-import com.example.harmonicminor.ui.theme.backgroundColor
-import com.example.harmonicminor.ui.theme.buttonColor1
-import com.example.harmonicminor.ui.theme.buttonColor2
+import com.example.harmonicminor.ui.theme.backgroundGradient3
+import com.example.harmonicminor.ui.theme.backgroundGradient4
+import com.example.harmonicminor.ui.theme.buttonColor3
+import com.example.harmonicminor.ui.theme.buttonColor4
 import com.example.harmonicminor.ui.theme.errorColor
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.textColor
@@ -65,7 +66,11 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = backgroundColor),
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(backgroundGradient3, backgroundGradient4)
+                )
+            ),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -189,7 +194,7 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
             modifier = Modifier
                 .background(
                     brush = Brush.linearGradient(
-                        colors = listOf(buttonColor1, buttonColor2),
+                        colors = listOf(buttonColor3, buttonColor4),
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )

@@ -44,6 +44,7 @@ import com.example.harmonicminor.navScreens.shopping.ShoppingCartScreen
 import com.example.harmonicminor.ui.theme.backgroundAccentColor
 import com.example.harmonicminor.ui.theme.darkAccentColor
 import com.example.harmonicminor.ui.theme.iconColor
+import com.example.harmonicminor.ui.theme.selectedIndicatorColor
 import com.example.harmonicminor.ui.theme.textColor
 import com.google.firebase.auth.FirebaseAuth
 
@@ -83,7 +84,7 @@ fun Main(navController: NavController, modifier: Modifier = Modifier, auth: Fire
                             )
                         },
                         colors = NavigationBarItemColors(
-                            selectedIndicatorColor = darkAccentColor,
+                            selectedIndicatorColor = selectedIndicatorColor,
                             unselectedIconColor = iconColor,
                             selectedIconColor = iconColor,
                             selectedTextColor = textColor,

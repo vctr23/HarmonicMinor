@@ -115,8 +115,8 @@ fun HeaderSection(userId: String) {
     val username = rememberSaveable { mutableStateOf<String?>(null) }
 
     LaunchedEffect(userId) {
-        getUsername(userId) { gottenusername ->
-            username.value = gottenusername
+        getUsername(userId) { gottenUsername ->
+            username.value = gottenUsername
         }
     }
 

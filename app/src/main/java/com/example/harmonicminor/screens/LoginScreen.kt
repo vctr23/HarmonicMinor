@@ -41,7 +41,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
-import com.example.harmonicminor.ui.theme.backgroundColor
+import com.example.harmonicminor.ui.theme.backgroundGradient3
+import com.example.harmonicminor.ui.theme.backgroundGradient4
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.errorColor
@@ -62,7 +63,11 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = backgroundColor),
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(backgroundGradient3, backgroundGradient4)
+                )
+            ),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -88,7 +93,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
         Spacer(modifier = Modifier.height(5.dp))
 
         Text(
-            text = stringResource(R.string.sing),
+            text = stringResource(R.string.sign_in),
             fontSize = 20.sp,
             color = textColor
         )
@@ -211,7 +216,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
                         }
                     }
                 }
-                .padding(vertical = 16.dp, horizontal = 80.dp)
+                .padding(vertical = 16.dp, horizontal = 100.dp)
         ) {
             Text(
                 text = stringResource(R.string.sing_in),
