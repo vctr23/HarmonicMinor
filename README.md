@@ -15,7 +15,7 @@ HarmonicMinor is a Kotlin-based project which consists of a Musical instruments 
 
 
 ## Screenshots
-| Splash Screen | Character Screen | Language Screen |
+| Initial Screen | Home Screen | Menu Screen |
 |:---:|:---:|:---:|
 |<img src="https://github.com/user-attachments/assets/58d30dc4-639e-445c-a5f3-1d0b1eaed2a6" width="275"/>|<img src="https://github.com/user-attachments/assets/c7e1f915-0584-45aa-95a8-7fd39bb13f91" width="275"/>|<img src="https://github.com/user-attachments/assets/35b7ed63-27e9-417d-9063-1c1e19877947" width="275"/>|
 
