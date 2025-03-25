@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HarmonicMinor</string>
-    <string name="app_version">V1.0.0</string>
+    <string name="app_version">V1.1.2</string>
     <string name="welcome">Welcome</string>
     <string name="sing">Sign in to</string>
     <string name="sign_in">Sing in</string>
