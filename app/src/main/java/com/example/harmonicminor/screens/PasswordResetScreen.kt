@@ -35,7 +35,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.harmonicminor.R
 import com.example.harmonicminor.navigation.Routes
-import com.example.harmonicminor.ui.theme.backgroundColor
+import com.example.harmonicminor.ui.theme.backgroundGradient3
+import com.example.harmonicminor.ui.theme.backgroundGradient4
 import com.example.harmonicminor.ui.theme.buttonColor1
 import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.errorColor
@@ -52,7 +53,11 @@ fun PasswordResetScreen(auth: FirebaseAuth, navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = backgroundColor),
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(backgroundGradient3, backgroundGradient4)
+                )
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
@@ -75,7 +80,8 @@ fun PasswordResetScreen(auth: FirebaseAuth, navController: NavHostController) {
             textAlign = TextAlign.Center
         )
 
-        OutlinedTextField(value = email,
+        OutlinedTextField(
+            value = email,
             onValueChange = {
                 email = it
                 isEmailError = !it.matches(Regex(emailPattern))

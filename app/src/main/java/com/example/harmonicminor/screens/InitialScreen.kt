@@ -97,8 +97,8 @@ fun Initial(navController: NavController, modifier: Modifier){
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable{
-                        navController.navigate( "LoginScreen"){
+                    .clickable {
+                        navController.navigate("LoginScreen") {
                             launchSingleTop = true
                         }
                     }
@@ -120,8 +120,8 @@ fun Initial(navController: NavController, modifier: Modifier){
                         ),
                         shape = RoundedCornerShape(12.dp)
                     )
-                    .clickable{
-                        navController.navigate(Routes.RegisterScreen){
+                    .clickable {
+                        navController.navigate(Routes.RegisterScreen) {
                             launchSingleTop = true
                         }
                     }

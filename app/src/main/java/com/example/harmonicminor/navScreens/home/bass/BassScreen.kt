@@ -118,7 +118,7 @@ fun BassSection(innerPadding: PaddingValues, navController: NavController) {
             type = stringResource(R.string.bass6_type),
             price = stringResource(R.string.bass6_price),
             isAvailable = true,
-            thumbNailUrl = "https://drive.google.com/uc?id=1k9_ZwW1YcO0FjUsj-9SVOM-C5kG1aVCU"
+            thumbNailUrl = "https://drive.google.com/thumbnail?id=1k9_ZwW1YcO0FjUsj-9SVOM-C5kG1aVCU"
         ),
     )
     LazyColumn(
@@ -145,7 +145,9 @@ fun BassSectionItem(bassThumbnail: BassThumbnail, navController: NavController) 
             .background(backgroundAccentColor, shape = RoundedCornerShape(12.dp))
             .clip(RoundedCornerShape(12.dp))
             .clickable {
-                navController.navigate("${Routes.BassDetailScreen}/${bassThumbnail.name}")
+                navController.navigate("${Routes.BassDetailScreen}/${bassThumbnail.name}"){
+                    launchSingleTop = true
+                }
             }
     ) {
         Row(
@@ -195,5 +197,13 @@ fun BassSectionItem(bassThumbnail: BassThumbnail, navController: NavController) 
                 )
             }
         }
+    }
+}
+
+fun processGoogleDriveUrl(url: String): String {
+    return if (url.contains("drive.google.com")) {
+        url.replace("https://drive.google.com/uc?id=", "https://drive.google.com/thumbnail?id=")
+    } else {
+        url
     }
 }
