@@ -61,6 +61,8 @@ fun BassDetailScreen(navController: NavHostController, bassName: String) {
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         bassViewModel.readBasses()
@@ -69,7 +71,11 @@ fun BassDetailScreen(navController: NavHostController, bassName: String) {
     val basses = bassViewModel.basses
     val bass = basses.find { it.name == bassName }
 
+
+
     if (bass != null) {
+        val description = bass.description[selectedLanguage] ?: bass.description["es"] ?: ""
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -158,7 +164,7 @@ fun BassDetailScreen(navController: NavHostController, bassName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = bass.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor

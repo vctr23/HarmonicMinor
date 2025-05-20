@@ -64,15 +64,23 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val guitarViewModel: GuitarViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         guitarViewModel.readGuitars()
+
     }
 
     val guitar = guitarViewModel.guitars.find { it.name == guitarName }
     val isAvailable = guitar?.stock?.toInt() != 0
 
+
+
     if (guitar != null) {
+        val description = guitar.description[selectedLanguage] ?: guitar.description["es"]
+        ?: ""
+        Log.d("GuitarDetailScreen", "selectedLanguage: $selectedLanguage, description keys: ${guitar.description.keys}")
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -160,7 +168,7 @@ fun GuitarDetailScreen(navController: NavController, guitarName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = guitar.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor

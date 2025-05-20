@@ -4,6 +4,6 @@ interface CartItem {
     val id: String
     val name: String
     val price: String
-    val description: String
+    val description: Map<String, String>
     val thumbnailUrl: String
 }

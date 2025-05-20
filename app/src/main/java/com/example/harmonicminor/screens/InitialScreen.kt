@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -91,6 +92,7 @@ fun Initial(navController: NavController, modifier: Modifier){
         ){
             Box(
                 modifier = modifier
+                    .width(300.dp)
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(buttonColor1, buttonColor2),
@@ -102,18 +104,20 @@ fun Initial(navController: NavController, modifier: Modifier){
                             launchSingleTop = true
                         }
                     }
-                    .padding(vertical = 16.dp, horizontal = 120.dp)
+                    .padding(vertical = 16.dp)
                     .shadow(16.dp, RoundedCornerShape(12.dp))
 
             ) {
                 Text(
                     text = stringResource(R.string.sing_in),
-                    color = textColor
+                    color = textColor,
+                    modifier = Modifier.align(Alignment.Center)
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
             Box(
                 modifier = modifier
+                    .width(300.dp)
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(buttonColor3, buttonColor4),
@@ -125,12 +129,13 @@ fun Initial(navController: NavController, modifier: Modifier){
                             launchSingleTop = true
                         }
                     }
-                    .padding(vertical = 16.dp, horizontal = 125.dp)
+                    .padding(vertical = 16.dp)
                     .shadow(16.dp, RoundedCornerShape(12.dp))
             ) {
                 Text(
                     text = stringResource(R.string.sing_up),
-                    color = textColor
+                    color = textColor,
+                    modifier = Modifier.align(Alignment.Center)
                 )
             }
         }

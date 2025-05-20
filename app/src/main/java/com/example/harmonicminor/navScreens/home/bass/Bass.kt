@@ -8,7 +8,7 @@ import com.google.firebase.firestore.PropertyName
 data class Bass(
     override val name: String,
     val type: String,
-    override val description: String,
+    override val description: Map<String, String> = emptyMap(),
     val manufacturer: String,
     override val price: String,
     val stock: String,
@@ -20,7 +20,7 @@ data class Bass(
     override val id: String
 ) : Searchable, FavouriteItem, CartItem {
     constructor() : this(
-        "", "", "", "", "",
+        "", "", emptyMap(), "", "",
         "", true, "", "", ""
     )
 }

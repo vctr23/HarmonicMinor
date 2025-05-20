@@ -61,6 +61,8 @@ fun DjDetailScreen(navController: NavController, djName: String) {
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         djViewModel.readDj()
@@ -69,7 +71,11 @@ fun DjDetailScreen(navController: NavController, djName: String) {
     val dj = djViewModel.dj.find { it.name == djName }
     val isAvailable = dj?.stock?.toInt() != 0
 
+
+
     if (dj != null) {
+        val description = dj.description[selectedLanguage] ?: dj.description["es"] ?: ""
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -158,7 +164,7 @@ fun DjDetailScreen(navController: NavController, djName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = dj.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor

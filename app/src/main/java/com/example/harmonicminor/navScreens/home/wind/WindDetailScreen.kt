@@ -61,6 +61,8 @@ fun WindDetailScreen(navController: NavController, djName: String) {
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         windViewModel.readWind()
@@ -68,7 +70,10 @@ fun WindDetailScreen(navController: NavController, djName: String) {
 
     val wind = windViewModel.wind.find { it.name == djName }
 
+
     if (wind != null) {
+        val description = wind.description[selectedLanguage] ?: wind.description["es"] ?: ""
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -157,7 +162,7 @@ fun WindDetailScreen(navController: NavController, djName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = wind.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor

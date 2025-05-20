@@ -7,7 +7,7 @@ import com.example.harmonicminor.navScreens.shopping.CartItem
 data class Microphone(
     override val name: String,
     val type: String,
-    override val description: String,
+    override val description: Map<String, String> = emptyMap(),
     val manufacturer: String,
     override val price: String,
     val stock: String,
@@ -17,7 +17,7 @@ data class Microphone(
     override val id: String
 ) : Searchable, FavouriteItem, CartItem {
     constructor() : this(
-        "", "", "", "", "",
+        "", "", emptyMap(), "", "",
         "", true, "", "", ""
     )
 }

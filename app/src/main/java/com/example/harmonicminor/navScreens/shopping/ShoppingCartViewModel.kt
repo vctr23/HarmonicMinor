@@ -41,7 +41,7 @@ class ShoppingCartViewModel : ViewModel() {
     private fun readCartItems(cartIds: Map<String, List<String>>) {
         val cartList = mutableListOf<CartItem>()
 
-        cartIds["guitars"]?.forEach { id ->
+        cartIds["Guitars"]?.forEach { id ->
             db.collection("guitars").document(id).get()
                 .addOnSuccessListener { guitarDoc ->
                     val guitar = guitarDoc.toObject(Guitar::class.java)
@@ -49,7 +49,7 @@ class ShoppingCartViewModel : ViewModel() {
                     _cartItems.value = cartList.toList()
                 }
         }
-        cartIds["basses"]?.forEach { id ->
+        cartIds["Basses"]?.forEach { id ->
             db.collection("basses").document(id).get()
                 .addOnSuccessListener { bassDoc ->
                     val bass = bassDoc.toObject(Bass::class.java)
@@ -57,7 +57,7 @@ class ShoppingCartViewModel : ViewModel() {
                     _cartItems.value = cartList.toList()
                 }
         }
-        cartIds["drums"]?.forEach { id ->
+        cartIds["Drums"]?.forEach { id ->
             db.collection("drums").document(id).get()
                 .addOnSuccessListener { drumsDoc ->
                     val drums = drumsDoc.toObject(Drums::class.java)
@@ -65,7 +65,7 @@ class ShoppingCartViewModel : ViewModel() {
                     _cartItems.value = cartList.toList()
                 }
         }
-        cartIds["djs"]?.forEach { id ->
+        cartIds["Djs"]?.forEach { id ->
             db.collection("djs").document(id).get()
                 .addOnSuccessListener { djsDoc ->
                     val djs = djsDoc.toObject(Dj::class.java)
@@ -73,7 +73,7 @@ class ShoppingCartViewModel : ViewModel() {
                     _cartItems.value = cartList.toList()
                 }
         }
-        cartIds["winds"]?.forEach { id ->
+        cartIds["Winds"]?.forEach { id ->
             db.collection("winds").document(id).get()
                 .addOnSuccessListener { windDoc ->
                     val wind = windDoc.toObject(Wind::class.java)
@@ -81,7 +81,7 @@ class ShoppingCartViewModel : ViewModel() {
                     _cartItems.value = cartList.toList()
                 }
         }
-        cartIds["pianos"]?.forEach { id ->
+        cartIds["Pianos"]?.forEach { id ->
             db.collection("pianos").document(id).get()
                 .addOnSuccessListener { pianoDoc ->
                     val piano = pianoDoc.toObject(Piano::class.java)
@@ -89,7 +89,7 @@ class ShoppingCartViewModel : ViewModel() {
                     _cartItems.value = cartList.toList()
                 }
         }
-        cartIds["softwares"]?.forEach { id ->
+        cartIds["Softwares"]?.forEach { id ->
             db.collection("softwares").document(id).get()
                 .addOnSuccessListener { softwareDoc ->
                     val software = softwareDoc.toObject(Software::class.java)
@@ -97,7 +97,7 @@ class ShoppingCartViewModel : ViewModel() {
                     _cartItems.value = cartList.toList()
                 }
         }
-        cartIds["microphones"]?.forEach { id ->
+        cartIds["Microphones"]?.forEach { id ->
             db.collection("microphones").document(id).get()
                 .addOnSuccessListener { micDoc ->
                     val mic = micDoc.toObject(Microphone::class.java)
@@ -111,14 +111,14 @@ class ShoppingCartViewModel : ViewModel() {
         currentUserId?.let { userId ->
             val userDoc = db.collection("users").document(userId)
             val collectionKey = when (item) {
-                is Guitar -> "guitars"
-                is Bass -> "basses"
-                is Drums -> "drums"
-                is Dj -> "djs"
-                is Wind -> "winds"
-                is Piano -> "pianos"
-                is Software -> "softwares"
-                is Microphone -> "microphones"
+                is Guitar -> "Guitars"
+                is Bass -> "Basses"
+                is Drums -> "Drums"
+                is Dj -> "Djs"
+                is Wind -> "Winds"
+                is Piano -> "Pianos"
+                is Software -> "Softwares"
+                is Microphone -> "Microphones"
                 else -> return
             }
 

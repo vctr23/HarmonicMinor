@@ -61,6 +61,8 @@ fun MicrophoneDetailScreen(navController: NavController, djName: String) {
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         microphoneViewModel.readMicrophones()
@@ -68,7 +70,11 @@ fun MicrophoneDetailScreen(navController: NavController, djName: String) {
 
     val microphone = microphoneViewModel.microphone.find { it.name == djName }
 
+
     if (microphone != null) {
+        val description =
+            microphone.description[selectedLanguage] ?: microphone.description["es"] ?: ""
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -157,7 +163,7 @@ fun MicrophoneDetailScreen(navController: NavController, djName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = microphone.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor

@@ -1,7 +1,7 @@
 package com.example.harmonicminor.navScreens.menu
 
 import android.annotation.SuppressLint
-import android.app.LocaleManager
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -68,9 +68,10 @@ import com.example.harmonicminor.ui.theme.buttonColor2
 import com.example.harmonicminor.ui.theme.iconColor
 import com.example.harmonicminor.ui.theme.secondaryTextColor
 import com.example.harmonicminor.ui.theme.textColor
+import com.example.harmonicminor.utils.restartApp
+import com.example.harmonicminor.utils.setAppLocale
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.Locale
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -81,20 +82,14 @@ fun MenuScreen(
     viewModel: MenuViewModel = viewModel()
 ) {
     val context = LocalContext.current
-    val selectedLanguage by viewModel.selectedLanguage.collectAsState()
+    val activity = context as? Activity
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
     val languageChange: (String) -> Unit = { newLanguage ->
         if (selectedLanguage != newLanguage) {
-            viewModel.updateLanguage(newLanguage)
+            setAppLocale(context, newLanguage)
+            activity?.let { restartApp(it) }
         }
-    }
-
-
-    LaunchedEffect(selectedLanguage) {
-        context
-            .getSystemService(LocaleManager::class.java)
-            .applicationLocales = android.os.LocaleList(
-            Locale(selectedLanguage.lowercase(), selectedLanguage.uppercase())
-        )
     }
 
     Scaffold {
@@ -412,38 +407,45 @@ fun CountrySelectionItem(viewModel: MenuViewModel) {
     val selectedCountry by viewModel.selectedCountry.collectAsState()
     val customIcon = ImageVector.vectorResource(R.drawable.language)
 
+    val countryName = when (selectedCountry) {
+        "es" -> stringResource(R.string.spain)
+        "fr" -> stringResource(R.string.france)
+        "pt" -> stringResource(R.string.portugal)
+        "de" -> stringResource(R.string.germany)
+        "at" -> stringResource(R.string.austria)
+        "lu" -> stringResource(R.string.luxembourg)
+        "it" -> stringResource(R.string.italy)
+        "be" -> stringResource(R.string.belgium)
+        "cz" -> stringResource(R.string.czech_republic)
+        "bg" -> stringResource(R.string.bulgaria)
+        "hr" -> stringResource(R.string.croatia)
+        "dk" -> stringResource(R.string.denmark)
+        "fi" -> stringResource(R.string.finland)
+        "ch" -> stringResource(R.string.switzerland)
+        "se" -> stringResource(R.string.sweden)
+        "gr" -> stringResource(R.string.greece)
+        "gb" -> stringResource(R.string.united_kingdom)
+        "ro" -> stringResource(R.string.romania)
+        "ru" -> stringResource(R.string.russia)
+        "ua" -> stringResource(R.string.ukraine)
+        "rs" -> stringResource(R.string.serbia)
+        "pl" -> stringResource(R.string.poland)
+        "nl" -> stringResource(R.string.netherlands)
+        "ie" -> stringResource(R.string.ireland)
+        "sk" -> stringResource(R.string.slovakia)
+        "si" -> stringResource(R.string.slovenia)
+        "ee" -> stringResource(R.string.estonia)
+        "hu" -> stringResource(R.string.hungary)
+        "al" -> stringResource(R.string.albania)
+        "by" -> stringResource(R.string.belarus)
+        else -> selectedCountry
+    }
+
+
     val countries = listOf(
-        stringResource(R.string.spain),
-        stringResource(R.string.france),
-        stringResource(R.string.portugal),
-        stringResource(R.string.germany),
-        stringResource(R.string.austria),
-        stringResource(R.string.luxembourg),
-        stringResource(R.string.italy),
-        stringResource(R.string.belgium),
-        stringResource(R.string.czech_republic),
-        stringResource(R.string.bulgaria),
-        stringResource(R.string.croatia),
-        stringResource(R.string.denmark),
-        stringResource(R.string.finland),
-        stringResource(R.string.switzerland),
-        stringResource(R.string.sweden),
-        stringResource(R.string.greece),
-        stringResource(R.string.united_kingdom),
-        stringResource(R.string.romania),
-        stringResource(R.string.russia),
-        stringResource(R.string.ukraine),
-        stringResource(R.string.serbia),
-        stringResource(R.string.poland),
-        stringResource(R.string.netherlands),
-        stringResource(R.string.ireland),
-        stringResource(R.string.slovakia),
-        stringResource(R.string.slovenia),
-        stringResource(R.string.estonia),
-        stringResource(R.string.hungary),
-        stringResource(R.string.albania),
-        stringResource(R.string.belarus)
-    ).sortedBy { it }
+        "es", "fr", "pt", "de", "at", "lu", "it", "be", "cz", "bg", "hr", "dk", "fi", "ch", "se",
+        "gr", "gb", "ro", "ru", "ua", "rs", "pl", "nl", "ie", "sk", "si", "ee", "hu", "al", "by"
+    )
 
     Row(
         modifier = Modifier
@@ -467,7 +469,7 @@ fun CountrySelectionItem(viewModel: MenuViewModel) {
             modifier = Modifier.weight(1f)
         )
         Text(
-            text = selectedCountry,
+            text = countryName,
             color = textColor
         )
         Icon(
@@ -523,14 +525,16 @@ fun CurrencySelectionItem(viewModel: MenuViewModel) {
     val selectedCurrency by viewModel.selectedCurrency.collectAsState()
     val customIcon = ImageVector.vectorResource(R.drawable.paid)
 
-    val coins = listOf(
-        stringResource(R.string.euro),
-        stringResource(R.string.pound),
-        stringResource(R.string.dolar),
-        stringResource(R.string.franc),
-        stringResource(R.string.krone),
-        stringResource(R.string.krona)
-    ).sortedBy { it }
+    val coins = listOf("euro", "pound", "dollar", "franc", "krone", "krona")
+    val currencyName = when (selectedCurrency) {
+        "euro" -> stringResource(R.string.euro)
+        "pound" -> stringResource(R.string.pound)
+        "dollar" -> stringResource(R.string.dolar)
+        "franc" -> stringResource(R.string.franc)
+        "krone" -> stringResource(R.string.krone)
+        "krona" -> stringResource(R.string.krona)
+        else -> selectedCurrency
+    }
 
     Row(
         modifier = Modifier
@@ -554,7 +558,7 @@ fun CurrencySelectionItem(viewModel: MenuViewModel) {
             modifier = Modifier.weight(1f)
         )
         Text(
-            text = selectedCurrency,
+            text = currencyName,
             color = textColor
         )
         Icon(
@@ -577,6 +581,15 @@ fun CurrencySelectionItem(viewModel: MenuViewModel) {
                         fontSize = 16.sp
                     )
                     for (coin in coins) {
+                        val name = when (coin) {
+                            "euro" -> stringResource(R.string.euro)
+                            "pound" -> stringResource(R.string.pound)
+                            "dollar" -> stringResource(R.string.dolar)
+                            "franc" -> stringResource(R.string.franc)
+                            "krone" -> stringResource(R.string.krone)
+                            "krona" -> stringResource(R.string.krona)
+                            else -> coin
+                        }
                         HorizontalDivider(thickness = 0.5.dp, color = secondaryTextColor)
                         Row(
                             modifier = Modifier.padding(1.dp),
@@ -589,7 +602,7 @@ fun CurrencySelectionItem(viewModel: MenuViewModel) {
                                 }
                             )
                             Text(
-                                text = coin,
+                                text = name,
                                 color = textColor
                             )
                         }

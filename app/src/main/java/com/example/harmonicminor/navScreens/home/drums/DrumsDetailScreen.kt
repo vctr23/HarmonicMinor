@@ -61,6 +61,8 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         drumsViewModel.readDrums()
@@ -68,7 +70,10 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
 
     val drums = drumsViewModel.drums.find { it.name == drumsName }
 
+
     if (drums != null) {
+        val description = drums.description[selectedLanguage] ?: drums.description["es"] ?: ""
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -157,7 +162,7 @@ fun DrumsDetailScreen(navController: NavController, drumsName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = drums.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor

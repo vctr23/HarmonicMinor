@@ -61,6 +61,8 @@ fun PianoDetailScreen(navController: NavController, djName: String) {
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         pianoViewModel.readPianos()
@@ -68,7 +70,10 @@ fun PianoDetailScreen(navController: NavController, djName: String) {
 
     val piano = pianoViewModel.piano.find { it.name == djName }
 
+
     if (piano != null) {
+        val description = piano.description[selectedLanguage] ?: piano.description["es"] ?: ""
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -157,7 +162,7 @@ fun PianoDetailScreen(navController: NavController, djName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = piano.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor

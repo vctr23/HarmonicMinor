@@ -61,6 +61,8 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
     val favouriteViewModel: FavouriteViewModel = viewModel()
     val shoppingCartViewModel: ShoppingCartViewModel = viewModel()
     val context = LocalContext.current
+    val currentLocale = context.resources.configuration.locales[0]
+    val selectedLanguage = currentLocale.language
 
     LaunchedEffect(Unit) {
         softwareViewModel.readSoftwares()
@@ -68,7 +70,10 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
 
     val software = softwareViewModel.softwares.find { it.name == softwareName }
 
+
     if (software != null) {
+        val description = software.description[selectedLanguage] ?: software.description["es"] ?: ""
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -157,7 +162,7 @@ fun SoftwareDetailScreen(navController: NavController, softwareName: String) {
                                 color = textColor
                             )
                             Text(
-                                text = software.description,
+                                text = description,
                                 modifier = Modifier.padding(8.dp, vertical = 2.dp),
                                 fontSize = 16.sp,
                                 color = textColor
