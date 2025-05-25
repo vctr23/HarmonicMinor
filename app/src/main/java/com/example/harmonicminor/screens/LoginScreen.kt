@@ -61,24 +61,22 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
     val context = LocalContext.current
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(
                 brush = Brush.linearGradient(
                     colors = listOf(backgroundGradient3, backgroundGradient4)
                 )
             ),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
     ) {
         Spacer(modifier = Modifier.height(40.dp))
 
         Image(
-            painter = painterResource(R.drawable.login_logo),
+            painter = painterResource(R.drawable.login_logo_2),
             contentDescription = "Login image",
-            modifier = Modifier
-                .size(380.dp)
-                .padding(16.dp)
+            modifier = modifier.size(380.dp)
         )
 
         Spacer(modifier = Modifier.height(40.dp))

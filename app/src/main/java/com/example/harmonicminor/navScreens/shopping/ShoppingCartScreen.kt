@@ -384,7 +384,8 @@ fun ShoppingCartScreen(navController: NavController, shoppingCartViewModel: Shop
                                     Icon(
                                         painter = painterResource(R.drawable.add_card),
                                         contentDescription = null,
-                                        modifier = Modifier.size(28.dp)
+                                        modifier = Modifier.size(28.dp),
+                                        tint = iconColor
                                     )
 
                                     Spacer(modifier = Modifier.padding(horizontal = 4.dp))

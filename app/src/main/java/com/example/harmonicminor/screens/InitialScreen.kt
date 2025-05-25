@@ -142,6 +142,3 @@ fun Initial(navController: NavController, modifier: Modifier){
 
     }
 }
-
-
-

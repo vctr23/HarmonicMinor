@@ -77,11 +77,9 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
         Spacer(modifier = Modifier.height(40.dp))
 
         Image(
-            painter = painterResource(R.drawable.login_logo),
+            painter = painterResource(R.drawable.login_logo_2),
             contentDescription = "Login image",
-            modifier = Modifier
-                .size(380.dp)
-                .padding(16.dp)
+            modifier = Modifier.size(380.dp)
         )
 
         Spacer(modifier = Modifier.height(40.dp))

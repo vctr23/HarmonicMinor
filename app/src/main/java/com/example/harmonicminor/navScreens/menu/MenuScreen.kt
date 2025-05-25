@@ -407,45 +407,42 @@ fun CountrySelectionItem(viewModel: MenuViewModel) {
     val selectedCountry by viewModel.selectedCountry.collectAsState()
     val customIcon = ImageVector.vectorResource(R.drawable.language)
 
-    val countryName = when (selectedCountry) {
-        "es" -> stringResource(R.string.spain)
-        "fr" -> stringResource(R.string.france)
-        "pt" -> stringResource(R.string.portugal)
-        "de" -> stringResource(R.string.germany)
-        "at" -> stringResource(R.string.austria)
-        "lu" -> stringResource(R.string.luxembourg)
-        "it" -> stringResource(R.string.italy)
-        "be" -> stringResource(R.string.belgium)
-        "cz" -> stringResource(R.string.czech_republic)
-        "bg" -> stringResource(R.string.bulgaria)
-        "hr" -> stringResource(R.string.croatia)
-        "dk" -> stringResource(R.string.denmark)
-        "fi" -> stringResource(R.string.finland)
-        "ch" -> stringResource(R.string.switzerland)
-        "se" -> stringResource(R.string.sweden)
-        "gr" -> stringResource(R.string.greece)
-        "gb" -> stringResource(R.string.united_kingdom)
-        "ro" -> stringResource(R.string.romania)
-        "ru" -> stringResource(R.string.russia)
-        "ua" -> stringResource(R.string.ukraine)
-        "rs" -> stringResource(R.string.serbia)
-        "pl" -> stringResource(R.string.poland)
-        "nl" -> stringResource(R.string.netherlands)
-        "ie" -> stringResource(R.string.ireland)
-        "sk" -> stringResource(R.string.slovakia)
-        "si" -> stringResource(R.string.slovenia)
-        "ee" -> stringResource(R.string.estonia)
-        "hu" -> stringResource(R.string.hungary)
-        "al" -> stringResource(R.string.albania)
-        "by" -> stringResource(R.string.belarus)
-        else -> selectedCountry
-    }
-
-
     val countries = listOf(
-        "es", "fr", "pt", "de", "at", "lu", "it", "be", "cz", "bg", "hr", "dk", "fi", "ch", "se",
-        "gr", "gb", "ro", "ru", "ua", "rs", "pl", "nl", "ie", "sk", "si", "ee", "hu", "al", "by"
+        "es" to stringResource(R.string.spain),
+        "fr" to stringResource(R.string.france),
+        "pt" to stringResource(R.string.portugal),
+        "de" to stringResource(R.string.germany),
+        "at" to stringResource(R.string.austria),
+        "lu" to stringResource(R.string.luxembourg),
+        "it" to stringResource(R.string.italy),
+        "be" to stringResource(R.string.belgium),
+        "cz" to stringResource(R.string.czech_republic),
+        "bg" to stringResource(R.string.bulgaria),
+        "hr" to stringResource(R.string.croatia),
+        "dk" to stringResource(R.string.denmark),
+        "fi" to stringResource(R.string.finland),
+        "ch" to stringResource(R.string.switzerland),
+        "se" to stringResource(R.string.sweden),
+        "gr" to stringResource(R.string.greece),
+        "gb" to stringResource(R.string.united_kingdom),
+        "ro" to stringResource(R.string.romania),
+        "ru" to stringResource(R.string.russia),
+        "ua" to stringResource(R.string.ukraine),
+        "rs" to stringResource(R.string.serbia),
+        "pl" to stringResource(R.string.poland),
+        "nl" to stringResource(R.string.netherlands),
+        "ie" to stringResource(R.string.ireland),
+        "sk" to stringResource(R.string.slovakia),
+        "si" to stringResource(R.string.slovenia),
+        "ee" to stringResource(R.string.estonia),
+        "hu" to stringResource(R.string.hungary),
+        "al" to stringResource(R.string.albania),
+        "by" to stringResource(R.string.belarus)
     )
+
+    val countryName = countries.find { it.first == selectedCountry }?.second ?: selectedCountry
+
+
 
     Row(
         modifier = Modifier
@@ -500,13 +497,13 @@ fun CountrySelectionItem(viewModel: MenuViewModel) {
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Checkbox(
-                                    checked = country == selectedCountry,
+                                    checked = country.first == selectedCountry,
                                     onCheckedChange = {
-                                        viewModel.updateCountry(country)
+                                        viewModel.updateCountry(country.first)
                                     }
                                 )
                                 Text(
-                                    text = country,
+                                    text = country.second,
                                     color = textColor
                                 )
                             }
