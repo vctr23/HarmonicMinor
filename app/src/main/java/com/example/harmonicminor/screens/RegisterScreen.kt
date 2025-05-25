@@ -82,7 +82,7 @@ fun Register(navController: NavController, auth: FirebaseAuth) {
             modifier = Modifier.size(380.dp)
         )
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Text(
             text = stringResource(R.string.welcome),

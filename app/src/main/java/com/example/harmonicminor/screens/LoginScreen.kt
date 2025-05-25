@@ -79,7 +79,7 @@ fun Login(navController: NavController, modifier: Modifier = Modifier, auth: Fir
             modifier = modifier.size(380.dp)
         )
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Text(
             text = stringResource(R.string.welcome),
